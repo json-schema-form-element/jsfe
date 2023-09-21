@@ -487,22 +487,44 @@ items:
 
 ### Installation
 
-🚧……🚧
+```sh
+pnpm i @jsfe/core
+```
+
+```ts
+import '@jsfe/core';
+```
+
+```ts
+import '@shoelace-style/shoelace/dist/themes/light.css';
+import '@shoelace-style/shoelace/dist/themes/dark.css';
+```
 
 ### Implementation
 
 > **Note**  
 > As the project is fresh, API is subject to changes
 
+You can try the [multi-frameworks examples](https://github.com/json-schema-form-element/examples) like this:
+
+```
+npx degit https://github.com/json-schema-form-element/examples jsfe-examples
+
+cd jsfe-examples
+
+npm i
+npm run dev
+```
+
 #### Vanilla JS / Astro (SSR)
 
-See [examples/src/components/VanillaJs.ts](https://github.com/json-schema-form-element/blob/examples/src/components/VanillaJs.astro)
+See [examples/src/components/VanillaJs.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/VanillaJs.astro)
 
 TypeScript inference: YES for client side, not for SSR (Astro JSX-y template).
 
 #### Lit
 
-See [examples/src/components/LitJs.ts](https://github.com/json-schema-form-element/blob/examples/src/components/LitJs.ts)
+See [examples/src/components/LitJs.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/LitJs.ts)
 
 TypeScript inference: YES.
 
@@ -568,13 +590,13 @@ class MyApp extends LitElement {
 
 #### Solid
 
-See [examples/src/components/SolidJs.tsx](https://github.com/json-schema-form-element/blob/examples/src/components/SolidJs.tsx)
+See [examples/src/components/SolidJs.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/SolidJs.tsx)
 
 TypeScript inference: YES.
 
 #### Vue
 
-See [examples/src/components/VueJs.vue](https://github.com/json-schema-form-element/blob/examples/src/components/VueJs.vue)
+See [examples/src/components/VueJs.vue](https://github.com/json-schema-form-element/examples/blob/main/src/components/VueJs.vue)
 
 TypeScript inference: NO.
 
@@ -676,3 +698,9 @@ the ideas RSJF creators brought.
 - [vuetify-jsonschema-form](https://koumoul-dev.github.io/vuetify-jsonschema-form/latest)
 - [jsonforms](https://jsonforms.io)
 - [remoteoss/json-schema-form](https://github.com/rjsf-team/react-jsonschema-form)
+
+**See also**:
+
+- [remark-lint-frontmatter-schema](https://github.com/JulianCataldo/remark-lint-frontmatter-schema): Validate your Markdown **frontmatter** data against a **JSON schema**.
+- [retext-case-police](https://github.com/JulianCataldo/retext-case-police): Check popular names casing. Example: ⚠️ `github` → ✅ `GitHub`.
+- [astro-openapi](https://github.com/JulianCataldo/astro-openapi): An Astro toolset for building full-stack operations easily, with type-safety and documentation as first-class citizens.

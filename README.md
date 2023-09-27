@@ -1,6 +1,6 @@
 # 📝  JSON Schema Form Element
 
-_Effortless forms_, with **standards**.
+Effortless forms, with standards.
 
 **Features**:
 
@@ -26,7 +26,8 @@ See also the [inspirations](#acknowledgements) for this project.
 <div align="center">
 
 Jump to **implementations**:  
-• [Vanilla JS / Astro (SSR)](#vanilla-js--astro-ssr)
+• [TypeScript](#typescript-no-framework)
+• [Astro (SSR)](#astro-ssr)
 • [Lit](#lit)
 • [Solid](#solid)
 • [Vue](#vue)
@@ -69,7 +70,8 @@ Jump to **implementations**:
   - [Usage](#usage)
     - [Installation](#installation)
     - [Implementation](#implementation)
-      - [Vanilla JS / Astro (SSR)](#vanilla-js--astro-ssr)
+      - [TypeScript (no framework)](#typescript-no-framework)
+      - [Astro (SSR)](#astro-ssr)
       - [Lit](#lit)
         - [Extended example](#extended-example)
       - [Solid](#solid)
@@ -82,6 +84,8 @@ Jump to **implementations**:
     - [Custom widgets](#custom-widgets)
   - [Validation](#validation)
   - [Schema massaging](#schema-massaging)
+  - [Custom Elements Manifests](#custom-elements-manifests)
+  - [Experimental features](#experimental-features)
   - [Improvements](#improvements)
   - [Acknowledgements](#acknowledgements)
 
@@ -488,7 +492,11 @@ items:
 ### Installation
 
 ```sh
+npm i @jsfe/core
+# or
 pnpm i @jsfe/core
+# or
+yarn add @jsfe/core
 ```
 
 ```ts
@@ -499,6 +507,8 @@ import '@jsfe/core';
 import '@shoelace-style/shoelace/dist/themes/light.css';
 import '@shoelace-style/shoelace/dist/themes/dark.css';
 ```
+
+See also the [CSS section](#CSS).
 
 ### Implementation
 
@@ -516,17 +526,27 @@ npm i
 npm run dev
 ```
 
-#### Vanilla JS / Astro (SSR)
+#### TypeScript (no framework)
 
-See [examples/src/components/VanillaJs.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/VanillaJs.astro)
+See [examples/src/components/TypeScriptOnly.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/TypeScriptOnly.ts)
 
-TypeScript inference: YES for client side, not for SSR (Astro JSX-y template).
+**TypeScript** inference: YES.
+
+#### Astro (SSR)
+
+See [examples/src/components/AstroJs.astro](https://github.com/json-schema-form-element/examples/blob/main/src/components/AstroJs.astro)
+
+**TypeScript** inference: NO.
 
 #### Lit
 
 See [examples/src/components/LitJs.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/LitJs.ts)
 
-TypeScript inference: YES.
+**TypeScript** inference: YES.
+
+> **Note**  
+> Inside template literals, **methods are type-checked** correctly,
+> but **arguments are not inferred** automatically.
 
 ##### Extended example
 
@@ -560,11 +580,11 @@ class MyApp extends LitElement {
 			.schema=${this.schema}
 			.uiSchema=${this.uiSchema}
 			.data=${this.data}
-			.onSubmit=${(data, errors) => {
-				console.info(data, errors);
-			}}
-			.onDataChange=${(data) => {
+			.onDataChange=${(newData: Pet) => {
 				this.data = data;
+			}}
+			.onFormSubmit=${(newData: Pet, valid: boolean) => {
+				console.info(data, errors);
 			}}
 		></json-schema-form>`;
 
@@ -592,13 +612,13 @@ class MyApp extends LitElement {
 
 See [examples/src/components/SolidJs.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/SolidJs.tsx)
 
-TypeScript inference: YES.
+**TypeScript** inference: YES.
 
 #### Vue
 
 See [examples/src/components/VueJs.vue](https://github.com/json-schema-form-element/examples/blob/main/src/components/VueJs.vue)
 
-TypeScript inference: NO.
+**TypeScript** inference: NO.
 
 #### Svelte
 
@@ -645,8 +665,8 @@ Main benefit could be to add some “missing” components in Shoelace, like
 combobox, complex date-time ranges, or whatever fancy widget your dreaming of.
 
 For example, _React JSON Schema Form_ does support a handful of different UI libraries maintained by the community,
-but AFAIK, in the Web Component space only Shoelace is on par, while beeing totally FLOSS.  
-Things are changing fast though, thanks to a growing WC ecosystem, with big names backing it up (Adobe, MS, Google, SpaceX… basically everyone).
+but AFAIK, in the Web Component space only Shoelace is on par, thanks its Lit backbone, all while beeing totally FLOSS.  
+Things are changing fast though, thanks to a growing WC ecosystem, with big names backing it up (Adobe, MS, Google, IBM, SpaceX… basically everyone).
 
 For now, the _JSFE_ component is one Lit Element monolith. All sub-parts are “partials“,
 not individual Web Components. Those snippets are wrapping the Shoelace
@@ -676,6 +696,31 @@ Only thing it does is resolving [JSON references](https://datatracker.ietf.org/d
 Implementation is quite simple, and because this is a much needed feature for DRY-ness, recursivity…  
 Hopefully it's easy to bring in an advanced parser along, like the [`json-schema-ref-parser`](https://github.com/APIDevTools/json-schema-ref-parser).
 
+## Custom Elements Manifests
+
+See [./custom-elements.json](./custom-elements.json) & [./custom-elements.md](./custom-elements.md)
+
+## Experimental features
+
+To activate experimental features preview flags, just pass the `experimental` property.
+
+E.g. with Lit:
+
+```ts
+html`<json-schema-form
+	otherProps="..."
+	.experimental=${{
+		'<flag>': true,
+		// ...
+	}}
+></json-schema-form>`;
+```
+
+Actual **features flags** list:
+
+- `allOf`
+- `oneOf`
+
 ## Improvements
 
 - BYOC (bring your own components).
@@ -684,6 +729,9 @@ Hopefully it's easy to bring in an advanced parser along, like the [`json-schema
 - Layout customizations
 - Tests, browser based (due to the WC nature).
 - Tests, tests, even more tests in the field to reveal shortcomings.
+- Support for other UI library (MWC? FAST?)
+- …
+- Have an idea? [Discussions are open](https://github.com/json-schema-form-element/core/discussions)!
 
 ## Acknowledgements
 

@@ -19,14 +19,21 @@ See also the [inspirations](#acknowledgements) for this project.
 
 ![](https://ik.imagekit.io/jc0/jsfe/design/header_json-schema-form-element_2RpVU_W-y-.png?updatedAt=1695289194993)
 
-<div align="center"><a href="https://jsfe.netlify.app" >🕹️ Open the playground</a></div>
+<div align="center">
+<h4><a href="https://jsfe.netlify.app" >🕹️ Open the playground</a></h4>
+
+---
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples)
+
+</div>
 
 ---
 
 <div align="center">
 
 Jump to **implementations**:  
-• [TypeScript](#typescript-no-framework)
+[TypeScript only](#typescript-no-framework)
 • [Astro (SSR)](#astro-ssr)
 • [Lit](#lit)
 • [Solid](#solid)

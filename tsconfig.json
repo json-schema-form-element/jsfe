@@ -4,7 +4,7 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -21,10 +21,12 @@
     "outDir": "dist/esm",
     "declaration": true,
 
-    "removeComments": true
+    "removeComments": true,
+
+    "noImplicitAny": true
   },
   "include": [
     //
-    "index.ts"
+    "lib/index.ts"
   ]
 }

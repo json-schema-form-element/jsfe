@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "lib/json-schema-form.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Jsf",
+          "members": [
+            {
+              "kind": "field",
+              "name": "schema",
+              "type": {
+                "text": "JSONSchema7"
+              },
+              "default": "{}",
+              "attribute": "schema"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "type": {
+                "text": "any"
+              },
+              "default": "{}",
+              "attribute": "data"
+            },
+            {
+              "kind": "field",
+              "name": "uiSchema",
+              "type": {
+                "text": "UiSchema"
+              },
+              "default": "{}",
+              "attribute": "uiSchema"
+            },
+            {
+              "kind": "field",
+              "name": "ui",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "private",
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "onFormSubmit",
+              "type": {
+                "text": "(newData: any, valid: boolean) => void"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "onDataChange",
+              "type": {
+                "text": "(newData: any) => void"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "experimental",
+              "type": {
+                "text": "FeatureFlags | undefined"
+              },
+              "default": "{}",
+              "attribute": "experimental"
+            },
+            {
+              "kind": "field",
+              "name": "_dig",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_setToValue",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "obj",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "path",
+                  "type": {
+                    "text": "Path"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "path",
+                  "type": {
+                    "text": "Path"
+                  }
+                },
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "unknown"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_updateUi",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "path",
+                  "type": {
+                    "text": "Path"
+                  }
+                },
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "unknown"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "schema",
+              "type": {
+                "text": "JSONSchema7"
+              },
+              "default": "{}",
+              "fieldName": "schema"
+            },
+            {
+              "name": "data",
+              "type": {
+                "text": "any"
+              },
+              "default": "{}",
+              "fieldName": "data"
+            },
+            {
+              "name": "uiSchema",
+              "type": {
+                "text": "UiSchema"
+              },
+              "default": "{}",
+              "fieldName": "uiSchema"
+            },
+            {
+              "name": "experimental",
+              "type": {
+                "text": "FeatureFlags | undefined"
+              },
+              "default": "{}",
+              "fieldName": "experimental"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "json-schema-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Jsf",
+          "declaration": {
+            "name": "Jsf",
+            "module": "lib/json-schema-form.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "json-schema-form",
+          "declaration": {
+            "name": "Jsf",
+            "module": "lib/json-schema-form.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

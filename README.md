@@ -737,6 +737,8 @@ Actual **features flags** list:
 - Tests, browser based (due to the WC nature).
 - Tests, tests, even more tests in the field to reveal shortcomings.
 - Support for other UI library (MWC? FAST?)
+- Drag and drop for array items, using native API.
+- Autofocuses (for added array item, etc.)
 - …
 - Have an idea? [Discussions are open](https://github.com/json-schema-form-element/core/discussions)!
 

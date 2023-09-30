@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable arrow-body-style */
 /* eslint-disable max-lines */
@@ -20,21 +21,21 @@ import styles from './styles.js';
 
 export type Path = string[];
 
-export type UiOptions = {
-	'ui:help'?: string;
-	'ui:placeholder'?: string;
+export type UiSchema =
+	| {
+			'ui:help'?: string;
+			'ui:placeholder'?: string;
 
-	'ui:widget'?:
-		| 'radio'
-		| 'button-group'
-		| 'textarea'
-		| 'color'
-		| 'range'
-		| 'password'
-		| 'switch';
-};
-
-export type UiSchema = UiOptions & { [key: string]: UiSchema }; // Record<string, UiOptions>;
+			'ui:widget'?:
+				| 'radio'
+				| 'button-group'
+				| 'textarea'
+				| 'color'
+				| 'range'
+				| 'password'
+				| 'switch';
+	  }
+	| { [key: string]: UiSchema };
 
 export interface FeatureFlags {
 	allOf?: boolean;

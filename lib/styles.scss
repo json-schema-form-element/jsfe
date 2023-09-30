@@ -12,15 +12,12 @@
 
 fieldset {
 	display: flex;
-
 	flex-direction: column;
-
 	gap: var(--sl-spacing-large);
-
 	padding: var(--sl-spacing-large) var(--sl-spacing-medium);
 	margin: 0;
 	font-weight: var(--sl-font-weight-semibold);
-	border: 1px solid var(--sl-color-neutral-0);
+	border: 1px solid var(--sl-color-neutral-50);
 	border-radius: var(--sl-border-radius-large);
 
 	legend {
@@ -51,6 +48,7 @@ fieldset {
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
+
 	sl-tag::part(base) {
 		background: var(--sl-color-neutral-0);
 	}

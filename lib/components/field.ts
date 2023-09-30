@@ -22,24 +22,39 @@ import '@shoelace-style/shoelace/dist/components/range/range.js';
 import '@shoelace-style/shoelace/dist/components/switch/switch.js';
 import '@shoelace-style/shoelace/dist/components/color-picker/color-picker.js';
 
-import type { Jsf, Path, UiOptions } from '../json-schema-form.js';
+import type { Jsf, Path, UiSchema } from '../json-schema-form.js';
 
 export const field = (
 	schema: JSONSchema7,
 	value: any,
 	path: Path,
-	uiOptions: UiOptions,
+	uiOptions: UiSchema,
 	required: boolean,
 	handleChange: Jsf['_handleChange'],
 ) => {
-	const label = schema.title
-		? schema.title
-		: isNaN(Number(path.at(-1)))
-		? path.at(-1)
-		: undefined;
+	let label: string | undefined;
+
+	if (schema.title) label = schema.title;
+	else if (Number.isNaN(Number(path.at(-1)))) {
+		label = path.at(-1);
+	}
 
 	const helpText = schema.description ?? uiOptions?.['ui:help'];
 	const placeholder = uiOptions?.['ui:placeholder'];
+
+	let baseValue: string | number | boolean | undefined;
+
+	if (value) {
+		baseValue = value;
+	} else if (
+		schema.default &&
+		(typeof schema.default === 'string' ||
+			typeof schema.default === 'number' ||
+			schema.default == null ||
+			typeof schema.default === 'boolean')
+	) {
+		baseValue = schema.default;
+	}
 
 	if (
 		schema.type === 'array' &&
@@ -57,7 +72,7 @@ export const field = (
 					${schema.items.enum.map(
 						(stringEnum, _index) =>
 							html` <sl-checkbox
-								.checked=${value?.includes(stringEnum)}
+								.checked=${baseValue?.includes(stringEnum)}
 								@sl-change=${(event: CustomEvent) => {
 									const { checked } = event.target as SlCheckbox;
 
@@ -69,15 +84,15 @@ export const field = (
 
 									const newData: any[] = [];
 
-									value?.map((val: any) => {
-										if (val === stringEnum && !checked) {
+									baseValue?.map((newValue: any) => {
+										if (newValue === stringEnum && !checked) {
 										} else {
-											newData.push(val);
+											newData.push(newValue);
 										}
 									});
-									schema.items.enum?.forEach((val) => {
-										if (val === stringEnum && checked) {
-											newData.push(val);
+									schema.items.enum?.forEach((newValue) => {
+										if (newValue === stringEnum && checked) {
+											newData.push(newValue);
 										}
 									});
 
@@ -101,21 +116,22 @@ export const field = (
 					size="medium"
 					.label=${label ?? ''}
 					.helpText=${helpText ?? ''}
-					value=${ifDefined((schema.default ?? value) || undefined)}
+					value=${baseValue ? String(baseValue) : ''}
 					.name=${path.join('.')}
 					.required=${required}
 					@sl-change=${(event: CustomEvent) => {
-						let value: number | string | null = (event.target as SlRadioGroup)
-							.value;
+						let newValue: number | string | null = (
+							event.target as SlRadioGroup
+						).value;
 
 						if (schema.type?.includes('number')) {
-							value = Number((event.target as HTMLInputElement).value);
+							newValue = Number((event.target as HTMLInputElement).value);
 						}
-						if (schema.type?.[1] === 'null' && !value) {
-							value = null;
+						if (schema.type?.[1] === 'null' && !newValue) {
+							newValue = null;
 						}
 
-						handleChange(path, value);
+						handleChange(path, newValue);
 					}}
 				>
 					${schema.enum?.map(
@@ -133,10 +149,10 @@ export const field = (
 		return html`
 			<sl-select
 				.label=${label ?? ''}
-				value=${schema.default ?? value}
+				value=${baseValue ? String(baseValue) : ''}
 				.helpText=${helpText ?? ''}
 				@sl-change=${(event: Event) => {
-					let value: string | null | number | string[] = (
+					let newValue: string | null | number | string[] = (
 						event.target as SlSelect
 					).value;
 
@@ -144,17 +160,20 @@ export const field = (
 						schema.type?.includes('number') ||
 						schema.type?.includes('integer')
 					) {
-						value = Number(value);
+						newValue = Number(newValue);
 					}
-					if (schema.type?.[1] === 'null' && !value) {
-						value = null;
+					if (schema.type?.[1] === 'null' && !newValue) {
+						newValue = null;
 					}
 
-					handleChange(path, value);
+					handleChange(path, newValue);
 				}}
 			>
 				${schema.enum.map(
-					(val) => html` <sl-option .value=${String(val)}> ${val} </sl-option>`,
+					(enumValue) =>
+						html` <sl-option .value=${String(enumValue)}>
+							${enumValue}
+						</sl-option>`,
 				)}
 			</sl-select>
 		`;
@@ -191,38 +210,24 @@ export const field = (
 			step = 1;
 		}
 
-		let val: string | number | boolean | undefined;
-
-		if (value) {
-			val = String(value);
-		} else if (
-			schema.default &&
-			(typeof schema.default === 'string' ||
-				typeof schema.default === 'number' ||
-				schema.default == null ||
-				typeof schema.default === 'boolean')
-		) {
-			val = schema.default;
-		}
-
 		if (uiOptions?.['ui:widget'] === 'textarea') {
 			return html` <sl-textarea
 				.label=${label ?? ''}
 				.helpText=${helpText ?? ''}
 				placeholder=${placeholder ?? ''}
-				value=${ifDefined(value ? String(value) : undefined)}
+				value=${baseValue ? String(baseValue) : ''}
 				.name=${path.join('.')}
 				.id=${path.join('.')}
 				.required=${required}
 				@sl-change=${(event: CustomEvent) => {
-					let value: null | string = (event.target as HTMLTextAreaElement)
+					let newValue: null | string = (event.target as HTMLTextAreaElement)
 						.value;
 
-					if (schema.type?.[1] === 'null' && !value) {
-						value = null;
+					if (schema.type?.[1] === 'null' && !newValue) {
+						newValue = null;
 					}
 
-					handleChange(path, value);
+					handleChange(path, newValue);
 				}}
 			></sl-textarea>`;
 		}
@@ -232,16 +237,16 @@ export const field = (
 				<label>${label}</label>
 				<sl-color-picker
 					.label=${label ?? ''}
-					value=${ifDefined(String(val))}
+					value=${baseValue ? String(baseValue) : ''}
 					@sl-change=${(event: CustomEvent) => {
-						let value: string | null =
+						let newValue: string | null =
 							(event.target as HTMLInputElement).value ?? schema.default;
 
-						if (schema.type?.[1] === 'null' && !value) {
-							value = null;
+						if (schema.type?.[1] === 'null' && !newValue) {
+							newValue = null;
 						}
 
-						handleChange(path, value);
+						handleChange(path, newValue);
 					}}
 				></sl-color-picker>
 
@@ -255,7 +260,7 @@ export const field = (
 					<sl-range
 						.label=${label ?? ''}
 						.helpText=${helpText ?? ''}
-						value=${ifDefined(val ? Number(val) : undefined)}
+						value=${ifDefined(baseValue ? Number(baseValue) : undefined)}
 						.type=${type}
 						step=${ifDefined(step)}
 						min=${ifDefined(schema.minimum)}
@@ -263,10 +268,10 @@ export const field = (
 						.name=${path.join('.')}
 						.required=${required}
 						@sl-change=${(event: CustomEvent) => {
-							let { value } = event.target as SlRange;
+							const { value: newValue } = event.target as SlRange;
 
-							let val: number | null | undefined = value;
-							if (schema.type?.[1] === 'null' && !value) {
+							let val: number | null | undefined = newValue;
+							if (schema.type?.[1] === 'null' && !newValue) {
 								val = null;
 							}
 
@@ -284,7 +289,7 @@ export const field = (
 					.type=${type}
 					.helpText=${helpText ?? ''}
 					placeholder=${placeholder ?? ''}
-					value=${ifDefined(val)}
+					value=${ifDefined(baseValue)}
 					.name=${path.join('.')}
 					.id=${path.join('.')}
 					.required=${required}
@@ -295,16 +300,19 @@ export const field = (
 					maxLength=${ifDefined(schema.maxLength)}
 					pattern=${ifDefined(schema.pattern)}
 					@sl-change=${(event: CustomEvent) => {
-						let { value, type, valueAsNumber } =
-							event.target as HTMLInputElement;
+						const {
+							value: newValue,
+							type: inputType,
+							valueAsNumber,
+						} = event.target as HTMLInputElement;
 
-						let val: number | string | null | undefined = value;
-						if (type === 'number') {
+						let val: number | string | null | undefined = newValue;
+						if (inputType === 'number') {
 							val = valueAsNumber;
 						}
 						if (
 							schema.type?.[1] === 'null' &&
-							(typeof value === 'undefined' || value === '')
+							(typeof newValue === 'undefined' || newValue === '')
 						) {
 							val = null;
 						}
@@ -335,21 +343,15 @@ export const field = (
 						size="medium"
 						.label=${label ?? ''}
 						.helpText=${helpText ?? ''}
-						value=${ifDefined(
-							typeof schema.default !== undefined
-								? String(schema.default)
-								: typeof value !== undefined
-								? String(value)
-								: undefined,
-						)}
+						value=${ifDefined(baseValue ? String(baseValue) : '')}
 						.name=${path.join('.')}
 						.required=${required}
 						@sl-change=${(event: CustomEvent) => {
-							let { value } = event.target as HTMLInputElement;
+							const { value: newValue } = event.target as HTMLInputElement;
 
 							let val: boolean | null | undefined;
-							val = value === 'true';
-							if (schema.type?.[1] === 'null' && !value) {
+							val = newValue === 'true';
+							if (schema.type?.[1] === 'null' && !newValue) {
 								val = null;
 							}
 
@@ -369,12 +371,12 @@ export const field = (
 		return html`
 			<div>
 				<sl-switch
-					.checked=${schema.default ?? value}
+					.checked=${Boolean(baseValue)}
 					.name=${path.join('.')}
 					@sl-change=${(event: CustomEvent) => {
-						const value = (event.target as SlSwitch).checked;
+						const newValue = (event.target as SlSwitch).checked;
 
-						handleChange(path, value);
+						handleChange(path, newValue);
 					}}
 					>${label}</sl-switch
 				>
@@ -387,9 +389,9 @@ export const field = (
 				.checked=${schema.default ?? value}
 				.name=${path.join('.')}
 				@sl-change=${(event: CustomEvent) => {
-					const value = (event.target as SlCheckbox).checked;
+					const newValue = (event.target as SlCheckbox).checked;
 
-					handleChange(path, value);
+					handleChange(path, newValue);
 				}}
 				>${label}</sl-checkbox
 			>

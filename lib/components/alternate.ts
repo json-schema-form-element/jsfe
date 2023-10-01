@@ -9,9 +9,9 @@ import '@shoelace-style/shoelace/dist/components/option/option.js';
 // NOTE: Experimental!
 export const alternateField = (
 	schema: JSONSchema7,
-	data: any,
+	data: unknown,
 	path: Path,
-	uiState: any,
+	uiState: unknown,
 	uiSchema: UiSchema,
 	handleChange: Jsf['_handleChange'],
 	dig: Jsf['_dig'],
@@ -27,7 +27,7 @@ export const alternateField = (
 			<sl-select
 				value=${0}
 				@sl-change=${(e: Event) => {
-					handleChange([...path], {});
+					handleChange([...path], {}, schemaPath);
 					updateUi(
 						[...path, 'alternative'],
 						Number((e.target as HTMLSelectElement)?.value),

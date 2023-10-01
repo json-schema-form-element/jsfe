@@ -1,3 +1,5 @@
+import { debuggerInline } from './utils.js';
+/* eslint-disable arrow-body-style */
 /* eslint-disable max-lines */
 import {
 	SlCheckbox,
@@ -12,25 +14,28 @@ import type { JSONSchema7 } from 'json-schema';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import '@shoelace-style/shoelace/dist/components/input/input.js';
-import '@shoelace-style/shoelace/dist/components/textarea/textarea.js';
 import '@shoelace-style/shoelace/dist/components/checkbox/checkbox.js';
-import '@shoelace-style/shoelace/dist/components/radio/radio.js';
-import '@shoelace-style/shoelace/dist/components/radio-group/radio-group.js';
-import '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';
-import '@shoelace-style/shoelace/dist/components/range/range.js';
-import '@shoelace-style/shoelace/dist/components/switch/switch.js';
 import '@shoelace-style/shoelace/dist/components/color-picker/color-picker.js';
+import '@shoelace-style/shoelace/dist/components/input/input.js';
+import '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';
+import '@shoelace-style/shoelace/dist/components/radio-group/radio-group.js';
+import '@shoelace-style/shoelace/dist/components/radio/radio.js';
+import '@shoelace-style/shoelace/dist/components/range/range.js';
+import '@shoelace-style/shoelace/dist/components/rating/rating.js';
+import '@shoelace-style/shoelace/dist/components/switch/switch.js';
+import '@shoelace-style/shoelace/dist/components/textarea/textarea.js';
 
 import type { Jsf, Path, UiSchema } from '../json-schema-form.js';
+import { error } from './callout.js';
 
 export const field = (
 	schema: JSONSchema7,
-	value: any,
+	value: unknown,
 	path: Path,
 	uiOptions: UiSchema,
 	required: boolean,
 	handleChange: Jsf['_handleChange'],
+	schemaPath: Path,
 ) => {
 	let label: string | undefined;
 
@@ -42,9 +47,9 @@ export const field = (
 	const helpText = schema.description ?? uiOptions?.['ui:help'];
 	const placeholder = uiOptions?.['ui:placeholder'];
 
-	let baseValue: string | number | boolean | undefined;
+	let baseValue: unknown;
 
-	if (value) {
+	if (value !== undefined) {
 		baseValue = value;
 	} else if (
 		schema.default &&
@@ -54,10 +59,13 @@ export const field = (
 			typeof schema.default === 'boolean')
 	) {
 		baseValue = schema.default;
+
+		// NOTE: could be batched? Or maybe debounced?
+		handleChange([...path], schema.default, schemaPath);
 	}
 
 	if (
-		schema.type === 'array' &&
+		schema.type?.includes('array') &&
 		typeof schema.items === 'object' &&
 		!Array.isArray(schema.items) &&
 		schema.items.enum &&
@@ -65,42 +73,53 @@ export const field = (
 	) {
 		return html`
 			<fieldset class="checkboxes-fieldset" part="field">
+				${debuggerInline({ schemaPath, path })}
+
 				<legend>${schema.title}</legend>
 				<div class="help-text">${schema.description}</div>
 
 				<div class="checkboxes">
-					${schema.items.enum.map(
-						(stringEnum, _index) =>
-							html` <sl-checkbox
-								.checked=${baseValue?.includes(stringEnum)}
-								@sl-change=${(event: CustomEvent) => {
-									const { checked } = event.target as SlCheckbox;
+					${schema.items.enum.map((enumValue, index) => {
+						return html` <sl-checkbox
+							.checked=${Array.isArray(baseValue)
+								? baseValue?.includes(enumValue)
+								: false}
+							@sl-change=${(event: CustomEvent) => {
+								const { checked } = event.target as SlCheckbox;
+								baseValue ||= [];
+								if (!Array.isArray(baseValue)) return;
 
-									if (
-										typeof schema.items !== 'object' ||
-										Array.isArray(schema.items)
-									)
-										return;
+								if (
+									typeof schema.items !== 'object' ||
+									Array.isArray(schema.items)
+								)
+									return;
 
-									const newData: any[] = [];
+								const newData: unknown[] = [];
 
-									baseValue?.map((newValue: any) => {
-										if (newValue === stringEnum && !checked) {
-										} else {
-											newData.push(newValue);
-										}
-									});
-									schema.items.enum?.forEach((newValue) => {
-										if (newValue === stringEnum && checked) {
-											newData.push(newValue);
-										}
-									});
+								baseValue?.forEach((newValue: unknown) => {
+									if (newValue === enumValue && !checked) {
+										//
+									} else {
+										newData.push(newValue);
+									}
+								});
+								schema.items.enum?.forEach((newValue) => {
+									if (newValue === enumValue && checked) {
+										newData.push(newValue);
+									}
+								});
 
-									handleChange([...path], newData);
-								}}
-								>${stringEnum}</sl-checkbox
-							>`,
-					)}
+								handleChange([...path], newData, [
+									...schemaPath,
+									'items',
+									'enum',
+									index,
+								]);
+							}}
+							>${enumValue}</sl-checkbox
+						>`;
+					})}
 				</div>
 			</fieldset>
 		`;
@@ -116,31 +135,36 @@ export const field = (
 					size="medium"
 					.label=${label ?? ''}
 					.helpText=${helpText ?? ''}
-					value=${baseValue ? String(baseValue) : ''}
+					value=${typeof baseValue !== 'undefined' ? String(baseValue) : ''}
 					.name=${path.join('.')}
 					.required=${required}
 					@sl-change=${(event: CustomEvent) => {
-						let newValue: number | string | null = (
+						let newValue: number | string | boolean | null = (
 							event.target as SlRadioGroup
 						).value;
 
 						if (schema.type?.includes('number')) {
-							newValue = Number((event.target as HTMLInputElement).value);
+							newValue = Number(newValue);
 						}
-						if (schema.type?.[1] === 'null' && !newValue) {
+						if (schema.type?.includes('boolean')) {
+							newValue = Boolean(newValue);
+						}
+						if (schema.type?.includes('null') && !newValue) {
 							newValue = null;
 						}
 
-						handleChange(path, newValue);
+						handleChange(path, newValue, schemaPath);
 					}}
 				>
 					${schema.enum?.map(
-						(e) =>
+						(enumVal) =>
 							html`${uiOptions?.['ui:widget'] === 'button-group'
-								? html` <sl-radio-button value=${String(e)}
-										>${e}</sl-radio-button
+								? html` <sl-radio-button value=${String(enumVal)}
+										>${enumVal}</sl-radio-button
 								  >`
-								: html`<sl-radio value=${String(e)}>${e}</sl-radio>`}`,
+								: html`<sl-radio value=${String(enumVal)}
+										>${enumVal}</sl-radio
+								  >`}`,
 					)}</sl-radio-group
 				>
 			`;
@@ -162,11 +186,15 @@ export const field = (
 					) {
 						newValue = Number(newValue);
 					}
-					if (schema.type?.[1] === 'null' && !newValue) {
+					if (schema.type?.includes('null') && !newValue) {
 						newValue = null;
 					}
 
-					handleChange(path, newValue);
+					handleChange(path, newValue, [
+						...schemaPath,
+						'enum',
+						schema.enum?.indexOf(newValue),
+					]);
 				}}
 			>
 				${schema.enum.map(
@@ -200,14 +228,26 @@ export const field = (
 		if (schema.format === 'time') {
 			type = 'time';
 		}
-		if (schema.type === 'string' && uiOptions?.['ui:widget'] === 'password') {
+		if (
+			schema.type?.includes('string') &&
+			uiOptions?.['ui:widget'] === 'password'
+		) {
 			type = 'password';
 		}
 
-		let step = schema.multipleOf;
+		let step: number | undefined | 'any' = schema.multipleOf;
 
-		if (schema.type === 'integer' && typeof schema.multipleOf === 'undefined') {
+		if (
+			schema.type?.includes('integer') &&
+			typeof schema.multipleOf === 'undefined'
+		) {
 			step = 1;
+		}
+		if (
+			schema.type?.includes('number') &&
+			typeof schema.multipleOf === 'undefined'
+		) {
+			step = 'any';
 		}
 
 		if (uiOptions?.['ui:widget'] === 'textarea') {
@@ -223,13 +263,45 @@ export const field = (
 					let newValue: null | string = (event.target as HTMLTextAreaElement)
 						.value;
 
-					if (schema.type?.[1] === 'null' && !newValue) {
+					if (schema.type?.includes('null') && !newValue) {
 						newValue = null;
 					}
 
-					handleChange(path, newValue);
+					handleChange(path, newValue, schemaPath);
 				}}
 			></sl-textarea>`;
+		}
+
+		// FIXME:
+		if (
+			(schema.type?.includes('integer') || schema.type?.includes('number')) &&
+			uiOptions?.['ui:widget'] === 'rating'
+		) {
+			return html` <label>${label}</label>
+				<sl-rating
+					.label=${label ?? ''}
+					.helpText=${helpText ?? ''}
+					value=${ifDefined(baseValue ? Number(baseValue) : undefined)}
+					.type=${type}
+					precision=${
+						/* NOTE: buggy typing here. Using "any" with step is fine */
+						ifDefined(schema.multipleOf)
+					}
+					min=${ifDefined(schema.minimum)}
+					max=${ifDefined(schema.maximum)}
+					.name=${path.join('.')}
+					.required=${required}
+					@sl-change=${(event: CustomEvent) => {
+						const { value: newValue } = event.target as SlRange;
+
+						let val: number | null | undefined = newValue;
+						if (schema.type?.includes('null') && !newValue) {
+							val = null;
+						}
+
+						handleChange(path, val, schemaPath);
+					}}
+				></sl-rating>`;
 		}
 
 		if (uiOptions?.['ui:widget'] === 'color') {
@@ -242,11 +314,11 @@ export const field = (
 						let newValue: string | null =
 							(event.target as HTMLInputElement).value ?? schema.default;
 
-						if (schema.type?.[1] === 'null' && !newValue) {
+						if (schema.type?.includes('null') && !newValue) {
 							newValue = null;
 						}
 
-						handleChange(path, newValue);
+						handleChange(path, newValue, schemaPath);
 					}}
 				></sl-color-picker>
 
@@ -262,7 +334,10 @@ export const field = (
 						.helpText=${helpText ?? ''}
 						value=${ifDefined(baseValue ? Number(baseValue) : undefined)}
 						.type=${type}
-						step=${ifDefined(step)}
+						step=${
+							/* NOTE: buggy typing here. Using "any" with step is fine */
+							ifDefined(step)
+						}
 						min=${ifDefined(schema.minimum)}
 						max=${ifDefined(schema.maximum)}
 						.name=${path.join('.')}
@@ -271,11 +346,11 @@ export const field = (
 							const { value: newValue } = event.target as SlRange;
 
 							let val: number | null | undefined = newValue;
-							if (schema.type?.[1] === 'null' && !newValue) {
+							if (schema.type?.includes('null') && !newValue) {
 								val = null;
 							}
 
-							handleChange(path, val);
+							handleChange(path, val, schemaPath);
 						}}
 					></sl-range>
 				</div>
@@ -284,12 +359,13 @@ export const field = (
 
 		return html`
 			<div>
+				${debuggerInline({ schemaPath, path })}
 				<sl-input
 					.label=${label ?? ''}
 					.type=${type}
 					.helpText=${helpText ?? ''}
 					placeholder=${placeholder ?? ''}
-					value=${ifDefined(baseValue)}
+					value=${baseValue ? String(baseValue) : ''}
 					.name=${path.join('.')}
 					.id=${path.join('.')}
 					.required=${required}
@@ -311,13 +387,13 @@ export const field = (
 							val = valueAsNumber;
 						}
 						if (
-							schema.type?.[1] === 'null' &&
+							schema.type?.includes('null') &&
 							(typeof newValue === 'undefined' || newValue === '')
 						) {
 							val = null;
 						}
 
-						handleChange(path, val);
+						handleChange(path, val, schemaPath);
 					}}
 				>
 				</sl-input>
@@ -332,7 +408,7 @@ export const field = (
 	// </datalist>
 	// return html`...`;
 
-	if (schema.type === 'boolean')
+	if (schema.type?.includes('boolean')) {
 		if (
 			uiOptions?.['ui:widget'] === 'button-group' ||
 			uiOptions?.['ui:widget'] === 'radio'
@@ -343,7 +419,7 @@ export const field = (
 						size="medium"
 						.label=${label ?? ''}
 						.helpText=${helpText ?? ''}
-						value=${ifDefined(baseValue ? String(baseValue) : '')}
+						value=${typeof baseValue !== 'undefined' ? String(baseValue) : ''}
 						.name=${path.join('.')}
 						.required=${required}
 						@sl-change=${(event: CustomEvent) => {
@@ -351,11 +427,11 @@ export const field = (
 
 							let val: boolean | null | undefined;
 							val = newValue === 'true';
-							if (schema.type?.[1] === 'null' && !newValue) {
+							if (schema.type?.includes('null') && !newValue) {
 								val = null;
 							}
 
-							handleChange(path, val);
+							handleChange(path, val, schemaPath);
 						}}
 					>
 						${uiOptions?.['ui:widget'] === 'button-group'
@@ -367,36 +443,37 @@ export const field = (
 				</div>
 			`;
 
-	if (uiOptions?.['ui:widget'] === 'switch')
+		if (uiOptions?.['ui:widget'] === 'switch')
+			return html`
+				<div>
+					<sl-switch
+						.checked=${typeof baseValue === 'boolean' ? baseValue : false}
+						.name=${path.join('.')}
+						@sl-change=${(event: CustomEvent) => {
+							const newValue = (event.target as SlSwitch).checked;
+
+							handleChange(path, newValue, schemaPath);
+						}}
+						>${label}</sl-switch
+					>
+				</div>
+			`;
+
 		return html`
 			<div>
-				<sl-switch
-					.checked=${Boolean(baseValue)}
+				<sl-checkbox
+					.checked=${typeof baseValue === 'boolean' ? baseValue : false}
 					.name=${path.join('.')}
 					@sl-change=${(event: CustomEvent) => {
-						const newValue = (event.target as SlSwitch).checked;
+						const newValue = (event.target as SlCheckbox).checked;
 
-						handleChange(path, newValue);
+						handleChange(path, newValue, schemaPath);
 					}}
-					>${label}</sl-switch
+					>${label}</sl-checkbox
 				>
 			</div>
 		`;
+	}
 
-	return html`
-		<div>
-			<sl-checkbox
-				.checked=${schema.default ?? value}
-				.name=${path.join('.')}
-				@sl-change=${(event: CustomEvent) => {
-					const newValue = (event.target as SlCheckbox).checked;
-
-					handleChange(path, newValue);
-				}}
-				>${label}</sl-checkbox
-			>
-		</div>
-	`;
-
-	// return error(`Wrong input for: ${path.join('/')}`);
+	return error(`Wrong input for: ${path.join('/')}`);
 };

@@ -12,6 +12,7 @@ import '@shoelace-style/shoelace/dist/components/button-group/button-group.js';
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
 
 import type { Jsf, Path, UiSchema } from '../json-schema-form.js';
+import { debuggerInline } from './utils.js';
 
 export const arrayField = (
 	schema: JSONSchema7,
@@ -27,9 +28,10 @@ export const arrayField = (
 
 	return html` <!-- -->
 		<fieldset part="array" class="array">
-			${JSON.stringify(schemaPath)} arr
+			${debuggerInline({ schemaPath, path })}
 			<!-- -->
 			<legend>${schema.title}</legend>
+
 			${dataLevel?.map?.((_item, index) => {
 				if (
 					typeof schema.items !== 'object' ||
@@ -37,10 +39,13 @@ export const arrayField = (
 					!Array.isArray(dataLevel)
 				)
 					return '';
+				const schemaPathAugmented = [...schemaPath];
+				schemaPathAugmented.push('items');
+
 				return html` <sl-card
 					@dragover=${(event: DragEvent) => {
 						event.preventDefault();
-						// event.stopPropagation();
+						event.stopPropagation();
 						const dataTransfer = event.dataTransfer;
 						if (dataTransfer) dataTransfer.dropEffect = 'move';
 
@@ -49,29 +54,32 @@ export const arrayField = (
 						// 	?.setAttribute('data-dropzone', '');
 					}}
 					@dragenter=${(event: DragEvent) => {
-						// event.stopPropagation();
+						event.stopPropagation();
 						(event.target as HTMLElement)
 							.closest('sl-card')
 							?.setAttribute('data-dropzone', '');
 					}}
 					@dragleave=${(event: DragEvent) => {
-						// event.stopPropagation();
+						event.stopPropagation();
 						(event.target as HTMLElement)
 							.closest('sl-card')
 							?.removeAttribute('data-dropzone');
 					}}
 					@drop=${(event: DragEvent) => {
-						// event.stopPropagation();
+						event.stopPropagation();
 						const idx = event.dataTransfer?.getData('integer');
 						if (!idx) return;
 						const originIndex = Number.parseInt(idx, 10);
+						// dataLevel ||= [];
 						if (!Array.isArray(dataLevel)) return;
 						const hold = dataLevel[index] as unknown;
 						// eslint-disable-next-line no-param-reassign
 						dataLevel[index] = dataLevel[originIndex] as unknown;
 						// eslint-disable-next-line no-param-reassign
 						dataLevel[originIndex] = hold;
-						handleChange([...path], dataLevel, schemaPath);
+						handleChange([...path], dataLevel, schemaPathAugmented);
+
+						console.log({ originIndex, idx });
 
 						(event.target as HTMLElement)
 							.closest('sl-card')
@@ -84,7 +92,7 @@ export const arrayField = (
 						[...path, index],
 						uiState,
 						uiSchema,
-						schemaPath,
+						schemaPathAugmented,
 					)}
 
 					<div slot="header" class="array-card-header">
@@ -184,7 +192,13 @@ export const arrayField = (
 							dataLevel.push(schema.items?.default || []);
 						}
 
-						handleChange([...path], dataLevel, schemaPath);
+						// const schemaPathAugmented = [...schemaPath];
+						// schemaPathAugmented.push('items');
+						handleChange(
+							[...path, dataLevel.length - 1],
+							dataLevel[dataLevel.length - 1],
+							schemaPath,
+						);
 					}}
 					size="large"
 				>

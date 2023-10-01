@@ -8,6 +8,12 @@
 
 :host {
 	display: block;
+	font: 16px var(--sl-font-sans);
+	font-weight: var(--sl-font-weight-normal);
+	line-height: var(--sl-line-height-normal);
+	color: var(--sl-color-neutral-900);
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 }
 
 fieldset {
@@ -67,7 +73,7 @@ fieldset {
 	justify-content: space-between;
 	width: 100%;
 	font-size: 0.8em;
-
+	user-select: none;
 	// sl-icon::pa {
 	// 	height: 0.2rem;
 	// }

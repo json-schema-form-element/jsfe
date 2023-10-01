@@ -19,8 +19,9 @@ import { field } from './components/field.js';
 
 import styles from './styles.js';
 
-export type Path = string[];
+export type Path = (string | number)[];
 
+// TODO: fix recursive type narrowing
 export type UiSchema =
 	| {
 			'ui:help'?: string;
@@ -33,6 +34,7 @@ export type UiSchema =
 				| 'color'
 				| 'range'
 				| 'password'
+				| 'rating'
 				| 'switch';
 	  }
 	| { [key: string]: UiSchema };
@@ -40,30 +42,41 @@ export type UiSchema =
 export interface FeatureFlags {
 	allOf?: boolean;
 	oneOf?: boolean;
+	additionalItems?: boolean;
+	additionalProperties?: boolean;
 }
+
+type OnDataChange = (
+	newData: unknown,
+	path: Path,
+	value: unknown,
+	schemaPath: Path,
+) => void;
+type OnFormSubmit = (newData: unknown, valid: boolean) => void;
 
 @customElement('json-schema-form')
 export class Jsf extends LitElement {
 	@property({ type: Object }) schema: JSONSchema7 = {};
 
-	@property({ type: Object }) data: any = {};
+	@property({ type: Object }) data: unknown = {};
 
 	@property({ type: Object }) uiSchema: UiSchema = {};
 
-	@state() private ui: any = {};
+	@state() private ui: unknown = {};
 
-	onFormSubmit: (newData: any, valid: boolean) => void = () => {};
+	onFormSubmit: OnFormSubmit = () => {};
 
-	onDataChange: (newData: any) => void = () => {};
+	onDataChange: OnDataChange = () => {};
 
 	@property({ type: Object }) experimental?: FeatureFlags = {};
 
 	protected _dig = (
 		node: JSONSchema7,
-		dataLevel: any,
+		dataLevel: unknown,
 		path: Path,
-		uiState: any,
+		uiState: unknown,
 		uiSchema: UiSchema,
+		schemaPath: Path,
 		required = false,
 	): TemplateResult<1> => {
 		let result: TemplateResult<1> | undefined;
@@ -85,6 +98,7 @@ export class Jsf extends LitElement {
 			if (ref?.startsWith?.('#/definitions/')) {
 				const reff = ref.split('/')?.[2];
 				if (currentNode?.properties) {
+					//
 				} else {
 					currentNode.items = {
 						...(this.schema.definitions?.[reff] as JSONSchema7),
@@ -101,6 +115,11 @@ export class Jsf extends LitElement {
 			currentNode.format === 'date-time' ||
 			currentNode.type?.includes('number')
 		) {
+			const schemaPathAugmented = [...schemaPath];
+			// const propName = path.at(-1);
+			// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
+			// schemaPathAugmented.push('properties');
+
 			result = field(
 				currentNode,
 				dataLevel,
@@ -108,6 +127,7 @@ export class Jsf extends LitElement {
 				uiSchema,
 				required,
 				this._handleChange.bind(this),
+				schemaPathAugmented,
 			);
 		}
 
@@ -117,13 +137,21 @@ export class Jsf extends LitElement {
 
 			let nodeParsed = node;
 
-			if (currentNode.allOf) {
-				node.allOf?.forEach((p) => {
-					nodeParsed = deepmerge(nodeParsed, p as any);
-				});
+			// if (currentNode.allOf) {
+			// 	node.allOf?.forEach((subSchema) => {
+			// 		if (typeof subSchema === 'object') {
+			// 			nodeParsed = deepmerge<JSONSchema7>(nodeParsed, subSchema);
+			// 		}
+			// 	});
 
-				delete nodeParsed.allOf;
-			}
+			// 	delete nodeParsed.allOf;
+			// }
+
+			const schemaPathAugmented = [...schemaPath];
+			// const propName = path.at(-1);
+			// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
+			schemaPathAugmented.push('properties');
+			// schemaPathAugmented.push(path);
 
 			result = objectField(
 				nodeParsed,
@@ -132,6 +160,7 @@ export class Jsf extends LitElement {
 				uiState,
 				uiSchema,
 				this._dig.bind(this),
+				schemaPathAugmented,
 			);
 		}
 
@@ -143,6 +172,11 @@ export class Jsf extends LitElement {
 					if (newNode.properties) newNode.properties[i] = e;
 				});
 
+				const schemaPathAugmented = [...schemaPath, 'items'];
+				// const propName = path.at(-1);
+				// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
+				// schemaPathAugmented.push('items');
+
 				result = objectField(
 					newNode,
 					dataLevel,
@@ -150,27 +184,39 @@ export class Jsf extends LitElement {
 					uiState,
 					uiSchema,
 					this._dig.bind(this),
+					schemaPathAugmented,
 				);
 
-				if (currentNode.additionalItems) {
-					result = html`${result}
-					${arrayField(
-						{
-							items: currentNode.additionalItems,
-						},
-						dataLevel.splice(currentNode.items.length),
-						path,
-						uiState,
-						uiSchema,
-						this._handleChange.bind(this),
-						this._dig.bind(this),
-					)}`;
+				if (
+					currentNode.additionalItems &&
+					Array.isArray(dataLevel) &&
+					this.experimental?.additionalItems
+				) {
+					result = html`<!--  -->
+						${result}
+						<!--  -->
+						${arrayField(
+							{
+								items: currentNode.additionalItems,
+							},
+							dataLevel.splice(currentNode.items.length),
+							path,
+							uiState,
+							uiSchema,
+							this._handleChange.bind(this),
+							this._dig.bind(this),
+							schemaPath,
+						)}`;
 				}
 			} else if (
 				(currentNode.items.type === 'string' ||
 					currentNode.items.type === 'number') &&
 				currentNode.items.enum
 			) {
+				const schemaPathAugmented = [...schemaPath];
+				// const propName = path.at(-1);
+				// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
+
 				result = field(
 					currentNode,
 					dataLevel,
@@ -178,8 +224,16 @@ export class Jsf extends LitElement {
 					uiSchema,
 					required,
 					this._handleChange.bind(this),
+					schemaPathAugmented,
 				);
 			} else {
+				const schemaPathAugmented = [...schemaPath];
+				// const propName = path.at(-1);
+				// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
+				// schemaPathAugmented.push('items');
+
+				dataLevel ||= [];
+
 				result = arrayField(
 					node,
 					dataLevel,
@@ -188,6 +242,7 @@ export class Jsf extends LitElement {
 					uiSchema,
 					this._handleChange.bind(this),
 					this._dig.bind(this),
+					schemaPathAugmented,
 				);
 			}
 		}
@@ -212,10 +267,12 @@ export class Jsf extends LitElement {
 		}
 
 		if (result) return result;
-		return error(`Cannot dig this level:${path.join('/')}${currentNode.type}`);
+		return error(
+			`Cannot dig this level:${path.join('/')}${String(currentNode.type)}`,
+		);
 	};
 
-	protected _setToValue(obj: any, value: any, path: Path) {
+	protected _setToValue(object: unknown, value: unknown, path: Path) {
 		// NOTE: Dirty method:
 		// let index = 0;
 		// for (index; index < path.length - 1; index += 1) {
@@ -224,10 +281,14 @@ export class Jsf extends LitElement {
 		// if (obj[path[index]]) {
 		// 	obj[path[index]] = value;
 		// }
-		set(obj, path, value);
+		if (object && typeof object === 'object') {
+			set(object, path, value);
+		}
 	}
 
-	protected _handleChange(path: Path, value: unknown) {
+	protected _handleChange(path: Path, value: unknown, schemaPath: Path) {
+		if (!(this.data && typeof this.data === 'object')) return;
+
 		let newData = { ...this.data };
 
 		if (path.length === 0) {
@@ -236,9 +297,10 @@ export class Jsf extends LitElement {
 			this._setToValue(newData, value, path);
 		}
 
+		// NOTE: May be debounced / throttled
 		this.data = newData;
 
-		this.onDataChange(newData);
+		this.onDataChange(newData, path, value, schemaPath);
 
 		// TODO:
 		// this.dispatchEvent(new CustomEvent('jsf-data', { detail: newData }));
@@ -246,6 +308,7 @@ export class Jsf extends LitElement {
 	}
 
 	protected _updateUi(path: Path, value: unknown) {
+		if (!(this.ui && typeof this.ui === 'object')) return;
 		const newUiState = { ...this.ui };
 
 		this._setToValue(newUiState, value, path);
@@ -266,7 +329,7 @@ export class Jsf extends LitElement {
 					// const list = event.target.querySelectorAll('[data-user-invalid]');
 				}}
 				@invalid=${(_event: Event) => {
-					// console.log({ e });
+					// console.log({ _event });
 				}}
 				part="form-root"
 			>
@@ -277,6 +340,7 @@ export class Jsf extends LitElement {
 					[],
 					this.ui,
 					this.uiSchema,
+					[],
 					false,
 				)}
 

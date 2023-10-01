@@ -10,24 +10,24 @@
 
 ### Fields
 
-| Name           | Privacy   | Type                                     | Default | Description | Inherited From |
-| -------------- | --------- | ---------------------------------------- | ------- | ----------- | -------------- |
-| `schema`       |           | `JSONSchema7`                            | `{}`    |             |                |
-| `data`         |           | `any`                                    | `{}`    |             |                |
-| `uiSchema`     |           | `UiSchema`                               | `{}`    |             |                |
-| `ui`           | private   | `any`                                    | `{}`    |             |                |
-| `onFormSubmit` |           | `(newData: any, valid: boolean) => void` |         |             |                |
-| `onDataChange` |           | `(newData: any) => void`                 |         |             |                |
-| `experimental` |           | `FeatureFlags \| undefined`              | `{}`    |             |                |
-| `_dig`         | protected |                                          |         |             |                |
+| Name           | Privacy   | Type                        | Default | Description | Inherited From |
+| -------------- | --------- | --------------------------- | ------- | ----------- | -------------- |
+| `schema`       |           | `JSONSchema7`               | `{}`    |             |                |
+| `data`         |           | `unknown`                   | `{}`    |             |                |
+| `uiSchema`     |           | `UiSchema`                  | `{}`    |             |                |
+| `ui`           | private   | `unknown`                   | `{}`    |             |                |
+| `onFormSubmit` |           | `OnFormSubmit`              |         |             |                |
+| `onDataChange` |           | `OnDataChange`              |         |             |                |
+| `experimental` |           | `FeatureFlags \| undefined` | `{}`    |             |                |
+| `_dig`         | protected |                             |         |             |                |
 
 ### Methods
 
-| Name            | Privacy   | Description | Parameters                         | Return | Inherited From |
-| --------------- | --------- | ----------- | ---------------------------------- | ------ | -------------- |
-| `_setToValue`   | protected |             | `obj: any, value: any, path: Path` |        |                |
-| `_handleChange` | protected |             | `path: Path, value: unknown`       |        |                |
-| `_updateUi`     | protected |             | `path: Path, value: unknown`       |        |                |
+| Name            | Privacy   | Description | Parameters                                     | Return | Inherited From |
+| --------------- | --------- | ----------- | ---------------------------------------------- | ------ | -------------- |
+| `_setToValue`   | protected |             | `object: unknown, value: unknown, path: Path`  |        |                |
+| `_handleChange` | protected |             | `path: Path, value: unknown, schemaPath: Path` |        |                |
+| `_updateUi`     | protected |             | `path: Path, value: unknown`                   |        |                |
 
 ### Attributes
 

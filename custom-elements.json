@@ -24,7 +24,7 @@
               "kind": "field",
               "name": "data",
               "type": {
-                "text": "any"
+                "text": "unknown"
               },
               "default": "{}",
               "attribute": "data"
@@ -42,7 +42,7 @@
               "kind": "field",
               "name": "ui",
               "type": {
-                "text": "any"
+                "text": "unknown"
               },
               "privacy": "private",
               "default": "{}"
@@ -51,14 +51,14 @@
               "kind": "field",
               "name": "onFormSubmit",
               "type": {
-                "text": "(newData: any, valid: boolean) => void"
+                "text": "OnFormSubmit"
               }
             },
             {
               "kind": "field",
               "name": "onDataChange",
               "type": {
-                "text": "(newData: any) => void"
+                "text": "OnDataChange"
               }
             },
             {
@@ -81,15 +81,15 @@
               "privacy": "protected",
               "parameters": [
                 {
-                  "name": "obj",
+                  "name": "object",
                   "type": {
-                    "text": "any"
+                    "text": "unknown"
                   }
                 },
                 {
                   "name": "value",
                   "type": {
-                    "text": "any"
+                    "text": "unknown"
                   }
                 },
                 {
@@ -115,6 +115,12 @@
                   "name": "value",
                   "type": {
                     "text": "unknown"
+                  }
+                },
+                {
+                  "name": "schemaPath",
+                  "type": {
+                    "text": "Path"
                   }
                 }
               ]
@@ -151,7 +157,7 @@
             {
               "name": "data",
               "type": {
-                "text": "any"
+                "text": "unknown"
               },
               "default": "{}",
               "fieldName": "data"

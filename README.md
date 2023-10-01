@@ -1,5 +1,7 @@
 # 📝  JSON Schema Form Element
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+
 Effortless forms, with standards.
 
 **Features**:
@@ -48,53 +50,58 @@ Jump to **implementations**:
 <details>
 <summary  align="center"><strong>Table of Contents</strong></summary>
 
-- [📝  JSON Schema Form Element](#json-schema-form-element)
-  - [Field types](#field-types)
-    - [Primitives](#primitives)
-      - [String](#string)
-      - [Number](#number)
-      - [Boolean](#boolean)
-      - [Enumeration](#enumeration)
-      - [Date](#date)
-    - [Object](#object)
-      - [Additional properties](#additional-properties)
-    - [Arrays](#arrays)
-      - [Basic](#basic)
-      - [Fixed](#fixed)
-      - [Nested](#nested)
-      - [Multiple choices (enums.)](#multiple-choices-enums)
-      - [Additional items](#additional-items)
-  - [Subschemas](#subschemas)
-    - [allOf](#allof)
-    - [oneOf](#oneof)
-    - [anyOf](#anyof)
-  - [Conditionals](#conditionals)
-    - [Dependencies](#dependencies)
-    - [If, then, else](#if-then-else)
-  - [Miscellaneous](#miscellaneous) - [References](#references) - [Recursivity](#recursivity) - [Nullable values](#nullable-values)
-  - [User Interface](#user-interface)
-    - [Schema](#schema)
-  - [Usage](#usage)
-    - [Installation](#installation)
-    - [Implementation](#implementation)
-      - [TypeScript (no framework)](#typescript-no-framework)
-      - [Astro (SSR)](#astro-ssr)
-      - [Lit](#lit)
-        - [Extended example](#extended-example)
-      - [Solid](#solid)
-      - [Vue](#vue)
-      - [Svelte](#svelte)
-      - [React](#react)
-      - [CSS](#css)
-  - [Component libraries](#component-libraries)
-    - [Shoelace](#shoelace)
-    - [Custom widgets](#custom-widgets)
-  - [Validation](#validation)
-  - [Schema massaging](#schema-massaging)
-  - [Custom Elements Manifests](#custom-elements-manifests)
-  - [Experimental features](#experimental-features)
-  - [Improvements](#improvements)
-  - [Acknowledgements](#acknowledgements)
+- [Field types](#field-types)
+	- [Primitives](#primitives)
+		- [String](#string)
+		- [Number](#number)
+		- [Boolean](#boolean)
+		- [Enumeration](#enumeration)
+		- [Date](#date)
+	- [Object](#object)
+		- [Additional properties](#additional-properties)
+	- [Arrays](#arrays)
+		- [Basic](#basic)
+		- [Fixed](#fixed)
+		- [Nested](#nested)
+		- [Multiple choices (enums.)](#multiple-choices-enums)
+		- [Additional items](#additional-items)
+- [Subschemas](#subschemas)
+	- [allOf](#allof)
+	- [oneOf](#oneof)
+	- [anyOf](#anyof)
+- [Conditionals](#conditionals)
+	- [Dependencies](#dependencies)
+	- [If, then, else](#if-then-else)
+- [Miscellaneous](#miscellaneous)
+		- [References](#references)
+			- [Recursivity](#recursivity)
+		- [Nullable values](#nullable-values)
+- [User Interface](#user-interface)
+	- [Schema](#schema)
+- [Usage](#usage)
+	- [Installation](#installation)
+	- [Implementation](#implementation)
+		- [All examples](#all-examples)
+		- [Pure HTML with CDN](#pure-html-with-cdn)
+		- [TypeScript (no framework)](#typescript-no-framework)
+		- [Astro (SSR)](#astro-ssr)
+		- [Lit](#lit)
+		- [Solid](#solid)
+		- [Vue](#vue)
+		- [Svelte](#svelte)
+		- [React](#react)
+		- [CSS](#css)
+	- [TypeScript](#typescript)
+		- [Support for each implementation](#support-for-each-implementation)
+- [Component libraries](#component-libraries)
+	- [Shoelace](#shoelace)
+	- [Custom widgets](#custom-widgets)
+- [Validation](#validation)
+- [Schema massaging](#schema-massaging)
+- [Custom Elements Manifests](#custom-elements-manifests)
+- [Experimental features](#experimental-features)
+- [Improvements](#improvements)
+- [Acknowledgements](#acknowledgements)
 
 </details>
 
@@ -520,7 +527,9 @@ See also the [CSS section](#CSS).
 ### Implementation
 
 > **Note**  
-> As the project is fresh, API is subject to changes
+> This project is new, API is subject to changes
+
+#### All examples
 
 You can try the [multi-frameworks examples](https://github.com/json-schema-form-element/examples) like this:
 
@@ -533,107 +542,90 @@ npm i
 npm run dev
 ```
 
+#### Pure HTML with CDN
+
+<!-- TODO: for WebComponents.org -->
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="my-element.html">
+    <link rel="import" href="../other-element/other-element.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+<!-- ```html
+<other-element></other-element>
+<my-element></my-element>
+``` -->
+
+See [examples/src/pages/pure-html.html](https://github.com/json-schema-form-element/examples/blob/main/src/pages/pure-html.html)
+
+-OR-
+
+[Open in **CodePen.io**](https://codepen.io/JulianCataldo/pen/KKbBepN?editors=1001)
+
+-OR-
+
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fpages%2Fpure-html.html)
+
 #### TypeScript (no framework)
 
 See [examples/src/components/TypeScriptOnly.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/TypeScriptOnly.ts)
 
-**TypeScript** inference: YES.
+-OR-
+
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FTypeScriptOnly.ts)
 
 #### Astro (SSR)
 
 See [examples/src/components/AstroJs.astro](https://github.com/json-schema-form-element/examples/blob/main/src/components/AstroJs.astro)
 
-**TypeScript** inference: NO.
+-OR-
+
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FAstroJs.astro)
 
 #### Lit
 
 See [examples/src/components/LitJs.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/LitJs.ts)
 
-**TypeScript** inference: YES.
+-OR-
 
-> **Note**  
-> Inside template literals, **methods are type-checked** correctly,
-> but **arguments are not inferred** automatically.
-
-##### Extended example
-
-```ts
-// src/my-app.ts
-import { LitElement, html } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-
-import type { JSONSchema7 } from 'json-schema';
-import { petSchema, type Pet } from '@my-models/Pet.js';
-
-import 'json-schema-form-element';
-import type { UiSchema } from 'json-schema-form-element';
-
-// Shoelace namespaced custom properties (see notes on CSS below)
-import '@shoelace-style/shoelace/dist/themes/light.css';
-import '@shoelace-style/shoelace/dist/themes/dark.css';
-
-@customElement('my-app')
-class MyApp extends LitElement {
-	@state() private schema: JSONSchema7 = { ...petSchema };
-
-	@state() private data: Pet = {};
-
-	@state() private uiSchema: UiSchema = {
-		/* ... */
-	};
-
-	#form = () =>
-		html`<json-schema-form
-			.schema=${this.schema}
-			.uiSchema=${this.uiSchema}
-			.data=${this.data}
-			.onDataChange=${(newData: Pet) => {
-				this.data = data;
-			}}
-			.onFormSubmit=${(newData: Pet, valid: boolean) => {
-				console.info(data, errors);
-			}}
-		></json-schema-form>`;
-
-	render() {
-		const debug = {
-			Schema: this.currentSchema,
-			'UI schema': this.currentUiSchema,
-			Data: this.currentData,
-		};
-
-		return html`
-			<h1>My App</h1>
-
-			<main>${this.#form()}</main>
-
-			<footer>
-				<pre>${JSON.stringify(debug, null, 2)}</pre>
-			</footer>
-		`;
-	}
-}
-```
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FLitJs.ts)
 
 #### Solid
 
-See [examples/src/components/SolidJs.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/SolidJs.tsx)
+See [examples/src/components/SolidJs.solid.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/SolidJs.solid.tsx)
 
-**TypeScript** inference: YES.
+-OR-
+
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FSolidJs.solid.tsx)
 
 #### Vue
 
 See [examples/src/components/VueJs.vue](https://github.com/json-schema-form-element/examples/blob/main/src/components/VueJs.vue)
 
-**TypeScript** inference: NO.
+-OR-
+
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FVueJs.vue)
 
 #### Svelte
 
-🚧……🚧
+See [examples/src/components/SvelteJs.svelte](https://github.com/json-schema-form-element/examples/blob/main/src/components/SvelteJs.svelte)
+
+-OR-
+
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FSvelteJs.svelte)
 
 #### React
 
-🚧……🚧
+See [examples/src/components/ReactJs18.react.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/ReactJs18.react.tsx)
+
+-OR-
+
+[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FReactJs18.react.tsx)
 
 #### CSS
 
@@ -650,6 +642,36 @@ Shoelace is embedding styles chunks accross components, however CSS custom prope
 are injected globally.
 
 <!-- TODO -->
+
+### TypeScript
+
+#### Support for each implementation
+
+| API                       | No framework      | Astro (SSR)       | Lit               | Solid          | Vue          | React / Preact | Svelte            |
+| ------------------------- | ----------------- | ----------------- | ----------------- | -------------- | ------------ | -------------- | ----------------- |
+| Declarative control       | ✅                | ✅                | ✅                | ✅ via `prop:` | ✅           | ❌             | ❌ <sup>(4)</sup> |
+| Declarative inference     | ❌ <sup>(1)</sup> | ❌ <sup>(2)</sup> | ❌ <sup>(3)</sup> | ✅ via `prop:` | ❌           | ❌             | ❌                |
+| Declarative type-checking | ❌ <sup>(1)</sup> | ❌ <sup>(2)</sup> | ✅                | ✅ via `prop:` | ❌           | ❌             | ❌                |
+| Imperative control        | ✅ via DOM        | -                 | ✅ via `ref`      | ✅ via `ref`   | ✅ via `ref` | ✅ via `ref`   | ✅ via `use:`     |
+| Imperative inference      | ✅ via DOM        | -                 | ✅ via `ref`      | ✅ via `ref`   | ✅ via `ref` | ✅ via `ref`   | ✅ via `use:`     |
+| Imperative type-checking  | ✅ via DOM        | -                 | ✅ via `ref`      | ✅ via `ref`   | ✅ via `ref` | ✅ via `ref`   | ✅ via `use:`     |
+
+1. HTML language servers can't support TypeScript obviously. But IDE can leverage Custom Element metadata.
+2. Astro JSX namespace / LSP are not handling `HTMLElementTagNameMap` or Custom Element metadata, yet.
+3. Template literals are preventing automatic properties inference, but at least, you can't assign wrong argument types without knowing it.
+4. Svelte heuristics are not clear regarding _attributes_ versus _properties_ handling. Better be safe than sorry. Also the `use:` directive is neat.
+
+There might be changes regarding support for Web Components accross various the various UI frameworks above.
+Please file an issue if an info is wrong or missing.
+
+Each implementation examples are trying to show off the most type-safe way to use JSFE, with the least trade-offs.
+
+Using it more **declaratively** or **imperatively** is up to you, your framework ability and you coding style.  
+Bot usages are valid and can be mixed. Typically when you want to use the schema elsewhere in your app., or
+when your callbacks are getting too beefy, you'll better extract them from templates.
+
+Generally, imperative usage get perfect TypeScript support (you just handle the class), whereas declaratively, you'll have
+to deal with various template languages limitations (this is an universal problem).
 
 ## Component libraries
 

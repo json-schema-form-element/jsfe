@@ -1,0 +1,13 @@
+.theme-wired.widget-submit {
+	display: flex;
+	justify-content: center;
+	margin: 2rem 0;
+
+	wired-button {
+		color: var(--wired-accent-color);
+
+		&:hover {
+			color: initial;
+		}
+	}
+}

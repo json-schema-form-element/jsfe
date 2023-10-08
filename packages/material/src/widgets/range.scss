@@ -1,0 +1,19 @@
+.theme-material.widget-range {
+	display: flex;
+	display: inline-flex;
+	flex-direction: column;
+	gap: 0;
+	/* place-items: center; */
+	gap: 8px;
+	place-items: flex-start;
+	width: 100%;
+	font-family: Roboto, system-ui;
+	color: var(--md-sys-color-on-background, #000);
+}
+
+md-slider {
+	width: 100%;
+	/* --md-slider-focus-handle-color: red; */
+	--md-slider-active-track-color: var(--md-sys-color-primary);
+	--md-slider-inactive-track-color: var(--md-sys-on-surface);
+}

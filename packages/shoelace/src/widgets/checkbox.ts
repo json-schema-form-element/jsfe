@@ -1,0 +1,31 @@
+import { html, nothing } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
+
+import type { Widgets } from '@j_c/jsfe__types';
+
+import '@shoelace-style/shoelace/dist/components/input/input.js';
+import type { SlCheckbox } from '@shoelace-style/shoelace';
+
+export const checkbox: Widgets['checkbox'] = (options) => html`
+	<div class="theme-shoelace widget-checkbox">
+		<sl-checkbox
+			type="text"
+			value=${ifDefined(options.value)}
+			.name=${options.id}
+			.id=${options.id}
+			.required=${options.required ?? true}
+			@sl-input=${(event: Event) => {
+				const { checked: newValue } = event.target as SlCheckbox;
+				options.valueChangedCallback?.(newValue);
+			}}
+		>
+			<label class="widget-checkbox__label">${options.label}</label>
+		</sl-checkbox>
+
+		${options.helpText
+			? html`<div class="widget-checkbox__description">
+					${options.helpText}
+			  </div>`
+			: nothing}
+	</div>
+`;

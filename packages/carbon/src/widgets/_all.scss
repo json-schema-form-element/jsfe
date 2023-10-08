@@ -1,0 +1,47 @@
+.theme-carbon {
+	font-family: var(--cds-font-sans);
+	font-size: 16px;
+}
+
+// @use '@carbon/styles/scss/reset';
+// @use '@carbon/styles/scss/theme';
+// @use '@carbon/styles/scss/themes';
+
+// :root {
+// 	@include theme.theme(themes.$white);
+// 	background-color: var(--cds-background);
+// 	color: var(--cds-text-primary);
+// }
+
+// @use '@carbon/styles/scss/reset';
+// @use '@carbon/styles/scss/theme';
+// @use '@carbon/styles/scss/themes';
+// @use '@carbon/styles/scss/fonts';
+
+// .theme-carbon {
+// 	--cds-font-sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+
+// 	@include theme.theme(themes.$g100);
+// 	background-color: var(--cds-background);
+// 	color: var(--cds-text-primary);
+// }
+
+// background-color: var(--cds-background);
+// color: var(--cds-text-primary);
+
+// @use '@carbon/styles/scss/reset';
+// @use '@carbon/styles/scss/theme';
+// @use '@carbon/styles/scss/themes';
+// // @use '@carbon/styles/scss/fonts';
+
+// // @import '@carbon/type/scss/type';
+// // @import '@carbon/type/scss/font-face/mono';
+// // @import '@carbon/type/scss/font-face/sans';
+
+// // @include carbon--type-reset();
+// // @include carbon--font-face-mono();
+// // @include carbon--font-face-sans();
+
+// @import '@carbon/type/scss/font-face/sans';
+
+// @include carbon--font-face-sans();

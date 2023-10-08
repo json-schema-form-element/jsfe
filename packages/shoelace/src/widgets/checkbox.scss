@@ -1,0 +1,17 @@
+// TODO:
+
+.theme-shoelace.widget-checkbox {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sl-spacing-small);
+
+	.widget-checkbox__description {
+		width: 100%;
+		font-size: var(--sl-input-help-text-font-size-medium);
+		color: var(--sl-input-help-text-color);
+	}
+
+	.widget-checkbox__label {
+		width: 100%;
+	}
+}

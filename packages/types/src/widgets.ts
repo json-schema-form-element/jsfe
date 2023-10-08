@@ -131,4 +131,6 @@ export interface Widgets {
 		message: string;
 		type?: 'tip' | 'warning' | 'danger';
 	}>;
+
+	submit?: Widget<{}>;
 }

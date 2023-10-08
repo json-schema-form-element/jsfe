@@ -1,0 +1,28 @@
+.theme-carbon.widget-object {
+	.widget-object__children {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 2em 0;
+		padding: 1.5em 1em;
+	}
+	// margin: 0;
+	// font-weight: 300;
+	// border: none;
+	// // border: 1px solid transparent;
+	// border-radius: 1rem;
+	// transition-timing-function: ease-in-out;
+	// transition-duration: 250ms;
+
+	// legend {
+	// 	width: 100%;
+	// 	font-size: 1.5em;
+	// 	border-bottom: 1px solid ///;
+	// }
+
+	.widget-object__description {
+		margin: 1rem 0 0rem 0;
+		opacity: calc(3 / 4);
+		font-size: var(--cds-label-02-font-size);
+	}
+}

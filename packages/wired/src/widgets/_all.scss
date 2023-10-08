@@ -1,0 +1,20 @@
+.theme-wired {
+	/* Custom vars (not part of the design system) */
+	--wired-font-cursive: 'Gloria Hallelujah', cursive;
+
+	/* ------------------------------------------------------------------------ */
+
+	box-sizing: border-box;
+	font: 16px var(--wired-font-cursive);
+	// font-weight: ///;
+	// line-height: ///;
+	// color: ///;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+}

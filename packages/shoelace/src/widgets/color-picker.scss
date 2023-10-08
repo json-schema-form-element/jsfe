@@ -1,0 +1,14 @@
+.theme-shoelace.widget-color-picker {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sl-spacing-large);
+	align-items: center;
+	// padding: 0.25rem 0;
+
+	.widget-color-picker__description {
+		// padding-top: 0.25rem;
+		// width: 100%;
+		font-size: var(--sl-input-help-text-font-size-medium);
+		color: var(--sl-input-help-text-color);
+	}
+}

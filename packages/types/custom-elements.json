@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "packages/types/src/form.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/types/src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./widgets.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./form.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "JSONSchema7",
+          "declaration": {
+            "name": "JSONSchema7",
+            "package": "json-schema"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FromSchema",
+          "declaration": {
+            "name": "FromSchema",
+            "package": "json-schema-to-ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/types/src/widgets.ts",
+      "declarations": [],
+      "exports": []
+    }
+  ]
+}

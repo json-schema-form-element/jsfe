@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "packages/shoelace/src/form.def.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "jsf-shoelace",
+          "declaration": {
+            "name": "JsfShoelace",
+            "module": "/packages/shoelace/src/form.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/shoelace/src/form.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "JsfShoelace",
+          "members": [
+            {
+              "kind": "field",
+              "name": "widgets",
+              "privacy": "public",
+              "default": "widgets"
+            },
+            {
+              "kind": "field",
+              "name": "styleSheets",
+              "type": {
+                "text": "array"
+              },
+              "privacy": "public",
+              "default": "[styles]"
+            }
+          ],
+          "superclass": {
+            "name": "Jsf",
+            "package": "@j_c/jsfe__form"
+          },
+          "tagName": "jsf-shoelace",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JsfShoelace",
+          "declaration": {
+            "name": "JsfShoelace",
+            "module": "packages/shoelace/src/form.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/shoelace/src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JsfShoelace",
+          "declaration": {
+            "name": "JsfShoelace",
+            "module": "./form.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./widgets/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "@j_c/jsfe__types"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/shoelace/src/styles.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "type": {
+            "text": "string"
+          },
+          "default": "''"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "styles",
+          "declaration": {
+            "name": "styles",
+            "module": "packages/shoelace/src/styles.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

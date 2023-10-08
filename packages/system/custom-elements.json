@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "packages/system/src/form.def.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "jsf-system",
+          "declaration": {
+            "name": "JsfSystem",
+            "module": "/packages/system/src/form.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/system/src/form.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "JsfSystem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "widgets",
+              "privacy": "public",
+              "default": "widgets"
+            },
+            {
+              "kind": "field",
+              "name": "styleSheets",
+              "type": {
+                "text": "array"
+              },
+              "privacy": "public",
+              "default": "[styles]"
+            }
+          ],
+          "superclass": {
+            "name": "Jsf",
+            "package": "@j_c/jsfe__form"
+          },
+          "tagName": "jsf-system",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JsfSystem",
+          "declaration": {
+            "name": "JsfSystem",
+            "module": "packages/system/src/form.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/system/src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JsfSystem",
+          "declaration": {
+            "name": "JsfSystem",
+            "module": "./form.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./widgets/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "@j_c/jsfe__types"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/system/src/styles.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "type": {
+            "text": "string"
+          },
+          "default": "''"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "styles",
+          "declaration": {
+            "name": "styles",
+            "module": "packages/system/src/styles.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

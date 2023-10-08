@@ -4,7 +4,45 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "lib/json-schema-form.ts",
+      "path": "packages/form/src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Jsf",
+          "declaration": {
+            "name": "Jsf",
+            "module": "./json-schema-form.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "@j_c/jsfe__types"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/form/src/json-schema-form.def.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "json-schema-form",
+          "declaration": {
+            "name": "Jsf",
+            "module": "/packages/form/src/json-schema-form.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/form/src/json-schema-form.ts",
       "declarations": [
         {
           "kind": "class",
@@ -17,6 +55,7 @@
               "type": {
                 "text": "JSONSchema7"
               },
+              "privacy": "public",
               "default": "{}",
               "attribute": "schema"
             },
@@ -26,6 +65,7 @@
               "type": {
                 "text": "unknown"
               },
+              "privacy": "public",
               "default": "{}",
               "attribute": "data"
             },
@@ -35,31 +75,45 @@
               "type": {
                 "text": "UiSchema"
               },
+              "privacy": "public",
               "default": "{}",
               "attribute": "uiSchema"
             },
             {
               "kind": "field",
-              "name": "ui",
-              "type": {
-                "text": "unknown"
-              },
-              "privacy": "private",
-              "default": "{}"
-            },
-            {
-              "kind": "field",
-              "name": "onFormSubmit",
+              "name": "submitCallback",
               "type": {
                 "text": "OnFormSubmit"
-              }
+              },
+              "privacy": "public"
             },
             {
               "kind": "field",
               "name": "onDataChange",
               "type": {
                 "text": "OnDataChange"
-              }
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "widgets",
+              "type": {
+                "text": "Widgets"
+              },
+              "privacy": "public",
+              "default": "{}",
+              "attribute": "widgets"
+            },
+            {
+              "kind": "field",
+              "name": "styleSheets",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "public",
+              "default": "[]",
+              "attribute": "styleSheets"
             },
             {
               "kind": "field",
@@ -67,8 +121,18 @@
               "type": {
                 "text": "FeatureFlags | undefined"
               },
+              "privacy": "public",
               "default": "{}",
               "attribute": "experimental"
+            },
+            {
+              "kind": "field",
+              "name": "_uiState",
+              "type": {
+                "text": "unknown"
+              },
+              "privacy": "private",
+              "default": "{}"
             },
             {
               "kind": "field",
@@ -127,6 +191,19 @@
             },
             {
               "kind": "method",
+              "name": "_handleKeydown",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_updateUi",
               "privacy": "protected",
               "parameters": [
@@ -143,6 +220,16 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "#submit",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#formRef",
+              "privacy": "private"
             }
           ],
           "attributes": [
@@ -171,6 +258,22 @@
               "fieldName": "uiSchema"
             },
             {
+              "name": "widgets",
+              "type": {
+                "text": "Widgets"
+              },
+              "default": "{}",
+              "fieldName": "widgets"
+            },
+            {
+              "name": "styleSheets",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[]",
+              "fieldName": "styleSheets"
+            },
+            {
               "name": "experimental",
               "type": {
                 "text": "FeatureFlags | undefined"
@@ -193,15 +296,7 @@
           "name": "Jsf",
           "declaration": {
             "name": "Jsf",
-            "module": "lib/json-schema-form.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "json-schema-form",
-          "declaration": {
-            "name": "Jsf",
-            "module": "lib/json-schema-form.ts"
+            "module": "packages/form/src/json-schema-form.ts"
           }
         }
       ]

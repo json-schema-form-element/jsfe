@@ -1,5 +1,6 @@
-import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
+// import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
 
 export default {
-	plugins: [generateCustomData()],
+	// FIXME: Adapt for mono-repo structure
+	// 	plugins: [generateCustomData({ outdir: 'packages/form' })],
 };

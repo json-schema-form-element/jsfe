@@ -30,3 +30,5 @@ dist-ssr
 
 # Local Netlify folder
 .netlify
+
+.turbo*

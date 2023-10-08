@@ -35,6 +35,7 @@ module.exports = {
 		'hue-degree-notation': null,
 		'length-zero-no-unit': null,
 		'alpha-value-notation': null,
+		'color-hex-length': null,
 		'scss/at-import-partial-extension': null,
 		'selector-pseudo-class-no-unknown': [
 			true,
@@ -49,5 +50,7 @@ module.exports = {
 			},
 		],
 		'max-line-length': [100, , { ignore: ['comments'] }],
+
+		'selector-class-pattern': null,
 	},
 };

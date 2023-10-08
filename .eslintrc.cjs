@@ -4,9 +4,21 @@ module.exports = {
 	settings: {
 		// This loads <rootdir>/tsconfig.json to eslint
 		'import/resolver': {
-			typescript: { project: ['./tsconfig.json'] },
+			typescript: {
+				project: [
+					'./packages/types/tsconfig.json',
+					'./packages/form/tsconfig.json',
+					'./packages/material/tsconfig.json',
+					'./packages/shoelace/tsconfig.json',
+					'./packages/wired/tsconfig.json',
+					'./packages/carbon/tsconfig.json',
+					'./packages/system/tsconfig.json',
+				],
+			},
 		},
 	},
+
+	ignorePatterns: ['**/dist/**', '*.js', '*.cjs'],
 	// env: {
 	//   node: true,
 	//   es2022: true,
@@ -24,7 +36,15 @@ module.exports = {
 
 			parser: '@typescript-eslint/parser',
 			parserOptions: {
-				project: ['./tsconfig.json'], // Specify it only for TypeScript files
+				project: [
+					'./packages/types/tsconfig.json',
+					'./packages/form/tsconfig.json',
+					'./packages/material/tsconfig.json',
+					'./packages/shoelace/tsconfig.json',
+					'./packages/wired/tsconfig.json',
+					'./packages/carbon/tsconfig.json',
+					'./packages/system/tsconfig.json',
+				], // Specify it only for TypeScript files
 				ecmaVersion: 'latest',
 				sourceType: 'module',
 			},
@@ -71,6 +91,8 @@ module.exports = {
 				//   },
 				// ],
 				'import/order': 'off',
+
+				'arrow-body-style': 'off',
 			},
 		},
 	],

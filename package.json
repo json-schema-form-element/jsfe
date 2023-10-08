@@ -1,23 +1,27 @@
 {
-  "name": "@jsfe/core",
-  "version": "0.0.5",
-  "type": "module",
+  "name": "@j_c/jsfe__root",
+  "version": "0.0.0",
+  "private": true,
   "description": "Effortless forms, with standards.",
-  "scripts": {
-    "test": "vite dev & playwright test --ui",
-    "build": "rm -rf ./dist/esm ; pnpm tsc ; pnpm build:styles",
-    "build:cdn": "rm -rf ./dist/esm-min ; pnpm esbuild './lib/**/*.ts' --outdir=./dist/esm-min --outbase=./lib --minify && cp dist/esm/styles.js dist/esm-min",
-    "build:styles": "echo 'export default `' > dist/esm/styles.js && pnpm sass --style=compressed --no-source-map lib/styles.scss | cut -c 2- >> dist/esm/styles.js && echo '`;' >> dist/esm/styles.js",
-    "build:manifest": "pnpm run build:manifest:json && pnpm run build:manifest:md",
-    "build:manifest:json": "cem analyze --globs lib/json-schema-form.ts --litelement",
-    "build:manifest:md": "node scripts/cem-to-md.js",
-    "publish:dry": "npm publish"
+  "repository": {
+    "url": "https://github.com/json-schema-form-element/core"
   },
-  "customElements": "custom-elements.json",
+  "license": "ISC",
+  "author": {
+    "name": "Julian Cataldo",
+    "email": "contact@juliancataldo.com",
+    "url": "https://www.juliancataldo.com"
+  },
+  "type": "module",
+  "scripts": {
+    "gen:manifests": "./scripts/manifests.sh",
+    "// test": "cd tests && pnpm test",
+    "// publish:dry": "pnpm lerna publish --dry-run",
+    "util:sort": "keep-sorted packages/*/src/index.ts packages/*/src/styles.scss && sort-package-json packages/*/package.json"
+  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.4",
     "@custom-elements-manifest/to-markdown": "^0.1.0",
-    "@playwright/test": "^1.38.1",
     "@types/eslint": "^8.44.2",
     "@types/json-schema": "^7.0.13",
     "@types/lodash-es": "^4.17.9",
@@ -35,11 +39,9 @@
     "eslint-plugin-lit-a11y": "^4.1.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-tsdoc": "^0.2.17",
-    "json-schema-to-ts": "^2.9.2",
-    "playwright": "^1.38.1",
+    "lerna": "^7.3.0",
     "prettier": "^3.0.3",
-    "sass": "^1.68.0",
-    "serve": "^14.2.1",
+    "sort-package-json": "^2.6.0",
     "stylelint": "^15.10.3",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recess-order": "^4.3.0",
@@ -48,35 +50,9 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-order": "^6.0.3",
+    "turbo": "^1.10.15",
     "typedoc": "^0.25.1",
     "typedoc-plugin-markdown": "^3.16.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.4.9"
-  },
-  "exports": {
-    ".": "./dist/esm/index.js",
-    "./scss": "./styles.scss"
-  },
-  "files": [
-    "./dist/esm",
-    "./dist/esm-min",
-    "./vscode.html-custom-data.json",
-    "./vscode.css-custom-data.json",
-    "./custom-elements.json"
-  ],
-  "dependencies": {
-    "@shoelace-style/shoelace": "^2.8.0",
-    "deepmerge": "^4.3.1",
-    "lit": "^2.8.0",
-    "lodash-es": "^4.17.21"
-  },
-  "license": "ISC",
-  "author": {
-    "name": "Julian Cataldo",
-    "url": "https://www.juliancataldo.com",
-    "email": "contact@juliancataldo.com"
-  },
-  "repository": {
-    "url": "https://github.com/json-schema-form-element/core"
+    "typescript": "^5.2.2"
   }
 }

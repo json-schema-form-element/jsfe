@@ -23,10 +23,13 @@
 
     "removeComments": true,
 
-    "noImplicitAny": true
+    "noImplicitAny": true,
+
+    "declarationMap": true
   },
   "include": [
     //
-    "lib/index.ts"
-  ]
+    "src/index.ts"
+  ],
+  "exclude": ["src/styles.ts"]
 }

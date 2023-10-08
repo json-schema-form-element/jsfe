@@ -1,0 +1,3 @@
+// STUB
+
+export const styles = '';

@@ -1,0 +1,65 @@
+{
+  "name": "@j_c/jsfe__form",
+  "version": "0.0.0",
+  "description": "Effortless forms, with standards. Base form element for all implementations.",
+  "keywords": [
+    "json-schema",
+    "forms",
+    "generation",
+    "declarative",
+    "openapi",
+    "mongodb",
+    "page-builder"
+  ],
+  "repository": {
+    "url": "https://github.com/json-schema-form-element/core"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Julian Cataldo",
+    "email": "contact@juliancataldo.com",
+    "url": "https://www.juliancataldo.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/esm/index.js",
+    "./scss": "./src/styles.scss",
+    "./css": "./dist/esm/styles.css",
+    "./jss": "./dist/esm/styles.js",
+    "./min": "./dist/esm-min"
+  },
+  "files": [
+    "./dist/esm",
+    "./dist/esm-min",
+    "./src/styles.scss",
+    "./vscode.html-custom-data.json",
+    "./vscode.css-custom-data.json",
+    "./custom-elements.json"
+  ],
+  "scripts": {
+    "// build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
+    "// build:cdn": "pnpm clean ; pnpm esbuild './lib/**/*.ts' --outdir=./dist/esm-min --outbase=./lib --minify && cp dist/esm/styles.js dist/esm-min",
+    "// css:build": "pnpm sass --no-source-map src/styles.scss:dist/esm/styles.css",
+    "// css:dev": "pnpm sass --watch src/styles.scss:dist/esm/styles.css & pnpm css:to-js:dev",
+    "// css:to-js": "node ../../scripts/css-to-js.js dist/esm/styles.css",
+    "// css:to-js:dev": "nodemon dist/esm/styles.css -x 'pnpm css:to-js'",
+    "// dev": "pnpm ts:dev & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
+    "build": "pnpm clean ; pnpm ts:build",
+    "clean": "rm -rf ./dist",
+    "dev": "pnpm ts:dev",
+    "ts:build": "pnpm tsc",
+    "ts:dev": "pnpm tsc --watch"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "sass": "^1.68.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "@j_c/jsfe__types": "workspace:*",
+    "lit": "^2.8.0"
+  },
+  "customElements": "custom-elements.json"
+}

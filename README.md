@@ -11,10 +11,25 @@ Effortless forms, with standards.
 - Integrate seamlessly with your **OpenAPI** / **JSON schema** stack
 - Comes with **sensible defaults**, but aims for **extensibility**
 
+**Use cases**:
+
+- Quick CRUDs for you backends (JS, Python, PHP, Ruby…).
+- Lightly interactive websites contact forms.
+- Building block for custom CMSes.
+- Building block for Markdown YAML frontmatter editors.
+
 **Why?**
 
 While there is a handful of project for major frontend frameworks, there wasn't any **Web Component** packing all the features above.  
 See also the [inspirations](#acknowledgements) for this project.
+
+<!-- **Theming**
+
+Comes with Shoelace 2 and Google Material 3 web components libraries or barebone, with Bootstrap 5 semantics. -->
+
+<!-- **Customization**
+
+Swap built-in components with your own, or add custom widget thanks to [UI schema](#schema) definitions. -->
 
 > **Warning**  
 > Not for production
@@ -35,13 +50,15 @@ See also the [inspirations](#acknowledgements) for this project.
 <div align="center">
 
 Jump to **implementations**:  
-[TypeScript only](#typescript-no-framework)
-• [Astro (SSR)](#astro-ssr)
-• [Lit](#lit)
-• [Solid](#solid)
-• [Vue](#vue)
-• [Svelte](#svelte)
-• [React](#react)
+— [Pure HTML (CDN)](#pure-html-with-cdn)
+— [TypeScript only (DOM)](#typescript-no-framework)
+— [Astro (SSR)](#astro-ssr) —  
+— [Lit](#lit)
+— [Solid](#solid)
+— [Vue](#vue)
+— [Svelte](#svelte)
+— [(P)React](#react)
+—
 
 </div>
 
@@ -95,10 +112,12 @@ Jump to **implementations**:
 		- [Support for each implementation](#support-for-each-implementation)
 - [Component libraries](#component-libraries)
 	- [Shoelace](#shoelace)
+	- [Material Design](#material-design)
 	- [Custom widgets](#custom-widgets)
 - [Validation](#validation)
 - [Schema massaging](#schema-massaging)
 - [Custom Elements Manifests](#custom-elements-manifests)
+- [Packages informations](#packages-informations)
 - [Experimental features](#experimental-features)
 - [Improvements](#improvements)
 - [Acknowledgements](#acknowledgements)
@@ -682,6 +701,12 @@ general design system backbone for _JSFE_.
 It's beautiful, aims for simplicity, is not too opinionated, while still having character.  
 That's why it's the very first library implemented in _JSFE_.
 
+### Material Design
+
+🚧……🚧
+
+Support for [Google Material 3 Web Components](https://material-web.dev) is planned.
+
 ### Custom widgets
 
 🚧……🚧
@@ -729,6 +754,19 @@ Hopefully it's easy to bring in an advanced parser along, like the [`json-schema
 
 See [./custom-elements.json](./custom-elements.json) & [./custom-elements.md](./custom-elements.md)
 
+## Packages informations
+
+With all external JS dependencies included, minus some CSS:
+
+| Package    | Size                                                            |
+| ---------- | --------------------------------------------------------------- |
+| @jsfe/core | ![](https://deno.bundlejs.com/badge?q=@jsfe/core&treeshake=[*]) |
+
+Components are planned to be extracted in separate packages as soon as more UI library are added. E.g. `@jsfe/shoelace`, `@jsfe/material`…
+
+<!-- | @jsfe/shoelace | ![](https://deno.bundlejs.com/badge?q=@jsfe/shoelace&treeshake=[*]) | -->
+<!-- | @jsfe/material | ![](https://deno.bundlejs.com/badge?q=@jsfe/material&treeshake=[*]) | -->
+
 ## Experimental features
 
 To activate experimental features preview flags, just pass the `experimental` property.
@@ -758,7 +796,7 @@ Actual **features flags** list:
 - Layout customizations
 - Tests, browser based (due to the WC nature).
 - Tests, tests, even more tests in the field to reveal shortcomings.
-- Support for other UI library (MWC? FAST?)
+- Support for other UI library (MWC? FAST? Bootstrap?)
 - Drag and drop for array items, using native API.
 - Autofocuses (for added array item, etc.)
 - …

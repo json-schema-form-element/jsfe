@@ -1,0 +1,15 @@
+{
+  "name": "@jsfe/tests",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vite dev & playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.38.1",
+    "playwright": "^1.38.1",
+    "vite": "^4.4.9"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@j_c/jsfe__types",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "json-schema": "^0.4.0",
+    "json-schema-to-ts": "^2.9.2"
+  },
+  "peerDependencies": {
+    "lit": "^2.8.0"
+  }
+}

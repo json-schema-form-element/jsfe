@@ -1,3 +1,7 @@
-// STUB
+/* STUB */
 
-export const styles = '';
+import { css } from 'lit';
+
+export const styles = css`
+	/* STUB - Compiled SCSS goes here */
+`;

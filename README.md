@@ -64,6 +64,20 @@ Jump to **implementations**:
 
 ---
 
+<div align="center">
+
+Jump to **UI libraries**:  
+— [Shoelace](#ui-libraries)
+— [Material](#ui-libraries)
+— [Carbon](#ui-libraries)
+— [Wired](#ui-libraries)
+— [System](#ui-libraries)
+—
+
+</div>
+
+---
+
 <details>
 <summary  align="center"><strong>Table of Contents</strong></summary>
 
@@ -97,6 +111,7 @@ Jump to **implementations**:
 	- [Schema](#schema)
 - [Usage](#usage)
 	- [Installation](#installation)
+		- [UI Libraries](#ui-libraries)
 	- [Implementation](#implementation)
 		- [All examples](#all-examples)
 		- [Pure HTML with CDN](#pure-html-with-cdn)
@@ -525,21 +540,43 @@ items:
 ### Installation
 
 ```sh
-npm i @jsfe/core
+npm i @jsfe/form
 # or
-pnpm i @jsfe/core
+pnpm i @jsfe/form
 # or
-yarn add @jsfe/core
+yarn add @jsfe/form
 ```
 
-```ts
-import '@jsfe/core';
+#### UI Libraries
+
+See [examples/src/pages/flavored.astro](https://github.com/json-schema-form-element/examples/blob/main/src/pages/flavored.astro)
+
+Alternatively:
+
+```
+npm install @jsfe/shoelace
+npm install @jsfe/material
+npm install @jsfe/carbon
+npm install @jsfe/wired
+npm install @jsfe/system
 ```
 
-```ts
+```html
+<jsf-shoelace schema="..." uiSchema="..." data="..."></jsf-shoelace>
+<jsf-material schema="..." uiSchema="..." data="..."></jsf-material>
+<jsf-carbon schema="..." uiSchema="..." data="..."></jsf-carbon>
+<jsf-wired schema="..." uiSchema="..." data="..."></jsf-wired>
+<jsf-system schema="..." uiSchema="..." data="..."></jsf-system>
+```
+
+<!-- ```ts
+import '@jsfe/form';
+``` -->
+
+<!-- ```ts
 import '@shoelace-style/shoelace/dist/themes/light.css';
 import '@shoelace-style/shoelace/dist/themes/dark.css';
-```
+``` -->
 
 See also the [CSS section](#CSS).
 
@@ -760,7 +797,7 @@ With all external JS dependencies included, minus some CSS:
 
 | Package    | Size                                                            |
 | ---------- | --------------------------------------------------------------- |
-| @jsfe/core | ![](https://deno.bundlejs.com/badge?q=@jsfe/core&treeshake=[*]) |
+| @jsfe/form | ![](https://deno.bundlejs.com/badge?q=@jsfe/form&treeshake=[*]) |
 
 Components are planned to be extracted in separate packages as soon as more UI library are added. E.g. `@jsfe/shoelace`, `@jsfe/material`…
 
@@ -800,7 +837,7 @@ Actual **features flags** list:
 - Drag and drop for array items, using native API.
 - Autofocuses (for added array item, etc.)
 - …
-- Have an idea? [Discussions are open](https://github.com/json-schema-form-element/core/discussions)!
+- Have an idea? [Discussions are open](https://github.com/json-schema-form-element/form/discussions)!
 
 ## Acknowledgements
 

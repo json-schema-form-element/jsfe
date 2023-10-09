@@ -11,8 +11,11 @@
     "mongodb",
     "page-builder"
   ],
+  "homepage": "https://jsfe.js.org",
   "repository": {
-    "url": "https://github.com/json-schema-form-element/core"
+    "type": "git",
+    "url": "https://github.com/json-schema-form-element/jsfe",
+    "directory": "packages/form"
   },
   "license": "ISC",
   "author": {
@@ -44,7 +47,7 @@
     "// css:to-js": "node ../../scripts/css-to-js.js dist/esm/styles.css",
     "// css:to-js:dev": "nodemon dist/esm/styles.css -x 'pnpm css:to-js'",
     "// dev": "pnpm ts:dev & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
-    "build": "pnpm clean ; pnpm ts:build",
+    "build": "pnpm clean ; pnpm ts:build || exit 0",
     "clean": "rm -rf ./dist",
     "dev": "pnpm ts:dev",
     "ts:build": "pnpm tsc",

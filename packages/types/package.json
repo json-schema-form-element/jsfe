@@ -1,6 +1,12 @@
 {
   "name": "@j_c/jsfe__types",
   "version": "0.0.0",
+  "homepage": "https://jsfe.js.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/json-schema-form-element/jsfe",
+    "directory": "packages/types"
+  },
   "type": "module",
   "exports": {
     ".": "./dist/index.js"

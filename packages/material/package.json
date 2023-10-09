@@ -13,6 +13,12 @@
     "mongodb",
     "page-builder"
   ],
+  "homepage": "https://jsfe.js.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/json-schema-form-element/jsfe",
+    "directory": "packages/material"
+  },
   "license": "ISC",
   "author": {
     "name": "Julian Cataldo",

@@ -1,2 +1,9 @@
 packages:
+  # - 'packages/form'
+  # - 'packages/types'
+  # - 'packages/system'
+  # - 'packages/shoelace'
+  # - 'packages/carbon'
+  # - 'packages/wired'
+  # - 'packages/material'
   - 'packages/*'

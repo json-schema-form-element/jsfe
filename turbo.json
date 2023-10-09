@@ -9,8 +9,11 @@
       "dependsOn": ["^build"],
       // note: output globs are relative to each package's `package.json`
       // (and not the monorepo root)
+      // "inputs": ["**/*.ts", "!**/packages/src/*/styles.ts"],
       "outputs": ["dist/**"]
       // "outputs": [".next/**", "!.next/cache/**"]
+
+      // "cache": false
     },
     "clean": {},
     // "deploy": {

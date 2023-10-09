@@ -2,9 +2,11 @@
   "name": "@j_c/jsfe__root",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://jsfe.js.org",
   "description": "Effortless forms, with standards.",
   "repository": {
-    "url": "https://github.com/json-schema-form-element/core"
+    "type": "git",
+    "url": "https://github.com/json-schema-form-element/jsfe"
   },
   "license": "ISC",
   "author": {
@@ -14,17 +16,18 @@
   },
   "type": "module",
   "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
     "gen:manifests": "./scripts/manifests.sh",
     "// test": "cd tests && pnpm test",
     "// publish:dry": "pnpm lerna publish --dry-run",
+    "util:scaffold": "plop --plopfile scripts/scaffold/plopfile.js",
     "util:sort": "keep-sorted packages/*/src/index.ts packages/*/src/styles.scss && sort-package-json packages/*/package.json"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.4",
-    "@custom-elements-manifest/to-markdown": "^0.1.0",
     "@types/eslint": "^8.44.2",
-    "@types/json-schema": "^7.0.13",
-    "@types/lodash-es": "^4.17.9",
+    "@types/node": "^20.8.3",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
@@ -50,9 +53,14 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-order": "^6.0.3",
+    "tsx": "^3.13.0",
     "turbo": "^1.10.15",
     "typedoc": "^0.25.1",
     "typedoc-plugin-markdown": "^3.16.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "plop": "^4.0.0",
+    "@custom-elements-manifest/to-markdown": "^0.1.0"
   }
 }

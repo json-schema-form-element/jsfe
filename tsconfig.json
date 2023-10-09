@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "removeComments": true,
+
+    "noImplicitAny": true,
+
+    "noEmit": true
+  },
+  "include": [
+    //
+    "scripts/**/*.ts",
+    // "scripts/scaffold/plopfile.js",
+    "scripts/cem-to-md.js",
+    "scripts/css-to-js.js"
+  ]
+}

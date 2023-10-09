@@ -1,19 +1,22 @@
 /** @type {import("@types/eslint").Linter.Config} */
 
+const tsConfigs = [
+	'./tsconfig.json',
+	'./packages/types/tsconfig.json',
+	'./packages/form/tsconfig.json',
+	'./packages/material/tsconfig.json',
+	'./packages/shoelace/tsconfig.json',
+	'./packages/wired/tsconfig.json',
+	'./packages/carbon/tsconfig.json',
+	'./packages/system/tsconfig.json',
+];
+
 module.exports = {
 	settings: {
 		// This loads <rootdir>/tsconfig.json to eslint
 		'import/resolver': {
 			typescript: {
-				project: [
-					'./packages/types/tsconfig.json',
-					'./packages/form/tsconfig.json',
-					'./packages/material/tsconfig.json',
-					'./packages/shoelace/tsconfig.json',
-					'./packages/wired/tsconfig.json',
-					'./packages/carbon/tsconfig.json',
-					'./packages/system/tsconfig.json',
-				],
+				project: tsConfigs,
 			},
 		},
 	},
@@ -36,15 +39,7 @@ module.exports = {
 
 			parser: '@typescript-eslint/parser',
 			parserOptions: {
-				project: [
-					'./packages/types/tsconfig.json',
-					'./packages/form/tsconfig.json',
-					'./packages/material/tsconfig.json',
-					'./packages/shoelace/tsconfig.json',
-					'./packages/wired/tsconfig.json',
-					'./packages/carbon/tsconfig.json',
-					'./packages/system/tsconfig.json',
-				], // Specify it only for TypeScript files
+				project: tsConfigs, // Specify it only for TypeScript files
 				ecmaVersion: 'latest',
 				sourceType: 'module',
 			},

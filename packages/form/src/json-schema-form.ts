@@ -111,8 +111,10 @@ export class Jsf extends LitElement {
 
 		/* --- Object --- */
 		if (currentNode.properties || currentNode.allOf) {
-			if (currentNode.allOf && this.experimental?.allOf !== true)
-				return flag('allOf');
+			if (currentNode.allOf && this.experimental?.allOf !== true) {
+				return html`Unsupported feature.`;
+				// return flag('allOf');
+			}
 
 			let nodeParsed = node;
 

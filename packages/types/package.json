@@ -25,5 +25,8 @@
   "peerDependencies": {
     "lit": "^2.8.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "gitHead": "ae52e9d676b5f5d86cdf3039789a5200f6e2c3aa"
 }

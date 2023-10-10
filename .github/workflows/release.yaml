@@ -46,7 +46,8 @@ jobs:
       #   GIT_AUTHOR_NAME: "GitHub Actions Shell"
       #   EMAIL: "github-actions[bot]@users.noreply.github.com"
 
-      - uses: 'pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598' # v2.4.0
+      - name: 'Setup PNPM'
+        uses: 'pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598' # v2.4.0
         with:
           run_install: false
 
@@ -88,18 +89,19 @@ jobs:
       #     GIT_COMMITTER_EMAIL: "github-actions[bot]@users.noreply.github.com"
       #   run: "pnpm exec multi-semantic-release"
 
-      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
+      - name: 'Setup Turbo cache'
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
 
       - name: 'Build all packages'
         run: 'pnpm build'
 
-      - name: 'NPM Identity'
+      - name: 'Create temporary NPM identity'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 
-      - name: 'Git config'
+      - name: 'Git user configuration'
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"

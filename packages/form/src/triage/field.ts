@@ -3,11 +3,11 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable max-lines */
 
-import type { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from '@jsfe/types';
 
 import type { Jsf } from '../json-schema-form.js';
 
-import type { Widgets, Path, UiSchema } from '@j_c/jsfe__types';
+import type { Widgets, Path, UiSchema } from '@jsfe/types';
 import { html } from 'lit';
 
 export const field = (

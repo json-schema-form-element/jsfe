@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@material/web/select/outlined-select.js';
 import '@material/web/select/select-option.js';

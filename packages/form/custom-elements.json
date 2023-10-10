@@ -20,7 +20,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "package": "@j_c/jsfe__types"
+            "package": "@jsfe/types"
           }
         }
       ]

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@material/web/checkbox/checkbox.js';
 import type { MdCheckbox } from '@material/web/checkbox/checkbox.js';

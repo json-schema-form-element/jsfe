@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { field } from './_field.js';

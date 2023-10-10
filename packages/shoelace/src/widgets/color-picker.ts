@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@shoelace-style/shoelace/dist/components/color-picker/color-picker.js';
 import type { SlColorPicker } from '@shoelace-style/shoelace';

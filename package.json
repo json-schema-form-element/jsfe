@@ -1,5 +1,5 @@
 {
-  "name": "@j_c/jsfe__root",
+  "name": "@jsfe/root",
   "version": "0.0.0",
   "private": true,
   "homepage": "https://jsfe.js.org",
@@ -62,5 +62,6 @@
   "dependencies": {
     "plop": "^4.0.0",
     "@custom-elements-manifest/to-markdown": "^0.1.0"
-  }
+  },
+  "packageManager": "pnpm@8.9.0"
 }

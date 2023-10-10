@@ -1,5 +1,5 @@
 {
-  "name": "@j_c/jsfe__form",
+  "name": "@jsfe/form",
   "version": "0.0.0",
   "description": "Effortless forms, with standards. Base form element for all implementations.",
   "keywords": [
@@ -54,15 +54,17 @@
     "ts:dev": "pnpm tsc --watch"
   },
   "dependencies": {
+    "@jsfe/types": "workspace:*",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.9",
     "sass": "^1.68.0",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "@j_c/jsfe__types": "workspace:*",
     "lit": "^2.8.0"
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "gitHead": "ae52e9d676b5f5d86cdf3039789a5200f6e2c3aa"
 }

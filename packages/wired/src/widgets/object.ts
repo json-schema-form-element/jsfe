@@ -1,4 +1,4 @@
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 import { nothing, html } from 'lit';
 
 import 'wired-elements/lib/wired-card.js';

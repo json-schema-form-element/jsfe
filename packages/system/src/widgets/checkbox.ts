@@ -1,8 +1,6 @@
 import { html, nothing } from 'lit';
 
-import type { Widgets } from '@j_c/jsfe__types';
-
-import '@shoelace-style/shoelace/dist/components/input/input.js';
+import type { Widgets } from '@jsfe/types';
 
 export const checkbox: Widgets['checkbox'] = (options) =>
 	html` <label for=${options.id} part="field">

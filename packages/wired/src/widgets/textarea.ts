@@ -4,7 +4,7 @@ import { html } from 'lit';
 import 'wired-elements/lib/wired-textarea.js';
 import type { WiredTextarea } from 'wired-elements/lib/wired-textarea.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const textarea: Widgets['text'] = (options) => html`

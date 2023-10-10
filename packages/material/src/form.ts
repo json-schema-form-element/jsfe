@@ -1,4 +1,4 @@
-import { Jsf } from '@j_c/jsfe__form';
+import { Jsf } from '@jsfe/form';
 import * as widgets from './widgets/index.js';
 import { styles } from './styles.js';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@j_c/jsfe__types",
+  "name": "@jsfe/types",
   "version": "0.0.0",
   "homepage": "https://jsfe.js.org",
   "repository": {
@@ -19,10 +19,11 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "json-schema": "^0.4.0",
+    "@types/json-schema": "^7.0.13",
     "json-schema-to-ts": "^2.9.2"
   },
   "peerDependencies": {
     "lit": "^2.8.0"
-  }
+  },
+  "gitHead": "ae52e9d676b5f5d86cdf3039789a5200f6e2c3aa"
 }

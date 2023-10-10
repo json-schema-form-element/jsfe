@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@shoelace-style/shoelace/dist/components/range/range.js';
 import type { SlRange } from '@shoelace-style/shoelace';

@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@carbon/web-components/es/components/textarea/index.js';
 import type CDSTextArea from '@carbon/web-components/es/components/textarea/textarea.js';

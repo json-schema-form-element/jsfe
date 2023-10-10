@@ -1,7 +1,7 @@
 import { html } from 'lit';
 // import { ifDefined } from 'lit/directives/if-defined.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@shoelace-style/shoelace/dist/components/radio-group/radio-group.js';
 import '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';

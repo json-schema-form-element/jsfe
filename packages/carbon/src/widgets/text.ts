@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@carbon/web-components/es/components/text-input/index.js';
 import type CDSTextInput from '@carbon/web-components/es/components/text-input/text-input.js';

@@ -2,14 +2,21 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 
-import { LitElement, html, TemplateResult, unsafeCSS } from 'lit';
+import {
+	LitElement,
+	html,
+	unsafeCSS,
+	type TemplateResult,
+	type CSSResult,
+} from 'lit';
+
 import { property, state } from 'lit/decorators.js';
 import { createRef, ref } from 'lit/directives/ref.js';
 
 // import deepmerge from 'deepmerge';
 import set from 'lodash-es/set';
 
-import type { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from '@jsfe/types';
 
 // import { alternateField } from './triage/alternate.js';
 import { arrayField } from './triage/array.js';
@@ -23,7 +30,7 @@ import type {
 	Path,
 	UiSchema,
 	Widgets,
-} from '@j_c/jsfe__types';
+} from '@jsfe/types';
 
 export class Jsf extends LitElement {
 	@property({ type: Object }) public schema: JSONSchema7 = {};
@@ -38,7 +45,7 @@ export class Jsf extends LitElement {
 
 	@property({ type: Object }) public widgets: Widgets = {};
 
-	@property({ type: Array }) public styleSheets: string[] = [];
+	@property({ type: Array }) public styleSheets: CSSResult[] = [];
 
 	@property({ type: Object }) public experimental?: FeatureFlags = {};
 

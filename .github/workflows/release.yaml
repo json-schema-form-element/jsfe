@@ -1,0 +1,132 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+# TODO: Clean-up
+# See: https://github.com/JulianCataldo/gh-actions
+
+name: 'Release'
+
+on:
+  push:
+    branches:
+      - '([0-9])?(.{+([0-9]),x}).x'
+      - 'main'
+      - 'next'
+      - 'next-major'
+      - 'alpha'
+      - 'beta'
+
+permissions:
+  contents: 'read' # for checkout
+
+jobs:
+  release:
+    name: 'Release'
+    runs-on: 'ubuntu-latest'
+    permissions:
+      contents: 'write' # to be able to publish a GitHub release
+      issues: 'write' # to be able to comment on released issues
+      pull-requests: 'write' # to be able to comment on released pull requests
+      id-token: 'write' # to enable use of OIDC for npm provenance
+
+    steps:
+      # - name: "Harden Runner"
+      #   uses: "step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09" # v2.5.1
+      #   with:
+      #     egress-policy: "audit"
+
+      - name: 'Git checkout'
+        uses: 'actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744' # v3.6.0
+        # run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        with:
+          fetch-depth: '0'
+
+      # - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      #   persist-credentials: false
+      # env:
+      #   GIT_COMMITTER_NAME: "GitHub Actions Shell"
+      #   GIT_AUTHOR_NAME: "GitHub Actions Shell"
+      #   EMAIL: "github-actions[bot]@users.noreply.github.com"
+
+      - uses: 'pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598' # v2.4.0
+        with:
+          run_install: false
+
+      - name: 'Use Node.js 20.6.1'
+        uses: 'actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d' # v3.8.1
+        with:
+          # registry-url: "https://registry.npmjs.org"
+          node-version: '20.6.1'
+          cache: 'pnpm'
+
+      # @see: npm install -g npm@latest is necessary to make provenance available. More info: https://docs.npmjs.com/generating-provenance-statements
+      # - name: "Upgrade npm to latest version"
+      #   run: "npm install --global npm@9.6.x"
+      #   env:
+      #     SKIP_CHECK: "true"
+
+      # - name: "Check npm version"
+      #   run: "npm -v"
+      #   env:
+      #     SKIP_CHECK: "true"
+
+      - name: 'Install packages'
+        run: 'pnpm install --frozen-lockfile'
+
+      # - name: "Verify the integrity of provenance attestations and registry signatures for installed dependencies"
+      #   run: "pnpm audit signatures"
+
+      # - name: "npm v8.5+ requires workspaces-update to be set to false"
+      #   run: "echo 'workspaces-update=false' >> .npmrc"
+
+      # - name: "Semantic Release"
+      #   if: "success()"
+      #   env:
+      #     GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      #     NPM_TOKEN: "${{ secrets.NPM_TOKEN }}"
+      #     GIT_AUTHOR_NAME: "github-actions-shell"
+      #     GIT_AUTHOR_EMAIL: "github-actions[bot]@users.noreply.github.com"
+      #     GIT_COMMITTER_NAME: "github-actions-shell"
+      #     GIT_COMMITTER_EMAIL: "github-actions[bot]@users.noreply.github.com"
+      #   run: "pnpm exec multi-semantic-release"
+
+      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
+
+      - name: 'Build all packages'
+        run: 'pnpm build'
+
+      - name: 'NPM Identity'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+
+      - name: 'Git config'
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      # - name: 'Lerna version'
+      #   run: |
+      #     pnpm lerna version --conventional-commits --yes
+
+      - name: 'Lerna publish [main]'
+        if: github.ref == 'refs/heads/main'
+        # --create-release=github not working
+        env:
+          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          NPM_TOKEN: '${{ secrets.NPM_TOKEN }}' # Not really needed (already global)
+        run: |
+          pnpm lerna publish --conventional-commits --exact --conventional-graduate --create-release=github --yes
+
+      - name: 'Lerna publish [next]'
+        if: github.ref == 'refs/heads/next'
+        env:
+          NPM_TOKEN: '${{ secrets.NPM_TOKEN }}' # Not really needed (already global)
+        run: |
+          pnpm lerna publish --conventional-commits --exact --conventional-prerelease --canary --dist-tag=next --preid=next --yes
+
+      # pnpm publish -r
+
+      # - name: "Publish"
+      #   run: "pnpm publish -r"
+
+#  --changelog-preset conventionalcommits

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@material/web/textfield/outlined-text-field.js';
 import type { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field.js';

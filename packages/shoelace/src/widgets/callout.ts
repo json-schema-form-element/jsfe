@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 export const callout: Widgets['callout'] = (options) => {
 	console.warn(options.message);

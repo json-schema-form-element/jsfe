@@ -1,6 +1,6 @@
 import { nothing, html } from 'lit';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 export const object: Widgets['object'] = (options) => html`
 	<fieldset id=${options.id} class="theme-shoelace widget-object" part="object">

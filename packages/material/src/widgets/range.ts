@@ -1,7 +1,7 @@
 import { html, nothing } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 
 import '@material/web/slider/slider.js';
 import type { MdSlider } from '@material/web/slider/slider.js';

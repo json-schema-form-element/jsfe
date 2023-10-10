@@ -44,7 +44,7 @@
           ],
           "superclass": {
             "name": "Jsf",
-            "package": "@j_c/jsfe__form"
+            "package": "@jsfe/form"
           },
           "tagName": "jsf-carbon",
           "customElement": true
@@ -87,7 +87,7 @@
           "name": "*",
           "declaration": {
             "name": "*",
-            "package": "@j_c/jsfe__types"
+            "package": "@jsfe/types"
           }
         }
       ]

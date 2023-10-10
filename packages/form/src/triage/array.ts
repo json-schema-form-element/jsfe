@@ -1,10 +1,10 @@
 /* eslint-disable max-lines */
 /* eslint-disable arrow-body-style */
-import type { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from '@jsfe/types';
 import { TemplateResult, html } from 'lit';
 
 import type { Jsf } from '../json-schema-form.js';
-import type { Widgets, Path, UiSchema } from '@j_c/jsfe__types';
+import type { Widgets, Path, UiSchema } from '@jsfe/types';
 
 export const arrayField = (
 	schema: JSONSchema7,

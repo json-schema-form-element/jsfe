@@ -123,10 +123,10 @@ importers:
       '@carbon/web-components':
         specifier: ^2.0.1
         version: 2.0.1(sass@1.68.0)
-      '@j_c/jsfe__form':
+      '@jsfe/form':
         specifier: workspace:*
         version: link:../form
-      '@j_c/jsfe__types':
+      '@jsfe/types':
         specifier: workspace:*
         version: link:../types
       lit:
@@ -142,7 +142,7 @@ importers:
 
   packages/form:
     dependencies:
-      '@j_c/jsfe__types':
+      '@jsfe/types':
         specifier: workspace:*
         version: link:../types
       lit:
@@ -152,6 +152,9 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
     devDependencies:
+      '@types/lodash-es':
+        specifier: ^4.17.9
+        version: 4.17.9
       sass:
         specifier: ^1.68.0
         version: 1.68.0
@@ -161,10 +164,10 @@ importers:
 
   packages/material:
     dependencies:
-      '@j_c/jsfe__form':
+      '@jsfe/form':
         specifier: workspace:*
         version: link:../form
-      '@j_c/jsfe__types':
+      '@jsfe/types':
         specifier: workspace:*
         version: link:../types
       '@material/material-color-utilities':
@@ -186,15 +189,15 @@ importers:
 
   packages/shoelace:
     dependencies:
-      '@j_c/jsfe__form':
+      '@jsfe/form':
         specifier: workspace:*
         version: link:../form
-      '@j_c/jsfe__types':
+      '@jsfe/types':
         specifier: workspace:*
         version: link:../types
       '@shoelace-style/shoelace':
         specifier: ^2.8.0
-        version: 2.9.0(@types/react@18.2.25)
+        version: 2.8.0(@types/react@18.2.27)
       lit:
         specifier: ^2.8.0
         version: 2.8.0
@@ -214,10 +217,10 @@ importers:
       '@carbon/web-components':
         specifier: ^2.0.1
         version: 2.0.1(sass@1.68.0)
-      '@j_c/jsfe__form':
+      '@jsfe/form':
         specifier: workspace:*
         version: link:../form
-      '@j_c/jsfe__types':
+      '@jsfe/types':
         specifier: workspace:*
         version: link:../types
       lit:
@@ -233,9 +236,9 @@ importers:
 
   packages/types:
     dependencies:
-      json-schema:
-        specifier: ^0.4.0
-        version: 0.4.0
+      '@types/json-schema':
+        specifier: ^7.0.13
+        version: 7.0.13
       json-schema-to-ts:
         specifier: ^2.9.2
         version: 2.9.2
@@ -245,10 +248,10 @@ importers:
 
   packages/wired:
     dependencies:
-      '@j_c/jsfe__form':
+      '@jsfe/form':
         specifier: workspace:*
         version: link:../form
-      '@j_c/jsfe__types':
+      '@jsfe/types':
         specifier: workspace:*
         version: link:../types
       lit:
@@ -404,9 +407,9 @@ packages:
       postcss-selector-parser: 6.0.13
     dev: true
 
-  /@ctrl/tinycolor@4.0.2:
-    resolution: {integrity: sha512-fKQinXE9pJ83J1n+C3rDl2xNLJwfoYNvXLRy5cYZA9hBJJw2q+sbb/AOSNKmLxnTWyNTmy4994dueSwP4opi5g==}
-    engines: {node: '>=14'}
+  /@ctrl/tinycolor@3.6.1:
+    resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
+    engines: {node: '>=10'}
     dev: false
 
   /@custom-elements-manifest/analyzer@0.8.4:
@@ -1036,12 +1039,12 @@ packages:
       - typescript
     dev: true
 
-  /@lit-labs/react@2.1.0(@types/react@18.2.25):
+  /@lit-labs/react@2.1.0(@types/react@18.2.27):
     resolution: {integrity: sha512-8z8I0sWWWqyFiRxnCdxotT5z5XQAOI6opD/i3trxcfW5NG/tQeflNWV+leg+SWRVaO3GpYspoCgYGxkqDwE++A==}
     peerDependencies:
       '@types/react': 17 || 18
     dependencies:
-      '@types/react': 18.2.25
+      '@types/react': 18.2.27
     dev: false
 
   /@lit-labs/ssr-dom-shim@1.1.1:
@@ -1447,13 +1450,13 @@ packages:
     resolution: {integrity: sha512-Hf45HeO+vdQblabpyZOTxJ4ZeZsmIUYXXPmoYrrR4OJ5OKxL+bhMz5mK8JXgl7HsoEowfz7+e248UGi861de9Q==}
     dev: false
 
-  /@shoelace-style/shoelace@2.9.0(@types/react@18.2.25):
-    resolution: {integrity: sha512-nxvDDYlTuACLLBuuR8TmTKiU0mrhzzwnbXbA4lpvaF+Ee5bS/VgKzr0nWrMXT3scpUEu/LPtqfoZcqWqaU/7DQ==}
+  /@shoelace-style/shoelace@2.8.0(@types/react@18.2.27):
+    resolution: {integrity: sha512-WigVUaW+MptefOW4zUlZaq+zn0n2hP+I4/mztoeJii5u3ex1CGexfQGcdw2gx6d7P7LAa6/NW0TlgAELzJQnCA==}
     engines: {node: '>=14.17.0'}
     dependencies:
-      '@ctrl/tinycolor': 4.0.2
+      '@ctrl/tinycolor': 3.6.1
       '@floating-ui/dom': 1.5.3
-      '@lit-labs/react': 2.1.0(@types/react@18.2.25)
+      '@lit-labs/react': 2.1.0(@types/react@18.2.27)
       '@shoelace-style/animations': 1.1.0
       '@shoelace-style/localize': 3.1.2
       composed-offset-position: 0.0.4
@@ -1560,6 +1563,16 @@ packages:
       '@types/node': 20.8.3
     dev: false
 
+  /@types/lodash-es@4.17.9:
+    resolution: {integrity: sha512-ZTcmhiI3NNU7dEvWLZJkzG6ao49zOIjEgIE0RgV7wbPxU0f2xT3VSAHw2gmst8swH6V0YkLRGp4qPlX/6I90MQ==}
+    dependencies:
+      '@types/lodash': 4.14.199
+    dev: true
+
+  /@types/lodash@4.14.199:
+    resolution: {integrity: sha512-Vrjz5N5Ia4SEzWWgIVwnHNEnb1UE1XMkvY5DGXrAeOGE9imk0hgTHh5GyDjLDJi9OTCn9oo9dXH1uToK1VRfrg==}
+    dev: true
+
   /@types/mdast@3.0.13:
     resolution: {integrity: sha512-HjiGiWedR0DVFkeNljpa6Lv4/IZU1+30VY5d747K7lBudFc3R0Ibr6yJ9lN3BE28VnZyDfLF/VB1Ql1ZIbKrmg==}
     dependencies:
@@ -1595,8 +1608,8 @@ packages:
     resolution: {integrity: sha512-kMpQpfZKSCBqltAJwskgePRaYRFukDkm1oItcAbC3gNELR20XIBcN9VRgg4+m8DKsTfkWeA4m4Imp4DDuWy7FQ==}
     dev: false
 
-  /@types/react@18.2.25:
-    resolution: {integrity: sha512-24xqse6+VByVLIr+xWaQ9muX1B4bXJKXBbjszbld/UEDslGLY53+ZucF44HCmLbMPejTzGG9XgR+3m2/Wqu1kw==}
+  /@types/react@18.2.27:
+    resolution: {integrity: sha512-Wfv7B7FZiR2r3MIqbAlXoY1+tXm4bOqfz4oRr+nyXdBqapDBZ0l/IGcSlAfvxIHEEJjkPU0MYAc/BlFPOcrgLw==}
     dependencies:
       '@types/prop-types': 15.7.8
       '@types/scheduler': 0.16.4
@@ -2347,21 +2360,6 @@ packages:
 
   /chokidar@3.5.2:
     resolution: {integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==}
-    engines: {node: '>= 8.10.0'}
-    dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.2
-      glob-parent: 5.1.2
-      is-binary-path: 2.1.0
-      is-glob: 4.0.3
-      normalize-path: 3.0.0
-      readdirp: 3.6.0
-    optionalDependencies:
-      fsevents: 2.3.3
-    dev: true
-
-  /chokidar@3.5.3:
-    resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.3
@@ -4813,10 +4811,6 @@ packages:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
     dev: true
 
-  /json-schema@0.4.0:
-    resolution: {integrity: sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==}
-    dev: false
-
   /json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
     dev: true
@@ -7230,7 +7224,7 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
-      chokidar: 3.5.3
+      chokidar: 3.5.2
       immutable: 4.3.4
       source-map-js: 1.0.2
 

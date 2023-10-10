@@ -6,7 +6,7 @@
 // import '@shoelace-style/shoelace/dist/components/button-group/button-group.js';
 // import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
 
-import type { Widgets } from '@j_c/jsfe__types';
+import type { Widgets } from '@jsfe/types';
 import { nothing, html } from 'lit';
 
 import '@shoelace-style/shoelace/dist/components/card/card.js';

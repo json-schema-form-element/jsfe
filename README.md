@@ -1,6 +1,17 @@
 # 📝  JSON Schema Form Element
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@jsfe/jsfe)
+[![ISC License](https://img.shields.io/npm/l/@jsfe/jsfe)](./LICENSE)  
+[![GitHub](https://img.shields.io/badge/Repository-222222?logo=github)](https://github.com/json-schema-form-element/jsfe)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://makeapullrequest.com)  
+[![TypeScript](https://img.shields.io/badge/TypeScript-333333?logo=typescript)](http://www.typescriptlang.org/)
+[![SCSS](https://img.shields.io/badge/SCSS-333333.svg?logo=sass)](https://sass-lang.com)
+[![Prettier](https://img.shields.io/badge/Prettier-333333?logo=prettier)](https://prettier.io)
+[![EditorConfig](https://img.shields.io/badge/EditorConfig-333333?logo=editorconfig)](https://editorconfig.org)
+[![ESLint](https://img.shields.io/badge/ESLint-3A33D1?logo=eslint)](https://eslint.org)
+[![Stylelint](https://img.shields.io/badge/Stylelint-222222?logo=Stylelint)](https://stylelint.io)
+
+<!-- ![Downloads](https://img.shields.io/npm/dt/@jsfe/jsfe) -->
 
 Effortless forms, with standards.
 
@@ -37,7 +48,7 @@ Swap built-in components with your own, or add custom widget thanks to [UI schem
 ![](https://ik.imagekit.io/jc0/jsfe/design/header_json-schema-form-element_2RpVU_W-y-.png?updatedAt=1695289194993)
 
 <div align="center">
-<h4><a href="https://jsfe.netlify.app" >🕹️ Open the playground</a></h4>
+<h4><a href="https://jsfe.js.org" >🕹️ Open the playground (jsfe.js.org)</a></h4>
 
 ---
 
@@ -79,8 +90,9 @@ Jump to **UI libraries**:
 ---
 
 <details>
-<summary  align="center"><strong>Table of Contents</strong></summary>
+<summary  align="center"><strong>🗂️ Table of Contents</strong></summary>
 
+<!-- prettier-ignore -->
 - [Field types](#field-types)
 	- [Primitives](#primitives)
 		- [String](#string)
@@ -104,9 +116,9 @@ Jump to **UI libraries**:
 	- [Dependencies](#dependencies)
 	- [If, then, else](#if-then-else)
 - [Miscellaneous](#miscellaneous)
-		- [References](#references)
-			- [Recursivity](#recursivity)
-		- [Nullable values](#nullable-values)
+	- [References](#references)
+	- [Recursivity](#recursivity)
+	- [Nullable values](#nullable-values)
 - [User Interface](#user-interface)
 	- [Schema](#schema)
 - [Usage](#usage)
@@ -122,7 +134,7 @@ Jump to **UI libraries**:
 		- [Vue](#vue)
 		- [Svelte](#svelte)
 		- [React](#react)
-		- [CSS](#css)
+	- [CSS](#css)
 	- [TypeScript](#typescript)
 		- [Support for each implementation](#support-for-each-implementation)
 - [Component libraries](#component-libraries)
@@ -133,6 +145,7 @@ Jump to **UI libraries**:
 - [Schema massaging](#schema-massaging)
 - [Custom Elements Manifests](#custom-elements-manifests)
 - [Packages informations](#packages-informations)
+	- [_Next_ versions](#next-versions)
 - [Experimental features](#experimental-features)
 - [Improvements](#improvements)
 - [Acknowledgements](#acknowledgements)
@@ -517,15 +530,15 @@ items:
 
 ## Miscellaneous
 
-#### References
+### References
 
 🚧……🚧
 
-##### Recursivity
+### Recursivity
 
 🚧……🚧
 
-#### Nullable values
+### Nullable values
 
 🚧……🚧
 
@@ -582,7 +595,7 @@ See also the [CSS section](#CSS).
 
 ### Implementation
 
-> **Note**  
+> **Warning**  
 > This project is new, API is subject to changes
 
 #### All examples
@@ -598,7 +611,7 @@ npm i
 npm run dev
 ```
 
-#### Pure HTML with CDN
+---
 
 <!-- TODO: for WebComponents.org -->
 <!--
@@ -617,73 +630,180 @@ npm run dev
 <my-element></my-element>
 ``` -->
 
-See [examples/src/pages/pure-html.html](https://github.com/json-schema-form-element/examples/blob/main/src/pages/pure-html.html)
+<table>
+<thead>
+<tr>
+<th valign="center">
 
--OR-
+Implementation
+
+</th>
+<th valign="center">
+
+Working sources
+
+</th>
+<th valign="center">
+
+Code sandbox
+
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td valign="center">
+
+#### Pure HTML with CDN
+
+<br />
+</td>
+<td valign="center">
+
+[🗂️ examples/src/pages/pure-html.html](https://github.com/json-schema-form-element/examples/blob/main/src/pages/pure-html.html)
+
+</td>
+<td valign="center" align="center">
 
 [Open in **CodePen.io**](https://codepen.io/JulianCataldo/pen/KKbBepN?editors=1001)
 
--OR-
+---
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fpages%2Fpure-html.html)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fpages%2Fpure-html.html)
+
+</td>
+</tr>
+<tr>
+<td valign="center">
 
 #### TypeScript (no framework)
 
-See [examples/src/components/TypeScriptOnly.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/TypeScriptOnly.ts)
+<br />
+</td>
+<td valign="center">
 
--OR-
+[🗂️ examples/src/components/TypeScriptOnly.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/TypeScriptOnly.ts)
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FTypeScriptOnly.ts)
+</td>
+<td valign="center" align="center">
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FTypeScriptOnly.ts)
+
+</td>
+</tr>
+<tr>
+<td valign="center">
 
 #### Astro (SSR)
 
-See [examples/src/components/AstroJs.astro](https://github.com/json-schema-form-element/examples/blob/main/src/components/AstroJs.astro)
+<br />
+</td>
+<td valign="center">
 
--OR-
+[🗂️ examples/src/components/AstroJs.astro](https://github.com/json-schema-form-element/examples/blob/main/src/components/AstroJs.astro)
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FAstroJs.astro)
+</td>
+<td valign="center" align="center">
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FAstroJs.astro)
+
+</td>
+</tr>
+<tr>
+<td valign="center">
 
 #### Lit
 
-See [examples/src/components/LitJs.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/LitJs.ts)
+<br />
+</td>
+<td valign="center">
 
--OR-
+[🗂️ examples/src/components/LitJs.ts](https://github.com/json-schema-form-element/examples/blob/main/src/components/LitJs.ts)
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FLitJs.ts)
+</td>
+<td valign="center" align="center">
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FLitJs.ts)
+
+</td>
+</tr>
+<tr>
+<td valign="center">
 
 #### Solid
 
-See [examples/src/components/SolidJs.solid.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/SolidJs.solid.tsx)
+<br />
+</td>
+<td valign="center">
 
--OR-
+[🗂️ examples/src/components/SolidJs.solid.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/SolidJs.solid.tsx)
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FSolidJs.solid.tsx)
+</td>
+<td valign="center" align="center">
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FSolidJs.solid.tsx)
+
+</td>
+</tr>
+<tr>
+<td valign="center">
 
 #### Vue
 
-See [examples/src/components/VueJs.vue](https://github.com/json-schema-form-element/examples/blob/main/src/components/VueJs.vue)
+<br />
+</td>
+<td valign="center">
 
--OR-
+[🗂️ examples/src/components/VueJs.vue](https://github.com/json-schema-form-element/examples/blob/main/src/components/VueJs.vue)
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FVueJs.vue)
+</td>
+<td valign="center" align="center">
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FVueJs.vue)
+
+</td>
+</tr>
+<tr>
+<td valign="center">
 
 #### Svelte
 
-See [examples/src/components/SvelteJs.svelte](https://github.com/json-schema-form-element/examples/blob/main/src/components/SvelteJs.svelte)
+<br />
+</td>
+<td valign="center">
 
--OR-
+[🗂️ examples/src/components/VueJs.vue](https://github.com/json-schema-form-element/examples/blob/main/src/components/VueJs.vue)
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FSvelteJs.svelte)
+</td>
+<td valign="center" align="center">
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FVueJs.vue)
+
+</td>
+</tr>
+<tr>
+<td valign="center">
 
 #### React
 
-See [examples/src/components/ReactJs18.react.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/ReactJs18.react.tsx)
+<br />
+</td>
+<td valign="center">
 
--OR-
+[🗂️ examples/src/components/ReactJs18.react.tsx](https://github.com/json-schema-form-element/examples/blob/main/src/components/ReactJs18.react.tsx)
 
-[Open in **StackBlitz.com**](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FReactJs18.react.tsx)
+</td>
+<td valign="center" align="center">
 
-#### CSS
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/json-schema-form-element/examples?file=src%2Fcomponents%2FReactJs18.react.tsx)
+
+</td>
+</tr>
+</tbody>
+
+</table>
+
+### CSS
 
 Nowadays, there are many different strategies for CSS loading / bundling.
 _JSFE_ is embedding its own style in its shadow, but for components libraries (here Shoelace) you should act depending on your current workflow.
@@ -712,10 +832,14 @@ are injected globally.
 | Imperative inference      | ✅ via DOM        | -                 | ✅ via `ref`      | ✅ via `ref`   | ✅ via `ref` | ✅ via `ref`   | ✅ via `use:`     |
 | Imperative type-checking  | ✅ via DOM        | -                 | ✅ via `ref`      | ✅ via `ref`   | ✅ via `ref` | ✅ via `ref`   | ✅ via `use:`     |
 
-1. HTML language servers can't support TypeScript obviously. But IDE can leverage Custom Element metadata.
-2. Astro JSX namespace / LSP are not handling `HTMLElementTagNameMap` or Custom Element metadata, yet.
-3. Template literals are preventing automatic properties inference, but at least, you can't assign wrong argument types without knowing it.
-4. Svelte heuristics are not clear regarding _attributes_ versus _properties_ handling. Better be safe than sorry. Also the `use:` directive is neat.
+---
+
+1. <small>HTML language servers can't support TypeScript obviously. But IDE can leverage Custom Element metadata.</small>
+2. <small>Astro JSX namespace / LSP are not handling `HTMLElementTagNameMap` or Custom Element metadata, yet.</small>
+3. <small>Template literals are preventing automatic properties inference, but at least, you can't assign wrong argument types without knowing it.</small>
+4. <small>Svelte heuristics are not clear regarding _attributes_ versus _properties_ handling. Better be safe than sorry. Also the `use:` directive is neat.</small>
+
+---
 
 There might be changes regarding support for Web Components accross various the various UI frameworks above.
 Please file an issue if an info is wrong or missing.
@@ -795,14 +919,30 @@ See [./custom-elements.json](./custom-elements.json) & [./custom-elements.md](./
 
 With all external JS dependencies included, minus some CSS:
 
-| Package    | Size                                                            |
-| ---------- | --------------------------------------------------------------- |
-| @jsfe/form | ![](https://deno.bundlejs.com/badge?q=@jsfe/form&treeshake=[*]) |
+<div align="center">
 
-Components are planned to be extracted in separate packages as soon as more UI library are added. E.g. `@jsfe/shoelace`, `@jsfe/material`…
+| Package        | Size                                                                                    | Version                                                                                             |
+| -------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| @jsfe/form     | ![form bundle size](https://deno.bundlejs.com/badge?q=@jsfe/core&treeshake=[*])         | [![NPM](https://img.shields.io/npm/v/@jsfe/form)](https://www.npmjs.com/package/@jsfe/form)         |
+| @jsfe/shoelace | ![shoelace bundle size](https://deno.bundlejs.com/badge?q=@jsfe/shoelace&treeshake=[*]) | [![NPM](https://img.shields.io/npm/v/@jsfe/shoelace)](https://www.npmjs.com/package/@jsfe/shoelace) |
+| @jsfe/material | ![material bundle size](https://deno.bundlejs.com/badge?q=@jsfe/material&treeshake=[*]) | [![NPM](https://img.shields.io/npm/v/@jsfe/material)](https://www.npmjs.com/package/@jsfe/material) |
+| @jsfe/carbon   | ![carbon bundle size](https://deno.bundlejs.com/badge?q=@jsfe/carbon&treeshake=[*])     | [![NPM](https://img.shields.io/npm/v/@jsfe/carbon)](https://www.npmjs.com/package/@jsfe/carbon)     |
+| @jsfe/wired    | ![wired bundle size](https://deno.bundlejs.com/badge?q=@jsfe/wired&treeshake=[*])       | [![NPM](https://img.shields.io/npm/v/@jsfe/wired)](https://www.npmjs.com/package/@jsfe/wired)       |
+| @jsfe/system   | ![system bundle size](https://deno.bundlejs.com/badge?q=@jsfe/system&treeshake=[*])     | [![NPM](https://img.shields.io/npm/v/@jsfe/system)](https://www.npmjs.com/package/@jsfe/system)     |
+| @jsfe/types    |                                                                                         | [![NPM](https://img.shields.io/npm/v/@jsfe/types)](https://www.npmjs.com/package/@jsfe/types)       |
 
-<!-- | @jsfe/shoelace | ![](https://deno.bundlejs.com/badge?q=@jsfe/shoelace&treeshake=[*]) | -->
-<!-- | @jsfe/material | ![](https://deno.bundlejs.com/badge?q=@jsfe/material&treeshake=[*]) | -->
+</div>
+
+`@jsfe/form` contains the base class from which all other packages extends themselves from.  
+You don't need to install it, unless you want to provide widgets and styles from scratch.  
+If you just want to override _some_ of the flavored components, `@jsfe/<theme>` packages are handy starters.
+
+`@jsfe/types` contains everything for assisting your own widgets authoring.  
+It's re-exported from every package so you don't need to install it on your own.
+
+### _Next_ versions
+
+You can try nightly builds from the `next` branch like this: `npm i @jsfe/<package>@next`.
 
 ## Experimental features
 

@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import type { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from '@jsfe/types';
 import type { Widgets, Jsf, Path, UiSchema } from '../index.js';
 
 export const objectField = (

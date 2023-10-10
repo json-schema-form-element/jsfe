@@ -1,6 +1,6 @@
 import { nothing, html, type TemplateResult } from 'lit';
 
-import type { WidgetBaseParams } from '@j_c/jsfe__types';
+import type { WidgetBaseParams } from '@jsfe/types';
 
 export const field = (
 	options: WidgetBaseParams,

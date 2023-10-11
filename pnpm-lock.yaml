@@ -195,21 +195,12 @@ importers:
       '@jsfe/types':
         specifier: workspace:*
         version: link:../types
-      '@lit/react':
-        specifier: ^1.0.0
-        version: 1.0.0(@types/react@18.2.28)
       '@shoelace-style/shoelace':
         specifier: ^2.8.0
-        version: 2.8.0(@types/react@18.2.27)
-      '@types/react':
-        specifier: ^18.2.28
-        version: 18.2.28
+        version: 2.8.0(@types/react@18.2.28)
       lit:
         specifier: ^2.8.0
         version: 2.8.0
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
     devDependencies:
       sass:
         specifier: ^1.68.0
@@ -1048,24 +1039,16 @@ packages:
       - typescript
     dev: true
 
-  /@lit-labs/react@2.1.0(@types/react@18.2.27):
+  /@lit-labs/react@2.1.0(@types/react@18.2.28):
     resolution: {integrity: sha512-8z8I0sWWWqyFiRxnCdxotT5z5XQAOI6opD/i3trxcfW5NG/tQeflNWV+leg+SWRVaO3GpYspoCgYGxkqDwE++A==}
     peerDependencies:
       '@types/react': 17 || 18
     dependencies:
-      '@types/react': 18.2.27
+      '@types/react': 18.2.28
     dev: false
 
   /@lit-labs/ssr-dom-shim@1.1.1:
     resolution: {integrity: sha512-kXOeFbfCm4fFf2A3WwVEeQj55tMZa8c8/f9AKHMobQMkzNUfUj+antR3fRPaZJawsa1aZiP/Da3ndpZrwEe4rQ==}
-    dev: false
-
-  /@lit/react@1.0.0(@types/react@18.2.28):
-    resolution: {integrity: sha512-uTuU6vpxtZvCWxcu3GNosckP2JpFWZpMKjhwQ42Bzu/OU9kjStJspA04o7RadecQfx0YiFIImX3qek15BXhaWQ==}
-    peerDependencies:
-      '@types/react': 17 || 18
-    dependencies:
-      '@types/react': 18.2.28
     dev: false
 
   /@lit/reactive-element@1.6.3:
@@ -1467,13 +1450,13 @@ packages:
     resolution: {integrity: sha512-Hf45HeO+vdQblabpyZOTxJ4ZeZsmIUYXXPmoYrrR4OJ5OKxL+bhMz5mK8JXgl7HsoEowfz7+e248UGi861de9Q==}
     dev: false
 
-  /@shoelace-style/shoelace@2.8.0(@types/react@18.2.27):
+  /@shoelace-style/shoelace@2.8.0(@types/react@18.2.28):
     resolution: {integrity: sha512-WigVUaW+MptefOW4zUlZaq+zn0n2hP+I4/mztoeJii5u3ex1CGexfQGcdw2gx6d7P7LAa6/NW0TlgAELzJQnCA==}
     engines: {node: '>=14.17.0'}
     dependencies:
       '@ctrl/tinycolor': 3.6.1
       '@floating-ui/dom': 1.5.3
-      '@lit-labs/react': 2.1.0(@types/react@18.2.27)
+      '@lit-labs/react': 2.1.0(@types/react@18.2.28)
       '@shoelace-style/animations': 1.1.0
       '@shoelace-style/localize': 3.1.2
       composed-offset-position: 0.0.4
@@ -1623,14 +1606,6 @@ packages:
 
   /@types/prop-types@15.7.8:
     resolution: {integrity: sha512-kMpQpfZKSCBqltAJwskgePRaYRFukDkm1oItcAbC3gNELR20XIBcN9VRgg4+m8DKsTfkWeA4m4Imp4DDuWy7FQ==}
-    dev: false
-
-  /@types/react@18.2.27:
-    resolution: {integrity: sha512-Wfv7B7FZiR2r3MIqbAlXoY1+tXm4bOqfz4oRr+nyXdBqapDBZ0l/IGcSlAfvxIHEEJjkPU0MYAc/BlFPOcrgLw==}
-    dependencies:
-      '@types/prop-types': 15.7.8
-      '@types/scheduler': 0.16.4
-      csstype: 3.1.2
     dev: false
 
   /@types/react@18.2.28:
@@ -4785,6 +4760,7 @@ packages:
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+    dev: true
 
   /js-yaml@3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -5161,13 +5137,6 @@ packages:
 
   /longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
-    dev: false
-
-  /loose-envify@1.4.0:
-    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
-    hasBin: true
-    dependencies:
-      js-tokens: 4.0.0
     dev: false
 
   /lower-case@2.0.2:
@@ -6914,13 +6883,6 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
-
-  /react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      loose-envify: 1.4.0
-    dev: false
 
   /read-cmd-shim@4.0.0:
     resolution: {integrity: sha512-yILWifhaSEEytfXI76kB9xEEiG1AiozaCJZ83A87ytjRiN+jVibXjedjCRNjoZviinhG+4UkalO3mWTd8u5O0Q==}

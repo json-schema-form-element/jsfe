@@ -77,9 +77,9 @@ export interface Widgets {
 		number
 	>;
 
-	checkbox?: Widget<{}, boolean>;
+	checkbox?: Widget<undefined, boolean>;
 
-	switch?: Widget<{}, boolean>;
+	switch?: Widget<undefined, boolean>;
 
 	radioGroupBoolean?: Widget<
 		{
@@ -144,5 +144,5 @@ export interface Widgets {
 		type?: 'tip' | 'warning' | 'danger';
 	}>;
 
-	submit?: Widget<{}>;
+	submit?: Widget<undefined>;
 }

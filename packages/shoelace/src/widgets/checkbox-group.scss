@@ -1,0 +1,16 @@
+// TODO:
+
+.theme-shoelace.widget-checkbox-group {
+	.help-text {
+		font-size: var(--sl-input-help-text-font-size-medium);
+		color: var(--sl-input-help-text-color);
+	}
+
+	.widget-checkbox-group__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--sl-spacing-large) var(--sl-spacing-4x-large);
+		justify-content: space-evenly;
+		padding: var(--sl-spacing-medium) var(--sl-spacing-2x-large);
+	}
+}

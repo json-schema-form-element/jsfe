@@ -5,7 +5,7 @@ import type { Widgets } from '@jsfe/types';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { field } from './_field.js';
 
-export const enumeration: Widgets['enumeration'] = (options) => html`
+export const enumeration: Widgets['select'] = (options) => html`
 	${field(
 		options,
 		html`<select

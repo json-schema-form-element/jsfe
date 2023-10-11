@@ -16,14 +16,13 @@ export const array: Widgets['array'] = (options) => {
 	return html`
 		<fieldset
 			id=${options.id}
-			class="theme-shoelace widget-array"
+			class="theme-shoelace widget-array widget-fieldset"
 			part="widget-array"
 		>
-			<!--  -->
 			${options.label ? html`<legend>${options.label}</legend>` : nothing}
 			<!-- -->
 			${options.helpText
-				? html`<p class="widget-array__description">${options.helpText}</p>`
+				? html`<p class="widget-fieldset__description">${options.helpText}</p>`
 				: nothing}
 			<!--  -->
 			${options.items(
@@ -88,7 +87,10 @@ export const array: Widgets['array'] = (options) => {
 
 			<nav class="widget-array__add-zone">
 				<sl-button @click=${options.controls.add.click} size="large">
-					<sl-icon name="plus"></sl-icon> Add
+					<sl-icon name="plus"></sl-icon> New
+					${options.itemLabel
+						? html`"<strong>${options.itemLabel}</strong>"`
+						: nothing}
 				</sl-button>
 			</nav>
 		</fieldset>

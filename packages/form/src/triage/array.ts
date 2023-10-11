@@ -6,7 +6,7 @@ import { TemplateResult, html } from 'lit';
 import type { Jsf } from '../json-schema-form.js';
 import type { Widgets, Path, UiSchema } from '@jsfe/types';
 
-export const arrayField = (
+export const fieldArray = (
 	schema: JSONSchema7,
 	dataLevel: unknown,
 	path: Path,
@@ -150,10 +150,20 @@ export const arrayField = (
 		});
 	};
 
+	let itemLabel: string | undefined;
+	if (
+		typeof schema.items === 'object' &&
+		!Array.isArray(schema.items) &&
+		schema.items.title
+	) {
+		itemLabel = schema.items.title;
+	}
 	const options = {
 		label: schema.title,
 
 		items,
+
+		itemLabel,
 
 		controls: {
 			add: { click: addItemClick },

@@ -20,7 +20,7 @@ export async function prepare(
 
 			jsfe.data = initialData;
 
-			jsfe.onDataChange = (newData) => {
+			jsfe.dataChangeCallback = (newData) => {
 				console.log(newData);
 				console.log({ newData: JSON.stringify(newData) });
 				dump.innerText = JSON.stringify(newData);

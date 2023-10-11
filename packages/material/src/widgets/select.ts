@@ -6,7 +6,7 @@ import '@material/web/select/outlined-select.js';
 import '@material/web/select/select-option.js';
 import type { MdOutlinedSelect } from '@material/web/select/outlined-select.js';
 
-export const enumeration: Widgets['enumeration'] = (options) => html`
+export const select: Widgets['select'] = (options) => html`
 	<md-outlined-select
 		?required=${options.required}
 		.label=${options.label ?? ''}

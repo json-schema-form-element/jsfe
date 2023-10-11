@@ -10,7 +10,7 @@ import type { Jsf } from '../json-schema-form.js';
 import type { Widgets, Path, UiSchema } from '@jsfe/types';
 import { html } from 'lit';
 
-export const field = (
+export const fieldPrimitive = (
 	schema: JSONSchema7,
 	value: unknown,
 	path: Path,
@@ -26,7 +26,7 @@ export const field = (
 
 	function missing(widgetName: string) {
 		const options = { id, message: `Missing ${widgetName} widget.` };
-		return widgets?.callout?.(options) ?? html`${options.message}`;
+		return widgets?.callout?.(options) ?? html`<p>${options.message}</p>`;
 	}
 
 	let label = '';
@@ -103,7 +103,7 @@ export const field = (
 			return widgets?.buttonGroup?.(options) || missing('button group');
 		}
 
-		return widgets?.enumeration?.(options) || missing('enumeration');
+		return widgets?.select?.(options) || missing('select');
 	}
 
 	if (schema.type === 'string' && uiOptions?.['ui:widget'] === 'color') {

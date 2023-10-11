@@ -2,7 +2,7 @@ import { html } from 'lit';
 import type { JSONSchema7 } from '@jsfe/types';
 import type { Widgets, Jsf, Path, UiSchema } from '../index.js';
 
-export const objectField = (
+export const fieldObject = (
 	schema: JSONSchema7,
 	data: unknown,
 	path: Path,
@@ -47,10 +47,17 @@ export const objectField = (
 			);
 		},
 	);
+	let label: string | undefined;
+	const key = path.at(-1);
+	if (schema.title) {
+		label = schema.title;
+	} else if (typeof key !== 'number') {
+		label = key;
+	}
 
 	const options = {
 		id: path.join('.'),
-		label: schema.title ?? path.at(-1),
+		label,
 		helpText: schema.description,
 		children,
 	};

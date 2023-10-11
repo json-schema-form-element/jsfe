@@ -22,7 +22,7 @@
     "// test": "cd tests && pnpm test",
     "// publish:dry": "pnpm lerna publish --dry-run",
     "util:scaffold": "plop --plopfile scripts/scaffold/plopfile.js",
-    "util:sort": "keep-sorted packages/*/src/index.ts packages/*/src/styles.scss && sort-package-json packages/*/package.json"
+    "util:sort": "keep-sorted packages/*/src/widgets/index.ts packages/*/src/styles.scss && sort-package-json packages/*/package.json"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.4",

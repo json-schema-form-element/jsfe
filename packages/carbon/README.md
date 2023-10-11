@@ -18,9 +18,9 @@ See the [documentation](../../README.md).
 
 ### Superclass
 
-| Name  | Module | Package            |
-| ----- | ------ | ------------------ |
-| `Jsf` |        | @j\_c/jsfe\_\_form |
+| Name  | Module | Package    |
+| ----- | ------ | ---------- |
+| `Jsf` |        | @jsfe/form |
 
 ### Fields
 
@@ -41,19 +41,20 @@ See the [documentation](../../README.md).
 
 ## Exports
 
-| Kind | Name        | Declaration | Module    | Package             |
-| ---- | ----------- | ----------- | --------- | ------------------- |
-| `js` | `JsfCarbon` | JsfCarbon   | ./form.js |                     |
-| `js` | `*`         | \*          |           | ./widgets/index.js  |
-| `js` | `*`         | \*          |           | @j\_c/jsfe\_\_types |
+| Kind | Name        | Declaration | Module    | Package            |
+| ---- | ----------- | ----------- | --------- | ------------------ |
+| `js` | `JsfCarbon` | JsfCarbon   | ./form.js |                    |
+| `js` | `*`         | \*          |           | ./widgets/index.js |
+| `js` | `*`         | \*          |           | @jsfe/types        |
+| `js` | `Jsf`       | Jsf         |           | @jsfe/form         |
 
 # `packages/carbon/src/styles.ts`:
 
 ## Variables
 
-| Name     | Description | Type     |
-| -------- | ----------- | -------- |
-| `styles` |             | `string` |
+| Name     | Description | Type |
+| -------- | ----------- | ---- |
+| `styles` |             |      |
 
 <hr/>
 

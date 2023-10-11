@@ -16,7 +16,7 @@
 		}
 	}
 
-	.array-card-header {
+	.widget-array__header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -69,10 +69,11 @@
 	.widget-array__add-zone {
 		display: flex;
 		padding: var(--sl-spacing-2x-large) var(--sl-spacing-2x-large);
-		border: 2px dashed var(--sl-color-gray-50);
+		border: 2px dashed var(--sl-color-gray-100);
 		border-radius: var(--sl-border-radius-large);
+		box-shadow: var(--sl-shadow-large) inset;
 
-		& > * {
+		& > sl-button {
 			width: 100%;
 		}
 	}

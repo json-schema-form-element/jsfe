@@ -6,7 +6,7 @@ import type { Widgets } from '@jsfe/types';
 import '@shoelace-style/shoelace/dist/components/input/input.js';
 import type { SlSelect } from '@shoelace-style/shoelace';
 
-export const enumeration: Widgets['enumeration'] = (options) => html`
+export const select: Widgets['select'] = (options) => html`
 	<sl-select
 		value=${ifDefined(options.value)}
 		.label=${options.label}

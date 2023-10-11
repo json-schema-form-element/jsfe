@@ -1,7 +1,7 @@
 # 📝  JSON Schema Form Element
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@jsfe/jsfe)
-[![ISC License](https://img.shields.io/npm/l/@jsfe/jsfe)](./LICENSE)  
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@jsfe/form)
+[![ISC License](https://img.shields.io/npm/l/@jsfe/form)](./LICENSE)  
 [![GitHub](https://img.shields.io/badge/Repository-222222?logo=github)](https://github.com/json-schema-form-element/jsfe)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://makeapullrequest.com)  
 [![TypeScript](https://img.shields.io/badge/TypeScript-333333?logo=typescript)](http://www.typescriptlang.org/)
@@ -11,16 +11,16 @@
 [![ESLint](https://img.shields.io/badge/ESLint-3A33D1?logo=eslint)](https://eslint.org)
 [![Stylelint](https://img.shields.io/badge/Stylelint-222222?logo=Stylelint)](https://stylelint.io)
 
-<!-- ![Downloads](https://img.shields.io/npm/dt/@jsfe/jsfe) -->
+<!-- ![Downloads](https://img.shields.io/npm/dt/@jsfe/form) -->
 
 Effortless forms, with standards.
 
 **Features**:
 
-- Instant **form generation** based on your JSON schemas
-- **Light**, and **interoperable**, by design
-- Integrate seamlessly with your **OpenAPI** / **JSON schema** stack
-- Comes with **sensible defaults**, but aims for **extensibility**
+- Instant **form generation** based on your JSON schemas.
+- Integrates within your **OpenAPI** / **JSON schema** / MongoDB (BSON) stack.
+- Comes with **sensible defaults**, while aiming for **extensibility** (themes, widgets…).
+- ⚡️ Fast, and light 🪶.
 
 **Use cases**:
 
@@ -28,10 +28,18 @@ Effortless forms, with standards.
 - Lightly interactive websites contact forms.
 - Building block for custom CMSes.
 - Building block for Markdown YAML frontmatter editors.
+- Form builders… builder (🪆)
+- _You name it_…
+
+Due to their **declarative** and **serializable** nature, JSON schemas are highly **interoperable** and **portable**.  
+Moreover, **UI schemas** can be declared alongside to customize the view layer.  
+You can also **override totally** one ore more widgets, or just **sprinkle some styles** on top of the included ones.
 
 **Why?**
 
 While there is a handful of project for major frontend frameworks, there wasn't any **Web Component** packing all the features above.  
+Also if your are evaluating **Web Component design systems** or if you are building your own, this library is providing you a handy testbed.
+
 See also the [inspirations](#acknowledgements) for this project.
 
 <!-- **Theming**
@@ -917,13 +925,13 @@ See [./custom-elements.json](./custom-elements.json) & [./custom-elements.md](./
 
 ## Packages informations
 
-With all external JS dependencies included, minus some CSS:
+With internal dependencies included, minus peer dependencies (UI libs.):
 
 <div align="center">
 
 | Package        | Size                                                                                    | Version                                                                                             |
 | -------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| @jsfe/form     | ![form bundle size](https://deno.bundlejs.com/badge?q=@jsfe/core&treeshake=[*])         | [![NPM](https://img.shields.io/npm/v/@jsfe/form)](https://www.npmjs.com/package/@jsfe/form)         |
+| @jsfe/form     | ![form bundle size](https://deno.bundlejs.com/badge?q=@jsfe/form&treeshake=[*])         | [![NPM](https://img.shields.io/npm/v/@jsfe/form)](https://www.npmjs.com/package/@jsfe/form)         |
 | @jsfe/shoelace | ![shoelace bundle size](https://deno.bundlejs.com/badge?q=@jsfe/shoelace&treeshake=[*]) | [![NPM](https://img.shields.io/npm/v/@jsfe/shoelace)](https://www.npmjs.com/package/@jsfe/shoelace) |
 | @jsfe/material | ![material bundle size](https://deno.bundlejs.com/badge?q=@jsfe/material&treeshake=[*]) | [![NPM](https://img.shields.io/npm/v/@jsfe/material)](https://www.npmjs.com/package/@jsfe/material) |
 | @jsfe/carbon   | ![carbon bundle size](https://deno.bundlejs.com/badge?q=@jsfe/carbon&treeshake=[*])     | [![NPM](https://img.shields.io/npm/v/@jsfe/carbon)](https://www.npmjs.com/package/@jsfe/carbon)     |
@@ -973,8 +981,7 @@ Actual **features flags** list:
 - Layout customizations
 - Tests, browser based (due to the WC nature).
 - Tests, tests, even more tests in the field to reveal shortcomings.
-- Support for other UI library (MWC? FAST? Bootstrap?)
-- Drag and drop for array items, using native API.
+- Drag and drop: improve the initial implementation (E.g. cross-nested arrays).
 - Autofocuses (for added array item, etc.)
 - …
 - Have an idea? [Discussions are open](https://github.com/json-schema-form-element/form/discussions)!

@@ -1,0 +1,19 @@
+.theme-shoelace.widget-fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sl-spacing-x-large) 0;
+	padding: var(--sl-spacing-large) var(--sl-spacing-medium);
+	margin: 0;
+	font-weight: var(--sl-font-weight-semibold);
+	border: 1px solid var(--sl-color-neutral-50);
+	border-radius: var(--sl-border-radius-large);
+
+	legend {
+		font-size: var(--sl-font-size-large);
+	}
+
+	.widget-fieldset__description {
+		font-size: var(--sl-input-help-text-font-size-medium);
+		color: var(--sl-input-help-text-color);
+	}
+}

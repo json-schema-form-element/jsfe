@@ -18,6 +18,14 @@
           "name": "*",
           "declaration": {
             "name": "*",
+            "package": "./ui-schema.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
             "package": "./widgets.js"
           }
         },
@@ -46,6 +54,12 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "packages/types/src/ui-schema.ts",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",

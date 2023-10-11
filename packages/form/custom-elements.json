@@ -22,6 +22,14 @@
             "name": "*",
             "package": "@jsfe/types"
           }
+        },
+        {
+          "kind": "js",
+          "name": "Jsf",
+          "declaration": {
+            "name": "Jsf",
+            "package": "@jsfe/form"
+          }
         }
       ]
     },
@@ -89,9 +97,9 @@
             },
             {
               "kind": "field",
-              "name": "onDataChange",
+              "name": "dataChangeCallback",
               "type": {
-                "text": "OnDataChange"
+                "text": "DataChangeCallback"
               },
               "privacy": "public"
             },
@@ -109,7 +117,7 @@
               "kind": "field",
               "name": "styleSheets",
               "type": {
-                "text": "string[]"
+                "text": "CSSResult[]"
               },
               "privacy": "public",
               "default": "[]",
@@ -268,7 +276,7 @@
             {
               "name": "styleSheets",
               "type": {
-                "text": "string[]"
+                "text": "CSSResult[]"
               },
               "default": "[]",
               "fieldName": "styleSheets"

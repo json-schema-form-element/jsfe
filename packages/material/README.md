@@ -18,16 +18,16 @@ See the [documentation](../../README.md).
 
 ### Superclass
 
-| Name  | Module | Package            |
-| ----- | ------ | ------------------ |
-| `Jsf` |        | @j\_c/jsfe\_\_form |
+| Name  | Module | Package    |
+| ----- | ------ | ---------- |
+| `Jsf` |        | @jsfe/form |
 
 ### Fields
 
-| Name          | Privacy | Type    | Default    | Description | Inherited From |
-| ------------- | ------- | ------- | ---------- | ----------- | -------------- |
-| `widgets`     | public  |         | `widgets`  |             |                |
-| `styleSheets` | public  | `array` | `[styles]` |             |                |
+| Name                 | Privacy | Type    | Default    | Description | Inherited From |
+| -------------------- | ------- | ------- | ---------- | ----------- | -------------- |
+| `dataChangeCallback` | public  |         | `widgets`  |             |                |
+| `styleSheets`        | public  | `array` | `[styles]` |             |                |
 
 <hr/>
 
@@ -41,19 +41,20 @@ See the [documentation](../../README.md).
 
 ## Exports
 
-| Kind | Name          | Declaration | Module    | Package             |
-| ---- | ------------- | ----------- | --------- | ------------------- |
-| `js` | `JsfMaterial` | JsfMaterial | ./form.js |                     |
-| `js` | `*`           | \*          |           | ./widgets/index.js  |
-| `js` | `*`           | \*          |           | @j\_c/jsfe\_\_types |
+| Kind | Name          | Declaration | Module    | Package            |
+| ---- | ------------- | ----------- | --------- | ------------------ |
+| `js` | `JsfMaterial` | JsfMaterial | ./form.js |                    |
+| `js` | `*`           | \*          |           | ./widgets/index.js |
+| `js` | `*`           | \*          |           | @jsfe/types        |
+| `js` | `Jsf`         | Jsf         |           | @jsfe/form         |
 
 # `packages/material/src/styles.ts`:
 
 ## Variables
 
-| Name     | Description | Type     |
-| -------- | ----------- | -------- |
-| `styles` |             | `string` |
+| Name     | Description | Type |
+| -------- | ----------- | ---- |
+| `styles` |             |      |
 
 <hr/>
 

@@ -10,6 +10,7 @@ See the [documentation](../../README.md).
 
 | Kind | Name          | Declaration | Module | Package           |
 | ---- | ------------- | ----------- | ------ | ----------------- |
+| `js` | `*`           | \*          |        | ./ui-schema.js    |
 | `js` | `*`           | \*          |        | ./widgets.js      |
 | `js` | `*`           | \*          |        | ./form.js         |
 | `js` | `JSONSchema7` | JSONSchema7 |        | json-schema       |

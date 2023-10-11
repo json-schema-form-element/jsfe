@@ -23,6 +23,7 @@ export interface Widgets {
 			pattern?: string;
 			maxLength?: number;
 			minLength?: number;
+			format: 'email' | 'password' | 'tel' | 'text' | 'url';
 		},
 		string
 	>;
@@ -96,7 +97,7 @@ export interface Widgets {
 		boolean
 	>;
 
-	enumeration?: Widget<
+	select?: Widget<
 		{
 			enum?: string[] | number[];
 			type: 'number' | 'integer' | 'string';
@@ -125,6 +126,17 @@ export interface Widgets {
 			enum: string[] | number[];
 		},
 		string | number
+	>;
+
+	checkboxGroup?: Widget<
+		{
+			// type: 'string' | 'number';
+			enum: (string | number)[];
+
+			// items: (string[])
+		},
+		// [string | number, boolean]
+		(string | number)[]
 	>;
 
 	callout?: Widget<{

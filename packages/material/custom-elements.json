@@ -28,7 +28,7 @@
           "members": [
             {
               "kind": "field",
-              "name": "widgets",
+              "name": "dataChangeCallback",
               "privacy": "public",
               "default": "widgets"
             },
@@ -89,6 +89,14 @@
             "name": "*",
             "package": "@jsfe/types"
           }
+        },
+        {
+          "kind": "js",
+          "name": "Jsf",
+          "declaration": {
+            "name": "Jsf",
+            "package": "@jsfe/form"
+          }
         }
       ]
     },
@@ -99,10 +107,7 @@
         {
           "kind": "variable",
           "name": "styles",
-          "type": {
-            "text": "string"
-          },
-          "default": "''"
+          "default": "css`\n\t/* STUB - Compiled SCSS goes here */\n`"
         }
       ],
       "exports": [

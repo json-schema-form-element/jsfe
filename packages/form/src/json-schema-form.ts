@@ -1,3 +1,4 @@
+import { fieldArrayPrimitive } from './triage/array-primitive';
 /* eslint-disable max-lines */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
@@ -19,12 +20,12 @@ import set from 'lodash-es/set';
 import type { JSONSchema7 } from '@jsfe/types';
 
 // import { alternateField } from './triage/alternate.js';
-import { arrayField } from './triage/array.js';
-import { objectField } from './triage/object.js';
-import { field } from './triage/field.js';
+import { fieldArray } from './triage/array.js';
+import { fieldObject } from './triage/object.js';
+import { fieldPrimitive } from './triage/primitive.js';
 
 import type {
-	OnDataChange,
+	DataChangeCallback,
 	FeatureFlags,
 	OnFormSubmit,
 	Path,
@@ -41,7 +42,7 @@ export class Jsf extends LitElement {
 
 	public submitCallback: OnFormSubmit = () => {};
 
-	public onDataChange: OnDataChange = () => {};
+	public dataChangeCallback: DataChangeCallback = () => {};
 
 	@property({ type: Object }) public widgets: Widgets = {};
 
@@ -103,7 +104,7 @@ export class Jsf extends LitElement {
 			// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
 			// schemaPathAugmented.push('properties');
 
-			result = field(
+			result = fieldPrimitive(
 				currentNode,
 				dataLevel,
 				path,
@@ -141,13 +142,40 @@ export class Jsf extends LitElement {
 			schemaPathAugmented.push('properties');
 			// schemaPathAugmented.push(path);
 
-			result = objectField(
+			result = fieldObject(
 				nodeParsed,
 				dataLevel,
 				path,
 				uiState,
 				uiSchema,
 				this._dig.bind(this),
+				schemaPathAugmented,
+				this.widgets,
+			);
+		}
+
+		/* --- Arrays of primitives --- */
+		if (
+			currentNode.type === 'array' &&
+			typeof currentNode.items === 'object' &&
+			!Array.isArray(currentNode.items) &&
+			currentNode.items.enum &&
+			currentNode.uniqueItems &&
+			(currentNode.items.type === 'string' ||
+				currentNode.items.type === 'number' ||
+				currentNode.items.type === 'integer' ||
+				currentNode.items.type === 'boolean')
+		) {
+			const schemaPathAugmented = [...schemaPath];
+			result = fieldArrayPrimitive(
+				currentNode,
+				dataLevel,
+				path,
+				uiState,
+				uiSchema,
+				required,
+				this._handleChange.bind(this),
+				// this._handleKeydown.bind(this),
 				schemaPathAugmented,
 				this.widgets,
 			);
@@ -169,7 +197,7 @@ export class Jsf extends LitElement {
 				// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
 				// schemaPathAugmented.push('items');
 
-				result = objectField(
+				result = fieldObject(
 					newNode,
 					dataLevel,
 					path,
@@ -177,6 +205,7 @@ export class Jsf extends LitElement {
 					uiSchema,
 					this._dig.bind(this),
 					schemaPathAugmented,
+					this.widgets,
 				);
 
 				/* --- Additionals Array items --- */
@@ -227,7 +256,7 @@ export class Jsf extends LitElement {
 				// if (typeof propName !== 'undefined') schemaPathAugmented.push(propName);
 				// schemaPathAugmented.push('items');
 				dataLevel ||= [];
-				result = arrayField(
+				result = fieldArray(
 					node,
 					dataLevel,
 					path,
@@ -259,17 +288,19 @@ export class Jsf extends LitElement {
 		if (Object.entries(node).length === 0) {
 			const error = `Empty schema`;
 			return (
-				this.widgets?.callout?.({ id: '', message: error }) ?? html`${error}`
+				this.widgets?.callout?.({ id: '', message: error }) ??
+				html`<p>${error}</p>`
 			);
 		}
 
 		if (result) return result;
 
-		const error = `Cannot dig this level:${path.join('/')}${String(
+		const error = `Cannot dig this level: ${path.join('/')} - (${String(
 			currentNode.type,
-		)}`;
+		)})`;
 		return (
-			this.widgets?.callout?.({ id: '', message: error }) ?? html`${error}`
+			this.widgets?.callout?.({ id: '', message: error }) ??
+			html`<p>${error}</p>`
 		);
 	};
 
@@ -301,7 +332,7 @@ export class Jsf extends LitElement {
 		// NOTE: May be debounced / throttled
 		this.data = newData;
 
-		this.onDataChange(newData, path, value, schemaPath);
+		this.dataChangeCallback(newData, path, value, schemaPath);
 
 		// TODO:
 		// this.dispatchEvent(new CustomEvent('jsf-data', { detail: newData }));

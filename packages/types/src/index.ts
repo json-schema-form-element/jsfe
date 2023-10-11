@@ -1,3 +1,4 @@
+export type * from './ui-schema.js';
 export type * from './widgets.js';
 export type * from './form.js';
 

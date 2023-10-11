@@ -31,5 +31,5 @@
     //
     "src/index.ts"
   ],
-  "exclude": ["src/styles.ts"]
+  "exclude": ["src/styles.ts", "src/react.ts"]
 }

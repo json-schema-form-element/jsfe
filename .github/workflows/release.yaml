@@ -37,7 +37,7 @@ jobs:
         uses: 'actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744' # v3.6.0
         # run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
         with:
-          fetch-depth: '0'
+          fetch-depth: 0
 
       # - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       #   persist-credentials: false
@@ -112,12 +112,24 @@ jobs:
 
       - name: 'Lerna publish [main]'
         if: github.ref == 'refs/heads/main'
-        # --create-release=github not working
+        # https://github.com/lerna/lerna/issues/2532
+        id: graduateRelease
+        continue-on-error: true
         env:
           GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           NPM_TOKEN: '${{ secrets.NPM_TOKEN }}' # Not really needed (already global)
         run: |
           pnpm lerna publish --conventional-commits --exact --conventional-graduate --create-release=github --yes
+
+      - name: Bump Prod Version Fallback
+        if: ${{ always() && steps.graduateRelease.outcome == 'failure'  }}
+        env:
+          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
+        run: |
+          echo Falling back to non-graduate release due to https://github.com/lerna/lerna/issues/2532
+          git stash
+          pnpm lerna publish --conventional-commits --exact --create-release=github --yes
 
       - name: 'Lerna publish [next]'
         if: github.ref == 'refs/heads/next'

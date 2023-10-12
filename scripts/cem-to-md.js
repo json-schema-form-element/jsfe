@@ -10,12 +10,18 @@ const markdown = customElementsManifestToMarkdown(manifest);
 
 const theme = packageDir.split('/').at(-1);
 const name = theme.at(0).toUpperCase() + theme.substring(1);
+const edition = theme === 'form' ? 'Barebone' : name;
 
 fs.writeFileSync(
 	`${packageDir}/README.md`,
-	`# JSON Schema Form Element — ***${name}*** edition
+	`# JSON Schema Form Element — ***${edition}*** edition
 
-See the [documentation](../../README.md). 
+\`\`\`sh
+npm install @jsfe/${theme}
+\`\`\`
+
+Consult the [documentation](../../README.md).  
+Open the [playground](https://jsfe.js.org).
 
 ---
 

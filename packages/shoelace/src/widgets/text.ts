@@ -9,7 +9,7 @@ import type { SlInput } from '@shoelace-style/shoelace';
 export const text: Widgets['text'] = (options) => html`
 	<!-- ${options.pattern} -->
 	<sl-input
-		type="text"
+		.type=${options.inputType}
 		.label=${options.label}
 		.helpText=${options.helpText}
 		placeholder=${options.placeholder}

@@ -5,7 +5,7 @@ import type { Widgets } from '@jsfe/types';
 export const object: Widgets['object'] = (options) => html`
 	<fieldset
 		id=${options.id}
-		class="theme-shoelace widget-object widget-fieldset"
+		class="theme-shoelace widget-object widget-fieldset level-${options.level}"
 		part="object"
 	>
 		${options.label ? html`<legend>${options.label}</legend>` : ``}

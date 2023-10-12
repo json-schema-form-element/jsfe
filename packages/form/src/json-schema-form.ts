@@ -60,6 +60,7 @@ export class Jsf extends LitElement {
 		uiSchema: UiSchema,
 		schemaPath: Path,
 		required = false,
+		level = 0,
 	): TemplateResult<1> => {
 		let result: TemplateResult<1> | undefined;
 		const currentNode: JSONSchema7 = node;
@@ -151,6 +152,7 @@ export class Jsf extends LitElement {
 				this._dig.bind(this),
 				schemaPathAugmented,
 				this.widgets,
+				level,
 			);
 		}
 
@@ -178,6 +180,7 @@ export class Jsf extends LitElement {
 				// this._handleKeydown.bind(this),
 				schemaPathAugmented,
 				this.widgets,
+				level,
 			);
 		}
 
@@ -206,6 +209,7 @@ export class Jsf extends LitElement {
 					this._dig.bind(this),
 					schemaPathAugmented,
 					this.widgets,
+					level,
 				);
 
 				/* --- Additionals Array items --- */
@@ -266,6 +270,8 @@ export class Jsf extends LitElement {
 					this._dig.bind(this),
 					schemaPathAugmented,
 					this.widgets,
+					required,
+					level,
 				);
 			}
 		}

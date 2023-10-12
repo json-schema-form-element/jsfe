@@ -1,6 +1,11 @@
 # JSON Schema Form Element — ***Types*** edition
 
-See the [documentation](../../README.md). 
+```sh
+npm install @jsfe/types
+```
+
+Consult the [documentation](../../README.md).  
+Open the [playground](https://jsfe.js.org).
 
 ---
 

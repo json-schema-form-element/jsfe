@@ -1,6 +1,11 @@
 # JSON Schema Form Element — ***Material*** edition
 
-See the [documentation](../../README.md). 
+```sh
+npm install @jsfe/material
+```
+
+Consult the [documentation](../../README.md).  
+Open the [playground](https://jsfe.js.org).
 
 ---
 
@@ -24,10 +29,10 @@ See the [documentation](../../README.md).
 
 ### Fields
 
-| Name                 | Privacy | Type    | Default    | Description | Inherited From |
-| -------------------- | ------- | ------- | ---------- | ----------- | -------------- |
-| `dataChangeCallback` | public  |         | `widgets`  |             |                |
-| `styleSheets`        | public  | `array` | `[styles]` |             |                |
+| Name          | Privacy | Type    | Default    | Description | Inherited From |
+| ------------- | ------- | ------- | ---------- | ----------- | -------------- |
+| `widgets`     | public  |         | `widgets`  |             |                |
+| `styleSheets` | public  | `array` | `[styles]` |             |                |
 
 <hr/>
 

@@ -1,6 +1,13 @@
-.theme-shoelace.widget-array {
+.theme-material.widget-array {
+	--md-sys-color-shadow: var(--md-sys-color-inverse-on-surface);
+	--md-elevation-level: 0;
+
+	&:hover {
+		--md-elevation-level: 4;
+	}
+
 	.widget-array__card {
-		// width: 100%;
+		width: 100%;
 		// transition: outline var(--sl-transition-slow);
 
 		transition: box-shadow var(--sl-transition-medium);

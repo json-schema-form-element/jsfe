@@ -1,0 +1,32 @@
+.theme-material.widget-fieldset {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em 0;
+	padding: 2em 1em;
+	margin: 0;
+	font-weight: 300;
+	border: none;
+	// border: 1px solid transparent;
+	border-radius: 1rem;
+	transition-timing-function: ease-in-out;
+	transition-duration: 250ms;
+
+	legend {
+		width: 100%;
+		font-size: 1.5em;
+		border-bottom: 1px solid var(--md-sys-color-inverse-on-surface);
+	}
+
+	.widget-object__description {
+		margin: 0 0 1rem 0;
+		opacity: calc(3 / 4);
+	}
+
+	--md-sys-color-shadow: var(--md-sys-color-inverse-on-surface);
+	--md-elevation-level: 0;
+
+	&:hover {
+		--md-elevation-level: 4;
+	}
+}

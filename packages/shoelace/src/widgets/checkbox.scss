@@ -5,6 +5,10 @@
 	flex-wrap: wrap;
 	gap: var(--sl-spacing-small);
 
+	label {
+		cursor: pointer;
+	}
+
 	.widget-checkbox__description {
 		width: 100%;
 		font-size: var(--sl-input-help-text-font-size-medium);

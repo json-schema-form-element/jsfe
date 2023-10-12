@@ -5,7 +5,11 @@ import '@material/web/elevation/elevation.js';
 
 export const object: Widgets['object'] = (options) => {
 	return html`
-		<fieldset id=${options.id} class="theme-material object" part="object">
+		<fieldset
+			id=${options.id}
+			class="theme-material widget-object widget-fieldset"
+			part="object"
+		>
 			<md-elevation></md-elevation>
 			<!--  -->
 			${options.label ? html`<legend>${options.label}</legend>` : nothing}

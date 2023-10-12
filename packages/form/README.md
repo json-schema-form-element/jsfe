@@ -1,6 +1,11 @@
-# JSON Schema Form Element — ***Form*** edition
+# JSON Schema Form Element — ***Barebone*** edition
 
-See the [documentation](../../README.md). 
+```sh
+npm install @jsfe/form
+```
+
+Consult the [documentation](../../README.md).  
+Open the [playground](https://jsfe.js.org).
 
 ---
 

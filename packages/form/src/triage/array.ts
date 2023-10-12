@@ -16,6 +16,8 @@ export const fieldArray = (
 	dig: Jsf['_dig'],
 	schemaPath: Path,
 	widgets: Widgets,
+	required = false,
+	level = 0,
 ) => {
 	if (!Array.isArray(dataLevel)) return html``;
 
@@ -60,6 +62,8 @@ export const fieldArray = (
 				uiState,
 				uiSchema,
 				schemaPathAugmented,
+				required,
+				level + 1,
 			);
 
 			const move = (direction: number) => (_event: Event) => {
@@ -168,6 +172,8 @@ export const fieldArray = (
 		controls: {
 			add: { click: addItemClick },
 		},
+
+		level,
 	};
 
 	return widgets?.array?.(options);

@@ -134,9 +134,19 @@ export const fieldPrimitive = (
 	}
 
 	if (schema.type === 'string') {
+		let inputType = 'text';
+		if (schema.format === 'password' || schema.format === 'email') {
+			inputType = schema.format;
+		}
+
+		if (uiOptions?.['ui:options']?.inputType === 'tel') {
+			inputType = 'tel';
+		}
 		const options = {
 			...baseOptions,
 			value: baseValue ? String(baseValue) : '',
+
+			inputType,
 
 			minLength: schema.minLength,
 			maxLength: schema.maxLength,
@@ -145,6 +155,10 @@ export const fieldPrimitive = (
 
 		if (uiOptions?.['ui:widget'] === 'textarea') {
 			return widgets?.textarea?.(options) || missing('textarea');
+		}
+		if (typeof uiOptions?.['ui:widget'] === 'string') {
+			const customWidgetName = uiOptions?.['ui:widget'];
+			return widgets?.[customWidgetName]?.(options) || missing('custom');
 		}
 
 		return widgets?.text?.(options) || missing('text');
@@ -205,3 +219,36 @@ export const fieldPrimitive = (
 
 	return missing(`Wrong input for: ${path.join('/')}`);
 };
+
+/* 
+
+AJV-Formats
+https://ajv.js.org/packages/ajv-formats.html
+
+date: full-date according to RFC3339 (opens new window).
+time: time (time-zone is mandatory).
+date-time: date-time (time-zone is mandatory).
+iso-time: time with optional time-zone.
+iso-date-time: date-time with optional time-zone.
+duration: duration from RFC3339(opens new window)
+uri: full URI.
+uri-reference: URI reference, including full and relative URIs.
+uri-template: URI template according to RFC6570(opens new window)
+url (deprecated): URL record (opens new window).
+email: email address.
+hostname: host name according to RFC1034 (opens new window).
+ipv4: IP address v4.
+ipv6: IP address v6.
+regex: tests whether a string is a valid regular expression by passing it to RegExp constructor.
+uuid: Universally Unique IDentifier according to RFC4122 (opens new window).
+json-pointer: JSON-pointer according to RFC6901 (opens new window).
+relative-json-pointer: relative JSON-pointer according to this draft (opens new window).
+byte: base64 encoded data according to the openApi 3.0.0 specification(opens new window)
+int32: signed 32 bits integer according to the openApi 3.0.0 specification(opens new window)
+int64: signed 64 bits according to the openApi 3.0.0 specification(opens new window)
+float: float according to the openApi 3.0.0 specification(opens new window)
+double: double according to the openApi 3.0.0 specification(opens new window)
+password: password string according to the openApi 3.0.0 specification(opens new window)
+binary: binary string according to the openApi 3.0.0 specification
+
+*/

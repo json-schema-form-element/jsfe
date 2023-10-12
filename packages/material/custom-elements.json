@@ -28,7 +28,7 @@
           "members": [
             {
               "kind": "field",
-              "name": "dataChangeCallback",
+              "name": "widgets",
               "privacy": "public",
               "default": "widgets"
             },

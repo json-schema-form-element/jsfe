@@ -27,6 +27,7 @@
   "exports": {
     ".": "./dist/esm/index.js",
     "./scss": "./src/styles.scss",
+    "./scss/*": "./src/widgets/*.scss",
     "./css": "./dist/esm/styles.css",
     "./jss": "./dist/esm/styles.js",
     "./min": "./dist/esm-min"
@@ -34,7 +35,7 @@
   "files": [
     "./dist/esm",
     "./dist/esm-min",
-    "./src/styles.scss",
+    "./src/**/*.scss",
     "./vscode.html-custom-data.json",
     "./vscode.css-custom-data.json",
     "./custom-elements.json"

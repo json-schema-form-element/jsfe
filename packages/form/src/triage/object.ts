@@ -11,6 +11,7 @@ export const fieldObject = (
 	dig: Jsf['_dig'],
 	schemaPath: Path,
 	widgets: Widgets,
+	level = 0,
 ) => {
 	const error = 'Wrong object field';
 	if (typeof schema.properties !== 'object')
@@ -44,6 +45,7 @@ export const fieldObject = (
 				uiSchema?.[propName],
 				schemaPathAugmented,
 				required,
+				level + 1,
 			);
 		},
 	);
@@ -60,6 +62,7 @@ export const fieldObject = (
 		label,
 		helpText: schema.description,
 		children,
+		level,
 	};
 
 	return (

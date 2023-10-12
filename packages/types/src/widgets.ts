@@ -23,7 +23,8 @@ export interface Widgets {
 			pattern?: string;
 			maxLength?: number;
 			minLength?: number;
-			format: 'email' | 'password' | 'tel' | 'text' | 'url';
+
+			inputType: 'email' | 'password' | 'tel' | 'text' | 'url';
 		},
 		string
 	>;
@@ -108,6 +109,7 @@ export interface Widgets {
 	object?: Widget<
 		{
 			children: TemplateResult<1> | TemplateResult<1>[];
+			level: number;
 		},
 		unknown
 	>;

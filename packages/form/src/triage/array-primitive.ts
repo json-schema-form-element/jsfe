@@ -14,6 +14,7 @@ export const fieldArrayPrimitive = (
 	// dig: Jsf['_dig'],
 	schemaPath: Path,
 	widgets: Widgets,
+	level = 0,
 ) => {
 	// if (!Array.isArray(dataLevel)) return html``;
 
@@ -61,6 +62,8 @@ export const fieldArrayPrimitive = (
 		enum: items.enum,
 
 		// itemsLabel,
+
+		level,
 
 		id,
 		// required,

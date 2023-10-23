@@ -16,8 +16,12 @@ export const date: Widgets['date'] = (options) => html`
 		.id=${options.id}
 		.required=${options.required ?? false}
 		@sl-input=${(event: CustomEvent) => {
-			const { valueAsDate: newValue } = event.target as SlInput;
-			options.valueChangedCallback?.(newValue ?? undefined);
+			const { valueAsDate: newValue, value } = event.target as SlInput;
+
+			options.valueChangedCallback?.(
+				// NOTE: Date time does not return `valueAsDate`
+				newValue ?? value ? new Date(value) : undefined,
+			);
 		}}
 	>
 	</sl-input>

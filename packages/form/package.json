@@ -1,6 +1,6 @@
 {
   "name": "@jsfe/form",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Effortless forms, with standards. Base form element for all implementations.",
   "keywords": [
     "json-schema",

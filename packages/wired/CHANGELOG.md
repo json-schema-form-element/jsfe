@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/wired@0.2.0...@jsfe/wired@0.2.1) (2023-11-30)
+
+**Note:** Version bump only for package @jsfe/wired
+
 # [0.2.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/wired@0.1.1...@jsfe/wired@0.2.0) (2023-11-30)
 
 ### Features

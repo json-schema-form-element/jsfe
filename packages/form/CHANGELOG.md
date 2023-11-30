@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/form@0.2.0...@jsfe/form@0.3.0) (2023-11-30)
+
+### Features
+
+- "disabled" and "read only" ui schema options ([01952e2](https://github.com/json-schema-form-element/jsfe/commit/01952e23355ffd5ce3cd13f8a8e5de4b05cc852c))
+
 # [0.2.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/form@0.1.1...@jsfe/form@0.2.0) (2023-11-30)
 
 ### Features

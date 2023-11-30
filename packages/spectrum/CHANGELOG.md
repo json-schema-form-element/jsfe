@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/spectrum@0.1.0...@jsfe/spectrum@0.1.1) (2023-11-30)
+
+**Note:** Version bump only for package @jsfe/spectrum
+
 # 0.1.0 (2023-11-30)
 
 ### Features

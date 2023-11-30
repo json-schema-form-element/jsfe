@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/carbon@0.1.1...@jsfe/carbon@0.1.2) (2023-11-30)
+
+**Note:** Version bump only for package @jsfe/carbon
+
 ## [0.1.1](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/carbon@0.1.0...@jsfe/carbon@0.1.1) (2023-10-12)
 
 ### Bug Fixes

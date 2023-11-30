@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/form@0.1.1...@jsfe/form@0.2.0) (2023-11-30)
+
+### Features
+
+- ui schema title + desc., better date formats ([208e596](https://github.com/json-schema-form-element/jsfe/commit/208e59600d2a6811d0596572f1bc1ea4f240a945))
+
 ## [0.1.1](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/form@0.1.0...@jsfe/form@0.1.1) (2023-10-12)
 
 ### Bug Fixes

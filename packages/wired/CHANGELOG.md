@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/wired@0.1.1...@jsfe/wired@0.2.0) (2023-11-30)
+
+### Features
+
+- more system / wired widgets, clean others ([bfcac92](https://github.com/json-schema-form-element/jsfe/commit/bfcac9247ded39af312b2df99a21a6d94d37c965))
+
 ## [0.1.1](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/wired@0.1.0...@jsfe/wired@0.1.1) (2023-10-12)
 
 ### Bug Fixes

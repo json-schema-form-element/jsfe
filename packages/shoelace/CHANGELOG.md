@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/shoelace@0.1.1...@jsfe/shoelace@0.2.0) (2023-11-30)
+
+### Bug Fixes
+
+- date-time widget coercition ([de1f6a8](https://github.com/json-schema-form-element/jsfe/commit/de1f6a88afef6efcabcdc4ebab1ca6d2897178a4))
+
+### Features
+
+- more system / wired widgets, clean others ([bfcac92](https://github.com/json-schema-form-element/jsfe/commit/bfcac9247ded39af312b2df99a21a6d94d37c965))
+- ui schema title + desc., better date formats ([208e596](https://github.com/json-schema-form-element/jsfe/commit/208e59600d2a6811d0596572f1bc1ea4f240a945))
+
 ## [0.1.1](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/shoelace@0.1.0...@jsfe/shoelace@0.1.1) (2023-10-12)
 
 ### Bug Fixes

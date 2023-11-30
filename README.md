@@ -888,7 +888,7 @@ Why so?
 But I will do my best to provide all the hooks you need, thanks to an _agnostic_ and _type-safe_ API,
 smoothening some peculiarities.
 
-Also, expect varying support for CSS implementations as for now, in 2023, it's just a bit too wild too keep up.
+Also, expect varying support for CSS implementations as for now, in 2023, it's just a bit too wild to keep up.
 
 Non-exhaustive notes about what you might deal with WC components libraries' CSS:
 

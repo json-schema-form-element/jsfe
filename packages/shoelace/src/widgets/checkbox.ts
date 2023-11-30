@@ -10,7 +10,7 @@ export const checkbox: Widgets['checkbox'] = (options) => html`
 	<div class="theme-shoelace widget-checkbox">
 		<sl-checkbox
 			type="text"
-			value=${ifDefined(options.value)}
+			.checked="${options.value}"
 			.name=${options.id}
 			.id=${options.id}
 			.required=${options.required ?? true}

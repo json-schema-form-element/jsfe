@@ -15,7 +15,7 @@ export const object: Widgets['object'] = (options) => {
 			${options.label ? html`<legend>${options.label}</legend>` : nothing}
 			<!-- -->
 			${options.helpText
-				? html`<p class="object__description">${options.helpText}</p>`
+				? html`<p class="widget-object__description">${options.helpText}</p>`
 				: nothing}
 			<!--  -->
 			${options.children}

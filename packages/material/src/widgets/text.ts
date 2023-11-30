@@ -8,7 +8,7 @@ import type { MdOutlinedTextField } from '@material/web/textfield/outlined-text-
 
 export const text: Widgets['text'] = (options) => html`
 	<md-outlined-text-field
-		.type=${'text'}
+		.type=${options.inputType}
 		.supportingText=${options.helpText}
 		.id=${options.id}
 		.label=${options.label}

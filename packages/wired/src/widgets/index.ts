@@ -3,9 +3,10 @@ export { number } from './number.js';
 export { object } from './object.js';
 export { submit } from './submit.js';
 export { text } from './text.js';
+export { range } from './range.js';
+// export { switchh as switch } from './.dev/switch.js';
 export { textarea } from './textarea.js';
 // keep-sorted end
 
-// export { checkbox } from './widgets/checkbox.js';
-// export { range } from './widgets/range.js';
-// export { enumeration } from './widgets/enumeration.js';
+// export { checkbox } from './checkbox.js';
+// export { enumeration } from './enumeration.js';

@@ -31,6 +31,11 @@
 			font-size: var(--sl-font-size-2x-large);
 			font-weight: 200;
 		}
+
+		sl-card::part(body) {
+			// background-color: slcolo;
+		}
+		// --sl-panel-background-color: var(--sl-color-neutral-50);
 	}
 
 	&.level-1 {
@@ -38,6 +43,11 @@
 			font-size: var(--sl-font-size-x-large);
 			font-weight: var(--sl-font-weight-light);
 		}
+
+		sl-card::part(header) {
+			// background-color: var(--sl-color-neutral-50);
+		}
+		// --sl-panel-background-color: var(--sl-color-neutral-50);
 	}
 
 	&.level-2 {
@@ -45,6 +55,12 @@
 			font-size: var(--sl-font-size-large);
 			font-weight: var(--sl-font-weight-light);
 		}
+
+		sl-card::part(header) {
+			// background-color: var(--sl-color-neutral-100);
+		}
+
+		// --sl-panel-background-color: var(--sl-color-neutral-100);
 	}
 
 	&.level-3 {
@@ -52,5 +68,10 @@
 			font-size: var(--sl-font-size-medium);
 			font-weight: var(--sl-font-weight-bold);
 		}
+
+		sl-card::part(header) {
+			// background-color: var(--sl-color-neutral-200);
+		}
+		// --sl-panel-background-color: var(--sl-color-neutral-200);
 	}
 }

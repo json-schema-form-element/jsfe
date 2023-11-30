@@ -1,11 +1,11 @@
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { field } from './_field.js';
 
-export const enumeration: Widgets['select'] = (options) => html`
+export const select: Widgets['select'] = (options) => html`
 	${field(
 		options,
 		html`<select

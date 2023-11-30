@@ -9,7 +9,7 @@ export const text: Widgets['text'] = (options) => html`
 	${field(
 		options,
 		html` <input
-			type="text"
+			.type=${options.inputType}
 			placeholder=${options.placeholder}
 			.value=${options.value ?? ''}
 			.name=${options.id}

@@ -50,7 +50,7 @@ export const array: Widgets['array'] = (options) => {
 							<nav>
 								<sl-tooltip content="Delete">
 									<sl-button size="small" @click=${controls.delete.click}>
-										<sl-icon name="trash3" label="Settings"></sl-icon>
+										<sl-icon name="x-lg" label="Settings"></sl-icon>
 									</sl-button>
 								</sl-tooltip>
 

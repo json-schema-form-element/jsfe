@@ -1,25 +1,7 @@
-.theme-material.widget-object {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	gap: 1em 0;
-	padding: 2em 1em;
-	margin: 0;
-	font-weight: 300;
-	border: none;
-	border-bottom: 1px solid var(--md-sys-color-inverse-on-surface);
-	border-radius: 1rem;
-	transition-timing-function: ease-in-out;
-	transition-duration: 250ms;
-
-	legend {
+.theme-system.widget-object {
+	select,
+	input:not([type='radio'], [type='checkbox']),
+	textarea {
 		width: 100%;
-		font-size: 1.5em;
-		border-bottom: 1px solid var(--md-sys-color-inverse-on-surface);
-	}
-
-	.widget-object__description {
-		margin: 0 0 1rem 0;
-		opacity: calc(3 / 4);
 	}
 }

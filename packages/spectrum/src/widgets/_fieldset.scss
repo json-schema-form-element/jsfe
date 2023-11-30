@@ -1,0 +1,58 @@
+// WIP
+
+.theme-spectrum.widget-fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spectrum-global-dimension-size-600) 0;
+	padding: var(--sp-spacing-medium) var(--sp-spacing-small);
+	margin: 0;
+	font-weight: var(--sp-font-weight-semibold);
+	border: 1px solid var(--sp-color-neutral-50);
+	border-radius: var(--sp-border-radius-large);
+
+	.widget-fieldset__description {
+		font-size: var(--sp-input-help-text-font-size-medium);
+		color: var(--sp-input-help-text-color);
+	}
+
+	& & {
+		transition: box-shadow var(--sp-transition-medium);
+
+		&:hover {
+			// background: var(--sp-color-gray-50);
+			box-shadow: var(--sp-shadow-medium);
+		}
+	}
+
+	legend {
+		// font-size: var(--sp-font-size-large);
+	}
+
+	&.level-0 {
+		legend {
+			font-size: var(--sp-font-size-2x-large);
+			font-weight: 200;
+		}
+	}
+
+	&.level-1 {
+		legend {
+			font-size: var(--sp-font-size-x-large);
+			font-weight: var(--sp-font-weight-light);
+		}
+	}
+
+	&.level-2 {
+		legend {
+			font-size: var(--sp-font-size-large);
+			font-weight: var(--sp-font-weight-light);
+		}
+	}
+
+	&.level-3 {
+		legend {
+			font-size: var(--sp-font-size-medium);
+			font-weight: var(--sp-font-weight-bold);
+		}
+	}
+}

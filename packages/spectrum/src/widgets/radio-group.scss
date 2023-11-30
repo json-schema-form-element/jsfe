@@ -1,0 +1,8 @@
+.theme-spectrum.widget-radio-group {
+	&::part(form-control-input) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--sl-spacing-small) var(--sl-spacing-x-large);
+		// justify-content: space-evenly;
+	}
+}

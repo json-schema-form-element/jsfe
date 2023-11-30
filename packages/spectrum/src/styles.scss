@@ -1,0 +1,24 @@
+// keep-sorted start
+// @import './widgets/_all.scss';
+@import './widgets/_fieldset.scss';
+// @import './widgets/array.scss';
+// @import './widgets/callout.scss';
+// @import './widgets/checkbox-group.scss';
+// @import './widgets/checkbox.scss';
+// @import './widgets/color-picker.scss';
+// @import './widgets/object.scss';
+// @import './widgets/radio-group-boolean.scss';
+// @import './widgets/radio-group.scss';
+// @import './widgets/rating.scss';
+@import './widgets/submit.scss';
+@import './widgets/text.scss';
+// keep-sorted end
+
+// -
+// NOTE: For tokens, SEE:
+
+// ./node_modules/@spectrum-web-components/styles/spectrum-scale-large.css
+// ./node_modules/@spectrum-web-components/styles/spectrum-theme-dark.css
+// ./node_modules/@spectrum-web-components/styles/typography.css
+// ./node_modules/@spectrum-web-components/styles/core-global.css
+// ./node_modules/@spectrum-web-components/styles/spectrum-core-global.cs

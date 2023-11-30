@@ -312,9 +312,6 @@ importers:
       lit:
         specifier: ^2.8.0
         version: 2.8.0
-      roughjs:
-        specifier: '4.4'
-        version: 4.4.5
       wired-elements:
         specifier: 3.0.0-rc.6
         version: 3.0.0-rc.6
@@ -7413,14 +7410,6 @@ packages:
     dependencies:
       glob: 9.3.5
     dev: true
-
-  /roughjs@4.4.5:
-    resolution: {integrity: sha512-TVuHf/Vx6PzSRny+4v2nOxdpOtkeQ3iC1sh2AhhYRZ6h8BmeJm1UR8zsITkd+Bb10dGGk6Y25KvYlKAIy0xTlw==}
-    dependencies:
-      path-data-parser: 0.1.0
-      points-on-curve: 0.2.0
-      points-on-path: 0.2.1
-    dev: false
 
   /roughjs@4.6.4:
     resolution: {integrity: sha512-s6EZ0BntezkFYMf/9mGn7M8XGIoaav9QQBCnJROWB3brUWQ683Q2LbRD/hq0Z3bAJ/9NVpU/5LpiTWvQMyLDhw==}

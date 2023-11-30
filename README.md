@@ -51,7 +51,8 @@ Comes with Shoelace 2 and Google Material 3 web components libraries or barebone
 Swap built-in components with your own, or add custom widget thanks to [UI schema](#schema) definitions. -->
 
 > **Warning**  
-> Not for production
+> Not for production.  
+> Expect the doc. to be not in sync. with the actual released code.
 
 ![](https://ik.imagekit.io/jc0/jsfe/design/header_json-schema-form-element_2RpVU_W-y-.png?updatedAt=1695289194993)
 
@@ -85,7 +86,7 @@ Jump to **implementations**:
 
 <div align="center">
 
-Jump to **UI libraries**:  
+Jump to [**UI libraries**](#component-libraries):  
 — [Shoelace](#ui-libraries)
 — [Material](#ui-libraries)
 — [Carbon](#ui-libraries)
@@ -147,7 +148,6 @@ Jump to **UI libraries**:
 		- [Support for each implementation](#support-for-each-implementation)
 - [Component libraries](#component-libraries)
 	- [Shoelace](#shoelace)
-	- [Material Design](#material-design)
 	- [Custom widgets](#custom-widgets)
 - [Validation](#validation)
 - [Schema massaging](#schema-massaging)
@@ -863,6 +863,66 @@ to deal with various template languages limitations (this is an universal proble
 
 ## Component libraries
 
+> **Warning**  
+> Before you dive in, here is some context about Web Components libraries support with JSFE.
+
+Whereas you are starting from scratch or you want to integrate declarative forms in
+an existing project, you'll want to **choose** an UI library or **build** your own from scratch (or a mix of both).  
+In either case, JSFE got you covered up, as an agnostic platform for consuming
+standardized form inputs widgets (see [types](./packages/types/src/widgets.ts)).  
+Web Components technologies has a lot of traction in 2022-23, with big names
+launching their own collections. As any flourishing eco-system, there are _opinions_.  
+Fortunately, _most_ divergences happens on the _CSS side_. Specifically on styles consuming mechanisms.
+
+As the initial maintainer, I decided to focus on _Shoelace_, while experimenting with other **great** options out there.  
+Why so?
+
+- Keep an eye on converging practices across vendors.
+- Ensure that _JSFE_ remains not to tied with _Shoelace_ way of things (which is already quite thin, relatively).
+- Be able to swap out built-ins for custom widgets on a pinch, when needed.
+- Borrow valuable ideas from others libraries and re-implement them in Shoelace when lacking.
+
+> **Warning**  
+> I will not maintain the full spectrum of _JSFE_ widgets, accross all libraries!
+
+But I will do my best to provide all the hooks you need, thanks to an _agnostic_ and _type-safe_ API,
+smoothening some peculiarities.
+
+Also, expect varying support for CSS implementations as for now, in 2023, it's just a bit too wild too keep up.
+
+Non-exhaustive notes about what you might deal with WC components libraries' CSS:
+
+- Carbon use pure SCSS import, with mixins. Only root element seems to be allowed for CSS vars injection (no `:host` or `<body>`…).
+- Material UI uses a JS color utility to inject CSS vars on `style` attributes, with a sophisticated color generator.
+- Shoelace is straightforward by giving us regular CSS files with vars I can apply on a boring class. But that also means you have to build your own color palette if you want to match your brand (it's easy).
+- Spectrum use licensed fonts it seems?
+- Spectrum has a tricky dependencies injection system, it took me the longest to achieve, and it's not perfect yet.
+
+I'll not expand up furthermore on that, but if you're curious, it's you're lucky day. You can [see and compare all styles implementations across UI libs in examples](https://github.com/json-schema-form-element/examples/blob/main/src/themes).  
+Also, I recommend that you take a peek at the [playground source-code](https://github.com/json-schema-form-element/playground) for themes wizardry.
+
+I find little gems in all of these frameworks, for example:
+
+- Carbon has neat rocker switchs for numbers
+- Adobe kills it with colours
+- Wired is fun
+- Material has an innovative color themes generator
+- …you'll find some others too!
+
+I'm not an expert on each of this libs., and please note many of them are quite new / rapidly evolving.  
+That's why it's interesting to keep a bird-eye view from time to time.
+
+Overall, Shoelace seems to be the most equilibrated in my eyes.  
+If you require top-notch support for you favourite UI lib. which is not Shoelace,
+I encourage you to contribute,
+like people did for the [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form) project.  
+Core maintainers are working on the reference implementation, and community can add things of their interest.
+
+If you want to enhance the lib. by supporting for more fields, it's quite easy!  
+Just take a peek on the [Shoelace package](./packages/shoelace),
+which is the canonical implementation (meaning it's the most complete, API-wise).  
+Then, you are welcome to make a pull request with new features, or bug fixes.
+
 ### Shoelace
 
 [Shoelace](https://shoelace.style/) is the UI component library of choice for rendering fields, and as a
@@ -870,34 +930,35 @@ general design system backbone for _JSFE_.
 It's beautiful, aims for simplicity, is not too opinionated, while still having character.  
 That's why it's the very first library implemented in _JSFE_.
 
-### Material Design
+<!-- ### Material Design -->
 
-🚧……🚧
+<!-- 🚧……🚧 -->
 
-Support for [Google Material 3 Web Components](https://material-web.dev) is planned.
+<!-- Support for [Google Material 3 Web Components](https://material-web.dev) is planned. -->
 
 ### Custom widgets
 
 🚧……🚧
 
-It's totally doable to swap some or all components for another
-system, thanks to the very Custom Element flexible nature.  
+<!-- OLD -->
+<!-- It's totally doable to swap some or all components for another
+system, thanks to the very Custom Element flexible nature.
 First step would be to create a generic interface
-for communicating with individual fields, starting with the raw system browser ones as a reference. That might add a fair amount of complexity and some (negligible?) performance impact though.  
+for communicating with individual fields, starting with the raw system browser ones as a reference. That might add a fair amount of complexity and some (negligible?) performance impact though.
 Main benefit could be to add some “missing” components in Shoelace, like
 combobox, complex date-time ranges, or whatever fancy widget your dreaming of.
 
 For example, _React JSON Schema Form_ does support a handful of different UI libraries maintained by the community,
-but AFAIK, in the Web Component space only Shoelace is on par, thanks its Lit backbone, all while beeing totally FLOSS.  
+but AFAIK, in the Web Component space only Shoelace is on par, thanks its Lit backbone, all while beeing totally FLOSS.
 Things are changing fast though, thanks to a growing WC ecosystem, with big names backing it up (Adobe, MS, Google, IBM, SpaceX… basically everyone).
 
 For now, the _JSFE_ component is one Lit Element monolith. All sub-parts are “partials“,
 not individual Web Components. Those snippets are wrapping the Shoelace
 components and make them aware and alive.
-The validation logic / UI options are mostly happening there.  
+The validation logic / UI options are mostly happening there.
 Choice has been made to tie the logic closely with the component.
-While this practice should be avoided generally, here we have a fully declarative / programmatic UI, so no need to create more levels of indirection than needed.  
-Mapping between schema and “real” fields happens at the `HTMLElement` level, same as all validation stuff, though you got hooks / bypasses for custom behaviors (see below).
+While this practice should be avoided generally, here we have a fully declarative / programmatic UI, so no need to create more levels of indirection than needed.
+Mapping between schema and “real” fields happens at the `HTMLElement` level, same as all validation stuff, though you got hooks / bypasses for custom behaviors (see below). -->
 
 ## Validation
 
@@ -970,8 +1031,10 @@ html`<json-schema-form
 
 Actual **features flags** list:
 
-- `allOf`
-- `oneOf`
+- None
+
+<!-- - `allOf`
+- `oneOf` -->
 
 ## Improvements
 

@@ -20,8 +20,9 @@ fs.writeFileSync(
 npm install @jsfe/${theme}
 \`\`\`
 
-Consult the [documentation](../../README.md).  
-Open the [playground](https://jsfe.js.org).
+- Consult the [documentation](../../README.md).
+- Open the [playground](https://jsfe.js.org).
+- Try the [examples](https://github.com/json-schema-form-element/examples#readme).
 
 ---
 

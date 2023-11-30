@@ -17,6 +17,7 @@ export const switchh: Widgets['switch'] = (options) => html`
 			const { checked: newValue } = event.target as SlSwitch;
 			options.valueChangedCallback?.(newValue);
 		}}
+		.disabled=${options.disabled}
 		>${options.label}
 		${options.helpText
 			? html`<small> -&nbsp;${options.helpText}</small>`

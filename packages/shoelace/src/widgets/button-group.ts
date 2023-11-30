@@ -29,7 +29,12 @@ export const buttonGroup: Widgets['buttonGroup'] = (options) => html`
 	>
 		${options.enum?.map(
 			(enumVal) =>
-				html`<sl-radio-button value=${String(enumVal)}
+				html`<sl-radio-button
+					.disabled=${
+						/* NOTE: This is a trick because otherwise we won't see pre-prepopulated value  */
+						String(enumVal) === options.value ? false : options.disabled
+					}
+					value=${String(enumVal)}
 					>${enumVal}</sl-radio-button
 				>`,
 		)}

@@ -25,4 +25,6 @@ export const number: Widgets['number'] = (options) =>
 				console.log(newValue);
 				options.valueChangedCallback?.(newValue);
 			}}
+			.disabled=${options.disabled}
+			.readonly=${options.readonly}
 		></sl-input>`;

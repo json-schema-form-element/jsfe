@@ -5,6 +5,9 @@ export type UiOptions = {
 	'ui:title'?: string;
 	'ui:description'?: string;
 
+	'ui:disabled'?: boolean;
+	'ui:readonly'?: boolean;
+
 	'ui:widget'?:
 		| 'radio'
 		| 'button'

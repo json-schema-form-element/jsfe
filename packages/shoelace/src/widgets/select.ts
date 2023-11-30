@@ -7,8 +7,6 @@ import '@shoelace-style/shoelace/dist/components/select/select.js';
 import '@shoelace-style/shoelace/dist/components/option/option.js';
 import type { SlSelect } from '@shoelace-style/shoelace';
 
-// .label=${options.label}
-// .helpText=${options.helpText}
 export const select: Widgets['select'] = (options) => html`
 	<sl-select
 		value=${ifDefined(options.value)}
@@ -23,6 +21,9 @@ export const select: Widgets['select'] = (options) => html`
 			}
 			options.valueChangedCallback?.(newValue);
 		}}
+		.disabled=${options.disabled}
+		label=${ifDefined(options.label)}
+		.helpText=${options.helpText ?? ''}
 		>${options.enum?.map(
 			(enumValue) =>
 				html` <sl-option .value=${String(enumValue)}>

@@ -24,6 +24,8 @@ export const text: Widgets['text'] = (options) => html`
 			const { value: newValue } = event.target as SlInput;
 			options.valueChangedCallback?.(newValue);
 		}}
+		.disabled=${options.disabled}
+		.readonly=${options.readonly}
 	>
 	</sl-input>
 `;

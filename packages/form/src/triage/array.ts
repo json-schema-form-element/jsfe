@@ -11,7 +11,7 @@ export const fieldArray = (
 	dataLevel: unknown,
 	path: Path,
 	uiState: unknown,
-	uiSchema: UiSchema,
+	uiOptions: UiSchema,
 	handleChange: Jsf['_handleChange'],
 	dig: Jsf['_dig'],
 	schemaPath: Path,
@@ -60,7 +60,7 @@ export const fieldArray = (
 				dataLevel[index],
 				[...path, index],
 				uiState,
-				uiSchema?.[index],
+				uiOptions?.[index],
 				schemaPathAugmented,
 				required,
 				level + 1,
@@ -162,7 +162,7 @@ export const fieldArray = (
 	) {
 		itemLabel = schema.items.title;
 	}
-	const arrayLabel = schema.title ?? uiSchema?.['ui:title'];
+	const arrayLabel = schema.title ?? uiOptions?.['ui:title'];
 	const options = {
 		label: arrayLabel,
 

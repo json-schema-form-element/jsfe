@@ -16,6 +16,7 @@ export const colorPicker: Widgets['colorPicker'] = (options) => html`
 
 				options.valueChangedCallback?.(newValue);
 			}}
+			.disabled=${options.disabled}
 		></sl-color-picker>
 
 		<div class="widget-color-picker__description">${options.helpText}</div>

@@ -28,6 +28,8 @@ export const date: Widgets['date'] = (options) => html`
 				value,
 			);
 		}}
+		.disabled=${options.disabled}
+		.readonly=${options.readonly}
 	>
 	</sl-input>
 `;

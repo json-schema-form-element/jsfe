@@ -18,6 +18,7 @@ export const checkbox: Widgets['checkbox'] = (options) => html`
 				const { checked: newValue } = event.target as SlCheckbox;
 				options.valueChangedCallback?.(newValue);
 			}}
+			.disabled=${options.disabled}
 		>
 			<label class="widget-checkbox__label">${options.label}</label>
 		</sl-checkbox>

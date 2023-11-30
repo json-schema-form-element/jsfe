@@ -7,13 +7,14 @@ import type { SlSelect, SlSelectEvent } from '@shoelace-style/shoelace';
 
 export const selectMultiple: Widgets['selectMultiple'] = (options) => html`
 	<sl-select
-		class="theme-shoelace widget-select-multi level-${options.level}""
+		class="theme-shoelace widget-select-multi level-${options.level}"
 		part="widget-select-multi"
 		.id=${options.id}
 		.label=${options.label ?? ''}
 		.value=${options.value}
 		multiple
 		clearable
+		.disabled=${options.disabled}
 		.helpText=${options.helpText ?? ''}
 		@sl-change=${(event: SlSelectEvent) => {
 			const { value } = event.target as SlSelect;

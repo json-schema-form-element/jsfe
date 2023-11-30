@@ -30,7 +30,9 @@ export const radioGroup: Widgets['radioGroup'] = (options) => html`
 	>
 		${options.enum?.map(
 			(enumVal) =>
-				html`<sl-radio value=${String(enumVal)}>${enumVal}</sl-radio>`,
+				html`<sl-radio .disabled=${options.disabled} value=${String(enumVal)}
+					>${enumVal}</sl-radio
+				>`,
 		)}
 	</sl-radio-group>
 `;

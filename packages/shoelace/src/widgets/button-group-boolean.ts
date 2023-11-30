@@ -24,10 +24,17 @@ export const buttonGroupBoolean: Widgets['buttonGroupBoolean'] = (
 			);
 		}}
 	>
-		<sl-radio-button value="true"
+		<sl-radio-button
+			value="true"
+			.disabled=${
+				/* NOTE: This is a trick because otherwise we won't see pre-prepopulated value  */
+				options.value === true ? false : options.disabled
+			}
 			>${options.trueLabel ?? 'Yes'}</sl-radio-button
 		>
-		<sl-radio-button value="false"
+		<sl-radio-button
+			value="false"
+			.disabled=${options.value === false ? false : options.disabled}
 			>${options.falseLabel ?? 'No'}</sl-radio-button
 		>
 	</sl-radio-group>

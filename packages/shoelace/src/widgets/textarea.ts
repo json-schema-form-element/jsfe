@@ -22,6 +22,8 @@ export const textarea: Widgets['textarea'] = (options) => html`
 			const { value: newValue } = event.target as SlTextarea;
 			options.valueChangedCallback?.(newValue);
 		}}
+		.disabled=${options.disabled}
+		.readonly=${options.readonly}
 	>
 	</sl-textarea>
 `;

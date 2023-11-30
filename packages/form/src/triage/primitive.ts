@@ -3,11 +3,9 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable max-lines */
 
-import type { JSONSchema7 } from '@jsfe/types';
-
 import type { Jsf } from '../json-schema-form.js';
 
-import type { Widgets, Path, UiSchema } from '@jsfe/types';
+import type { Widgets, Path, UiSchema, JSONSchema7 } from '@jsfe/types';
 import { html } from 'lit';
 
 export const fieldPrimitive = (
@@ -45,6 +43,9 @@ export const fieldPrimitive = (
 		schema.description ??
 		'';
 	const placeholder = uiOptions?.['ui:placeholder'] ?? '';
+
+	const disabled = uiOptions?.['ui:disabled'] || false;
+	const readonly = uiOptions?.['ui:readonly'] || false;
 
 	let baseValue: unknown;
 
@@ -86,6 +87,8 @@ export const fieldPrimitive = (
 		handleKeydown,
 		id,
 		required,
+		disabled,
+		readonly,
 	};
 
 	if (

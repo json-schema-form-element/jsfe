@@ -54,12 +54,16 @@ export const fieldArrayPrimitive = (
 		handleChange(path, enumValue, schemaPathAugmented);
 	};
 
+	const disabled = uiOptions?.['ui:disabled'] || false;
+
 	const options = {
 		label: schema.title,
 		helpText,
 
 		value: dataLevel ?? schema?.default,
 		enum: items.enum,
+
+		disabled,
 
 		// itemsLabel,
 

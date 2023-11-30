@@ -24,4 +24,5 @@ export const range: Widgets['number'] = (options) =>
 				console.log(newValue);
 				options.valueChangedCallback?.(newValue);
 			}}
+			.disabled=${options.disabled}
 		></sl-range>`;

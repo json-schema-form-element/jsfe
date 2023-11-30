@@ -10,6 +10,7 @@ import type { SlRadioGroup } from '@shoelace-style/shoelace';
 export const radioGroupBoolean: Widgets['radioGroupBoolean'] = (
 	options,
 ) => html`
+	<!-- TODO: Disabled state (not supported by Shoelace for this specific field despite the docs?) -->
 	<sl-radio-group
 		class="theme-shoelace widget-radio-group-boolean"
 		size="medium"
@@ -25,7 +26,11 @@ export const radioGroupBoolean: Widgets['radioGroupBoolean'] = (
 			);
 		}}
 	>
-		<sl-radio value="true">${options.trueLabel ?? 'Yes'}</sl-radio>
-		<sl-radio value="false">${options.falseLabel ?? 'No'}</sl-radio>
+		<sl-radio .disabled=${options.disabled} value="true"
+			>${options.trueLabel ?? 'Yes'}</sl-radio
+		>
+		<sl-radio .disabled=${options.disabled} value="false"
+			>${options.falseLabel ?? 'No'}</sl-radio
+		>
 	</sl-radio-group>
 `;

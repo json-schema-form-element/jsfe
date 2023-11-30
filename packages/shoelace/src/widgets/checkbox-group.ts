@@ -41,6 +41,7 @@ export const checkboxGroup: Widgets['checkboxGroup'] = (options) => html`
 
 						options.valueChangedCallback?.(newData);
 					}}
+					.disabled=${options.disabled}
 					>${enumValue}</sl-checkbox
 				>`;
 			})}

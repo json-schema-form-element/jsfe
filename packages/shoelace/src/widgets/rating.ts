@@ -28,5 +28,7 @@ export const rating: Widgets['number'] = (options) =>
 					console.log(newValue);
 					options.valueChangedCallback?.(newValue);
 				}}
+				.disabled=${options.disabled}
+				.readonly=${options.readonly}
 			></sl-rating>
 		</div>`;

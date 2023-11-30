@@ -60,7 +60,7 @@ export const fieldArray = (
 				dataLevel[index],
 				[...path, index],
 				uiState,
-				uiSchema,
+				uiSchema?.[index],
 				schemaPathAugmented,
 				required,
 				level + 1,
@@ -162,8 +162,9 @@ export const fieldArray = (
 	) {
 		itemLabel = schema.items.title;
 	}
+	const arrayLabel = schema.title ?? uiSchema?.['ui:title'];
 	const options = {
-		label: schema.title,
+		label: arrayLabel,
 
 		items,
 

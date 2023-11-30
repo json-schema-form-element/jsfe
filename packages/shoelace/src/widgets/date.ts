@@ -11,16 +11,21 @@ export const date: Widgets['date'] = (options) => html`
 		type=${options.type}
 		.label=${options.label ?? ''}
 		.helpText=${options.helpText ?? ''}
-		value=${options.value ? String(options.value) : ''}
+		value=${options.value ? options.value : ''}
 		.name=${options.id}
 		.id=${options.id}
 		.required=${options.required ?? false}
 		@sl-input=${(event: CustomEvent) => {
-			const { valueAsDate: newValue, value } = event.target as SlInput;
+			let { value } = event.target as SlInput;
+
+			if (options.type === 'datetime-local') {
+				value = new Date(value);
+			}
 
 			options.valueChangedCallback?.(
 				// NOTE: Date time does not return `valueAsDate`
-				newValue ?? value ? new Date(value) : undefined,
+				// TODO: valueChangedCallback should coerce to Date later (when possible)
+				value,
 			);
 		}}
 	>

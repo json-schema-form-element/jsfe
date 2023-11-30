@@ -1,4 +1,3 @@
-import { fieldArrayPrimitive } from './triage/array-primitive';
 /* eslint-disable max-lines */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
@@ -9,6 +8,7 @@ import {
 	unsafeCSS,
 	type TemplateResult,
 	type CSSResult,
+	nothing,
 } from 'lit';
 
 import { property, state } from 'lit/decorators.js';
@@ -17,12 +17,11 @@ import { createRef, ref } from 'lit/directives/ref.js';
 // import deepmerge from 'deepmerge';
 import set from 'lodash-es/set';
 
-import type { JSONSchema7 } from '@jsfe/types';
-
 // import { alternateField } from './triage/alternate.js';
 import { fieldArray } from './triage/array.js';
 import { fieldObject } from './triage/object.js';
 import { fieldPrimitive } from './triage/primitive.js';
+import { fieldArrayPrimitive } from './triage/array-primitive.js';
 
 import type {
 	DataChangeCallback,
@@ -31,6 +30,7 @@ import type {
 	Path,
 	UiSchema,
 	Widgets,
+	JSONSchema7,
 } from '@jsfe/types';
 
 export class Jsf extends LitElement {
@@ -50,9 +50,11 @@ export class Jsf extends LitElement {
 
 	@property({ type: Object }) public experimental?: FeatureFlags = {};
 
+	@property({ type: Boolean }) public submitButton = true;
+
 	@state() private _uiState: unknown = {};
 
-	protected _dig = (
+	protected _dig(
 		node: JSONSchema7,
 		dataLevel: unknown,
 		path: Path,
@@ -61,7 +63,7 @@ export class Jsf extends LitElement {
 		schemaPath: Path,
 		required = false,
 		level = 0,
-	): TemplateResult<1> => {
+	): TemplateResult<1> {
 		let result: TemplateResult<1> | undefined;
 		const currentNode: JSONSchema7 = node;
 
@@ -291,13 +293,14 @@ export class Jsf extends LitElement {
 		// 	)}`;
 		// }
 
-		if (Object.entries(node).length === 0) {
-			const error = `Empty schema`;
-			return (
-				this.widgets?.callout?.({ id: '', message: error }) ??
-				html`<p>${error}</p>`
-			);
-		}
+		// TODO: check for blank schema
+		// if (Object.entries({ ...node, title: undefined }).length === 0) {
+		// 	const error = `Empty schema`;
+		// 	return (
+		// 		this.widgets?.callout?.({ id: '', message: error }) ??
+		// 		html`<p>${error}</p>`
+		// 	);
+		// }
 
 		if (result) return result;
 
@@ -308,7 +311,7 @@ export class Jsf extends LitElement {
 			this.widgets?.callout?.({ id: '', message: error }) ??
 			html`<p>${error}</p>`
 		);
-	};
+	}
 
 	protected _setToValue(object: unknown, value: unknown, path: Path) {
 		// NOTE: Dirty method:
@@ -436,10 +439,9 @@ export class Jsf extends LitElement {
 					[],
 					false,
 				)}
-				<!--  -->
 
-				<!-- $ {JSON.stringify(this.widgets)} -->
-				${this.#submit()}
+				<!--  -->
+				${this.submitButton ? this.#submit() : nothing}
 			</form>
 		`;
 	}

@@ -35,10 +35,16 @@ export const fieldPrimitive = (
 	else if (Number.isNaN(Number(path.at(-1)))) {
 		label = String(path.at(-1));
 	}
+	if (uiOptions?.['ui:title']) {
+		label = uiOptions?.['ui:title'];
+	}
 
 	const helpText =
-		schema.description ?? (uiOptions?.['ui:help'] as string) ?? '';
-	const placeholder = (uiOptions?.['ui:placeholder'] as string) ?? '';
+		uiOptions?.['ui:help'] ??
+		uiOptions?.['ui:description'] ??
+		schema.description ??
+		'';
+	const placeholder = uiOptions?.['ui:placeholder'] ?? '';
 
 	let baseValue: unknown;
 
@@ -120,13 +126,30 @@ export const fieldPrimitive = (
 		schema.format === 'time'
 	) {
 		let type = schema.format;
+		let date = baseValue;
+
+		if (date) {
+			if (schema.format === 'date') {
+				// 		date = new Date(date).toISOString().split('T')[0];
+			}
+			if (schema.format === 'time') {
+				// 		// date = date.toISOString().split('T')[1].split('.')[0];
+				// 		// console.log({ date });
+			}
+			if (schema.format === 'date-time') {
+				if (date instanceof Date === false) {
+					date = new Date(date);
+				}
+				if (date instanceof Date) date = date.toISOString().split('.')[0];
+			}
+		}
 
 		if (schema.format === 'date-time') {
 			type = 'datetime-local';
 		}
 		const options = {
 			...baseOptions,
-			value: baseValue ? new Date(String(baseValue)) : undefined,
+			value: date,
 			type,
 		};
 
@@ -137,6 +160,10 @@ export const fieldPrimitive = (
 		let inputType = 'text';
 		if (schema.format === 'password' || schema.format === 'email') {
 			inputType = schema.format;
+		}
+
+		if (uiOptions?.['ui:widget'] === 'password') {
+			inputType = 'password';
 		}
 
 		if (uiOptions?.['ui:options']?.inputType === 'tel') {
@@ -158,7 +185,9 @@ export const fieldPrimitive = (
 		}
 		if (typeof uiOptions?.['ui:widget'] === 'string') {
 			const customWidgetName = uiOptions?.['ui:widget'];
-			return widgets?.[customWidgetName]?.(options) || missing('custom');
+			if (customWidgetName !== 'password') {
+				return widgets?.[customWidgetName]?.(options) || missing('custom');
+			}
 		}
 
 		return widgets?.text?.(options) || missing('text');

@@ -56,6 +56,7 @@ export const fieldObject = (
 	} else if (typeof key !== 'number') {
 		label = key;
 	}
+	if (typeof uiSchema?.['ui:title'] === 'string') label = uiSchema['ui:title'];
 
 	const options = {
 		id: path.join('.'),

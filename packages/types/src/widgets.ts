@@ -57,7 +57,7 @@ export interface Widgets {
 		{
 			type: 'date' | 'datetime-local' | 'time';
 		},
-		Date | undefined
+		Date | string | undefined
 	>;
 
 	rating?: Widget<

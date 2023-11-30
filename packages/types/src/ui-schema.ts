@@ -2,6 +2,9 @@ export type UiOptions = {
 	'ui:help'?: string;
 	'ui:placeholder'?: string;
 
+	'ui:title'?: string;
+	'ui:description'?: string;
+
 	'ui:widget'?:
 		| 'radio'
 		| 'button'

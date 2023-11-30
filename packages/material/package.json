@@ -58,13 +58,13 @@
     "@jsfe/types": "workspace:*"
   },
   "devDependencies": {
-    "sass": "^1.68.0",
-    "typescript": "^5.2.2"
+    "sass": "^1.69.5",
+    "typescript": "^5.3.2"
   },
   "peerDependencies": {
     "@material/material-color-utilities": "^0.2.7",
     "@material/web": "^1.0.0",
-    "lit": "^2.8.0"
+    "lit": "^3.1.0"
   },
   "publishConfig": {
     "access": "public"

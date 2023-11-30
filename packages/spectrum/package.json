@@ -55,16 +55,16 @@
   "dependencies": {
     "@jsfe/form": "workspace:*",
     "@jsfe/types": "workspace:*",
-    "@spectrum-web-components/button": "^0.39.1",
-    "@spectrum-web-components/help-text": "^0.39.1",
-    "@spectrum-web-components/radio": "^0.39.1",
-    "@spectrum-web-components/slider": "^0.39.1",
-    "@spectrum-web-components/switch": "^0.39.1"
+    "@spectrum-web-components/button": "^0.40.0",
+    "@spectrum-web-components/help-text": "^0.40.0",
+    "@spectrum-web-components/radio": "^0.40.0",
+    "@spectrum-web-components/slider": "^0.40.0",
+    "@spectrum-web-components/switch": "^0.40.0"
   },
   "devDependencies": {
-    "@spectrum-web-components/styles": "^0.39.1",
-    "sass": "^1.68.0",
-    "typescript": "^5.2.2"
+    "@spectrum-web-components/styles": "^0.40.0",
+    "sass": "^1.69.5",
+    "typescript": "^5.3.2"
   },
   "peerDependencies": {
     "@spectrum-web-components/field-label": "^0.39.1",
@@ -73,7 +73,7 @@
     "@spectrum-web-components/number-field": "^0.39.1",
     "@spectrum-web-components/textfield": "^0.39.1",
     "@spectrum-web-components/theme": "^0.39.1",
-    "lit": "^2.8.0"
+    "lit": "^3.1.0"
   },
   "publishConfig": {
     "access": "public"

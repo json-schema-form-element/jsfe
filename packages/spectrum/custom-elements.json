@@ -4,27 +4,27 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "packages/shoelace/src/form.def.ts",
+      "path": "packages/spectrum/src/form.def.ts",
       "declarations": [],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "jsf-shoelace",
+          "name": "jsf-spectrum",
           "declaration": {
-            "name": "JsfShoelace",
-            "module": "/packages/shoelace/src/form.js"
+            "name": "JsfSpectrum",
+            "module": "/packages/spectrum/src/form.js"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "packages/shoelace/src/form.ts",
+      "path": "packages/spectrum/src/form.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "JsfShoelace",
+          "name": "JsfSpectrum",
           "members": [
             {
               "kind": "field",
@@ -46,31 +46,31 @@
             "name": "Jsf",
             "package": "@jsfe/form"
           },
-          "tagName": "jsf-shoelace",
+          "tagName": "jsf-spectrum",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "JsfShoelace",
+          "name": "JsfSpectrum",
           "declaration": {
-            "name": "JsfShoelace",
-            "module": "packages/shoelace/src/form.ts"
+            "name": "JsfSpectrum",
+            "module": "packages/spectrum/src/form.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "packages/shoelace/src/index.ts",
+      "path": "packages/spectrum/src/index.ts",
       "declarations": [],
       "exports": [
         {
           "kind": "js",
-          "name": "JsfShoelace",
+          "name": "JsfSpectrum",
           "declaration": {
-            "name": "JsfShoelace",
+            "name": "JsfSpectrum",
             "module": "./form.js"
           }
         },
@@ -102,7 +102,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "packages/shoelace/src/styles.ts",
+      "path": "packages/spectrum/src/styles.ts",
       "declarations": [
         {
           "kind": "variable",
@@ -116,7 +116,7 @@
           "name": "styles",
           "declaration": {
             "name": "styles",
-            "module": "packages/shoelace/src/styles.ts"
+            "module": "packages/spectrum/src/styles.ts"
           }
         }
       ]

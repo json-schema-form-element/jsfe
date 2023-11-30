@@ -135,6 +135,16 @@
             },
             {
               "kind": "field",
+              "name": "submitButton",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "true",
+              "attribute": "submitButton"
+            },
+            {
+              "kind": "field",
               "name": "_uiState",
               "type": {
                 "text": "unknown"
@@ -143,9 +153,60 @@
               "default": "{}"
             },
             {
-              "kind": "field",
+              "kind": "method",
               "name": "_dig",
-              "privacy": "protected"
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "TemplateResult<1>"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": {
+                    "text": "JSONSchema7"
+                  }
+                },
+                {
+                  "name": "dataLevel",
+                  "type": {
+                    "text": "unknown"
+                  }
+                },
+                {
+                  "name": "path",
+                  "type": {
+                    "text": "Path"
+                  }
+                },
+                {
+                  "name": "uiState",
+                  "type": {
+                    "text": "unknown"
+                  }
+                },
+                {
+                  "name": "uiSchema",
+                  "type": {
+                    "text": "UiSchema"
+                  }
+                },
+                {
+                  "name": "schemaPath",
+                  "type": {
+                    "text": "Path"
+                  }
+                },
+                {
+                  "name": "required",
+                  "default": "false"
+                },
+                {
+                  "name": "level",
+                  "default": "0"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -288,6 +349,14 @@
               },
               "default": "{}",
               "fieldName": "experimental"
+            },
+            {
+              "name": "submitButton",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "submitButton"
             }
           ],
           "superclass": {

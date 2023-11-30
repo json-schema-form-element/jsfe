@@ -4,8 +4,9 @@
 npm install @jsfe/form
 ```
 
-Consult the [documentation](../../README.md).  
-Open the [playground](https://jsfe.js.org).
+- Consult the [documentation](../../README.md).
+- Open the [playground](https://jsfe.js.org).
+- Try the [examples](https://github.com/json-schema-form-element/examples#readme).
 
 ---
 
@@ -39,29 +40,30 @@ Open the [playground](https://jsfe.js.org).
 
 ### Fields
 
-| Name                 | Privacy   | Type                        | Default | Description | Inherited From |
-| -------------------- | --------- | --------------------------- | ------- | ----------- | -------------- |
-| `schema`             | public    | `JSONSchema7`               | `{}`    |             |                |
-| `data`               | public    | `unknown`                   | `{}`    |             |                |
-| `uiSchema`           | public    | `UiSchema`                  | `{}`    |             |                |
-| `submitCallback`     | public    | `OnFormSubmit`              |         |             |                |
-| `dataChangeCallback` | public    | `DataChangeCallback`        |         |             |                |
-| `widgets`            | public    | `Widgets`                   | `{}`    |             |                |
-| `styleSheets`        | public    | `CSSResult[]`               | `[]`    |             |                |
-| `experimental`       | public    | `FeatureFlags \| undefined` | `{}`    |             |                |
-| `_uiState`           | private   | `unknown`                   | `{}`    |             |                |
-| `_dig`               | protected |                             |         |             |                |
-| `#submit`            | private   |                             |         |             |                |
-| `#formRef`           | private   |                             |         |             |                |
+| Name                 | Privacy | Type                        | Default | Description | Inherited From |
+| -------------------- | ------- | --------------------------- | ------- | ----------- | -------------- |
+| `schema`             | public  | `JSONSchema7`               | `{}`    |             |                |
+| `data`               | public  | `unknown`                   | `{}`    |             |                |
+| `uiSchema`           | public  | `UiSchema`                  | `{}`    |             |                |
+| `submitCallback`     | public  | `OnFormSubmit`              |         |             |                |
+| `dataChangeCallback` | public  | `DataChangeCallback`        |         |             |                |
+| `widgets`            | public  | `Widgets`                   | `{}`    |             |                |
+| `styleSheets`        | public  | `CSSResult[]`               | `[]`    |             |                |
+| `experimental`       | public  | `FeatureFlags \| undefined` | `{}`    |             |                |
+| `submitButton`       | public  | `boolean`                   | `true`  |             |                |
+| `_uiState`           | private | `unknown`                   | `{}`    |             |                |
+| `#submit`            | private |                             |         |             |                |
+| `#formRef`           | private |                             |         |             |                |
 
 ### Methods
 
-| Name             | Privacy   | Description | Parameters                                     | Return | Inherited From |
-| ---------------- | --------- | ----------- | ---------------------------------------------- | ------ | -------------- |
-| `_setToValue`    | protected |             | `object: unknown, value: unknown, path: Path`  |        |                |
-| `_handleChange`  | protected |             | `path: Path, value: unknown, schemaPath: Path` |        |                |
-| `_handleKeydown` | protected |             | `event: KeyboardEvent`                         |        |                |
-| `_updateUi`      | protected |             | `path: Path, value: unknown`                   |        |                |
+| Name             | Privacy   | Description | Parameters                                                                                                                   | Return              | Inherited From |
+| ---------------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------- |
+| `_dig`           | protected |             | `node: JSONSchema7, dataLevel: unknown, path: Path, uiState: unknown, uiSchema: UiSchema, schemaPath: Path, required, level` | `TemplateResult<1>` |                |
+| `_setToValue`    | protected |             | `object: unknown, value: unknown, path: Path`                                                                                |                     |                |
+| `_handleChange`  | protected |             | `path: Path, value: unknown, schemaPath: Path`                                                                               |                     |                |
+| `_handleKeydown` | protected |             | `event: KeyboardEvent`                                                                                                       |                     |                |
+| `_updateUi`      | protected |             | `path: Path, value: unknown`                                                                                                 |                     |                |
 
 ### Attributes
 
@@ -73,6 +75,7 @@ Open the [playground](https://jsfe.js.org).
 | `widgets`      | widgets      |                |
 | `styleSheets`  | styleSheets  |                |
 | `experimental` | experimental |                |
+| `submitButton` | submitButton |                |
 
 <hr/>
 

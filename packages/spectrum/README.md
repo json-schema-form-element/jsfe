@@ -1,7 +1,7 @@
-# JSON Schema Form Element — ***Shoelace*** edition
+# JSON Schema Form Element — ***Spectrum*** edition
 
 ```sh
-npm install @jsfe/shoelace
+npm install @jsfe/spectrum
 ```
 
 - Consult the [documentation](../../README.md).
@@ -10,17 +10,17 @@ npm install @jsfe/shoelace
 
 ---
 
-# `packages/shoelace/src/form.def.ts`:
+# `packages/spectrum/src/form.def.ts`:
 
 ## Exports
 
 | Kind                        | Name           | Declaration | Module                         | Package |
 | --------------------------- | -------------- | ----------- | ------------------------------ | ------- |
-| `custom-element-definition` | `jsf-shoelace` | JsfShoelace | /packages/shoelace/src/form.js |         |
+| `custom-element-definition` | `jsf-spectrum` | JsfSpectrum | /packages/spectrum/src/form.js |         |
 
-# `packages/shoelace/src/form.ts`:
+# `packages/spectrum/src/form.ts`:
 
-## class: `JsfShoelace`, `jsf-shoelace`
+## class: `JsfSpectrum`, `jsf-spectrum`
 
 ### Superclass
 
@@ -41,20 +41,20 @@ npm install @jsfe/shoelace
 
 | Kind | Name          | Declaration | Module                        | Package |
 | ---- | ------------- | ----------- | ----------------------------- | ------- |
-| `js` | `JsfShoelace` | JsfShoelace | packages/shoelace/src/form.ts |         |
+| `js` | `JsfSpectrum` | JsfSpectrum | packages/spectrum/src/form.ts |         |
 
-# `packages/shoelace/src/index.ts`:
+# `packages/spectrum/src/index.ts`:
 
 ## Exports
 
 | Kind | Name          | Declaration | Module    | Package            |
 | ---- | ------------- | ----------- | --------- | ------------------ |
-| `js` | `JsfShoelace` | JsfShoelace | ./form.js |                    |
+| `js` | `JsfSpectrum` | JsfSpectrum | ./form.js |                    |
 | `js` | `*`           | \*          |           | ./widgets/index.js |
 | `js` | `*`           | \*          |           | @jsfe/types        |
 | `js` | `Jsf`         | Jsf         |           | @jsfe/form         |
 
-# `packages/shoelace/src/styles.ts`:
+# `packages/spectrum/src/styles.ts`:
 
 ## Variables
 
@@ -68,5 +68,5 @@ npm install @jsfe/shoelace
 
 | Kind | Name     | Declaration | Module                          | Package |
 | ---- | -------- | ----------- | ------------------------------- | ------- |
-| `js` | `styles` | styles      | packages/shoelace/src/styles.ts |         |
+| `js` | `styles` | styles      | packages/spectrum/src/styles.ts |         |
 

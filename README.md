@@ -1,7 +1,8 @@
 # 📝  JSON Schema Form Element
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@jsfe/form)
-[![ISC License](https://img.shields.io/npm/l/@jsfe/form)](./LICENSE)  
+[![ISC License](https://img.shields.io/npm/l/@jsfe/form)](./LICENSE)
+![Downloads](https://img.shields.io/npm/dt/@jsfe/form)
 [![GitHub](https://img.shields.io/badge/Repository-222222?logo=github)](https://github.com/json-schema-form-element/jsfe)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://makeapullrequest.com)  
 [![TypeScript](https://img.shields.io/badge/TypeScript-333333?logo=typescript)](http://www.typescriptlang.org/)
@@ -50,7 +51,7 @@ Comes with Shoelace 2 and Google Material 3 web components libraries or barebone
 
 Swap built-in components with your own, or add custom widget thanks to [UI schema](#schema) definitions. -->
 
-> **Warning**  
+> [!CAUTION]  
 > Not for production.  
 > Expect the doc. to be not in sync. with the actual released code.
 
@@ -133,7 +134,7 @@ Jump to [**UI libraries**](#component-libraries):
 - [Usage](#usage)
 	- [Installation](#installation)
 		- [UI Libraries](#ui-libraries)
-	- [Implementation](#implementation)
+	- [Implementations](#implementations)
 		- [All examples](#all-examples)
 		- [Pure HTML with CDN](#pure-html-with-cdn)
 		- [TypeScript (no framework)](#typescript-no-framework)
@@ -149,6 +150,7 @@ Jump to [**UI libraries**](#component-libraries):
 - [Component libraries](#component-libraries)
 	- [Shoelace](#shoelace)
 	- [Custom widgets](#custom-widgets)
+		- [Design choices](#design-choices)
 - [Validation](#validation)
 - [Schema massaging](#schema-massaging)
 - [Custom Elements Manifests](#custom-elements-manifests)
@@ -560,6 +562,8 @@ items:
 
 ### Installation
 
+**This is for the bare package**. You'll have to bring all the widgets yourself.
+
 ```sh
 npm i @jsfe/form
 # or
@@ -572,7 +576,7 @@ yarn add @jsfe/form
 
 See [examples/src/pages/flavored.astro](https://github.com/json-schema-form-element/examples/blob/main/src/pages/flavored.astro)
 
-Alternatively:
+_Alternatively_:
 
 ```
 npm install @jsfe/shoelace
@@ -601,9 +605,9 @@ import '@shoelace-style/shoelace/dist/themes/dark.css';
 
 See also the [CSS section](#CSS).
 
-### Implementation
+### Implementations
 
-> **Warning**  
+> [!CAUTION]  
 > This project is new, API is subject to changes
 
 #### All examples
@@ -855,7 +859,7 @@ Please file an issue if an info is wrong or missing.
 Each implementation examples are trying to show off the most type-safe way to use JSFE, with the least trade-offs.
 
 Using it more **declaratively** or **imperatively** is up to you, your framework ability and you coding style.  
-Bot usages are valid and can be mixed. Typically when you want to use the schema elsewhere in your app., or
+Both usages are valid and can be mixed. Typically when you want to use the schema elsewhere in your app., or
 when your callbacks are getting too beefy, you'll better extract them from templates.
 
 Generally, imperative usage get perfect TypeScript support (you just handle the class), whereas declaratively, you'll have
@@ -863,7 +867,7 @@ to deal with various template languages limitations (this is an universal proble
 
 ## Component libraries
 
-> **Warning**  
+> [!IMPORTANT]  
 > Before you dive in, here is some context about Web Components libraries support with JSFE.
 
 Whereas you are starting from scratch or you want to integrate declarative forms in
@@ -880,10 +884,10 @@ Why so?
 - Keep an eye on converging practices across vendors.
 - Ensure that _JSFE_ remains not to tied with _Shoelace_ way of things (which is already quite thin, relatively).
 - Be able to swap out built-ins for custom widgets on a pinch, when needed.
-- Borrow valuable ideas from others libraries and re-implement them in Shoelace when lacking.
+- Borrow valuable ideas from others libraries and re-implement them with Shoelace bits when lacking.
 
-> **Warning**  
-> I will not maintain the full spectrum of _JSFE_ widgets, accross all libraries!
+> [!WARNING]  
+> I will not maintain the **full spectrum** of _JSFE_ widgets, accross all libraries!
 
 But I will do my best to provide all the hooks you need, thanks to an _agnostic_ and _type-safe_ API,
 smoothening some peculiarities.
@@ -938,6 +942,20 @@ That's why it's the very first library implemented in _JSFE_.
 
 ### Custom widgets
 
+#### Design choices
+
+You might have noticed that _JSFE_ is not using Custom Elements as a medium for injecting widgets.  
+First prototypes were using them, but I've had troubles regarding the parent form element awareness about its children.  
+E.g. with Shoelace, inputs weren't responding well with form validation, the <kbd>ENTER</kbd> key for submit, etc.  
+I'm sure there are ways to circumvent those hassles (forwarding events…). I tried, but for now it's not a priority, as that might affect various UI libs in different ways.
+
+Moreover, Web Components users are eager to see [Custom Registries](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) becoming maintream.
+That will make the process of overriding widgets much more flexible.
+
+For now, using Lit's `TemplateResult` (from a function returning a `html` literal) is straight-forward, however there are some trade-offs; it's a state-less function, no CSS scoping, lit-tied, etc.
+
+Ultimately, goal is to make JSFE fully modular and agnostic, by using well-defined Custom Elements, for each individual form control.
+
 🚧……🚧
 
 <!-- OLD -->
@@ -962,7 +980,7 @@ Mapping between schema and “real” fields happens at the `HTMLElement` level,
 
 ## Validation
 
-You're responsible to hook-up additional / more advanced validation with, e.g, AJV.
+You're responsible to hook-up additional / more advanced validation with, e.g, AJV.  
 HTML native validation is already quite powerful, but you might want to do
 your own wizardry.
 Note that client-validation is more for user experience,
@@ -977,8 +995,8 @@ JSFE doesn't bundle, dereference, nor it is fetching remote
 schemas.  
 Doing so would add a huge payload to the library, and you might certainly have already those tools at hand somewhere in your stack.  
 Only thing it does is resolving [JSON references](https://datatracker.ietf.org/doc/html/draft-pbryan-zyp-json-ref-03), pointing to **local definitions** only.
-Implementation is quite simple, and because this is a much needed feature for DRY-ness, recursivity…  
-Hopefully it's easy to bring in an advanced parser along, like the [`json-schema-ref-parser`](https://github.com/APIDevTools/json-schema-ref-parser).
+This is because implementation is relatively trivial, without much code, and that's a much needed feature for DRY-ness, recursivity…  
+Hopefully it's easy to bring in an full-featured parser / resolver along, like the [`json-schema-ref-parser`](https://github.com/APIDevTools/json-schema-ref-parser).
 
 ## Custom Elements Manifests
 
@@ -1003,7 +1021,7 @@ With internal dependencies included, minus peer dependencies (UI libs.):
 </div>
 
 `@jsfe/form` contains the base class from which all other packages extends themselves from.  
-You don't need to install it, unless you want to provide widgets and styles from scratch.  
+**You don't need to install it**, unless you want to provide widgets and styles from scratch.  
 If you just want to override _some_ of the flavored components, `@jsfe/<theme>` packages are handy starters.
 
 `@jsfe/types` contains everything for assisting your own widgets authoring.  
@@ -1011,7 +1029,9 @@ It's re-exported from every package so you don't need to install it on your own.
 
 ### _Next_ versions
 
-You can try nightly builds from the `next` branch like this: `npm i @jsfe/<package>@next`.
+> [!TIP]  
+> You can try the upcoming release from the [`next` branch](https://github.com/json-schema-form-element/jsfe/tree/next) like this:  
+> `npm i @jsfe/<package>@next`.
 
 ## Experimental features
 

@@ -1,0 +1,21 @@
+{
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "packages/shoelace/node_modules/@shoelace-style/shoelace/dist/themes/dark.css",
+    // "packages/shoelace/node_modules/@shoelace-style/shoelace/dist/themes/light.css",
+
+    "packages/spectrum/node_modules/@spectrum-web-components/styles/spectrum-scale-large.css",
+    "packages/spectrum/node_modules/@spectrum-web-components/styles/spectrum-theme-dark.css",
+    "packages/spectrum/node_modules/@spectrum-web-components/styles/typography.css",
+    "packages/spectrum/node_modules/@spectrum-web-components/styles/core-global.css",
+    "packages/spectrum/node_modules/@spectrum-web-components/styles/spectrum-core-global.css"
+  ],
+  "markdown.extension.toc.levels": "2..6",
+
+  // Unused
+  "html.customData": ["./vscode.html-custom-data.json"],
+  "css.customData": ["./vscode.css-custom-data.json"]
+}

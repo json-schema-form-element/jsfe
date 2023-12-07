@@ -44,6 +44,7 @@
     "eslint-plugin-tsdoc": "^0.2.17",
     "lerna": "^8.0.0",
     "prettier": "^3.1.0",
+    "remark": "^15.0.1",
     "sort-package-json": "^2.6.0",
     "stylelint": "^15.11.0",
     "stylelint-config-prettier": "^9.0.5",

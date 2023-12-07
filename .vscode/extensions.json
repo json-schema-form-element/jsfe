@@ -1,1 +1,8 @@
-{}
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
+    "runem.lit-plugin",
+    "esbenp.prettier-vscode"
+  ]
+}

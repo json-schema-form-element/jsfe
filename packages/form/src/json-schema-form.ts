@@ -1,37 +1,37 @@
 /* eslint-disable max-lines */
+
 /* eslint-disable class-methods-use-this */
+
 /* eslint-disable no-underscore-dangle */
-
-import {
-	LitElement,
-	html,
-	unsafeCSS,
-	type TemplateResult,
-	type CSSResult,
-	nothing,
-} from 'lit';
-
-import { property, state } from 'lit/decorators.js';
-import { createRef, ref } from 'lit/directives/ref.js';
-
 // import deepmerge from 'deepmerge';
 import set from 'lodash-es/set';
 
-// import { alternateField } from './triage/alternate.js';
-import { fieldArray } from './triage/array.js';
-import { fieldObject } from './triage/object.js';
-import { fieldPrimitive } from './triage/primitive.js';
-import { fieldArrayPrimitive } from './triage/array-primitive.js';
+import {
+	type CSSResult,
+	LitElement,
+	type TemplateResult,
+	html,
+	nothing,
+	unsafeCSS,
+} from 'lit';
+import { property, state } from 'lit/decorators.js';
+import { createRef, ref } from 'lit/directives/ref.js';
 
 import type {
 	DataChangeCallback,
 	FeatureFlags,
+	JSONSchema7,
 	OnFormSubmit,
 	Path,
 	UiSchema,
 	Widgets,
-	JSONSchema7,
 } from '@jsfe/types';
+
+import { fieldArrayPrimitive } from './triage/array-primitive.js';
+// import { alternateField } from './triage/alternate.js';
+import { fieldArray } from './triage/array.js';
+import { fieldObject } from './triage/object.js';
+import { fieldPrimitive } from './triage/primitive.js';
 
 export class Jsf extends LitElement {
 	@property({ type: Object }) public schema: JSONSchema7 = {};
@@ -52,7 +52,7 @@ export class Jsf extends LitElement {
 
 	@property({ type: Boolean }) public submitButton = true;
 
-	@property({ type: String }) public submitButtonText = 'Submit';
+	@property({ type: String }) public submitButtonLabel = 'Submit';
 
 	@state() private _uiState: unknown = {};
 
@@ -129,7 +129,7 @@ export class Jsf extends LitElement {
 				// return flag('allOf');
 			}
 
-			const nodeParsed = node;
+			let nodeParsed = node;
 
 			// if (currentNode.allOf) {
 			// 	node.allOf?.forEach((subSchema) => {

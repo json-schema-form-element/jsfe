@@ -1,10 +1,12 @@
 /* eslint-disable max-lines */
+
 /* eslint-disable arrow-body-style */
-import type { JSONSchema7 } from '@jsfe/types';
 import { TemplateResult, html } from 'lit';
 
+import type { JSONSchema7 } from '@jsfe/types';
+import type { Path, UiSchema, Widgets } from '@jsfe/types';
+
 import type { Jsf } from '../json-schema-form.js';
-import type { Widgets, Path, UiSchema } from '@jsfe/types';
 
 export const fieldArray = (
 	schema: JSONSchema7,

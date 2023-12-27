@@ -2,8 +2,8 @@ import { html } from 'lit';
 
 import type { Widgets } from '@jsfe/types';
 
-import '@shoelace-style/shoelace/dist/components/select/select.js';
 import type { SlSelect, SlSelectEvent } from '@shoelace-style/shoelace';
+import '@shoelace-style/shoelace/dist/components/select/select.js';
 
 export const selectMultiple: Widgets['selectMultiple'] = (options) => html`
 	<sl-select

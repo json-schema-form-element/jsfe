@@ -1,4 +1,4 @@
-import { nothing, html, type TemplateResult } from 'lit';
+import { type TemplateResult, html, nothing } from 'lit';
 
 import type { WidgetBaseParams } from '@jsfe/types';
 

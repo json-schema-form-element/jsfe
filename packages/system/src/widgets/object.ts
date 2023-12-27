@@ -1,5 +1,6 @@
+import { html, nothing } from 'lit';
+
 import type { Widgets } from '@jsfe/types';
-import { nothing, html } from 'lit';
 
 export const object: Widgets['object'] = (options) => html`
 	<fieldset

@@ -1,11 +1,12 @@
-import { field } from './_field.js';
-import { html } from 'lit';
-
 import 'wired-elements/lib/wired-textarea.js';
 import type { WiredTextarea } from 'wired-elements/lib/wired-textarea.js';
 
-import type { Widgets } from '@jsfe/types';
+import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import type { Widgets } from '@jsfe/types';
+
+import { field } from './_field.js';
 
 export const textarea: Widgets['text'] = (options) => html`
 	${field(

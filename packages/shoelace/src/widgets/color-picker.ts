@@ -2,8 +2,8 @@ import { html } from 'lit';
 
 import type { Widgets } from '@jsfe/types';
 
-import '@shoelace-style/shoelace/dist/components/color-picker/color-picker.js';
 import type { SlColorPicker } from '@shoelace-style/shoelace';
+import '@shoelace-style/shoelace/dist/components/color-picker/color-picker.js';
 
 export const colorPicker: Widgets['colorPicker'] = (options) => html`
 	<div class="theme-shoelace widget-color-picker">

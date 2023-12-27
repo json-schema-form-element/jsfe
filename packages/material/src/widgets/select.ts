@@ -3,8 +3,8 @@ import { html } from 'lit';
 import type { Widgets } from '@jsfe/types';
 
 import '@material/web/select/outlined-select.js';
-import '@material/web/select/select-option.js';
 import type { MdOutlinedSelect } from '@material/web/select/outlined-select.js';
+import '@material/web/select/select-option.js';
 
 export const select: Widgets['select'] = (options) => html`
 	<md-outlined-select

@@ -1,12 +1,14 @@
 // import { JsfText } from './../facades/text';
 // import { debuggerInline } from './utils.js';
+
 /* eslint-disable arrow-body-style */
+
 /* eslint-disable max-lines */
+import { html } from 'lit';
+
+import type { JSONSchema7, Path, UiSchema, Widgets } from '@jsfe/types';
 
 import type { Jsf } from '../json-schema-form.js';
-
-import type { Widgets, Path, UiSchema, JSONSchema7 } from '@jsfe/types';
-import { html } from 'lit';
 
 export const fieldPrimitive = (
 	schema: JSONSchema7,

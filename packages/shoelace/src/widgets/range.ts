@@ -3,8 +3,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
-import '@shoelace-style/shoelace/dist/components/range/range.js';
 import type { SlRange } from '@shoelace-style/shoelace';
+import '@shoelace-style/shoelace/dist/components/range/range.js';
 
 export const range: Widgets['number'] = (options) =>
 	html` <!--  -->

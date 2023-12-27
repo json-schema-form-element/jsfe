@@ -1,12 +1,11 @@
 import { html } from 'lit';
-// import { ifDefined } from 'lit/directives/if-defined.js';
 
+// import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Widgets } from '@jsfe/types';
 
+import type { RadioGroup } from '@spectrum-web-components/radio';
 import '@spectrum-web-components/radio/sp-radio-group.js';
 import '@spectrum-web-components/radio/sp-radio.js';
-
-import type { RadioGroup } from '@spectrum-web-components/radio';
 
 export const radioGroup: Widgets['radioGroup'] = (options) => html`
 	<sp-radio-group

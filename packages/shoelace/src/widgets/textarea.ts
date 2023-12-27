@@ -3,8 +3,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
-import '@shoelace-style/shoelace/dist/components/textarea/textarea.js';
 import type { SlTextarea } from '@shoelace-style/shoelace';
+import '@shoelace-style/shoelace/dist/components/textarea/textarea.js';
 
 export const textarea: Widgets['textarea'] = (options) => html`
 	<!--  -->

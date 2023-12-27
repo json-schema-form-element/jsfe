@@ -1,6 +1,7 @@
 import { Jsf } from '@jsfe/form';
-import * as widgets from './widgets/index.js';
+
 import { styles } from './styles.js';
+import * as widgets from './widgets/index.js';
 
 export class JsfCarbon extends Jsf {
 	public widgets = widgets;

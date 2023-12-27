@@ -3,8 +3,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
-import '@shoelace-style/shoelace/dist/components/input/input.js';
 import type { SlInput } from '@shoelace-style/shoelace';
+import '@shoelace-style/shoelace/dist/components/input/input.js';
 
 export const text: Widgets['text'] = (options) => html`
 	<!-- ${options.pattern} -->

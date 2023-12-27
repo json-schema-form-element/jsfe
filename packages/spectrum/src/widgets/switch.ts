@@ -1,10 +1,10 @@
 import { html, nothing } from 'lit';
-// import { ifDefined } from 'lit/directives/if-defined.js';
 
+// import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Widgets } from '@jsfe/types';
 
-import '@spectrum-web-components/switch/sp-switch.js';
 import type { Switch } from '@spectrum-web-components/switch';
+import '@spectrum-web-components/switch/sp-switch.js';
 
 export const switchh: Widgets['switch'] = (options) => html`
 	<sp-switch

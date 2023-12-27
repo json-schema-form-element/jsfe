@@ -1,4 +1,4 @@
-import { nothing, html } from 'lit';
+import { html, nothing } from 'lit';
 
 import type { Widgets } from '@jsfe/types';
 

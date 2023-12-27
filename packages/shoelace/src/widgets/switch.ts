@@ -1,10 +1,10 @@
 import { html, nothing } from 'lit';
-// import { ifDefined } from 'lit/directives/if-defined.js';
 
+// import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Widgets } from '@jsfe/types';
 
-import '@shoelace-style/shoelace/dist/components/switch/switch.js';
 import type { SlSwitch } from '@shoelace-style/shoelace';
+import '@shoelace-style/shoelace/dist/components/switch/switch.js';
 
 export const switchh: Widgets['switch'] = (options) => html`
 	<sl-switch

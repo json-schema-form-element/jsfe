@@ -2,8 +2,8 @@ import { html, nothing } from 'lit';
 
 import type { Widgets } from '@jsfe/types';
 
-import '@shoelace-style/shoelace/dist/components/checkbox/checkbox.js';
 import type { SlCheckbox } from '@shoelace-style/shoelace';
+import '@shoelace-style/shoelace/dist/components/checkbox/checkbox.js';
 
 export const checkboxGroup: Widgets['checkboxGroup'] = (options) => html`
 	<fieldset

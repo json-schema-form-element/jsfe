@@ -54,12 +54,7 @@
   },
   "dependencies": {
     "@jsfe/form": "workspace:*",
-    "@jsfe/types": "workspace:*",
-    "@spectrum-web-components/button": "^0.40.0",
-    "@spectrum-web-components/help-text": "^0.40.0",
-    "@spectrum-web-components/radio": "^0.40.0",
-    "@spectrum-web-components/slider": "^0.40.0",
-    "@spectrum-web-components/switch": "^0.40.0"
+    "@jsfe/types": "workspace:*"
   },
   "devDependencies": {
     "@spectrum-web-components/styles": "^0.40.0",
@@ -67,6 +62,11 @@
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
+    "@spectrum-web-components/button": "^0.40.0",
+    "@spectrum-web-components/help-text": "^0.40.0",
+    "@spectrum-web-components/radio": "^0.40.0",
+    "@spectrum-web-components/slider": "^0.40.0",
+    "@spectrum-web-components/switch": "^0.40.0",
     "@spectrum-web-components/field-label": "^0.39.1",
     "@spectrum-web-components/icon": "^0.39.1",
     "@spectrum-web-components/icons": "^0.39.1",

@@ -6,3 +6,13 @@ overrides:
   - files: ['*.json', '*.yaml']
     options:
       useTabs: false
+
+plugins:
+  - '@trivago/prettier-plugin-sort-imports'
+
+# importOrder: ['^@core/(.*)$', '^@server/(.*)$', '^@ui/(.*)$', '^[./]']
+# TODO: better custom ordering
+importOrder: ['^lit(.*)$', '^@jsfe/(.*)$', '^@(.*)$', '^[./]']
+importOrderSeparation: true
+importOrderSortSpecifiers: true
+importOrderParserPlugins: ['typescript', 'decorators-legacy']

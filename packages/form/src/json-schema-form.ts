@@ -52,6 +52,8 @@ export class Jsf extends LitElement {
 
 	@property({ type: Boolean }) public submitButton = true;
 
+	@property({ type: String }) public submitButtonText = 'Submit';
+
 	@state() private _uiState: unknown = {};
 
 	protected _dig(
@@ -127,7 +129,7 @@ export class Jsf extends LitElement {
 				// return flag('allOf');
 			}
 
-			let nodeParsed = node;
+			const nodeParsed = node;
 
 			// if (currentNode.allOf) {
 			// 	node.allOf?.forEach((subSchema) => {
@@ -394,12 +396,15 @@ export class Jsf extends LitElement {
 	}
 
 	#submit = () => {
-		const options = { id: '__submit' };
+		const options: Widgets['submit'] = {
+			id: '__submit_button',
+			label: this.submitButtonLabel,
+		};
 		const error = 'Missing submit widget.';
 		return (
 			this.widgets?.submit?.(options) ??
 			// systemWidgets?.submit?.(options) ??
-			this.widgets?.callout?.({ ...options, message: error }) ??
+			this.widgets?.callout?.({ message: error }) ??
 			error
 		);
 	};

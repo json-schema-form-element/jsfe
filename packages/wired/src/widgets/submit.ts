@@ -1,8 +1,8 @@
+import 'wired-elements/lib/wired-button.js';
+
 import { html } from 'lit';
 
 import type { Widgets } from '@jsfe/types';
-
-import 'wired-elements/lib/wired-button.js';
 
 export const submit: Widgets['submit'] = (options) => html`
 	<!--  -->
@@ -13,7 +13,7 @@ export const submit: Widgets['submit'] = (options) => html`
 			@click=${(event: Event) =>
 				// FIXME: !!!
 				event.target?.dispatchEvent(new Event('submit', { bubbles: true }))}
-			>Submit</wired-button
+			>${options.label ?? 'Submit'}</wired-button
 		>
 	</div>
 `;

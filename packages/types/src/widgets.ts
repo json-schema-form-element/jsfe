@@ -146,5 +146,5 @@ export interface Widgets {
 		type?: 'tip' | 'warning' | 'danger';
 	}>;
 
-	submit?: Widget<undefined>;
+	submit?: Widget<{ id?: string; label?: string }>;
 }

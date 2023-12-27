@@ -922,7 +922,7 @@ I encourage you to contribute,
 like people did for the [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form) project.  
 Core maintainers are working on the reference implementation, and community can add things of their interest.
 
-If you want to enhance the lib. by supporting for more fields, it's quite easy!  
+If you want to enhance the lib. by bringing support for more fields, it's quite easy!  
 Just take a peek on the [Shoelace package](./packages/shoelace),
 which is the canonical implementation (meaning it's the most complete, API-wise).  
 Then, you are welcome to make a pull request with new features, or bug fixes.

@@ -25,6 +25,7 @@
     "url": "https://www.juliancataldo.com"
   },
   "type": "module",
+	"types": "./dist/esm/index.d.ts",
   "exports": {
     ".": "./dist/esm/index.js",
     "./scss": "./src/styles.scss",

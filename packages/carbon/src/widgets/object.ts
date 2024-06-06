@@ -1,5 +1,4 @@
-import { html, nothing } from 'lit';
-
+import { nothing, html } from 'lit';
 import type { Widgets } from '@jsfe/types';
 
 import '@carbon/web-components/es/components/form-group/index.js';

@@ -3,8 +3,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
-import type { SlCheckbox } from '@shoelace-style/shoelace';
 import '@shoelace-style/shoelace/dist/components/input/input.js';
+import type { SlCheckbox } from '@shoelace-style/shoelace';
 
 export const checkbox: Widgets['checkbox'] = (options) => html`
 	<div class="theme-shoelace widget-checkbox">

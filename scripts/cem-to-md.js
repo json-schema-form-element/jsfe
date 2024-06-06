@@ -1,5 +1,4 @@
 import fs from 'node:fs';
-
 import { customElementsManifestToMarkdown } from '@custom-elements-manifest/to-markdown';
 
 const packageDir = process.argv[2];

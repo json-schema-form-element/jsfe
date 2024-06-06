@@ -1,11 +1,11 @@
 import { html } from 'lit';
-
 // import { ifDefined } from 'lit/directives/if-defined.js';
+
 import type { Widgets } from '@jsfe/types';
 
-import type { SlRadioGroup } from '@shoelace-style/shoelace';
 import '@shoelace-style/shoelace/dist/components/radio-group/radio-group.js';
 import '@shoelace-style/shoelace/dist/components/radio/radio.js';
+import type { SlRadioGroup } from '@shoelace-style/shoelace';
 
 export const radioGroup: Widgets['radioGroup'] = (options) => html`
 	<sl-radio-group

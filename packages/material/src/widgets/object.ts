@@ -1,8 +1,6 @@
 /* eslint-disable arrow-body-style */
-import { html, nothing } from 'lit';
-
 import type { Widgets } from '@jsfe/types';
-
+import { nothing, html } from 'lit';
 import '@material/web/elevation/elevation.js';
 
 export const object: Widgets['object'] = (options) => {

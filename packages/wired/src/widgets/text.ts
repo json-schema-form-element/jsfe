@@ -1,12 +1,12 @@
-import 'wired-elements/lib/wired-input.js';
-import type { WiredInput } from 'wired-elements/lib/wired-input.js';
-
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
 import { field } from './_field.js';
+
+import 'wired-elements/lib/wired-input.js';
+import type { WiredInput } from 'wired-elements/lib/wired-input.js';
 
 export const text: Widgets['text'] = (options) => html`
 	${field(

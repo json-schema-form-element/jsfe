@@ -1,10 +1,11 @@
-import 'wired-elements/lib/wired-slider.js';
-import type { WiredSlider } from 'wired-elements/lib/wired-slider.js';
-
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
+
+import 'wired-elements/lib/wired-slider.js';
+
+import type { WiredSlider } from 'wired-elements/lib/wired-slider.js';
 
 export const range: Widgets['number'] = (options) => html`
 	<!--  -->

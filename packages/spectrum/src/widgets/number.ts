@@ -4,9 +4,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Widgets } from '@jsfe/types';
 
 import '@spectrum-web-components/field-label/sp-field-label.js';
-import '@spectrum-web-components/help-text/sp-help-text.js';
-import type { NumberField } from '@spectrum-web-components/number-field';
 import '@spectrum-web-components/number-field/sp-number-field.js';
+import '@spectrum-web-components/help-text/sp-help-text.js';
+
+import type { NumberField } from '@spectrum-web-components/number-field';
 
 export const number: Widgets['number'] = (options) =>
 	html` <!--  -->

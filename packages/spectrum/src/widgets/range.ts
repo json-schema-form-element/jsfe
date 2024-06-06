@@ -3,8 +3,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
-import type { Slider } from '@spectrum-web-components/slider';
 import '@spectrum-web-components/slider/sp-slider.js';
+import type { Slider } from '@spectrum-web-components/slider';
 
 export const range: Widgets['number'] = (options) =>
 	html` <!--  -->

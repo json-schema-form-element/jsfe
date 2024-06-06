@@ -3,10 +3,11 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
+import '@spectrum-web-components/textfield/sp-textfield.js';
 import '@spectrum-web-components/field-label/sp-field-label.js';
 import '@spectrum-web-components/help-text/sp-help-text.js';
+
 import type { Textfield } from '@spectrum-web-components/textfield';
-import '@spectrum-web-components/textfield/sp-textfield.js';
 
 export const text: Widgets['text'] = (options) => html`
 	<div>

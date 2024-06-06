@@ -1,6 +1,6 @@
 import { type Page } from 'playwright';
 
-import type { FromSchema, JSONSchema7 } from '../../lib/index.js';
+import type { JSONSchema7, FromSchema } from '../../lib/index.js';
 
 export async function prepare(
 	page: Page,

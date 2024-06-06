@@ -1,8 +1,7 @@
 import { html } from 'lit';
 
-import type { JSONSchema7, Path, UiSchema, Widgets } from '@jsfe/types';
-
 import type { Jsf } from '../json-schema-form.js';
+import type { Widgets, Path, UiSchema, JSONSchema7 } from '@jsfe/types';
 
 export const fieldArrayPrimitive = (
 	schema: JSONSchema7,

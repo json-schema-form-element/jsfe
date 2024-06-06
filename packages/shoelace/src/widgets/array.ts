@@ -5,9 +5,9 @@
 // import '@shoelace-style/shoelace/dist/components/divider/divider.js';
 // import '@shoelace-style/shoelace/dist/components/button-group/button-group.js';
 // import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
-import { html, nothing } from 'lit';
 
 import type { Widgets } from '@jsfe/types';
+import { nothing, html } from 'lit';
 
 import '@shoelace-style/shoelace/dist/components/card/card.js';
 import '@shoelace-style/shoelace/dist/components/tag/tag.js';

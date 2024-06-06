@@ -1,6 +1,5 @@
 import test, { expect } from 'playwright/test';
-
-import type { FromSchema, JSONSchema7 } from '../lib/index.js';
+import type { JSONSchema7, FromSchema } from '../lib/index.js';
 import { prepare } from './__fixtures__/prepare.js';
 
 const schema = {

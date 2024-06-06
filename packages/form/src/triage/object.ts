@@ -1,8 +1,6 @@
 import { html } from 'lit';
-
 import type { JSONSchema7 } from '@jsfe/types';
-
-import type { Jsf, Path, UiSchema, Widgets } from '../index.js';
+import type { Widgets, Jsf, Path, UiSchema } from '../index.js';
 
 export const fieldObject = (
 	schema: JSONSchema7,

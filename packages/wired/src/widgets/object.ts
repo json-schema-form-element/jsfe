@@ -1,8 +1,7 @@
-import 'wired-elements/lib/wired-card.js';
-
-import { html, nothing } from 'lit';
-
 import type { Widgets } from '@jsfe/types';
+import { nothing, html } from 'lit';
+
+import 'wired-elements/lib/wired-card.js';
 
 export const object: Widgets['object'] = (options) => html`
 	<fieldset

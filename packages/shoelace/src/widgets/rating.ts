@@ -3,8 +3,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import type { Widgets } from '@jsfe/types';
 
-import type { SlRating } from '@shoelace-style/shoelace';
 import '@shoelace-style/shoelace/dist/components/rating/rating.js';
+import type { SlRating } from '@shoelace-style/shoelace';
 
 export const rating: Widgets['number'] = (options) =>
 	html`<!--  -->

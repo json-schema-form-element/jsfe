@@ -1,7 +1,6 @@
 import { Jsf } from '@jsfe/form';
-
-import { styles } from './styles.js';
 import * as widgets from './widgets/index.js';
+import { styles } from './styles.js';
 
 export class JsfShoelace extends Jsf {
 	public widgets = widgets;

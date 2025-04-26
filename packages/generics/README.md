@@ -1,4 +1,4 @@
-# JSON Schema Form Element — ***System*** edition
+# JSON Schema Form Element — **_Generics_**
 
 ```sh
 npm install @jsfe/system
@@ -8,7 +8,7 @@ npm install @jsfe/system
 - Open the [playground](https://jsfe.js.org).
 - Try the [examples](https://github.com/json-schema-form-element/examples#readme).
 
----
+<!-- ---
 
 # `packages/system/src/form.def.ts`:
 
@@ -68,5 +68,4 @@ npm install @jsfe/system
 
 | Kind | Name     | Declaration | Module                        | Package |
 | ---- | -------- | ----------- | ----------------------------- | ------- |
-| `js` | `styles` | styles      | packages/system/src/styles.ts |         |
-
+| `js` | `styles` | styles      | packages/system/src/styles.ts |         | -->

@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    // "rootDir": "src",
+
+    /* Bundler mode */
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    /* Linting */
+    "strict": true,
+
+    "outDir": "dist/esm",
+    "declaration": true,
+
+    "rootDir": "./src",
+
+    // "removeComments": true,
+
+    "declarationMap": true,
+
+    /* Additional strict checks not covered by strict:true */
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true,
+    "noUncheckedIndexedAccess": true,
+    // "noPropertyAccessFromIndexSignature": true,
+    "exactOptionalPropertyTypes": true,
+
+    "noImplicitOverride": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false
+  },
+  "include": [
+    "src/**/*.ts"
+    // "src/tests/*.test.ts",
+  ]
+  // "exclude": ["src/styles.ts"]
+}

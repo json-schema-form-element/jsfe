@@ -1,5 +1,5 @@
 {
-  "name": "@jsfe/form",
+  "name": "@jsfe/engine",
   "version": "0.4.0",
   "description": "Effortless forms, with standards. Base form element for all implementations.",
   "keywords": [
@@ -31,7 +31,12 @@
     "./scss/*": "./src/widgets/*.scss",
     "./css": "./dist/esm/styles.css",
     "./jss": "./dist/esm/styles.js",
-    "./min": "./dist/esm-min"
+    "./min": "./dist/esm-min",
+    "./experimental": "./dist/esm/experimental.js",
+    "./logger": {
+      "development": "./dist/esm/utils/logger.dev.js",
+      "default": "./dist/esm/utils/logger.prod.js"
+    }
   },
   "files": [
     "./dist/esm",
@@ -39,7 +44,8 @@
     "./src/**/*.scss",
     "./vscode.html-custom-data.json",
     "./vscode.css-custom-data.json",
-    "./custom-elements.json"
+    "./custom-elements.json",
+    "!/dist/**/*.test.*"
   ],
   "scripts": {
     "// build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
@@ -53,22 +59,25 @@
     "clean": "rm -rf ./dist",
     "dev": "pnpm ts:dev",
     "ts:build": "pnpm tsc",
-    "ts:dev": "pnpm tsc --watch"
+    "ts:dev": "pnpm tsc --watch",
+    "test": "pnpm tsc",
+    "test:unit": "node --test --test-reporter=spec --experimental-test-coverage --enable-source-maps 'dist/**/*.test.js'",
+    "test:unit:dev": "node --test --enable-source-maps --watch 'dist/**/*.test.js'",
+    "lint": "eslint --cache \"src/**/*.{ts,tsx,js}\"",
+    "lint:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
+    "format": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\"",
+    "format:check": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\""
   },
   "dependencies": {
-    "@jsfe/types": "workspace:*",
-    "lodash-es": "^4.17.21"
+    "@standard-schema/spec": "^1.0.0",
+    "@types/json-schema": "^7.0.15",
+    "signal-polyfill": "^0.2.2"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
-    "sass": "^1.69.5",
-    "typescript": "^5.3.2"
-  },
-  "peerDependencies": {
-    "lit": "^3.1.0"
+    "sinon": "19.0.2",
+    "typescript": "^5.8.3"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "customElements": "custom-elements.json"
+  }
 }

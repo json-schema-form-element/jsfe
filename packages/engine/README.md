@@ -1,14 +1,14 @@
-# JSON Schema Form Element — ***Barebone*** edition
+# JSON Schema Form Engine
 
 ```sh
-npm install @jsfe/form
+npm install @jsfe/engine
 ```
 
 - Consult the [documentation](../../README.md).
 - Open the [playground](https://jsfe.js.org).
 - Try the [examples](https://github.com/json-schema-form-element/examples#readme).
 
----
+<!-- ---
 
 # `packages/form/src/index.ts`:
 
@@ -84,4 +84,4 @@ npm install @jsfe/form
 | Kind | Name  | Declaration | Module                                | Package |
 | ---- | ----- | ----------- | ------------------------------------- | ------- |
 | `js` | `Jsf` | Jsf         | packages/form/src/json-schema-form.ts |         |
-
+ -->

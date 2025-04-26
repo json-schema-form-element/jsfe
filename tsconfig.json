@@ -24,11 +24,6 @@
 
     "noEmit": true
   },
-  "include": [
-    //
-    "scripts/**/*.ts",
-    // "scripts/scaffold/plopfile.js",
-    "scripts/cem-to-md.js",
-    "scripts/css-to-js.js"
-  ]
+  "include": ["scripts"],
+  "exclude": ["packages", "**/.dev*"]
 }

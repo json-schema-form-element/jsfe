@@ -33,3 +33,7 @@ dist-ssr
 .netlify
 
 .turbo*
+
+test-results
+
+.eslintcache

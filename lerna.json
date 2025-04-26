@@ -6,5 +6,11 @@
     "publish": {
       "message": "chore: publish release"
     }
-  }
+  },
+  "packages": [
+    //
+    "./packages/engine",
+    // "./packages/webawesome",
+    "./packages/generics"
+  ]
 }

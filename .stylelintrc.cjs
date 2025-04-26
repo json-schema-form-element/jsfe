@@ -1,31 +1,26 @@
-/** @type {import("@types/stylelint").Options} */
+/** @type {import('stylelint').Config} */
 
 module.exports = {
 	extends: [
 		'stylelint-config-standard',
 		'stylelint-config-standard-scss',
-		'stylelint-config-prettier',
 		'stylelint-config-recess-order',
 	],
 
-	plugins: [
-		//
-		'stylelint-order',
-	],
+	plugins: ['stylelint-order'],
 
 	overrides: [
 		{
 			files: ['*.vue', '**/*.vue'],
 			extends: [
 				'stylelint-config-standard-scss',
-				'stylelint-config-prettier',
 				'stylelint-config-recommended-vue/scss',
 			],
 		},
 	],
 	rules: {
+		'declaration-property-value-no-unknown': true,
 		'comment-empty-line-before': null,
-		// Shorthand units make things hard to read and change
 		'shorthand-property-no-redundant-values': null,
 		'scss/double-slash-comment-empty-line-before': null,
 		'color-function-notation': null,
@@ -49,8 +44,7 @@ module.exports = {
 				ignorePseudoElements: ['v-deep'],
 			},
 		],
-		'max-line-length': [100, , { ignore: ['comments'] }],
-
+		// 'max-line-length': [100, { ignore: ['comments'] }],
 		'selector-class-pattern': null,
 	},
 };

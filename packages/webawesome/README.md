@@ -1,4 +1,4 @@
-# JSON Schema Form Element — ***Shoelace*** edition
+# JSON Schema Form Element — **_Web Awesome_** edition
 
 ```sh
 npm install @jsfe/shoelace
@@ -10,7 +10,7 @@ npm install @jsfe/shoelace
 
 ---
 
-# `packages/shoelace/src/form.def.ts`:
+<!-- # `packages/shoelace/src/form.def.ts`:
 
 ## Exports
 
@@ -68,5 +68,4 @@ npm install @jsfe/shoelace
 
 | Kind | Name     | Declaration | Module                          | Package |
 | ---- | -------- | ----------- | ------------------------------- | ------- |
-| `js` | `styles` | styles      | packages/shoelace/src/styles.ts |         |
-
+| `js` | `styles` | styles      | packages/shoelace/src/styles.ts |         | -->

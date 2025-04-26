@@ -1,40 +1,72 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
-# TODO: Clean-up
 # See: https://github.com/JulianCataldo/gh-actions
 
-name: 'Release'
+# For matrix setup:
+# https://github.com/withastro/astro/blob/main/.github/workflows/ci.yml
+# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow
+
+name: CI / Release
 
 on:
+  workflow_dispatch:
   push:
+    paths-ignore:
+      - .github/**
+      - '!.github/workflows/release.yaml'
+      - '**/*.md'
     branches:
       - '([0-9])?(.{+([0-9]),x}).x'
-      - 'main'
-      - 'next'
-      - 'next-major'
-      - 'alpha'
-      - 'beta'
+      - main
+      - next
+      - next-major
+      - alpha
+      - beta
+      - 'feat/*'
+      - 'fix/*'
+      # - to-integrate
+      # - to-integrate-next
 
 permissions:
-  contents: 'read' # for checkout
+  contents: read # for checkout
 
 jobs:
   release:
-    name: 'Release'
-    runs-on: 'ubuntu-latest'
+    name: CI / Release
+
     permissions:
-      contents: 'write' # to be able to publish a GitHub release
-      issues: 'write' # to be able to comment on released issues
-      pull-requests: 'write' # to be able to comment on released pull requests
-      id-token: 'write' # to enable use of OIDC for npm provenance
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+
+    runs-on: ubuntu-latest
+    # TODO:
+    # runs-on: ${{ matrix.os }}
+    # timeout-minutes: 25
+    # # needs: build
+    # strategy:
+    #   matrix:
+    #     OS: [ubuntu-latest]
+    #     NODE_VERSION: [18, 20]
+    #     include:
+    #       - os: macos-14
+    #         NODE_VERSION: 18
+    #       - os: windows-latest
+    #         NODE_VERSION: 18
+    #   fail-fast: false
+    # env:
+    #   NODE_VERSION: ${{ matrix.NODE_VERSION }}
 
     steps:
-      # - name: "Harden Runner"
-      #   uses: "step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09" # v2.5.1
-      #   with:
-      #     egress-policy: "audit"
+      # MARK: Setup GH Action
 
-      - name: 'Git checkout'
-        uses: 'actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744' # v3.6.0
+      - name: 'Harden Runner'
+        uses: 'step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142' # v2.7.0
+        with:
+          egress-policy: 'audit'
+
+      - name: Git checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.2
         # run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
         with:
           fetch-depth: 0
@@ -46,71 +78,101 @@ jobs:
       #   GIT_AUTHOR_NAME: "GitHub Actions Shell"
       #   EMAIL: "github-actions[bot]@users.noreply.github.com"
 
-      - name: 'Setup PNPM'
-        uses: 'pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598' # v2.4.0
+      # MARK: Setup Node env.
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
         with:
           run_install: false
 
-      - name: 'Use Node.js 20.6.1'
-        uses: 'actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d' # v3.8.1
+      - name: Use Node.js 22.2.0
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
           # registry-url: "https://registry.npmjs.org"
-          node-version: '20.6.1'
-          cache: 'pnpm'
+          node-version: 22.2.0
+          cache: pnpm
 
-      # @see: npm install -g npm@latest is necessary to make provenance available. More info: https://docs.npmjs.com/generating-provenance-statements
-      # - name: "Upgrade npm to latest version"
-      #   run: "npm install --global npm@9.6.x"
-      #   env:
-      #     SKIP_CHECK: "true"
+      - name: Install packages
+        shell: bash
+        run: pnpm install --frozen-lockfile
 
-      # - name: "Check npm version"
-      #   run: "npm -v"
-      #   env:
-      #     SKIP_CHECK: "true"
+      # TODO: More tests
+      # - name: Syncpack Lint
+      #   shell: bash
+      #   run: node --run syncpack:lint
 
-      - name: 'Install packages'
-        run: 'pnpm install --frozen-lockfile'
+      # NOTE: Audit is for prod only because a lot of root packages (like lerna etc.)
+      # are used old packages with intricate dependency trees, and they are
+      # never shipped to the user. But that's not 100% optimal, as devDeps could
+      # provoke some sec issues, too? A middleground is better than nothing and
+      # regularly blocked releases for obscure root mono-repo tooling deps.
+      - name: 'Verify the integrity of provenance attestations and registry signatures for installed [prod] dependencies'
+        run: node --run audit
 
-      # - name: "Verify the integrity of provenance attestations and registry signatures for installed dependencies"
-      #   run: "pnpm audit signatures"
+      # MARK: Lint/Checks pre-build
 
-      # - name: "npm v8.5+ requires workspaces-update to be set to false"
-      #   run: "echo 'workspaces-update=false' >> .npmrc"
+      # TODO: Setup Husky etc.
+      # - name: Lint last commit — Commitlint
+      #   shell: bash
+      #   run: node --run lint:commit
 
-      # - name: "Semantic Release"
-      #   if: "success()"
-      #   env:
-      #     GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      #     NPM_TOKEN: "${{ secrets.NPM_TOKEN }}"
-      #     GIT_AUTHOR_NAME: "github-actions-shell"
-      #     GIT_AUTHOR_EMAIL: "github-actions[bot]@users.noreply.github.com"
-      #     GIT_COMMITTER_NAME: "github-actions-shell"
-      #     GIT_COMMITTER_EMAIL: "github-actions[bot]@users.noreply.github.com"
-      #   run: "pnpm exec multi-semantic-release"
+      # - name: Lint CSS — Stylelint
+      #   shell: bash
+      #   run: node --run lint:css
 
-      - name: 'Setup Turbo cache'
-        uses: dtinth/setup-github-actions-caching-for-turbo@v1
+      - name: Check all formatting — Prettier
+        shell: bash
+        run: node --run format
 
-      - name: 'Build all packages'
-        run: 'pnpm build'
+      # MARK: Build packages
 
-      - name: 'Create temporary NPM identity'
+      - name: Setup Turbo cache
+        uses: dtinth/setup-github-actions-caching-for-turbo@a0e976d970c2a94366a26984efcef3030e2c0115 # v1.2.0
+
+      - name: Build all packages
+        shell: bash
+        run: node --run build
+
+      # MARK: Lint/Checks post-build
+
+      - name: Lint JS/TS — ESLint
+        shell: bash
+        run: node --run lint:es
+
+      # MARK:Tests
+
+      - name: Tests — Units
+        shell: bash
+        run: node --run test:unit
+
+      # - name: Tests — Integration
+      #   shell: bash
+      #   run: node --run test:integration
+
+      # TODO: Build and launch example-app
+      # - name: Tests — E2E
+      #   shell: bash
+      #   run: node --run test:e2e
+
+      # MARK: Publish packages
+
+      - name: Create temporary NPM identity # + Enable Provenance
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        # run: |
+        #   echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN\nprovenance=true" > .npmrc
+        #   echo "provenance=true" > .npmrc
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 
-      - name: 'Git user configuration'
+      - name: Git user configuration
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      # - name: 'Lerna version'
-      #   run: |
-      #     pnpm lerna version --conventional-commits --yes
-
+      # MARK: [MAIN]
       - name: 'Lerna publish [main]'
+        # if: github.ref == 'refs/heads/to-integrate'
         if: github.ref == 'refs/heads/main'
         # https://github.com/lerna/lerna/issues/2532
         id: graduateRelease
@@ -119,7 +181,7 @@ jobs:
           GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           NPM_TOKEN: '${{ secrets.NPM_TOKEN }}' # Not really needed (already global)
         run: |
-          pnpm lerna publish --conventional-commits --exact --conventional-graduate --create-release=github --yes
+          pnpm lerna publish --message 'chore: publish [main] release [skip ci]' --create-release=github --conventional-graduate --yes
 
       - name: Bump Prod Version Fallback
         if: ${{ always() && steps.graduateRelease.outcome == 'failure'  }}
@@ -129,18 +191,28 @@ jobs:
         run: |
           echo Falling back to non-graduate release due to https://github.com/lerna/lerna/issues/2532
           git stash
-          pnpm lerna publish --conventional-commits --exact --create-release=github --yes
+          pnpm lerna publish --message 'chore: publish [main] release [skip ci]' --create-release=github --yes
 
+      # # TRY: https://www.jessesquires.com/blog/2021/10/17/github-actions-workflows-for-automatic-rebasing-and-merging/
+      # - name: Merge (rebase) back main into next
+      #   env:
+      #     GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      #   run: |
+      #     git checkout next
+      #     git rebase main
+      #     git push
+
+      # MARK: [NEXT]
       - name: 'Lerna publish [next]'
         if: github.ref == 'refs/heads/next'
+        # if: github.ref == 'refs/heads/to-integrate-next'
         env:
           NPM_TOKEN: '${{ secrets.NPM_TOKEN }}' # Not really needed (already global)
+
+        # --canary next
+        # https://github.com/lerna/lerna/issues/1433
+        # pnpm lerna publish --conventional-prerelease --dist-tag=next --preid=next --no-changelog --yes
+        # pnpm lerna publish --conventional-prerelease --pre-dist-tag=next --preid=next --yes
+        # pnpm lerna publish --force-publish='*' --canary --pre-dist-tag=next --preid=next --yes
         run: |
-          pnpm lerna publish --conventional-commits --exact --conventional-prerelease --canary --dist-tag=next --preid=next --yes
-
-      # pnpm publish -r
-
-      # - name: "Publish"
-      #   run: "pnpm publish -r"
-
-#  --changelog-preset conventionalcommits
+          pnpm lerna publish --message 'chore: publish [next] pre-release' --conventional-prerelease --pre-dist-tag=next --preid=next --yes

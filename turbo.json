@@ -5,14 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "ts:build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
-    },
-    "lint": {
+    "lint:es": {
       "outputs": []
     },
-    "lint:fix": {
+    "lint:es:fix": {
       "outputs": []
     },
     "format": {

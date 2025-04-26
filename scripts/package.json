@@ -1,0 +1,11 @@
+{
+  "name": "@jsfe/scripts",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/to-markdown": "^0.1.0",
+    "plop": "^4.0.1",
+    "cem-plugin-vs-code-custom-data-generator": "^1.4.2"
+  }
+}

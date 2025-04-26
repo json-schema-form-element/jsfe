@@ -1,0 +1,15 @@
+{
+  "name": "@jsfe/e2e",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.38.1",
+    "playwright": "^1.38.1"
+  }
+}

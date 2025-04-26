@@ -1,0 +1,5 @@
+@import '@picocss/pico';
+
+body {
+	background: var(--pico-background-color);
+}

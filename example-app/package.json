@@ -1,0 +1,38 @@
+{
+  "name": "@jsfe/example-app",
+  "type": "module",
+  "version": "0.0.2",
+  "scripts": {
+    "dev": "vite",
+    "check": "tsc",
+    "build": "vite build",
+    "preview": "node -C preview --watch server.js",
+    "start": "node server.js"
+  },
+  "// @jsfe/webawesome": "workspace:^",
+  "dependencies": {
+    "@gracile/gracile": "^0.8.2",
+    "@hono/node-server": "^1.14.1",
+    "@jsfe/engine": "workspace:^",
+    "@jsfe/generics": "workspace:^",
+    "@picocss/pico": "^2.1.1",
+    "@shoelace-style/shoelace": "^2.19.1",
+    "@sinclair/typebox": "^0.34.33",
+    "@vitejs/plugin-react": "^4.4.1",
+    "@vtaits/react-signals": "^1.0.2",
+    "arktype": "^2.1.20",
+    "hono": "^4.7.7",
+    "lit": "^3.2.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "use-signals": "^0.1.1",
+    "vite": "^6.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3",
+    "vite-plugin-static-copy": "^2.3.1"
+  }
+}

@@ -27,7 +27,7 @@ export const fieldArray = (
 		if (!Array.isArray(dataLevel)) return;
 
 		if (typeof schema.items !== 'object' || Array.isArray(schema.items)) return;
-		if (schema.items?.type === 'string') {
+		if (schema.items?.type === 'string' || schema.items?.type === 'number') {
 			dataLevel.push(schema.items?.default || '');
 		} else if (schema.items.properties) {
 			dataLevel.push(schema.items?.default || {});

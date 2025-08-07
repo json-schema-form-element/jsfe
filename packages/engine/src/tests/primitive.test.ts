@@ -236,7 +236,7 @@ void describe('Primitives', () => {
 		}) as PrimitiveWidgetOptions<TextareaAttributes>;
 
 		assert.strictEqual(textareaResult.widget, 'Textarea');
-		assert.strictEqual(textareaResult.html.element, 'textarea');
+		assert.strictEqual(textareaResult.element, 'textarea');
 	});
 
 	void test('Date/time input - should support different formats', () => {

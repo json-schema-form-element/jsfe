@@ -73,6 +73,7 @@ export const schema = {
 							type: 'string',
 							minLength: 100,
 							maxLength: 1200,
+							default: 'Default value',
 						},
 						Color: {
 							title: 'Color picker',
@@ -498,6 +499,7 @@ export const data = {
 		Strings: {
 			Password: 'Science avec patience',
 			Email: 'foo@bar.home.arpa',
+			// TextArea: 'Prefilled value',
 		},
 
 		Booleans: {

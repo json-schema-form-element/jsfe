@@ -1,6 +1,3 @@
-// Run with coverage:
-// node --test --test-reporter=spec --coverage
-
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 

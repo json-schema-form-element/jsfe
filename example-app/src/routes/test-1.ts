@@ -2,8 +2,6 @@ import { defineRoute } from '@gracile/gracile/route';
 import { html } from '@gracile/gracile/server-html';
 
 import { document } from '../document.js';
-import { LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
 
 // import '@jsfe/webawesome';
 import './test-1.client.js';

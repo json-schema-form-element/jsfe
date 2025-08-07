@@ -153,7 +153,7 @@ void describe('Object', () => {
 			uiSchema: {},
 		});
 
-		assert.ok(result.children[0], 'First child should exist');
+		assert.ok(result.fields[0], 'First child should exist');
 		assert.strictEqual(
 			result.html.name,
 			'ObjectFoo',
@@ -165,7 +165,7 @@ void describe('Object', () => {
 			'Object should have correct id',
 		);
 		assert.strictEqual(
-			result.children[0].widget,
+			result.fields[0].widget,
 			'Text',
 			'Child should be a text field',
 		);
@@ -195,7 +195,7 @@ void describe('Object', () => {
 			},
 		});
 
-		assert.ok(result.children[0], 'First child should exist');
+		assert.ok(result.fields[0], 'First child should exist');
 		assert.strictEqual(
 			result.html.name,
 			'ObjectFoo',
@@ -207,7 +207,7 @@ void describe('Object', () => {
 			'Object should have correct id',
 		);
 		assert.strictEqual(
-			result.children[0].widget,
+			result.fields[0].widget,
 			'Text',
 			'Child should be a text field',
 		);
@@ -243,7 +243,7 @@ void describe('Object', () => {
 			uiSchema: {},
 		});
 
-		const nestedObject = result.children[0] as ObjectWidgetOptions;
+		const nestedObject = result.fields[0] as ObjectWidgetOptions;
 		assert.ok(nestedObject, 'First child should exist');
 		assert.strictEqual(nestedObject.widget, 'Object');
 		assert.strictEqual(
@@ -252,9 +252,9 @@ void describe('Object', () => {
 			'Nested object should have correct name',
 		);
 
-		const nestedField = nestedObject.children[0] as PrimitiveWidgetOptions;
+		const nestedField = nestedObject.fields[0] as PrimitiveWidgetOptions;
 		assert.ok(nestedField, 'Nested child should exist');
 		assert.strictEqual(nestedField.widget, 'Text');
-		assert.strictEqual(nestedField.value, 'test');
+		assert.strictEqual(nestedField.html.value, 'test');
 	});
 });

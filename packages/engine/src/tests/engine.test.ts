@@ -140,7 +140,7 @@ void describe('JSONSchemaFormEngine', () => {
 			target: numberInput,
 			type: 'input',
 		} as unknown as InputEvent;
-		form.handleFormEvent(numberEvent, true);
+		form.handleFormEvent(numberEvent /* true */);
 		assert.strictEqual(
 			form.data.age,
 			25,

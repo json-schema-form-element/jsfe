@@ -1,4 +1,5 @@
-import '@jsfe/webawesome';
+import { JsonSchemaFormWebawesome } from '@jsfe/webawesome';
+import styles from '@jsfe/webawesome/css?inline';
 
 import '@shoelace-style/shoelace/dist/components/input/input.js';
 import '@shoelace-style/shoelace/dist/components/textarea/textarea.js';
@@ -31,3 +32,11 @@ import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 import '@shoelace-style/shoelace/dist/components/divider/divider.js';
 import '@shoelace-style/shoelace/dist/components/button-group/button-group.js';
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
+import { unsafeCSS } from 'lit';
+
+(class extends JsonSchemaFormWebawesome {
+	static override styles = [unsafeCSS(styles)];
+}).define();
+
+JsonSchemaFormWebawesome.define();
+console.log({ styles: JsonSchemaFormWebawesome.styles });

@@ -3,8 +3,15 @@ import { html } from '@gracile/gracile/server-html';
 
 import { document } from '../document.js';
 
-import '@jsfe/webawesome';
 import { schema, data, ui } from '../fixtures/all-features.js';
+import { JsonSchemaFormWebawesome } from '@jsfe/webawesome';
+import { unsafeCSS } from 'lit';
+
+import styles from '@jsfe/webawesome/css?inline';
+
+(class extends JsonSchemaFormWebawesome {
+	static override styles = [unsafeCSS(styles)];
+}).define();
 
 export default defineRoute({
 	handler: {

@@ -1,6 +1,6 @@
-// import { common } from './all-features.js';
+import { common } from './all-features.js';
 
-// common({
-// 	url: '/test-2/',
-// 	system: 'shoelace',
-// });
+common({
+	url: '/test-2/',
+	system: 'shoelace',
+});

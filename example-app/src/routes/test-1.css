@@ -3,3 +3,7 @@
 body {
 	background: var(--pico-background-color);
 }
+
+html {
+	font-size: 12px;
+}

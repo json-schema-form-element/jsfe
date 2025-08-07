@@ -4,9 +4,9 @@ set -e
 
 pnpm install --frozen-lockfile
 
-pnpm run ts:build
+pnpm run build
 
-pnpm turbo lint
+pnpm turbo lint:es
 
 pnpm turbo format
 

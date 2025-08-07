@@ -5,6 +5,18 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "scss:build": {
+      "dependsOn": ["^scss:build"],
+      "outputs": ["dist/css/**"]
+    },
+    "scss:dev": {
+      "dependsOn": ["^scss:dev"],
+      "outputs": ["dist/css/**"]
+    },
+    "scss:lint": {
+      "inputs": ["src/**/*.scss"],
+      "outputs": []
+    },
     "lint:es": {
       "outputs": []
     },
@@ -18,6 +30,7 @@
       "outputs": []
     },
     "dev": {
+      "dependsOn": ["^scss:dev"],
       "cache": false,
       "persistent": true
     }

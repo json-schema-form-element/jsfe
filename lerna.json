@@ -10,7 +10,7 @@
   "packages": [
     //
     "./packages/engine",
-    // "./packages/webawesome",
-    "./packages/generics"
+    "./packages/generics",
+    "./packages/webawesome"
   ]
 }

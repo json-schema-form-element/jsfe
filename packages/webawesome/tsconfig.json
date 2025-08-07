@@ -18,18 +18,23 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "outDir": "dist/esm",
+    "outDir": "dist",
     "declaration": true,
 
     "removeComments": true,
 
     "noImplicitAny": true,
 
-    "declarationMap": true
+    "declarationMap": true,
+
+    /* JSX */
+    "jsx": "preserve",
+    "jsxImportSource": "@gracile-labs/babel-plugin-jsx-to-literals"
   },
   "include": [
     //
-    "src/index.ts"
+    "src/index.ts",
+    "src/**/*.tsx"
   ],
   "exclude": ["src/styles.ts", "src/react.ts"]
 }

@@ -30,8 +30,8 @@
     ".": "./dist/esm/index.js",
     "./scss": "./src/styles.scss",
     "./scss/*": "./src/widgets/*.scss",
-    "./css": "./dist/esm/styles.css",
-    "./jss": "./dist/esm/styles.js",
+    "./css": "./dist/css/styles.css",
+    "./jss": "./dist/css/styles.js",
     "./min": "./dist/esm-min"
   },
   "files": [
@@ -43,23 +43,27 @@
     "./custom-elements.json"
   ],
   "scripts": {
-    "build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
+    "// build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
+    "// dev": "pnpm ts:dev # & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
+    "// css:build": "pnpm sass --no-source-map src/styles.scss:dist/esm/styles.css",
+    "// css:dev": "pnpm sass --watch src/styles.scss:dist/esm/styles.css & pnpm css:to-js:dev",
+    "// css:to-js": "node ../../scripts/css-to-js.js dist/esm/styles.css",
+    "// css:to-js:dev": "nodemon dist/esm/styles.css -x 'pnpm css:to-js'",
     "clean": "rm -rf ./dist",
-    "css:build": "pnpm sass --no-source-map src/styles.scss:dist/esm/styles.css",
-    "css:dev": "pnpm sass --watch src/styles.scss:dist/esm/styles.css & pnpm css:to-js:dev",
-    "css:to-js": "node ../../scripts/css-to-js.js dist/esm/styles.css",
-    "css:to-js:dev": "nodemon dist/esm/styles.css -x 'pnpm css:to-js'",
-    "dev": "pnpm ts:dev # & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
-    "ts:build": "pnpm tsc",
-    "ts:dev": "pnpm tsc --watch",
-    "lint": "eslint --cache \"src/**/*.{ts,tsx,js}\"",
-    "lint:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
-    "format": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\"",
-    "format:check": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\""
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint:es": "eslint --cache \"src/**/*.{ts,tsx,js}\"",
+    "lint:es:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
+    "format": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\"",
+    "format:fix": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\"",
+    "scss:build": "sass src/styles.scss:dist/css/styles.css",
+    "scss:dev": "sass --watch src/styles.scss:dist/css/styles.css",
+    "scss:lint": "stylelint \"src/**/*.scss\" --cache"
   },
   "dependencies": {
     "@jsfe/engine": "workspace:*",
     "@jsfe/generics": "workspace:*",
+    "@lit-labs/signals": "^0.1.2",
     "@shoelace-style/shoelace": "^2.19.1",
     "lit": "^3.2.1"
   },

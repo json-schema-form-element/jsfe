@@ -25,15 +25,16 @@
     "url": "https://www.juliancataldo.com"
   },
   "type": "module",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/esm/index.js",
-    "./form": "./dist/esm/form.js",
+    ".": "./dist/lit/index.js",
+    "./*": "./dist/lit/*.js",
+    "./react/*": "./dist/react/*.js",
+    "./vue/*": "./dist/vue/*.js",
+    "./preact/*": "./dist/preact/*.js",
     "./scss": "./src/styles.scss",
     "./scss/*": "./src/widgets/*.scss",
-    "./css": "./dist/esm/styles.css",
-    "./jss": "./dist/esm/styles.js",
-    "./min": "./dist/esm-min"
+    "./css": "./dist/styles.css"
   },
   "files": [
     "./dist/esm",
@@ -44,32 +45,64 @@
     "./custom-elements.json"
   ],
   "scripts": {
-    "// build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
-    "// dev": "pnpm ts:dev # & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
+    "// build": "tsc",
+    "// dev": "tsc --watch",
     "clean": "rm -rf ./dist",
-    "css:build": "pnpm sass --no-source-map src/styles.scss:dist/esm/styles.css",
-    "css:dev": "pnpm sass --watch src/styles.scss:dist/esm/styles.css & pnpm css:to-js:dev",
-    "css:to-js": "node ../../scripts/css-to-js.js dist/esm/styles.css",
-    "css:to-js:dev": "nodemon dist/esm/styles.css -x 'pnpm css:to-js'",
-    "build": "pnpm tsc",
-    "dev": "pnpm tsc --watch",
+    "css:build": "pnpm sass --no-source-map src/styles.scss:dist/styles.css",
+    "css:dev": "pnpm sass --watch src/styles.scss:dist/styles.css & pnpm css:to-js:dev",
+    "css:to-js": "node ../../scripts/css-to-js.js dist/styles.css",
+    "css:to-js:dev": "nodemon dist/styles.css -x 'pnpm css:to-js'",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "lint:es": "eslint --cache \"src/**/*.{ts,tsx,js}\"",
     "lint:es:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
     "format": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\"",
     "format:fix": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\""
   },
   "dependencies": {
-    "@jsfe/engine": "workspace:*",
-    "@lit-labs/signals": "^0.1.2"
+    "@jsfe/engine": "workspace:*"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-typescript": "^7.27.1",
+    "@babel/preset-react": "^7.27.1",
+    "@gracile-labs/babel-plugin-jsx-to-literals": "link:../../../../@gracile/gracile/packages/labs/babel-plugin-jsx-to-literals",
+    "@lit-labs/compiler": "^1.1.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/react": "^19",
+    "@vue/babel-plugin-jsx": "^1.4.0",
+    "babel-preset-solid": "^1.9.6",
+    "preact-jsx-runtime": "^1.2.0",
+    "rollup": "^4.40.1",
+    "rollup-plugin-node-externals": "^8.0.0",
     "sass": "^1.86.3",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "lit": "^3.2.1"
+    "@lit-labs/signals": "^0.1.2",
+    "lit": "^3.2.1",
+    "react": "^19",
+    "vue": "^3.5.13"
+  },
+  "peerDependenciesMeta": {
+    "lit": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "@lit-labs/signals": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"
+  },
+  "overrides": {
+    "signal-polyfill": "^0.2.2"
   }
 }

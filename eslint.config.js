@@ -83,6 +83,10 @@ const createPackageConfig = (packageName) => {
 			'sonarjs/fixme-tag': 'warn',
 			'sonarjs/no-commented-code': 'warn',
 			'unicorn/no-empty-file': 'warn',
+			'sonarjs/public-static-readonly': 'off',
+
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-return': 'off',
 		},
 	};
 };
@@ -97,10 +101,10 @@ export default [
 			'**/*.old*',
 			'**/*.config.ts',
 			'example-app',
-			'packages/webawesome',
 		],
 	},
 	// Package-specific configs
 	createPackageConfig('engine'),
 	createPackageConfig('generics'),
+	createPackageConfig('webawesome'),
 ];

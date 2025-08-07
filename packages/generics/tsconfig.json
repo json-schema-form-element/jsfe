@@ -18,18 +18,32 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "outDir": "dist/esm",
+    "outDir": "dist/lit",
     "declaration": true,
 
-    "removeComments": true,
+    "removeComments": false,
 
     "noImplicitAny": true,
 
-    "declarationMap": true
+    "declarationMap": true,
+
+    "verbatimModuleSyntax": true,
+
+    "emitDeclarationOnly": true,
+
+    "noEmitOnError": false,
+
+    "allowJs": true,
+
+    "jsx": "preserve",
+    "jsxImportSource": "@gracile-labs/babel-plugin-jsx-to-literals"
   },
   "include": [
     //
-    "src/**/*.ts"
+    "src/index.ts",
+    "src/index.framework.ts"
+    // "src/framework/*/index.ts",
+    // "src/framework/vue/index.vue.ts"
   ],
   "exclude": []
 }

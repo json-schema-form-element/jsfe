@@ -24,24 +24,18 @@
     "url": "https://www.juliancataldo.com"
   },
   "type": "module",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/esm/index.js",
-    "./scss": "./src/styles.scss",
-    "./scss/*": "./src/widgets/*.scss",
-    "./css": "./dist/esm/styles.css",
-    "./jss": "./dist/esm/styles.js",
-    "./min": "./dist/esm-min",
-    "./experimental": "./dist/esm/experimental.js",
+    ".": "./dist/index.js",
+    "./experimental": "./dist/experimental.js",
     "./logger": {
-      "development": "./dist/esm/utils/logger.dev.js",
-      "default": "./dist/esm/utils/logger.prod.js"
+      "development": "./dist/utils/logger.dev.js",
+      "production": "./dist/utils/logger.prod.js",
+      "default": "./dist/utils/logger.prod.js"
     }
   },
   "files": [
-    "./dist/esm",
-    "./dist/esm-min",
-    "./src/**/*.scss",
+    "./dist",
     "./vscode.html-custom-data.json",
     "./vscode.css-custom-data.json",
     "./custom-elements.json",
@@ -49,11 +43,11 @@
   ],
   "scripts": {
     "// build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
-    "// build:cdn": "pnpm clean ; pnpm esbuild './lib/**/*.ts' --outdir=./dist/esm-min --outbase=./lib --minify && cp dist/esm/styles.js dist/esm-min",
-    "// css:build": "pnpm sass --no-source-map src/styles.scss:dist/esm/styles.css",
-    "// css:dev": "pnpm sass --watch src/styles.scss:dist/esm/styles.css & pnpm css:to-js:dev",
-    "// css:to-js": "node ../../scripts/css-to-js.js dist/esm/styles.css",
-    "// css:to-js:dev": "nodemon dist/esm/styles.css -x 'pnpm css:to-js'",
+    "// build:cdn": "pnpm clean ; pnpm esbuild './lib/**/*.ts' --outdir=./dist/esm-min --outbase=./lib --minify && cp dist/styles.js dist/esm-min",
+    "// css:build": "pnpm sass --no-source-map src/styles.scss:dist/styles.css",
+    "// css:dev": "pnpm sass --watch src/styles.scss:dist/styles.css & pnpm css:to-js:dev",
+    "// css:to-js": "node ../../scripts/css-to-js.js dist/styles.css",
+    "// css:to-js:dev": "nodemon dist/styles.css -x 'pnpm css:to-js'",
     "// dev": "pnpm ts:dev & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
     "// build 2": "pnpm clean ; pnpm ts:build || exit 0",
     "// dev 2": "pnpm ts:dev",

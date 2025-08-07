@@ -1,6 +1,6 @@
 packages:
   - 'packages/engine'
   - 'packages/generics'
-  # - 'packages/webawesome'
+  - 'packages/webawesome'
   - 'example-app'
   - 'e2e'

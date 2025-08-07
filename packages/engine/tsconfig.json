@@ -16,7 +16,7 @@
     /* Linting */
     "strict": true,
 
-    "outDir": "dist/esm",
+    "outDir": "dist",
     "declaration": true,
 
     "rootDir": "./src",

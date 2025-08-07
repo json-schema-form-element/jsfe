@@ -5,6 +5,7 @@ import { Logger } from '@jsfe/engine/logger';
 
 import type {
 	CommonWidgetOptions,
+	ObjectWidgetOptions,
 	WidgetTypeBaseParameters,
 } from './types/form.js';
 
@@ -75,49 +76,27 @@ export function isPrimitive({ format, type }: JSONSchema7): boolean {
  * Traverses the schema and returns appropriate widget options
  */
 export function traverse(
-	parameters: WidgetTypeBaseParameters,
+	options: WidgetTypeBaseParameters,
 ): CommonWidgetOptions {
-	const { schema: rawSchema, schemaPath } = parameters;
+	const { schema: rawSchema } = options;
 	const schema = rawSchema as JSONSchema7;
 
-	const options: WidgetTypeBaseParameters = {
-		...parameters,
-		schema,
-		schemaPath: [...schemaPath],
-	};
+	if (isPrimitive(schema)) return widgetPrimitive(options);
 
-	// Check for primitive types first
-	if (isPrimitive(schema)) {
-		return widgetPrimitive(options);
-	}
+	if (isObject(schema)) return widgetObject(options);
 
-	// Then check for objects
-	if (isObject(schema)) {
-		options.schemaPath.push('properties');
-		return widgetObject(options);
-	}
-
-	// Then check for arrays
-	if (isArrayOfPrimitives(schema)) {
-		return widgetArrayPrimitive(options);
-	}
+	if (isArrayOfPrimitives(schema)) return widgetArrayPrimitive(options);
 
 	if (isArray(schema)) {
-		if (isFixedArray(schema)) {
-			return createFixedArrayWidget(schema, options);
-		}
+		if (isFixedArray(schema)) return createFixedArrayWidget(options);
 
-		// Handle array items with enums but not uniqueItems
-		if (isArrayWithEnumItems(schema)) {
-			return widgetArrayPrimitive(options);
-		}
+		if (isArrayWithEnumItems(schema)) return widgetArrayPrimitive(options);
 
 		return widgetArray(options);
 	}
 
-	log.error({ schema });
+	log.error('No widget found', { schema });
 
-	// Only return error widget if no other type matches
 	return createErrorWidget(options);
 }
 
@@ -139,18 +118,17 @@ function createErrorWidget(
  * Creates widget options for a fixed array schema
  */
 function createFixedArrayWidget(
-	schema: JSONSchema7,
 	options: WidgetTypeBaseParameters,
-): CommonWidgetOptions {
+): ObjectWidgetOptions {
 	const newNode: JSONSchema7 = {
 		properties: {},
 		type: 'array',
 	};
 
 	// Convert array items to object properties
-	if (Array.isArray(schema.items)) {
+	if (Array.isArray(options.schema.items)) {
 		newNode.properties ??= {};
-		for (const [index, entry] of schema.items.entries()) {
+		for (const [index, entry] of options.schema.items.entries()) {
 			newNode.properties[index] = entry;
 		}
 	}

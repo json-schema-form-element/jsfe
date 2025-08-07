@@ -29,8 +29,8 @@ export function widgetObject({
 	const error = 'Wrong object field';
 	if (typeof schema.properties !== 'object') {
 		return {
-			children: [],
 			classes: {},
+			fields: [],
 			form,
 			helpText: error,
 			html: {
@@ -50,7 +50,7 @@ export function widgetObject({
 		};
 	}
 
-	const children: CommonWidgetOptions[] = [];
+	const fields: CommonWidgetOptions[] = [];
 	for (const [propertyName, propertyValue] of Object.entries(
 		schema.properties,
 	)) {
@@ -65,9 +65,13 @@ export function widgetObject({
 
 		const required = schema.required?.includes(propertyName) ?? false;
 
-		const schemaPathAugmented: PathArray = [...schemaPath, propertyName];
+		const schemaPathAugmented: PathArray = [
+			...schemaPath,
+			'properties',
+			propertyName,
+		];
 
-		children.push(
+		fields.push(
 			form.traverse({
 				data: childData,
 				form,
@@ -89,8 +93,8 @@ export function widgetObject({
 	if (pathAsString === '') pathAsString = '__root';
 
 	const options: ObjectWidgetOptions = {
-		children,
 		classes: {},
+		fields,
 		form,
 		helpText: description,
 		html: {

@@ -40,22 +40,23 @@ export interface ArrayWidgetOptions<
 export interface BaseHtmlAttributes {
 	'aria-describedby'?: string | undefined;
 	'aria-description'?: string | undefined;
-	ariaDescribedBy?: string;
-	ariaDescription?: string;
+	// ariaDescribedBy?: string;
+	// ariaDescription?: string;
 	disabled?: boolean | undefined;
 	id: string;
 	name: string;
 	readonly?: boolean | undefined;
 	required?: boolean | undefined;
+
+	value?: unknown;
 	// element: null;
 }
 
 export type BooleanInputAttributes = BaseHtmlAttributes & {
 	checked?: boolean;
 
-	element: 'input';
-	type: 'checkbox' | 'radio' | null;
-	value?: boolean | undefined;
+	type: 'checkbox' | 'radio' | undefined;
+	// value?: string | undefined;
 };
 
 export interface CommonWidgetOptions<
@@ -72,7 +73,9 @@ export interface CommonWidgetOptions<
 		label?: string;
 		root?: string;
 	};
-	form: JsonSchemaFormEngine;
+	element?: 'input' | 'select' | 'textarea' | undefined;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	form: JsonSchemaFormEngine<any>;
 	helpText?: string | undefined;
 	html: Attributes;
 	label?: string | undefined;
@@ -80,13 +83,14 @@ export interface CommonWidgetOptions<
 	level: number;
 	path: PathArray;
 	pathAsString: string;
+
 	schema: ReadonlyJSONSchema7;
 
 	widget: keyof Widgets | null;
 }
 
 export type DateInputAttributes = BaseHtmlAttributes & {
-	element: 'input';
+	// element: 'input';
 
 	// TODO: Date constraints
 	// max?: string | undefined;
@@ -96,7 +100,7 @@ export type DateInputAttributes = BaseHtmlAttributes & {
 };
 
 export type EnumHtmlAttributes = BaseHtmlAttributes & {
-	element: 'select';
+	// element: 'select';
 	value?: number | string | undefined;
 };
 export interface EnumWidgetOptions<
@@ -104,6 +108,7 @@ export interface EnumWidgetOptions<
 > extends PrimitiveWidgetOptions<Attributes> {
 	enum?: number[] | string[] | undefined;
 	type?: 'integer' | 'number' | 'string' | undefined;
+	value?: unknown;
 }
 
 export interface FeatureFlags {
@@ -127,6 +132,8 @@ export type FormFieldElement =
 	| HTMLSelectElement
 	| HTMLTextAreaElement;
 
+export type GenericData = Record<number | string, unknown>;
+
 export type HtmlAttributes =
 	| ArrayAttributes
 	| BaseHtmlAttributes
@@ -137,12 +144,12 @@ export type HtmlAttributes =
 	| NumberInputAttributes
 	| ObjectInputAttributes
 	| StringInputAttributes;
-
 export type NullHtmlAttributes = BaseHtmlAttributes & {
 	element: null;
 };
+
 export type NumberInputAttributes = BaseHtmlAttributes & {
-	element: 'input';
+	// element: 'input';
 
 	max?: number | undefined;
 	min?: number | undefined;
@@ -158,26 +165,33 @@ export type ObjectInputAttributes = BaseHtmlAttributes & {
 export interface ObjectWidgetOptions<
 	Attributes extends ObjectInputAttributes = ObjectInputAttributes,
 > extends CommonWidgetOptions<Attributes> {
-	children: CommonWidgetOptions[];
+	fields: CommonWidgetOptions[];
+	// value?: unknown;
 }
-
 export type PathArray = (number | string)[];
+
 export type Primitive = boolean | number | string | undefined;
 
-export type PrimitiveArray = boolean[] | number[] | string[] | undefined;
+export type PrimitiveArray =
+	| (
+			| boolean
+			| number
+			| string
+	  )[] /* NOTE: Provokes `never`: boolean[] | number[] | string[] */
+	| undefined;
 
 export interface PrimitiveWidgetOptions<
 	Attributes extends HtmlAttributes = HtmlAttributes,
 > extends CommonWidgetOptions<Attributes> {
 	falseLabel?: string;
 	trueLabel?: string;
-	value?: Primitive;
+	// value?: Primitive;
 }
 
 export interface StringAttributes {
-	maxLength?: number | undefined;
+	maxlength?: number | undefined;
 
-	minLength?: number | undefined;
+	minlength?: number | undefined;
 	pattern?: string | undefined;
 	placeholder?: string;
 	value?: string | undefined;
@@ -187,13 +201,13 @@ export type StringInputAttributes = TextareaAttributes | TextInputAttributes;
 
 export type TextareaAttributes = BaseHtmlAttributes &
 	StringAttributes & {
-		element: 'textarea';
+		// element: 'textarea';
 		type: never;
 	};
 
 export type TextInputAttributes = BaseHtmlAttributes &
 	StringAttributes & {
-		element: 'input';
+		// element: 'input';
 		type: 'email' | 'password' | 'search' | 'tel' | 'text' | 'url';
 	};
 
@@ -210,7 +224,6 @@ export interface WidgetTypeBaseParameters {
 	// classes: Record<string, string>;
 	// uiState: Record<string | number, unknown>;
 }
-
 interface ArrayChildControls {
 	delete: {
 		click: (_event: Event) => void;
@@ -234,6 +247,7 @@ interface ArrayChildControls {
 		drop: (event: DragEvent) => void;
 	};
 }
+
 interface ArrayControls {
 	add: { click: (_event: Event) => void };
 }

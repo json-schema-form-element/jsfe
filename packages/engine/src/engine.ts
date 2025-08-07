@@ -1,3 +1,5 @@
+// import type { StandardSchemaV1 } from '@standard-schema/spec';
+
 import { Logger } from '@jsfe/engine/logger';
 import { Signal } from 'signal-polyfill';
 
@@ -5,10 +7,11 @@ import type {
 	CommonWidgetOptions,
 	FeatureFlags,
 	FormFieldElement,
+	GenericData,
 	ObjectWidgetOptions,
 	PathArray,
 } from './types/form.js';
-import type { UiSchema } from './types/index.js';
+import type { UiSchema, Widgets } from './types/index.js';
 import type { ReadonlyJSONSchema7 } from './types/index.js';
 import type { FieldPathFromSchema } from './types/paths.js';
 
@@ -19,10 +22,11 @@ const log = new Logger();
 
 export class JsonSchemaFormEngine<
 	Schema extends ReadonlyJSONSchema7 | undefined = undefined,
+	Ui extends UiSchema = UiSchema,
+	Data extends GenericData = GenericData,
 	Path extends string = Schema extends ReadonlyJSONSchema7
 		? FieldPathFromSchema<Schema>
 		: string,
-	Data = Record<number | string, unknown>,
 > extends EventTarget {
 	public readonly $data = new Signal.State({} as Data);
 
@@ -42,8 +46,7 @@ export class JsonSchemaFormEngine<
 		function recurse(field: CommonWidgetOptions | ObjectWidgetOptions) {
 			fields[field.pathAsString] = field;
 
-			if ('children' in field)
-				for (const child of field.children) recurse(child);
+			if ('fields' in field) for (const child of field.fields) recurse(child);
 		}
 		recurse(this.rootField);
 
@@ -55,17 +58,16 @@ export class JsonSchemaFormEngine<
 	}
 
 	public constructor(
-		public schema: Schema = {} as Schema,
-		public ui: UiSchema = {} as UiSchema,
+		public readonly schema: Schema = {} as Schema,
+		public readonly ui: Ui = {} as Ui,
+		/** Initial data */
 		data: Data = {} as Data,
+		public readonly widgets: Partial<Widgets> = {},
+		public readonly name?: string,
 	) {
 		super();
 
-		this.$data.set(structuredClone(data));
-		// HACK: Otherwise, first modified field won't propagate it's value indefinitely.
-		queueMicrotask(() => {
-			this.$data.set(structuredClone(data));
-		});
+		this.$data.set(data);
 
 		this.$rootField = new Signal.Computed(() =>
 			this.traverse({
@@ -88,17 +90,17 @@ export class JsonSchemaFormEngine<
 		// NOTE: Partially implemented
 		_schemaPath?: PathArray,
 	) {
-		const updatedData = structuredClone(this.data) as Record<string, unknown>;
+		const updatedData = { ...this.data };
 		setSafe(updatedData, path, value);
 
-		this.$data.set(updatedData as Data);
+		this.$data.set(updatedData);
 
 		this.dispatchEvent(new Event('change'));
-		log.debug({ updatedData });
+		log.debug({ updatedData: this.$data.get() });
 	}
 
 	// TODO: Input/Change distinction.
-	public handleFormEvent(event: InputEvent, coerce = false) {
+	public handleFormEvent(event: Event | InputEvent /*  coerce = true */) {
 		const fieldElement = event.target as FormFieldElement;
 
 		const nameAttribute = fieldElement.getAttribute('name');
@@ -122,7 +124,7 @@ export class JsonSchemaFormEngine<
 
 		// TODO: Extract coercion to helper
 		if (
-			coerce &&
+			// coerce &&
 			field.schema.type === 'number' &&
 			'valueAsNumber' in fieldElement
 		)
@@ -144,7 +146,7 @@ export class JsonSchemaFormEngine<
 		if (!formElement) throw new ReferenceError('Missing form element.');
 
 		// IDEA: Parametrize?
-		// event.preventDefault();
+		event.preventDefault();
 
 		let formData;
 		try {

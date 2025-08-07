@@ -20,7 +20,7 @@ import {
 export function widgetPrimitive(
 	parameters: WidgetTypeBaseParameters,
 ): PrimitiveWidgetOptions {
-	const { data, schema, uiSchema } = parameters;
+	const { schema, uiSchema } = parameters;
 	const options = createBaseOptions(parameters);
 
 	// Handle enum types first
@@ -34,20 +34,20 @@ export function widgetPrimitive(
 
 	// Handle date/time types
 	if (schema.format && ['date', 'date-time', 'time'].includes(schema.format)) {
-		return createDateWidget(options, schema, data);
+		return createDateWidget(options, schema, uiSchema);
 	}
 
 	// Handle primitive types
 	switch (schema.type) {
 		case 'boolean': {
-			return createBooleanWidget(options, uiSchema);
+			return createBooleanWidget(options, schema, uiSchema);
 		}
 		case 'integer':
 		case 'number': {
-			return createNumberWidget(options, schema, uiSchema, data);
+			return createNumberWidget(options, schema, uiSchema);
 		}
 		case 'string': {
-			return createStringWidget(options, schema, uiSchema, data);
+			return createStringWidget(options, schema, uiSchema);
 		}
 		default: {
 			return options;
@@ -94,34 +94,39 @@ function createBaseOptions({
 			placeholder: uiSchema['ui:placeholder'],
 			readonly: uiSchema['ui:readonly'] ?? false,
 			required,
+			value: baseValue,
 		},
 		label,
 		level,
 		path,
 		pathAsString: dotPath,
 		schema,
-		value: baseValue,
 		widget: null,
 	};
 }
 
 function createBooleanWidget(
 	options: PrimitiveWidgetOptions,
+	_schema: WidgetTypeBaseParameters['schema'],
 	uiSchema: WidgetTypeBaseParameters['uiSchema'],
 ): PrimitiveWidgetOptions<BooleanInputAttributes> {
 	const booleanOptions: PrimitiveWidgetOptions<BooleanInputAttributes> = {
 		...options,
+		element: 'input',
 		html: {
 			...options.html,
-			element: 'input',
 			type: 'checkbox',
-			value: options.value === undefined ? undefined : Boolean(options.value),
+			value:
+				options.html.value === undefined
+					? undefined
+					: Boolean(options.html.value),
 		},
 	};
 
 	switch (uiSchema['ui:widget']) {
 		case 'Button': {
-			booleanOptions.html.type = null;
+			booleanOptions.element = undefined;
+			booleanOptions.html.type = undefined;
 			booleanOptions.widget = 'ButtonGroupBoolean';
 			break;
 		}
@@ -145,7 +150,7 @@ function createBooleanWidget(
 function createDateWidget(
 	options: PrimitiveWidgetOptions,
 	schema: WidgetTypeBaseParameters['schema'],
-	data: WidgetTypeBaseParameters['data'],
+	_uiSchema: WidgetTypeBaseParameters['uiSchema'],
 ): PrimitiveWidgetOptions<DateInputAttributes> {
 	const type =
 		schema.format === 'date-time'
@@ -154,13 +159,15 @@ function createDateWidget(
 
 	const dateOptions: PrimitiveWidgetOptions<DateInputAttributes> = {
 		...options,
+		element: 'input',
 		html: {
 			...options.html,
-			element: 'input',
 			type,
-			value: typeof data === 'string' ? data : undefined,
+			value:
+				options.html.value === undefined
+					? undefined
+					: String(options.html.value as string),
 		},
-		value: typeof options.value === 'string' ? options.value : undefined,
 		widget: 'Date',
 	};
 
@@ -175,9 +182,9 @@ function createEnumWidget(
 	const enumOptions: EnumWidgetOptions = {
 		...options,
 		enum: undefined,
+		element: 'select',
 		html: {
 			...options.html,
-			element: 'select',
 			value: undefined,
 		},
 		type: undefined,
@@ -206,15 +213,17 @@ function createNumberWidget(
 	options: PrimitiveWidgetOptions,
 	schema: WidgetTypeBaseParameters['schema'],
 	uiSchema: WidgetTypeBaseParameters['uiSchema'],
-	data: WidgetTypeBaseParameters['data'],
 ): PrimitiveWidgetOptions<NumberInputAttributes> {
 	const numberOptions: PrimitiveWidgetOptions<NumberInputAttributes> = {
 		...options,
+		element: 'input',
 		html: {
 			...options.html,
-			element: 'input',
 			type: 'number',
-			value: typeof data === 'number' ? data : undefined,
+			value:
+				options.html.value === undefined
+					? undefined
+					: Number(options.html.value),
 		},
 	};
 
@@ -246,26 +255,28 @@ function createStringWidget(
 	options: PrimitiveWidgetOptions,
 	schema: WidgetTypeBaseParameters['schema'],
 	uiSchema: WidgetTypeBaseParameters['uiSchema'],
-	data: WidgetTypeBaseParameters['data'],
 ): PrimitiveWidgetOptions<StringInputAttributes> {
 	const stringOptions: PrimitiveWidgetOptions<StringInputAttributes> = {
 		...options,
+		element: 'input',
 		html: {
 			...options.html,
-			element: 'input',
 			type: 'text',
-			value: typeof data === 'string' ? data : undefined,
+			value:
+				options.html.value === undefined
+					? undefined
+					: String(options.html.value as string),
 		},
 	};
 
 	if (uiSchema['ui:widget'] === 'Textarea') {
-		stringOptions.html.element = 'textarea';
+		stringOptions.element = 'textarea';
 		stringOptions.widget = 'Textarea';
 	} else if (uiSchema['ui:widget'] === 'ColorPicker') {
-		stringOptions.html.element = 'input';
+		stringOptions.element = 'input';
 		stringOptions.widget = 'ColorPicker';
 	} else {
-		stringOptions.html.element = 'input';
+		stringOptions.element = 'input';
 		stringOptions.widget = 'Text';
 		stringOptions.html.type = 'text';
 	}
@@ -280,8 +291,8 @@ function createStringWidget(
 		stringOptions.html.type = 'tel';
 	}
 
-	stringOptions.html.minLength = schema.minLength;
-	stringOptions.html.maxLength = schema.maxLength;
+	stringOptions.html.minlength = schema.minLength;
+	stringOptions.html.maxlength = schema.maxLength;
 	stringOptions.html.pattern = schema.pattern;
 
 	return stringOptions;

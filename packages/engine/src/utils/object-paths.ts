@@ -161,7 +161,7 @@ export function makeIdFromPath(path: string, prefix = ''): string {
  * @returns The original object with modifications applied.
  */
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export function setSafe<Type extends Record<string, unknown>>(
+export function setSafe<Type extends Record<number | string, unknown>>(
 	object: Type,
 	path: (number | string)[] | string,
 	value: unknown,

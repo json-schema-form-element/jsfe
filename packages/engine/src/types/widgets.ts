@@ -35,7 +35,7 @@ export interface Widgets {
 	Select: Widget<EnumWidgetOptions>;
 	SelectMultiple: Widget<ArrayPrimitiveWidgetOptions>;
 	// TODO: Finish submit implementation.
-	Submit: Widget<never /* { id?: string; label?: string } */>;
+	Submit: () => unknown;
 	Switch: Widget<PrimitiveWidgetOptions<BooleanInputAttributes>>;
 	Text: Widget<PrimitiveWidgetOptions<TextInputAttributes>>;
 	Textarea: Widget<PrimitiveWidgetOptions<TextareaAttributes>>;

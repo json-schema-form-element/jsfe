@@ -1,4 +1,10 @@
-export type { CommonWidgetOptions } from './form.js';
+export type {
+	EncType,
+	GenericFormProperties,
+	NativeFormAttributes,
+	TagName,
+} from './form-helpers.js';
+export type { CommonWidgetOptions, GenericData } from './form.js';
 
 export type { ReadonlyJSONSchema7 } from './schema.js';
 export type { UiSchema } from './ui-schema.js';

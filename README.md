@@ -53,6 +53,7 @@ Swap built-in components with your own, or add custom widget thanks to [UI schem
 
 > [!CAUTION]  
 > Not for production.  
+> Code is actually under a major rewrite.  
 > Expect the doc. to be not in sync. with the actual released code.
 
 ![](https://ik.imagekit.io/jc0/jsfe/design/header_json-schema-form-element_2RpVU_W-y-.png?updatedAt=1695289194993)
@@ -104,61 +105,64 @@ Jump to [**UI libraries**](#component-libraries):
 
 <!-- prettier-ignore -->
 - [Field types](#field-types)
-	- [Primitives](#primitives)
-		- [String](#string)
-		- [Number](#number)
-		- [Boolean](#boolean)
-		- [Enumeration](#enumeration)
-		- [Date](#date)
-	- [Object](#object)
-		- [Additional properties](#additional-properties)
-	- [Arrays](#arrays)
-		- [Basic](#basic)
-		- [Fixed](#fixed)
-		- [Nested](#nested)
-		- [Multiple choices (enums.)](#multiple-choices-enums)
-		- [Additional items](#additional-items)
+  - [Primitives](#primitives)
+    - [String](#string)
+    - [Number](#number)
+    - [Boolean](#boolean)
+    - [Enumeration](#enumeration)
+    - [Date](#date)
+  - [Object](#object)
+    - [Additional properties](#additional-properties)
+  - [Arrays](#arrays)
+    - [Basic](#basic)
+    - [Fixed](#fixed)
+    - [Nested](#nested)
+    - [Multiple choices (enums.)](#multiple-choices-enums)
+    - [Additional items](#additional-items)
 - [Subschemas](#subschemas)
-	- [allOf](#allof)
-	- [oneOf](#oneof)
-	- [anyOf](#anyof)
+  - [allOf](#allof)
+  - [oneOf](#oneof)
+  - [anyOf](#anyof)
 - [Conditionals](#conditionals)
-	- [Dependencies](#dependencies)
-	- [If, then, else](#if-then-else)
+  - [Dependencies](#dependencies)
+  - [If, then, else](#if-then-else)
 - [Miscellaneous](#miscellaneous)
-	- [References](#references)
-	- [Recursivity](#recursivity)
-	- [Nullable values](#nullable-values)
+  - [References](#references)
+  - [Recursivity](#recursivity)
+  - [Nullable values](#nullable-values)
 - [User Interface](#user-interface)
-	- [Schema](#schema)
+  - [Schema](#schema)
 - [Usage](#usage)
-	- [Installation](#installation)
-		- [UI Libraries](#ui-libraries)
-	- [Implementations](#implementations)
-		- [All examples](#all-examples)
-		- [Pure HTML with CDN](#pure-html-with-cdn)
-		- [TypeScript (no framework)](#typescript-no-framework)
-		- [Astro (SSR)](#astro-ssr)
-		- [Lit](#lit)
-		- [Solid](#solid)
-		- [Vue](#vue)
-		- [Svelte](#svelte)
-		- [React](#react)
-	- [CSS](#css)
-	- [TypeScript](#typescript)
-		- [Support for each implementation](#support-for-each-implementation)
+  - [Installation](#installation)
+    - [UI Libraries](#ui-libraries)
+  - [Implementations](#implementations)
+    - [All examples](#all-examples)
+    - [Pure HTML with CDN](#pure-html-with-cdn)
+    - [TypeScript (no framework)](#typescript-no-framework)
+    - [Astro (SSR)](#astro-ssr)
+    - [Lit](#lit)
+    - [Solid](#solid)
+    - [Vue](#vue)
+    - [Svelte](#svelte)
+    - [React](#react)
+  - [CSS](#css)
+  - [TypeScript](#typescript)
+    - [Support for each implementation](#support-for-each-implementation)
 - [Component libraries](#component-libraries)
-	- [Shoelace](#shoelace)
-	- [Custom widgets](#custom-widgets)
-		- [Design choices](#design-choices)
+  - [Shoelace](#shoelace)
+  - [Custom widgets](#custom-widgets)
+    - [Design choices](#design-choices)
 - [Validation](#validation)
 - [Schema massaging](#schema-massaging)
 - [Custom Elements Manifests](#custom-elements-manifests)
 - [Packages informations](#packages-informations)
-	- [_Next_ versions](#next-versions)
+  - [_Next_ versions](#next-versions)
 - [Experimental features](#experimental-features)
 - [Improvements](#improvements)
 - [Acknowledgements](#acknowledgements)
+- [Widgets](#widgets)
+- [Typings](#typings)
+- [Lit SSR](#lit-ssr)
 
 </details>
 
@@ -1088,3 +1092,117 @@ the ideas RSJF creators brought.
 - [remark-lint-frontmatter-schema](https://github.com/JulianCataldo/remark-lint-frontmatter-schema): Validate your Markdown **frontmatter** data against a **JSON schema**.
 - [retext-case-police](https://github.com/JulianCataldo/retext-case-police): Check popular names casing. Example: ⚠️ `github` → ✅ `GitHub`.
 - [astro-openapi](https://github.com/JulianCataldo/astro-openapi): An Astro toolset for building full-stack operations easily, with type-safety and documentation as first-class citizens.
+
+---
+
+# 🚧 New documentation 🚧
+
+<!--  -->
+
+As the API is evolving, for now, examples are mostly Lit focused, but the library works perfectly with almost any kind of UI libraries (or none).
+
+- `engine` is UI agnostic. Unit tested.
+- `generics` provide a toolbox of helpers, style-less widgets, and a base form element that can easily be customized.
+- `webawesome` provides a Custom Element pre-loaded with the Webawesome UI library, with a few extras widgets (not native in browsers). It's an extension of the Generic element above.
+
+The Custom Elements are not the only way to build with JSFE. They are implementation reference, and with minor modification, they can be ported to any JSX based component.
+
+---
+
+Quick peek of the new API, we're using Vite here, for the sake of brievety, but special care will follow for React 19, Vue and Solid.
+
+```ts
+import { unsafeCSS } from 'lit';
+import styles from '@jsfe/webawesome/css?inline';
+
+(class extends JsonSchemaFormWebawesome {
+	static override styles = [unsafeCSS(styles)];
+}).define();
+```
+
+As you can see, CSS loading is left to the user to handle.  
+After many trial and errors, I think it's the most robust way to handle scoped styles presets with total override capabilities for the end user.
+
+---
+
+You can get pretty far with pure, native HTML inputs, and the `<jsf-genetic>`, too.
+
+Trick is to leverage form semantics, and a smart CSS library, like PicoCSS:
+
+```ts
+import { JsonSchemaFormGeneric } from '@jsfe/generics';
+import { unsafeCSS, css } from 'lit';
+import picoStyles from '@picocss/pico?inline';
+
+(class extends JsonSchemaFormGeneric {
+	static override styles = [
+		unsafeCSS(picoStyles),
+
+		// More CSS for you, here!
+		css`
+			/* DEBUG */
+			*:focus {
+				outline: 2px solid red !important;
+			}
+		`,
+	];
+}).define();
+```
+
+Under the hood, it will override the `LitElement` super-class' static styles, combined with your own mean of CSS optimizations (meaning, your bundler).  
+Also, the _JSFE_ API provides class mapping via JS props. for all widgets elements, if you need finer selectors targeting.
+
+The _JSFE_ provided Custom Elements always have their `styles` empty.  
+Expect some visual breakage for the Webawesome CE if you forget them.  
+For the `<jsf-generic>`, it's "broken" visually by default ;) Goal is to let you "paint" it, from scratch, or via Bootstrap, PicoCSS, Flowbite, DaisyUI… leveraging class mapping.
+
+## Widgets
+
+TODO:
+
+<!--  -->
+
+## Typings
+
+TODO: Typings generation for the Custom Elements is not yet implemented.  
+It will be like https://github.com/JulianCataldo/node-flow-elements.
+Pretty cool to get Custom Elements type aware for their props, in many UI frameworks.
+
+## Lit SSR
+
+_JSFE_ fully supports **server side rendering** via any Lit SSR adapted host (Next.js, Gracile, DIY…).
+
+It can render **fully static HTML markup** without any client side JS and the whole form will work just fine, via classic `application/x-www-form-urlencoded` submission.
+
+Adding JS hydration for Custom Elements will "augment" your form for more advanced stuff that cannot be made with native widgets, like array manipulation. Finally, for a more progressive user experience, when JS is loaded, _JSFE_ can take over the classic form submission and provide you a window for rolling your own JSON `GET`s or `POST`s.
+
+When you want to server render a template, in the light DOM, via **Lit SSR**, **without full page hydration**, and **with or without** Custom Elements hydration, just stringify your seed configurations:
+
+```ts
+const Template = html`
+	<!--  -->
+
+	<jsf-webawesome
+		schema=${JSON.stringify(schema)}
+		ui=${JSON.stringify(ui)}
+		data=${JSON.stringify(data)}
+	></jsf-webawesome>
+
+	<!--  -->
+`;
+```
+
+If you don't care about serialization, like when you are hydrating the whole page -with the root, light DOM included-, or if you just use _JSFE_ in a client only LitElement:
+
+```ts
+const Template = html`
+	<!--  -->
+
+	<jsf-webawesome .schema=${schema} .ui=${ui} .data=${data}></jsf-webawesome>
+
+	<!--  -->
+`;
+```
+
+Properties binding is not obligatory, you can just use plain props. But keep in mind it's not recommended if those bindings are going through high frequency changes.  
+Also, the big JSON blobs are bloating the DOM, for no real use for reflection.

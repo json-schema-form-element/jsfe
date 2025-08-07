@@ -1,0 +1,6 @@
+.theme-shoelace.widget-radio-group-boolean {
+	&::part(form-control-input) {
+		display: flex;
+		gap: 1rem;
+	}
+}

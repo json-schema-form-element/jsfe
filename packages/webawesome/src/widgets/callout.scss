@@ -1,0 +1,78 @@
+// NOTE: Extracted from Shoelace docs website
+
+/* Callouts */
+.theme-shoelace.widget-callout {
+	position: relative;
+	padding: 1rem 1.5rem 1rem 2rem;
+	margin: var(--sl-spacing-x-large) var(--sl-spacing-large);
+	color: var(--sl-color-neutral-800);
+	background-color: var(--sl-color-neutral-100);
+	border-left: solid 4px var(--sl-color-neutral-500);
+	border-radius: var(--sl-border-radius-medium);
+
+	& > :first-child {
+		margin-top: 0;
+	}
+
+	& > :last-child {
+		margin-bottom: 0;
+	}
+
+	&.callout--tip {
+		color: var(--sl-color-primary-800);
+		background-color: var(--sl-color-primary-100);
+		border-left-color: var(--sl-color-primary-600);
+	}
+
+	&::before {
+		position: absolute;
+		top: calc(50% - 0.8rem);
+		left: calc(-0.8rem - 2px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.6rem;
+		height: 1.6rem;
+		clip-path: circle(50% at 50% 50%);
+		font-family: var(--sl-font-serif);
+		font-weight: var(--sl-font-weight-bold);
+		color: var(--sl-color-neutral-0);
+		content: '';
+	}
+
+	&.callout--tip::before {
+		font-style: italic;
+		content: 'i';
+		background-color: var(--sl-color-primary-600);
+	}
+
+	&.callout--warning {
+		color: var(--sl-color-warning-800);
+		background-color: var(--sl-color-warning-100);
+		border-left-color: var(--sl-color-warning-600);
+	}
+
+	&.callout--warning::before {
+		content: '!';
+		background-color: var(--sl-color-warning-600);
+	}
+
+	&.callout--danger {
+		color: var(--sl-color-danger-800);
+		background-color: var(--sl-color-danger-100);
+		border-left-color: var(--sl-color-danger-600);
+	}
+
+	&.callout--danger::before {
+		content: '‼';
+		background-color: var(--sl-color-danger-600);
+	}
+
+	& + & {
+		margin-top: calc(-0.5 * var(--sl-spacing-medium));
+	}
+
+	a {
+		color: inherit;
+	}
+}

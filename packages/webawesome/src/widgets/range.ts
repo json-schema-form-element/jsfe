@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 export const Range: Widgets['Range'] = (options) =>
 	html` <!--  -->
 		<sl-range
-			value=${ifDefined(options.value)}
+			value=${ifDefined(options.html.value)}
 			step=${ifDefined(options.html.step)}
 			min=${ifDefined(options.html.min)}
 			max=${ifDefined(options.html.max)}

@@ -12,7 +12,9 @@ export const RadioGroupBoolean: Widgets['RadioGroupBoolean'] = (
 		size="medium"
 		label=${ifDefined(options.label)}
 		help-text=${ifDefined(options.helpText)}
-		value=${options.value === undefined ? '' : String(options.value)}
+		value=${options.html.checked === undefined
+			? ''
+			: String(options.html.checked)}
 		name=${options.html.name}
 		id=${options.html.id}
 		?required=${options.html.required ?? false}

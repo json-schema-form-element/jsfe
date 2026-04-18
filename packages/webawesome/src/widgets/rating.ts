@@ -10,7 +10,7 @@ export const Rating: Widgets['Rating'] = (options) =>
 
 			<!-- label=$ {ifDefined(options.label)} -->
 			<sl-rating
-				value=${ifDefined(options.value)}
+				value=${ifDefined(options.html.value)}
 				precision=${
 					/* NOTE: buggy typing here. Using "any" with step is fine */
 					ifDefined(options.html.step)

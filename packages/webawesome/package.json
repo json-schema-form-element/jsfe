@@ -25,14 +25,14 @@
     "url": "https://www.juliancataldo.com"
   },
   "type": "module",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/esm/index.js",
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js",
     "./scss": "./src/styles.scss",
     "./scss/*": "./src/widgets/*.scss",
     "./css": "./dist/css/styles.css",
-    "./jss": "./dist/css/styles.js",
-    "./min": "./dist/esm-min"
+    "./jss": "./dist/css/styles.js"
   },
   "files": [
     "./dist/esm",

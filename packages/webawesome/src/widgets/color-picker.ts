@@ -8,7 +8,7 @@ export const ColorPicker: Widgets['ColorPicker'] = (options) => html`
 		<label for=${options.html.id}>${options.label}</label>
 		<sl-color-picker
 			label=${ifDefined(options.label)}
-			value=${options.value ? String(options.value) : ''}
+			value=${options.html.value ? String(options.html.value) : ''}
 			name=${options.html.name}
 			id=${options.html.id}
 			?disabled=${options.html.disabled}

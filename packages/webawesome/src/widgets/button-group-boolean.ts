@@ -1,6 +1,6 @@
-import { html } from '@lit-labs/signals';
-
 import type { Widgets } from '@jsfe/engine';
+
+import { html } from '@lit-labs/signals';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const ButtonGroupBoolean: Widgets['ButtonGroupBoolean'] = (
@@ -10,7 +10,9 @@ export const ButtonGroupBoolean: Widgets['ButtonGroupBoolean'] = (
 		size="medium"
 		label=${ifDefined(options.label)}
 		help-text=${ifDefined(options.helpText)}
-		value=${typeof options.value !== 'undefined' ? String(options.value) : ''}
+		value=${options.html.checked === undefined
+			? ''
+			: String(options.html.checked)}
 		name=${options.html.id}
 		?required?=${options.html.required}
 	>
@@ -18,13 +20,15 @@ export const ButtonGroupBoolean: Widgets['ButtonGroupBoolean'] = (
 			value="true"
 			?disabled=${
 				/* NOTE: This is a trick because otherwise we won't see pre-prepopulated value  */
-				options.value === true ? false : options.html.disabled
+				options.html.checked === true ? false : options.html.disabled
 			}
 			>${options.trueLabel ?? 'Yes'}</sl-radio-button
 		>
 		<sl-radio-button
 			value="false"
-			?disabled=${options.value === false ? false : options.html.disabled}
+			?disabled=${options.html.checked === false
+				? false
+				: options.html.disabled}
 			>${options.falseLabel ?? 'No'}</sl-radio-button
 		>
 	</sl-radio-group>

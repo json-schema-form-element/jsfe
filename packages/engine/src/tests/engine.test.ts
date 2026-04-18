@@ -3,7 +3,7 @@ import type { JSONSchema7 } from 'json-schema';
 import assert from 'node:assert';
 import test, { describe } from 'node:test';
 
-import type { CommonWidgetOptions } from '../types/form.js';
+import type { CommonWidgetOptions, GenericData } from '../types/form.js';
 
 import { JsonSchemaFormEngine } from '../engine.js';
 
@@ -236,7 +236,7 @@ void describe('JSONSchemaFormEngine', () => {
 			minItems: 2,
 			type: 'array',
 		};
-		const data = ['test', 42];
+		const data = ['test', 42] as unknown as GenericData;
 		const form = new JsonSchemaFormEngine(schema, {}, data);
 
 		const fields = form.field as Record<string, CommonWidgetOptions>;

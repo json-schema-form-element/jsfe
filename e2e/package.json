@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.1",
-    "@playwright/test": "^1.38.1",
-    "playwright": "^1.38.1"
+    "@playwright/test": "^1.59.1",
+    "playwright": "^1.59.1"
   }
 }

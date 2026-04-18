@@ -18,7 +18,7 @@ export const CheckboxGroup: Widgets['CheckboxGroup'] = (options) =>
 				${options.enum?.map((enumValue) => {
 					return html`<sl-checkbox
 						?checked=${options.value?.some((v) => v === enumValue) ?? false}
-						?disabled=${options.disabled}
+						?disabled=${options.html.disabled}
 						>${enumValue}</sl-checkbox
 					>`;
 				})}

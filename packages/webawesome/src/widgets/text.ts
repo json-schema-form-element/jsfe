@@ -11,13 +11,13 @@ export const Text: Widgets['Text'] = (options) => html`
 		help-text=${ifDefined(options.helpText)}
 		id=${options.html.id}
 		label=${ifDefined(options.label)}
-		maxLength=${ifDefined(options.html.maxLength)}
-		minLength=${ifDefined(options.html.minLength)}
+		maxlength=${ifDefined(options.html.maxlength)}
+		minlength=${ifDefined(options.html.minlength)}
 		name=${options.html.name}
 		pattern=${ifDefined(options.html.pattern)}
 		placeholder=${ifDefined(options.html.placeholder)}
 		type=${options.html.type}
-		value=${ifDefined(options.value)}
+		value=${ifDefined(options.html.value)}
 	>
 	</sl-input>
 `;

@@ -35,17 +35,18 @@ void describe('Object', () => {
 		});
 
 		assert.deepStrictEqual(result, {
-			children: [
+			classes: {},
+			fields: [
 				{
 					classes: {},
+					element: 'input',
 					form,
 					helpText: '',
 					html: {
 						disabled: false,
-						element: 'input',
 						id: 'ObjectFoo__String1',
-						maxLength: undefined,
-						minLength: undefined,
+						maxlength: undefined,
+						minlength: undefined,
 						name: 'ObjectFoo.String1',
 						pattern: undefined,
 						placeholder: undefined,
@@ -61,11 +62,9 @@ void describe('Object', () => {
 					schema: {
 						type: 'string',
 					},
-					value: undefined,
 					widget: 'Text',
 				},
 			],
-			classes: {},
 			form,
 			helpText: 'My Object Field Group desc',
 			html: {
@@ -109,8 +108,8 @@ void describe('Object', () => {
 		});
 
 		assert.deepStrictEqual(result, {
-			children: [],
 			classes: {},
+			fields: [],
 			form,
 			helpText: 'Wrong object field',
 			html: {

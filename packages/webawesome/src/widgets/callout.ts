@@ -1,9 +1,11 @@
-import type { Widgets } from '@jsfe/engine';
-
 import { html } from '@lit-labs/signals';
 import { classMap } from 'lit/directives/class-map.js';
 
-export const Errorr: Widgets['Error'] = (options) => {
+export const Errorr = (options: {
+	message?: string;
+	type?: string;
+	id?: string;
+}) => {
 	console.warn(options.message);
 	return html`
 		<div

@@ -1,6 +1,6 @@
-import { Form, JsonSchemaFormElement, WidgetTree } from '@jsfe/generics/form';
+import { JsonSchemaFormElement } from '@jsfe/generics/elements';
+import { FormGeneric } from '@jsfe/generics/form-generic';
 import { html } from '@lit-labs/signals';
-import { css, unsafeCSS } from 'lit';
 
 // import { styles } from './styles.js';
 import * as widgets from './widgets/index.js';
@@ -25,37 +25,9 @@ export class JsonSchemaFormWebawesome extends JsonSchemaFormElement {
 	widgets = widgets;
 
 	render() {
-		// return html`hello`;
-
-		// console.log(this.schema);
-
 		if (!this.form) return html`No form`;
 
-		return html`
-			FORM WA
-			<details>
-				<pre>${JSON.stringify(this.schema, null, 2)}</pre>
-				<pre>${JSON.stringify(this.form.rootField, null, 2)}</pre>
-			</details>
-
-			${Form({
-				children: html`
-					<!--  -->
-					${WidgetTree({
-						rootField: this.form.rootField,
-						widgets: this.widgets,
-					})}
-
-					<!--  -->
-					${this.widgets.Submit({})}
-
-					<!--  -->
-				`,
-				form: this.form,
-			})}
-
-			<!--  -->
-		`;
+		return FormGeneric({ form: this.form, widgets: this.widgets });
 	}
 }
 

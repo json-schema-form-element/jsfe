@@ -6,8 +6,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import externals from 'rollup-plugin-node-externals';
 
 import babelPluginSyntaxTypescript from '@babel/plugin-syntax-typescript';
-import babelPluginJsxToLiterals from '@gracile-labs/babel-plugin-jsx-to-literals/babel-plugin';
-import babelPluginJsxMeta from '@gracile-labs/babel-plugin-jsx-to-literals/babel-plugin-meta';
+import babelPluginJsxToLiterals from '@gracile-labs/babel-plugin-jsx-to-literals';
 import babelPluginVue from '@vue/babel-plugin-jsx';
 // import babelPresetSolid from 'babel-preset-solid';
 
@@ -51,9 +50,9 @@ const tsFrameworkIncludes = [
 
 const enabled = {
 	lit: true,
-	preact: true,
-	react: true,
-	vue: true,
+	preact: false,
+	react: false,
+	vue: false,
 };
 
 const options: RollupOptions[] = [];

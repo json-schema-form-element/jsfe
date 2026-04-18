@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-objects */
 /* eslint-disable max-lines */
 import type { JSONSchema7 } from 'json-schema';
 
@@ -39,14 +38,14 @@ void describe('Primitives', () => {
 
 		assert.deepStrictEqual(result, {
 			classes: {},
+			element: 'input',
 			form,
 			helpText: 'My Text Field desc',
 			html: {
-				element: 'input',
 				disabled: false,
 				id: 'ObjectFoo__String1',
-				maxLength: undefined,
-				minLength: undefined,
+				maxlength: undefined,
+				minlength: undefined,
 				name: 'ObjectFoo.String1',
 				pattern: undefined,
 				placeholder: undefined,
@@ -65,7 +64,6 @@ void describe('Primitives', () => {
 				type: 'string',
 			},
 			widget: 'Text',
-			value: undefined,
 		});
 	});
 
@@ -89,11 +87,11 @@ void describe('Primitives', () => {
 
 		assert.deepStrictEqual(result, {
 			classes: {},
+			element: 'input',
 			form,
 			helpText: 'My Number Field desc',
 			html: {
 				disabled: false,
-				element: 'input',
 				id: 'ObjectFoo__Number1',
 				max: undefined,
 				min: undefined,
@@ -114,7 +112,6 @@ void describe('Primitives', () => {
 				title: 'My Number Field',
 				type: 'number',
 			},
-			value: undefined,
 			widget: 'Number',
 		});
 	});

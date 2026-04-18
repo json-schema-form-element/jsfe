@@ -4,7 +4,9 @@ import { html } from '@lit-labs/signals';
 
 export const Switchh: Widgets['Switch'] = (options) => html`
 	<sl-switch
-		?checked=${typeof options.value === 'boolean' ? options.value : false}
+		?checked=${typeof options.html.checked === 'boolean'
+			? options.html.checked
+			: false}
 		?disabled=${options.html.disabled}
 		?required=${options.html.required}
 		id=${options.html.id}

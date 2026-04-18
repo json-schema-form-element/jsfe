@@ -17,5 +17,5 @@ export const Numberr: Widgets['Number'] = (options) =>
 			name=${options.html.id}
 			step=${ifDefined(options.html.step)}
 			type="number"
-			value=${ifDefined(options.value)}
+			value=${ifDefined(options.html.value)}
 		></sl-input>`;

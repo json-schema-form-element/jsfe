@@ -20,7 +20,7 @@ import { log } from './form.js';
 import * as genericWidgets from './widgets/index.js';
 
 /**
- * Abstract , Loggerbase class for JSON Schema Form elements.
+ * Base class for JSON Schema Form elements.
  * Implements native `form` attributes.
  *
  * @template Schema - The JSON Schema type
@@ -28,10 +28,10 @@ import * as genericWidgets from './widgets/index.js';
  * @template Data - The data type for the whole form object
  */
 export abstract class JsonSchemaFormElement<
-		Schema extends ReadonlyJSONSchema7 | undefined = undefined,
-		Ui extends UiSchema = UiSchema,
-		Data extends GenericData = GenericData,
-	>
+	Schema extends ReadonlyJSONSchema7 | undefined = undefined,
+	Ui extends UiSchema = UiSchema,
+	Data extends GenericData = GenericData,
+>
 	extends SignalWatcher(LitElement)
 	implements GenericFormProperties<Schema, Ui, Data>
 {

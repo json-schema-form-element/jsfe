@@ -78,7 +78,11 @@ export function getLabelFromSchemaOrPath({
 	return (
 		uiSchema['ui:title'] ??
 		schema.title ??
-		(Number.isNaN(Number(path.at(-1))) ? String(path.at(-1)) : '')
+		(Number.isNaN(Number(path.at(-1)))
+			? path.at(-1)
+				? String(path.at(-1))
+				: ''
+			: '')
 	);
 }
 

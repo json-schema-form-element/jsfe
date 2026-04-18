@@ -1,6 +1,5 @@
 import { gracile } from '@gracile/gracile/plugin';
 import { defineConfig } from 'vite';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
@@ -11,14 +10,14 @@ export default defineConfig({
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	plugins: [
 		react(),
-		viteStaticCopy({
-			targets: [
-				{
-					src: 'node_modules/@shoelace-style/shoelace/dist/assets/icons/*.svg',
-					dest: 'assets/icons',
-				},
-			],
-		}),
+		// viteStaticCopy({
+		// 	targets: [
+		// 		{
+		// 			src: 'node_modules/@shoelace-style/shoelace/dist/assets/icons/*.svg',
+		// 			dest: 'assets/icons',
+		// 		},
+		// 	],
+		// }),
 		gracile({
 			output: 'server',
 

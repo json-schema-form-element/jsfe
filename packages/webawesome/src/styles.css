@@ -1,0 +1,12 @@
+@import './widgets/_all.css';
+@import './widgets/_fieldset.css';
+@import './widgets/array.css';
+@import './widgets/callout.css';
+@import './widgets/checkbox-group.css';
+@import './widgets/checkbox.css';
+@import './widgets/color-picker.css';
+@import './widgets/object.css';
+@import './widgets/radio-group-boolean.css';
+@import './widgets/radio-group.css';
+@import './widgets/rating.css';
+@import './widgets/submit.css';

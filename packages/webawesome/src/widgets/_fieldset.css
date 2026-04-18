@@ -17,13 +17,13 @@ fieldset[part] {
 		transition: box-shadow var(--wa-transition-medium);
 
 		&:hover {
-			// background: var(--wa-color-neutral-95);
+			/* background: var(--wa-color-neutral-95); */
 			box-shadow: var(--wa-shadow-l);
 		}
 	}
 
 	legend {
-		// font-size: var(--wa-font-size-large);
+		/* font-size: var(--wa-font-size-large); */
 	}
 
 	&.level-0 {
@@ -33,9 +33,9 @@ fieldset[part] {
 		}
 
 		wa-card::part(body) {
-			// background-color: slcolo;
+			/* background-color: slcolo; */
 		}
-		// --wa-panel-background-color: var(--wa-color-neutral-95);
+		/* --wa-panel-background-color: var(--wa-color-neutral-95); */
 	}
 
 	&.level-1 {
@@ -45,9 +45,9 @@ fieldset[part] {
 		}
 
 		wa-card::part(header) {
-			// background-color: var(--wa-color-neutral-95);
+			/* background-color: var(--wa-color-neutral-95); */
 		}
-		// --wa-panel-background-color: var(--wa-color-neutral-95);
+		/* --wa-panel-background-color: var(--wa-color-neutral-95); */
 	}
 
 	&.level-2 {
@@ -57,10 +57,10 @@ fieldset[part] {
 		}
 
 		wa-card::part(header) {
-			// background-color: var(--wa-color-neutral-90);
+			/* background-color: var(--wa-color-neutral-90); */
 		}
 
-		// --wa-panel-background-color: var(--wa-color-neutral-90);
+		/* --wa-panel-background-color: var(--wa-color-neutral-90); */
 	}
 
 	&.level-3 {
@@ -70,8 +70,8 @@ fieldset[part] {
 		}
 
 		wa-card::part(header) {
-			// background-color: var(--wa-color-neutral-80);
+			/* background-color: var(--wa-color-neutral-80); */
 		}
-		// --wa-panel-background-color: var(--wa-color-neutral-80);
+		/* --wa-panel-background-color: var(--wa-color-neutral-80); */
 	}
 }

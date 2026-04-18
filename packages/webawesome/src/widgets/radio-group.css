@@ -3,6 +3,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--wa-space-s) var(--wa-space-xl);
-		// justify-content: space-evenly;
+		/* justify-content: space-evenly; */
 	}
 }

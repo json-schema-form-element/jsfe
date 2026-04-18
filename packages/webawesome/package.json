@@ -29,15 +29,12 @@
   "exports": {
     ".": "./dist/index.js",
     "./*": "./dist/*.js",
-    "./scss": "./src/styles.scss",
-    "./scss/*": "./src/widgets/*.scss",
-    "./css": "./dist/css/styles.css",
-    "./jss": "./dist/css/styles.js"
+    "./css": "./src/styles.css",
+    "./css/*": "./src/widgets/*.css"
   },
   "files": [
-    "./dist/esm",
-    "./dist/esm-min",
-    "./src/**/*.scss",
+    "./dist",
+    "./src/**/*.css",
     "./vscode.html-custom-data.json",
     "./vscode.css-custom-data.json",
     "./custom-elements.json"
@@ -56,9 +53,7 @@
     "lint:es:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
     "format": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\"",
     "format:fix": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\"",
-    "scss:build": "sass src/styles.scss:dist/css/styles.css",
-    "scss:dev": "sass --watch src/styles.scss:dist/css/styles.css",
-    "scss:lint": "stylelint \"src/**/*.scss\" --cache"
+    "css:lint": "stylelint \"src/**/*.css\" --cache"
   },
   "dependencies": {
     "@jsfe/engine": "workspace:*",
@@ -68,7 +63,6 @@
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "sass": "^1.86.3",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

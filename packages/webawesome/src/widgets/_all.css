@@ -13,27 +13,27 @@
 		box-sizing: inherit;
 	}
 
-	// NOTE: is it bad?
+	/* NOTE: is it bad? */
 	--wa-input-focus-ring-color: var(--wa-color-brand-95);
 }
 
-// -----------------------------------------------------------------------------
+/* -------------------------------------------------------------------------- */
 
-// WIP: For system, might be ported for MWC and shoelace
+/* WIP: For system, might be ported for MWC and shoelace */
 ::selection {
 	color: var(--wa-color-brand-70);
 	background-color: var(--wa-color-brand-5);
 }
 
-// -----------------------------------------------------------------------------
+/* -------------------------------------------------------------------------- */
 
-// NOTE: From shoelace docs examples
+/* NOTE: From shoelace docs examples */
 
 wa-input,
 wa-select,
 wa-checkbox {
 	display: block;
-	// margin-bottom: var(--wa-space-m);
+	/* margin-bottom: var(--wa-space-m); */
 }
 
 /* User invalid styles */
@@ -60,28 +60,29 @@ wa-checkbox:focus-within[data-user-invalid]::part(control) {
 	box-shadow: 0 0 0 var(--wa-focus-ring-width) var(--wa-color-danger-70);
 }
 
-// NOTE: Unused for now
-// /* User valid styles */
-// wa-input[data-user-valid]::part(base),
-// wa-select[data-user-valid]::part(combobox),
-// wa-checkbox[data-user-valid]::part(control) {
-// 	border-color: var(--wa-color-success-40);
-// }
+/* NOTE: Unused for now */
+/* User valid styles
+wa-input[data-user-valid]::part(base),
+wa-select[data-user-valid]::part(combobox),
+wa-checkbox[data-user-valid]::part(control) {
+	border-color: var(--wa-color-success-40);
+}
 
-// [data-user-valid]::part(form-control-label),
-// [data-user-valid]::part(form-control-help-text),
-// wa-checkbox[data-user-valid]::part(label) {
-// 	color: var(--wa-color-success-30);
-// }
+[data-user-valid]::part(form-control-label),
+[data-user-valid]::part(form-control-help-text),
+wa-checkbox[data-user-valid]::part(label) {
+	color: var(--wa-color-success-30);
+}
 
-// wa-checkbox[data-user-valid]::part(control) {
-// 	background-color: var(--wa-color-success-40);
-// 	outline: none;
-// }
+wa-checkbox[data-user-valid]::part(control) {
+	background-color: var(--wa-color-success-40);
+	outline: none;
+}
 
-// wa-input:focus-within[data-user-valid]::part(base),
-// wa-select:focus-within[data-user-valid]::part(combobox),
-// wa-checkbox:focus-within[data-user-valid]::part(control) {
-// 	border-color: var(--wa-color-success-40);
-// 	box-shadow: 0 0 0 var(--wa-focus-ring-width) var(--wa-color-success-70);
-// }
+wa-input:focus-within[data-user-valid]::part(base),
+wa-select:focus-within[data-user-valid]::part(combobox),
+wa-checkbox:focus-within[data-user-valid]::part(control) {
+	border-color: var(--wa-color-success-40);
+	box-shadow: 0 0 0 var(--wa-focus-ring-width) var(--wa-color-success-70);
+}
+*/

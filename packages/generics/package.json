@@ -37,9 +37,8 @@
     "./css": "./dist/styles.css"
   },
   "files": [
-    "./dist/esm",
-    "./dist/esm-min",
-    "./src/**/*.scss",
+    "./dist",
+    "./src/**/*.css",
     "./vscode.html-custom-data.json",
     "./vscode.css-custom-data.json",
     "./custom-elements.json"

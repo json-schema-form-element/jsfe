@@ -3,7 +3,7 @@ import type { Widgets } from '@jsfe/engine';
 import { html } from '@lit-labs/signals';
 
 export const Switchh: Widgets['Switch'] = (options) => html`
-	<sl-switch
+	<wa-switch
 		?checked=${typeof options.html.checked === 'boolean'
 			? options.html.checked
 			: false}
@@ -15,5 +15,5 @@ export const Switchh: Widgets['Switch'] = (options) => html`
 		${options.helpText
 			? html`<small> -&nbsp;${options.helpText}</small>`
 			: null}
-	</sl-switch>
+	</wa-switch>
 `;

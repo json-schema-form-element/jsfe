@@ -16,10 +16,10 @@ export const CheckboxGroup: Widgets['CheckboxGroup'] = (options) =>
 
 			<div class="widget-checkbox-group__list">
 				${options.enum?.map((enumValue) => {
-					return html`<sl-checkbox
+					return html`<wa-checkbox
 						?checked=${options.value?.some((v) => v === enumValue) ?? false}
 						?disabled=${options.html.disabled}
-						>${enumValue}</sl-checkbox
+						>${enumValue}</wa-checkbox
 					>`;
 				})}
 			</div>

@@ -1,9 +1,9 @@
 :host {
 	box-sizing: border-box;
-	font: 16px var(--sl-font-sans);
-	font-weight: var(--sl-font-weight-normal);
-	line-height: var(--sl-line-height-normal);
-	color: var(--sl-color-neutral-900);
+	font: 16px var(--wa-font-sans);
+	font-weight: var(--wa-font-weight-normal);
+	line-height: var(--wa-line-height-normal);
+	color: var(--wa-color-neutral-10);
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 
@@ -14,74 +14,74 @@
 	}
 
 	// NOTE: is it bad?
-	--sl-input-focus-ring-color: var(--sl-color-primary-50);
+	--wa-input-focus-ring-color: var(--wa-color-brand-95);
 }
 
 // -----------------------------------------------------------------------------
 
 // WIP: For system, might be ported for MWC and shoelace
 ::selection {
-	color: var(--sl-color-primary-300);
-	background-color: var(--sl-color-primary-950);
+	color: var(--wa-color-brand-70);
+	background-color: var(--wa-color-brand-5);
 }
 
 // -----------------------------------------------------------------------------
 
 // NOTE: From shoelace docs examples
 
-sl-input,
-sl-select,
-sl-checkbox {
+wa-input,
+wa-select,
+wa-checkbox {
 	display: block;
-	// margin-bottom: var(--sl-spacing-medium);
+	// margin-bottom: var(--wa-space-m);
 }
 
 /* User invalid styles */
-sl-input[data-user-invalid]::part(base),
-sl-select[data-user-invalid]::part(combobox),
-sl-checkbox[data-user-invalid]::part(control) {
-	border-color: var(--sl-color-danger-600);
+wa-input[data-user-invalid]::part(base),
+wa-select[data-user-invalid]::part(combobox),
+wa-checkbox[data-user-invalid]::part(control) {
+	border-color: var(--wa-color-danger-40);
 }
 
 [data-user-invalid]::part(form-control-label),
 [data-user-invalid]::part(form-control-help-text),
-sl-checkbox[data-user-invalid]::part(label) {
-	color: var(--sl-color-danger-700);
+wa-checkbox[data-user-invalid]::part(label) {
+	color: var(--wa-color-danger-30);
 }
 
-sl-checkbox[data-user-invalid]::part(control) {
+wa-checkbox[data-user-invalid]::part(control) {
 	outline: none;
 }
 
-sl-input:focus-within[data-user-invalid]::part(base),
-sl-select:focus-within[data-user-invalid]::part(combobox),
-sl-checkbox:focus-within[data-user-invalid]::part(control) {
-	border-color: var(--sl-color-danger-600);
-	box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-danger-300);
+wa-input:focus-within[data-user-invalid]::part(base),
+wa-select:focus-within[data-user-invalid]::part(combobox),
+wa-checkbox:focus-within[data-user-invalid]::part(control) {
+	border-color: var(--wa-color-danger-40);
+	box-shadow: 0 0 0 var(--wa-focus-ring-width) var(--wa-color-danger-70);
 }
 
 // NOTE: Unused for now
 // /* User valid styles */
-// sl-input[data-user-valid]::part(base),
-// sl-select[data-user-valid]::part(combobox),
-// sl-checkbox[data-user-valid]::part(control) {
-// 	border-color: var(--sl-color-success-600);
+// wa-input[data-user-valid]::part(base),
+// wa-select[data-user-valid]::part(combobox),
+// wa-checkbox[data-user-valid]::part(control) {
+// 	border-color: var(--wa-color-success-40);
 // }
 
 // [data-user-valid]::part(form-control-label),
 // [data-user-valid]::part(form-control-help-text),
-// sl-checkbox[data-user-valid]::part(label) {
-// 	color: var(--sl-color-success-700);
+// wa-checkbox[data-user-valid]::part(label) {
+// 	color: var(--wa-color-success-30);
 // }
 
-// sl-checkbox[data-user-valid]::part(control) {
-// 	background-color: var(--sl-color-success-600);
+// wa-checkbox[data-user-valid]::part(control) {
+// 	background-color: var(--wa-color-success-40);
 // 	outline: none;
 // }
 
-// sl-input:focus-within[data-user-valid]::part(base),
-// sl-select:focus-within[data-user-valid]::part(combobox),
-// sl-checkbox:focus-within[data-user-valid]::part(control) {
-// 	border-color: var(--sl-color-success-600);
-// 	box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-success-300);
+// wa-input:focus-within[data-user-valid]::part(base),
+// wa-select:focus-within[data-user-valid]::part(combobox),
+// wa-checkbox:focus-within[data-user-valid]::part(control) {
+// 	border-color: var(--wa-color-success-40);
+// 	box-shadow: 0 0 0 var(--wa-focus-ring-width) var(--wa-color-success-70);
 // }

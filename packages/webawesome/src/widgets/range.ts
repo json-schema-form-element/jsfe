@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const Range: Widgets['Range'] = (options) =>
 	html` <!--  -->
-		<sl-range
+		<wa-slider
 			value=${ifDefined(options.html.value)}
 			step=${ifDefined(options.html.step)}
 			min=${ifDefined(options.html.min)}
@@ -16,4 +16,4 @@ export const Range: Widgets['Range'] = (options) =>
 			id=${options.html.id}
 			?required=${options.html.required}
 			?disabled=${options.html.disabled}
-		></sl-range>`;
+		></wa-slider>`;

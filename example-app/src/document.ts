@@ -6,7 +6,7 @@ export const document = (props: {
 	webawesome: boolean;
 }) => html`
 	<!doctype html>
-	<html lang="en" class=${props.webawesome ? `sl-theme-dark` : ''}>
+	<html lang="en" class=${props.webawesome ? `wa-light` : ''}>
 		<head>
 			<!-- Basics -->
 			<meta charset="utf-8" />

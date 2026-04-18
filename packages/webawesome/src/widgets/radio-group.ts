@@ -4,8 +4,8 @@ import { html } from '@lit-labs/signals';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const RadioGroup: Widgets['RadioGroup'] = (options) => html`
-	<sl-radio-group
-		class="theme-shoelace widget-radio-group"
+	<wa-radio-group
+		class="theme-webawesome widget-radio-group"
 		size="medium"
 		label=${ifDefined(options.label)}
 		helpText=${ifDefined(options.helpText)}
@@ -15,11 +15,11 @@ export const RadioGroup: Widgets['RadioGroup'] = (options) => html`
 	>
 		${options.enum?.map(
 			(enumValue) =>
-				html`<sl-radio
+				html`<wa-radio
 					?disabled=${options.html.disabled}
 					value=${String(enumValue)}
-					>${enumValue}</sl-radio
+					>${enumValue}</wa-radio
 				>`,
 		)}
-	</sl-radio-group>
+	</wa-radio-group>
 `;

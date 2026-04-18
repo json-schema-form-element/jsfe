@@ -3,8 +3,8 @@ import type { Widgets } from '@jsfe/engine';
 import { html } from '@lit-labs/signals';
 
 export const SelectMultiple: Widgets['SelectMultiple'] = (options) => html`
-	<sl-select
-		class="theme-shoelace widget-select-multi level-${options.level}"
+	<wa-select
+		class="theme-webawesome widget-select-multi level-${options.level}"
 		part="widget-select-multi"
 		id=${options.html.id}
 		label=${options.label ?? ''}
@@ -15,9 +15,9 @@ export const SelectMultiple: Widgets['SelectMultiple'] = (options) => html`
 		.helpText=${options.helpText ?? ''}
 	>
 		${options.enum?.map((enumValue) => {
-			return html`<sl-option value=${enumValue}>${enumValue}</sl-option>`;
+			return html`<wa-option value=${enumValue}>${enumValue}</wa-option>`;
 		})}
-	</sl-select>
+	</wa-select>
 `;
 
 // @sl-change=${(event: SlSelectEvent) => {

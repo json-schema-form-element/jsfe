@@ -1,19 +1,19 @@
-.theme-shoelace.widget-array {
+.theme-webawesome.widget-array {
 	.widget-array__card {
 		// width: 100%;
-		// transition: outline var(--sl-transition-slow);
+		// transition: outline var(--wa-transition-slow);
 
-		transition: box-shadow var(--sl-transition-medium);
+		transition: box-shadow var(--wa-transition-medium);
 
 		&:hover {
-			// background: var(--sl-color-gray-50);
-			box-shadow: var(--sl-shadow-medium);
+			// background: var(--wa-color-neutral-95);
+			box-shadow: var(--wa-shadow-l);
 		}
 
 		&[data-dropzone] {
-			border-radius: var(--sl-border-radius-medium);
-			outline: 1px solid var(--sl-color-primary-500);
-			// transition: outline var(--sl-transition-fast);
+			border-radius: var(--wa-border-radius-m);
+			outline: 1px solid var(--wa-color-brand-50);
+			// transition: outline var(--wa-transition-fast);
 
 			// cursor: grab;
 
@@ -23,8 +23,8 @@
 		}
 	}
 
-	sl-card::part(body) {
-		padding: var(--sl-spacing-medium) var(--sl-spacing-small);
+	wa-card::part(body) {
+		padding: var(--wa-space-m) var(--wa-space-s);
 	}
 
 	.widget-array__header {
@@ -34,13 +34,13 @@
 		width: 100%;
 		font-size: 0.8em;
 		user-select: none;
-		//// sl-icon::pa {
+		//// wa-icon::pa {
 		//// 	height: 0.2rem;
 		//// }
 		//// display: none;
 
-		sl-tag::part(base) {
-			background: var(--sl-color-neutral-100);
+		wa-tag::part(base) {
+			background: var(--wa-color-neutral-90);
 		}
 	}
 
@@ -50,19 +50,19 @@
 		align-items: center;
 		justify-content: space-between;
 		height: 2rem;
-		padding-left: var(--sl-spacing-2x-small);
-		margin: 0 var(--sl-spacing-medium) 0 0;
+		padding-left: var(--wa-space-2xs);
+		margin: 0 var(--wa-space-m) 0 0;
 		font-size: 1.25em;
-		color: var(--sl-color-neutral-500);
+		color: var(--wa-color-neutral-50);
 		// cursor: grab;
 		cursor: move;
-		transition: opacity, var(--sl-transition-fast);
+		transition: opacity, var(--wa-transition-fast);
 
 		&:hover {
-			color: var(--sl-color-neutral-600);
-			background: var(--sl-color-neutral-100);
-			border-radius: var(--sl-border-radius-x-large);
-			transition: var(--sl-transition-medium);
+			color: var(--wa-color-neutral-40);
+			background: var(--wa-color-neutral-90);
+			border-radius: var(--wa-border-radius-l);
+			transition: var(--wa-transition-medium);
 		}
 
 		&:active {
@@ -79,12 +79,12 @@
 
 	.widget-array__add-zone {
 		display: flex;
-		padding: var(--sl-spacing-2x-large) var(--sl-spacing-2x-large);
-		border: 2px dashed var(--sl-color-gray-100);
-		border-radius: var(--sl-border-radius-large);
-		box-shadow: var(--sl-shadow-large) inset;
+		padding: var(--wa-space-2xl) var(--wa-space-2xl);
+		border: 2px dashed var(--wa-color-neutral-90);
+		border-radius: var(--wa-border-radius-l);
+		box-shadow: var(--wa-shadow-l) inset;
 
-		& > sl-button {
+		& > wa-button {
 			width: 100%;
 		}
 	}

@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const Textarea: Widgets['Textarea'] = (options) => html`
 	<!--  -->
-	<sl-textarea
+	<wa-textarea
 		?disabled=${options.html.disabled}
 		?readonly=${options.html.readonly}
 		?required=${options.html.required}
@@ -18,5 +18,5 @@ export const Textarea: Widgets['Textarea'] = (options) => html`
 		placeholder=${ifDefined(options.html.placeholder)}
 		value=${ifDefined(options.html.value)}
 	>
-	</sl-textarea>
+	</wa-textarea>
 `;

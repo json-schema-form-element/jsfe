@@ -4,7 +4,7 @@ import { html } from '@lit-labs/signals';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const Text: Widgets['Text'] = (options) => html`
-	<sl-input
+	<wa-input
 		?disabled=${options.html.disabled}
 		?readonly=${options.html.readonly}
 		?required=${options.html.required}
@@ -19,5 +19,5 @@ export const Text: Widgets['Text'] = (options) => html`
 		type=${options.html.type}
 		value=${ifDefined(options.html.value)}
 	>
-	</sl-input>
+	</wa-input>
 `;

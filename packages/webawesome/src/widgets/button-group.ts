@@ -4,7 +4,7 @@ import { html } from '@lit-labs/signals';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const buttonGroup: Widgets['ButtonGroup'] = (options) => html`
-	<sl-radio-group
+	<wa-radio-group
 		size="medium"
 		label=${ifDefined(options.label)}
 		help-text=${ifDefined(options.helpText)}
@@ -14,16 +14,17 @@ export const buttonGroup: Widgets['ButtonGroup'] = (options) => html`
 	>
 		${options.enum?.map(
 			(enumValue) =>
-				html`<sl-radio-button
+				html`<wa-radio
+					appearance="button"
 					?disabled=${
 						/* NOTE: This is a trick because otherwise we won't see pre-prepopulated value  */
 						String(enumValue) === options.value ? false : options.html.disabled
 					}
 					value=${String(enumValue)}
-					>${enumValue}</sl-radio-button
+					>${enumValue}</wa-radio
 				>`,
 		)}
-	</sl-radio-group>
+	</wa-radio-group>
 `;
 
 // @sl-change=${(event: Event) => {

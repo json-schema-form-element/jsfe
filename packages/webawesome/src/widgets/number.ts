@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const Numberr: Widgets['Number'] = (options) =>
 	html` <!--  -->
-		<sl-input
+		<wa-input
 			?disabled=${options.html.disabled}
 			?readonly=${options.html.readonly}
 			?required=${options.html.required}
@@ -18,4 +18,4 @@ export const Numberr: Widgets['Number'] = (options) =>
 			step=${ifDefined(options.html.step)}
 			type="number"
 			value=${ifDefined(options.html.value)}
-		></sl-input>`;
+		></wa-input>`;

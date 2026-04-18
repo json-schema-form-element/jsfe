@@ -1,7 +1,6 @@
 @import './document.css';
-@import '@shoelace-style/shoelace/dist/themes/light.css';
-@import '@shoelace-style/shoelace/dist/themes/dark.css';
+@import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
 body {
-	background: var(--sl-color-neutral-0);
+	background: var(--wa-color-surface-default);
 }

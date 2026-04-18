@@ -1,8 +1,8 @@
-.theme-shoelace.widget-radio-group {
+.theme-webawesome.widget-radio-group {
 	&::part(form-control-input) {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--sl-spacing-small) var(--sl-spacing-x-large);
+		gap: var(--wa-space-s) var(--wa-space-xl);
 		// justify-content: space-evenly;
 	}
 }

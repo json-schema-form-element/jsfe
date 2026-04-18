@@ -16,7 +16,7 @@
     "@jsfe/engine": "workspace:^",
     "@jsfe/generics": "workspace:^",
     "@picocss/pico": "^2.1.1",
-    "@shoelace-style/shoelace": "^2.19.1",
+    "@awesome.me/webawesome": "^3.5.0",
     "@sinclair/typebox": "^0.34.33",
     "@vitejs/plugin-react": "^4.4.1",
     "@vtaits/react-signals": "^1.0.2",

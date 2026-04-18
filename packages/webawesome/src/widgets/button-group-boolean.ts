@@ -6,7 +6,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 export const ButtonGroupBoolean: Widgets['ButtonGroupBoolean'] = (
 	options,
 ) => html`
-	<sl-radio-group
+	<wa-radio-group
+		orientation="horizontal"
 		size="medium"
 		label=${ifDefined(options.label)}
 		help-text=${ifDefined(options.helpText)}
@@ -14,24 +15,26 @@ export const ButtonGroupBoolean: Widgets['ButtonGroupBoolean'] = (
 			? ''
 			: String(options.html.checked)}
 		name=${options.html.id}
-		?required?=${options.html.required}
+		?required=${options.html.required}
 	>
-		<sl-radio-button
+		<wa-radio
+			appearance="button"
 			value="true"
 			?disabled=${
 				/* NOTE: This is a trick because otherwise we won't see pre-prepopulated value  */
 				options.html.checked === true ? false : options.html.disabled
 			}
-			>${options.trueLabel ?? 'Yes'}</sl-radio-button
+			>${options.trueLabel ?? 'Yes'}</wa-radio
 		>
-		<sl-radio-button
+		<wa-radio
+			appearance="button"
 			value="false"
 			?disabled=${options.html.checked === false
 				? false
 				: options.html.disabled}
-			>${options.falseLabel ?? 'No'}</sl-radio-button
+			>${options.falseLabel ?? 'No'}</wa-radio
 		>
-	</sl-radio-group>
+	</wa-radio-group>
 `;
 
 // @sl-change=${(event: Event) => {

@@ -4,9 +4,9 @@ import { html } from '@lit-labs/signals';
 
 export const Submit = (options?: { id?: string; label?: string }) => html`
 	<!--  -->
-	<div id=${options?.id} class="theme-shoelace widget-submit">
-		<sl-button type="submit" size="large"
-			>${options?.label ?? 'Submit'}</sl-button
+	<div id=${options?.id} class="theme-webawesome widget-submit">
+		<wa-button type="submit" size="large"
+			>${options?.label ?? 'Submit'}</wa-button
 		>
 	</div>
 `;

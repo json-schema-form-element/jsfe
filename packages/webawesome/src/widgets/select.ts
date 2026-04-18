@@ -4,7 +4,7 @@ import { html } from '@lit-labs/signals';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const Select: Widgets['Select'] = (options) => html`
-	<sl-select
+	<wa-select
 		value=${ifDefined(options.value)}
 		?required=${options.html.required}
 		?disabled=${options.html.disabled}
@@ -12,10 +12,10 @@ export const Select: Widgets['Select'] = (options) => html`
 		help--text=${ifDefined(options.helpText)}
 		>${options.enum?.map(
 			(enumValue) =>
-				html` <sl-option .value=${String(enumValue)}>
+				html` <wa-option .value=${String(enumValue)}>
 					${enumValue}
-				</sl-option>`,
-		)}</sl-select
+				</wa-option>`,
+		)}</wa-select
 	>
 `;
 // @sl-change=${(event: Event) => {

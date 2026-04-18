@@ -27,7 +27,7 @@ export default defineRoute({
 		document({ ...context, title: 'Gracile - Home', webawesome: true }),
 
 	template: (context) => html`
-		<h1><img src="/favicon.svg" height="25" /> - Test 1</h1>
+		<h1><img src="/favicon.svg" height="25" width="25" /> - Test 1</h1>
 
 		<h2>${context.url}</h2>
 

@@ -4,7 +4,7 @@ import type { Widgets } from '@jsfe/engine';
 import { html } from '@lit-labs/signals';
 
 export const Datee: Widgets['Date'] = (options) => html`
-	<sl-input
+	<wa-input
 		type=${options.html.type}
 		label=${options.label ?? ''}
 		helpText=${options.helpText ?? ''}
@@ -15,7 +15,7 @@ export const Datee: Widgets['Date'] = (options) => html`
 		?disabled=${options.html.disabled}
 		?readonly=${options.html.readonly}
 	>
-	</sl-input>
+	</wa-input>
 `;
 
 // @sl-input=${(event: CustomEvent) => {

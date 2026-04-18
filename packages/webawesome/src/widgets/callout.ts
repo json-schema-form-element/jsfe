@@ -12,7 +12,7 @@ export const Errorr = (options: {
 			role="alert"
 			class=${`callout--${
 				options.type ?? 'warning'
-			} theme-shoelace widget-callout`}
+			} theme-webawesome widget-callout`}
 			id=${options.id}
 			part="widget-callout"
 		>

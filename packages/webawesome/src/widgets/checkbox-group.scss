@@ -1,16 +1,16 @@
 // TODO:
 
-.theme-shoelace.widget-checkbox-group {
+.theme-webawesome.widget-checkbox-group {
 	.help-text {
-		font-size: var(--sl-input-help-text-font-size-medium);
-		color: var(--sl-input-help-text-color);
+		font-size: var(--wa-input-help-text-font-size-medium);
+		color: var(--wa-input-help-text-color);
 	}
 
 	.widget-checkbox-group__list {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--sl-spacing-large) var(--sl-spacing-4x-large);
+		gap: var(--wa-space-l) var(--wa-space-2xl);
 		justify-content: space-evenly;
-		padding: var(--sl-spacing-medium) var(--sl-spacing-x-large);
+		padding: var(--wa-space-m) var(--wa-space-xl);
 	}
 }

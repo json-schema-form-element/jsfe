@@ -3,8 +3,8 @@ import type { Widgets } from '@jsfe/engine';
 import { html } from '@lit-labs/signals';
 
 export const Checkbox: Widgets['Checkbox'] = (options) => html`
-	<div class="theme-shoelace widget-checkbox">
-		<sl-checkbox
+	<div class="theme-webawesome widget-checkbox">
+		<wa-checkbox
 			type="text"
 			?checked=${options.html.value}
 			name=${options.html.name}
@@ -12,7 +12,7 @@ export const Checkbox: Widgets['Checkbox'] = (options) => html`
 			?required=${options.html.required ?? true}
 			?disabled=${options.html.disabled}
 			>${options.label}
-		</sl-checkbox>
+		</wa-checkbox>
 
 		${options.helpText
 			? html`<div class="widget-checkbox__description">

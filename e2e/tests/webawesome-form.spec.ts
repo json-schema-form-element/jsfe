@@ -23,9 +23,12 @@ test.describe('Webawesome form — Structure', () => {
 test.describe('Webawesome form — Text inputs', () => {
 	test('text input with description', async ({ page }) => {
 		await page.goto(URL);
-		const input = page.getByLabel('Some text input');
+		const input = page
+			.locator(FORM_CE)
+			.locator('wa-input[label="Some text input"]');
 		await expect(input).toBeVisible();
-		await expect(input).toHaveAccessibleDescription(
+		await expect(input).toHaveAttribute(
+			'help-text',
 			'The help text is from "description".',
 		);
 	});
@@ -84,13 +87,15 @@ test.describe('Webawesome form — Number inputs', () => {
 
 	test('range with default', async ({ page }) => {
 		await page.goto(URL);
-		await expect(page.getByLabel('Range with default')).toHaveValue('28');
+		const slider = page
+			.locator(FORM_CE)
+			.locator('wa-slider[label="Range with default"]');
+		await expect(slider).toHaveAttribute('value', '28');
 	});
 
 	test('rating widget', async ({ page }) => {
 		await page.goto(URL);
-		// Shoelace rating renders as a slider
-		const rating = page.locator(FORM_CE).locator('sl-rating');
+		const rating = page.locator(FORM_CE).locator('wa-rating');
 		await expect(rating).toBeVisible();
 	});
 });
@@ -112,7 +117,6 @@ test.describe('Webawesome form — Booleans', () => {
 
 	test('switch', async ({ page }) => {
 		await page.goto(URL);
-		// Shoelace switch — find by role
 		await expect(
 			page.getByRole('switch', { name: 'Switch, enabled by default' }),
 		).toBeVisible();
@@ -120,7 +124,6 @@ test.describe('Webawesome form — Booleans', () => {
 
 	test('radio Yes/No', async ({ page }) => {
 		await page.goto(URL);
-		// Shoelace radio-group — radios are found by role
 		await expect(
 			page.getByRole('radio', { name: 'Yes' }).first(),
 		).toBeVisible();
@@ -217,19 +220,16 @@ test.describe('Webawesome form — Interactivity', () => {
 
 	test('can toggle a checkbox', async ({ page }) => {
 		await page.goto(URL);
-		// Shoelace checkbox — the visual <span> intercepts clicks,
-		// so click the sl-checkbox element directly
-		const slCheckbox = page
+		const waCheckbox = page
 			.locator(FORM_CE)
-			.locator('sl-checkbox[name="Primitives.Booleans.Checkbox"]');
-		await slCheckbox.click();
+			.locator('wa-checkbox[name="Primitives.Booleans.Checkbox"]');
+		await waCheckbox.click();
 		const input = page.getByRole('checkbox', { name: 'Checkbox (default)' });
 		await expect(input).toBeChecked();
 	});
 
 	test('can select a radio option', async ({ page }) => {
 		await page.goto(URL);
-		// Shoelace radio — click the sl-radio element
 		const radio = page.getByRole('radio', { name: 'Ola', exact: true });
 		await radio.click({ force: true });
 		await expect(radio).toBeChecked();

@@ -110,16 +110,16 @@ function createBooleanWidget(
 	_schema: WidgetTypeBaseParameters['schema'],
 	uiSchema: WidgetTypeBaseParameters['uiSchema'],
 ): PrimitiveWidgetOptions<BooleanInputAttributes> {
+	const checked =
+		options.html.value === undefined ? undefined : Boolean(options.html.value);
+
 	const booleanOptions: PrimitiveWidgetOptions<BooleanInputAttributes> = {
 		...options,
 		element: 'input',
 		html: {
 			...options.html,
+			...(checked !== undefined ? { checked } : {}),
 			type: 'checkbox',
-			value:
-				options.html.value === undefined
-					? undefined
-					: Boolean(options.html.value),
 		},
 	};
 
@@ -179,15 +179,19 @@ function createEnumWidget(
 	schema: WidgetTypeBaseParameters['schema'],
 	uiSchema: WidgetTypeBaseParameters['uiSchema'],
 ): EnumWidgetOptions {
+	// TODO: Ugly casting all over.
+	const baseValue = options.html.value as string | number | undefined;
+
 	const enumOptions: EnumWidgetOptions = {
 		...options,
 		enum: undefined,
 		element: 'select',
 		html: {
 			...options.html,
-			value: undefined,
+			value: baseValue,
 		},
 		type: undefined,
+		value: baseValue,
 	};
 
 	switch (typeof schema.enum?.[0]) {

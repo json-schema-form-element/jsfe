@@ -372,4 +372,121 @@ void describe('Primitives', () => {
 		assert.strictEqual(radioResult.widget, 'RadioGroup');
 		assert.deepStrictEqual(radioResult.enum, ['option1', 'option2', 'option3']);
 	});
+
+	void test('Enum select - should apply schema default when no data', () => {
+		const form = new JsonSchemaFormEngine();
+		const result = widgetPrimitive({
+			data: undefined,
+			form,
+			level: 0,
+			path: ['Enum1'],
+			pathAsString: 'Enum1',
+			required: false,
+			schema: {
+				default: 1_000,
+				enum: [10, 100, 1_000, 10_000],
+				title: 'Number list',
+				type: 'number',
+			},
+			schemaPath: ['Enum1'],
+			uiSchema: {},
+		}) as EnumWidgetOptions;
+
+		assert.strictEqual(result.widget, 'Select');
+		assert.strictEqual(result.value, 1_000, 'top-level value');
+		assert.strictEqual(result.html.value, 1_000, 'html.value');
+	});
+
+	void test('Enum select - should apply schema default with empty object data', () => {
+		const form = new JsonSchemaFormEngine();
+		const result = widgetPrimitive({
+			data: {},
+			form,
+			level: 0,
+			path: ['Enum1'],
+			pathAsString: 'Enum1',
+			required: false,
+			schema: {
+				default: 1_000,
+				enum: [10, 100, 1_000, 10_000],
+				title: 'Number list',
+				type: 'number',
+			},
+			schemaPath: ['Enum1'],
+			uiSchema: {},
+		}) as EnumWidgetOptions;
+
+		assert.strictEqual(result.value, 1_000, 'top-level value');
+		assert.strictEqual(result.html.value, 1_000, 'html.value');
+	});
+
+	void test('Enum radio - should apply schema default', () => {
+		const form = new JsonSchemaFormEngine();
+		const result = widgetPrimitive({
+			data: undefined,
+			form,
+			level: 0,
+			path: ['Enum1'],
+			pathAsString: 'Enum1',
+			required: false,
+			schema: {
+				default: 1_000,
+				enum: [10, 100, 1_000, 10_000],
+				title: 'Number radios',
+				type: 'number',
+			},
+			schemaPath: ['Enum1'],
+			uiSchema: { 'ui:widget': 'Radio' },
+		}) as EnumWidgetOptions;
+
+		assert.strictEqual(result.widget, 'RadioGroup');
+		assert.strictEqual(result.value, 1_000);
+		assert.strictEqual(result.html.value, 1_000);
+	});
+
+	void test('Enum select - user data should override schema default', () => {
+		const form = new JsonSchemaFormEngine();
+		const result = widgetPrimitive({
+			data: 100,
+			form,
+			level: 0,
+			path: ['Enum1'],
+			pathAsString: 'Enum1',
+			required: false,
+			schema: {
+				default: 1_000,
+				enum: [10, 100, 1_000, 10_000],
+				title: 'Number list',
+				type: 'number',
+			},
+			schemaPath: ['Enum1'],
+			uiSchema: {},
+		}) as EnumWidgetOptions;
+
+		assert.strictEqual(result.value, 100);
+		assert.strictEqual(result.html.value, 100);
+	});
+
+	void test('Enum select - string default', () => {
+		const form = new JsonSchemaFormEngine();
+		const result = widgetPrimitive({
+			data: undefined,
+			form,
+			level: 0,
+			path: ['Enum1'],
+			pathAsString: 'Enum1',
+			required: false,
+			schema: {
+				default: 'Averell',
+				enum: ['Joe', 'William', 'Jack', 'Averell'],
+				title: 'String list',
+				type: 'string',
+			},
+			schemaPath: ['Enum1'],
+			uiSchema: {},
+		}) as EnumWidgetOptions;
+
+		assert.strictEqual(result.value, 'Averell');
+		assert.strictEqual(result.html.value, 'Averell');
+	});
 });

@@ -27,7 +27,6 @@
     "gen:manifests": "./scripts/manifests.sh",
     "lint:es": "turbo run lint:es",
     "lint:es:fix": "turbo run lint:es:fix",
-    "test": "vitest",
     "test:e2e": "pnpm --filter=@jsfe/e2e test",
     "test:e2e:dev": "pnpm --filter=@jsfe/e2e test:ui",
     "test:unit": "FORCE_COLOR=1 pnpm -r --parallel test:unit",

@@ -138,8 +138,8 @@ importers:
   example-app:
     dependencies:
       '@awesome.me/webawesome':
-        specifier: ^3.5.0
-        version: 3.5.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)
+        specifier: ^3.6.0
+        version: 3.6.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)
       '@gracile/gracile':
         specifier: ^0.8.2
         version: 0.8.2(@lit-labs/signals@0.1.3)(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
@@ -174,7 +174,7 @@ importers:
         specifier: ^4.7.7
         version: 4.12.14
       lit:
-        specifier: ^3.2.1
+        specifier: ^3.3.2
         version: 3.3.2
       react:
         specifier: ^19.1.0
@@ -230,7 +230,7 @@ importers:
         specifier: ^0.1.2
         version: 0.1.3
       lit:
-        specifier: ^3.2.1
+        specifier: ^3.3.2
         version: 3.3.2
       react:
         specifier: ^19
@@ -288,19 +288,16 @@ importers:
   packages/webawesome:
     dependencies:
       '@awesome.me/webawesome':
-        specifier: ^3.5.0
-        version: 3.5.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)
+        specifier: ^3.6.0
+        version: 3.6.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)
       '@jsfe/engine':
         specifier: workspace:*
         version: link:../engine
       '@jsfe/generics':
         specifier: workspace:*
         version: link:../generics
-      '@lit-labs/signals':
-        specifier: ^0.1.2
-        version: 0.1.3
       lit:
-        specifier: ^3.2.1
+        specifier: ^3.3.2
         version: 3.3.2
     devDependencies:
       '@lit/ts-transformers':
@@ -324,8 +321,8 @@ packages:
   '@ark/util@0.56.0':
     resolution: {integrity: sha512-BghfRC8b9pNs3vBoDJhcta0/c1J1rsoS1+HgVUreMFPdhz/CRAKReAu57YEllNaSy98rWAdY1gE+gFup7OXpgA==}
 
-  '@awesome.me/webawesome@3.5.0':
-    resolution: {integrity: sha512-/hJOe5vsKu9GejyTB3xFyQvvGRzXCLqdOGtBa4a+ifDNPRwzQLR3bzxcEpJsLmVfOhhem1XGbyOD9cMwefuAlA==}
+  '@awesome.me/webawesome@3.6.0':
+    resolution: {integrity: sha512-cUQWAq5KwQzy1fsMFUSJqGL6z/s9/VFOqnypOZOXZdpsfnD7gVFKnY6if9EbgzxtCXiHTOnEZ8N3mnwW2Z/Sww==}
     engines: {node: '>=14.17.0'}
 
   '@axe-core/playwright@4.11.2':
@@ -1609,8 +1606,8 @@ packages:
   '@shoelace-style/animations@1.2.0':
     resolution: {integrity: sha512-avvo1xxkLbv2dgtabdewBbqcJfV0e0zCwFqkPMnHFGbJbBHorRFfMAHh1NG9ymmXn0jW95ibUVH03E1NYXD6Gw==}
 
-  '@shoelace-style/localize@3.2.1':
-    resolution: {integrity: sha512-r4C9C/5kSfMBIr0D9imvpRdCNXtUNgyYThc4YlS6K5Hchv1UyxNQ9mxwj+BTRH2i1Neits260sR3OjKMnplsFA==}
+  '@shoelace-style/localize@3.2.2':
+    resolution: {integrity: sha512-h3+2/cFWGaw3KQUwintkP4Cy3PtrVW//ysr9DM5nOfIXYekgrHwsELk/nyxc8hmjVP/Kcon7KCzvUtSwUBipfQ==}
 
   '@sigstore/bundle@2.3.2':
     resolution: {integrity: sha512-wueKWDk70QixNLB363yHc2D2ItTgYiMTdPwK8D9dKQMR3ZQ0c35IxP5xnwQ8cNLoCgCRcHf14kE+CLIvNX1zmA==}
@@ -5091,13 +5088,13 @@ snapshots:
 
   '@ark/util@0.56.0': {}
 
-  '@awesome.me/webawesome@3.5.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)':
+  '@awesome.me/webawesome@3.6.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)':
     dependencies:
       '@ctrl/tinycolor': 4.1.0
       '@floating-ui/dom': 1.7.6
       '@lit/react': 1.0.8(@types/react@19.2.14)
       '@shoelace-style/animations': 1.2.0
-      '@shoelace-style/localize': 3.2.1
+      '@shoelace-style/localize': 3.2.2
       composed-offset-position: 0.0.6(@floating-ui/utils@0.2.11)
       lit: 3.3.2
       marked: 11.2.0
@@ -6439,7 +6436,7 @@ snapshots:
 
   '@shoelace-style/animations@1.2.0': {}
 
-  '@shoelace-style/localize@3.2.1': {}
+  '@shoelace-style/localize@3.2.2': {}
 
   '@sigstore/bundle@2.3.2':
     dependencies:

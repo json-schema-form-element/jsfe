@@ -4,12 +4,12 @@ set -e
 
 pnpm install --frozen-lockfile
 
-pnpm run build
+node --run run build
 
-pnpm turbo lint:es
+node --run turbo lint:es
 
-pnpm turbo format
+node --run turbo format
 
-pnpm run test:unit
+node --run run test:unit
 
-pnpm run test:e2e
+node --run run test:e2e

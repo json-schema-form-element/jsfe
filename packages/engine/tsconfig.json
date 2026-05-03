@@ -38,7 +38,9 @@
 
     "noImplicitOverride": true,
     "allowUnusedLabels": false,
-    "allowUnreachableCode": false
+    "allowUnreachableCode": false,
+
+    "types": ["node"]
   },
   "include": [
     "src/**/*.ts"

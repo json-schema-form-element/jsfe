@@ -1,6 +1,6 @@
 // export { Arrayy as Array } from './array.js';
 export { ButtonGroupBoolean } from './button-group-boolean.js';
-export { buttonGroup } from './button-group.js';
+export { ButtonGroup } from './button-group.js';
 export { Errorr as Error } from './callout.js';
 export { CheckboxGroup } from './checkbox-group.js';
 export { Checkbox } from './checkbox.js';

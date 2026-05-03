@@ -19,6 +19,7 @@
     "noFallthroughCasesInSwitch": true,
 
     "outDir": "dist",
+    "rootDir": "src",
     "declaration": true,
 
     "removeComments": true,
@@ -27,14 +28,31 @@
 
     "declarationMap": true,
 
-    /* JSX */
-    "jsx": "preserve",
-    "jsxImportSource": "@gracile-labs/babel-plugin-jsx-to-literals"
+    "jsx": "react-native",
+    "jsxImportSource": "jsx-forge",
+
+    "plugins": [
+      // {
+      //   "name": "web-elements-analyzer",
+      //   "persist": {
+      //     "typings": true,
+      //     "externalsTypings": true,
+      //     "customElementsManifest": true
+      //   }
+      // },
+      {
+        "transform": "jsx-forge/transform"
+        // "defaultHtmlFlavor": "signal"
+      },
+      {
+        "transform": "@lit/ts-transformers",
+        "import": "idiomaticDecoratorsTransformer"
+      }
+    ]
   },
   "include": [
     //
-    "src/index.ts",
-    "src/**/*.tsx"
+    "src"
   ],
   "exclude": ["src/styles.ts", "src/react.ts"]
 }

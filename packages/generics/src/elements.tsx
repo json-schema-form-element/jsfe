@@ -13,7 +13,7 @@ import type { UiSchema } from '@jsfe/engine';
 import { JsonSchemaFormEngine } from '@jsfe/engine';
 import { isDev } from '@jsfe/engine/logger';
 import { SignalWatcher } from '@lit-labs/signals';
-import { LitElement, type PropertyDeclaration } from 'lit';
+import { LitElement, type PropertyDeclaration, type PropertyValues } from 'lit';
 
 import { FormGeneric } from './form-generic.jsx';
 import { log } from './form.js';
@@ -71,6 +71,8 @@ export abstract class JsonSchemaFormElement<
 	public ui: Ui = {} as Ui;
 	public widgets: Partial<Widgets> = {};
 
+	#aborter = new AbortController();
+
 	/**
 	 * Wraps the native `customElements.define` with defaults, for convenience.
 	 * @param tagName - The name of the custom element
@@ -81,16 +83,63 @@ export abstract class JsonSchemaFormElement<
 		customElements.define(tagName, ctor);
 	}
 
+	connectedCallback(): void {
+		super.connectedCallback();
+		this.#listenFormEngine();
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.#aborter.abort();
+	}
+
+	protected firstUpdated(_changedProperties: PropertyValues): void {}
+
 	/**
 	 * Initialize the form engine with user provided attributes.
 	 * This lifecycle hooks is fired with SSR, too, during the single render pass.
 	 */
-	protected willUpdate() {
+	protected willUpdate(changed: PropertyValues<this>): void {
 		this.form ??= new JsonSchemaFormEngine(
 			this.schema,
 			this.ui,
 			this.data,
 			this.widgets,
+		);
+
+		if (changed.has('form')) {
+			this.form = new JsonSchemaFormEngine(
+				this.schema,
+				this.ui,
+				this.data,
+				this.widgets,
+			);
+			this.#aborter.abort();
+			this.#aborter = new AbortController();
+			this.#listenFormEngine();
+		}
+	}
+
+	#listenFormEngine() {
+		const options = { signal: this.#aborter.signal };
+		const init = { detail: { form: this.form } };
+
+		this.form?.addEventListener(
+			'change',
+			() => {
+				if (this.debug) log.debug('change');
+				this.dispatchEvent(new CustomEvent('jsf-change', init));
+			},
+			options,
+		);
+		this.form?.addEventListener(
+			'input',
+			() => {
+				if (this.debug) log.debug('input');
+
+				this.dispatchEvent(new CustomEvent('jsf-input', init));
+			},
+			options,
 		);
 	}
 }
@@ -102,17 +151,6 @@ export class JsonSchemaFormGeneric extends JsonSchemaFormElement {
 	public static readonly tagName = 'jsf-generic';
 
 	public widgets = genericWidgets;
-
-	protected override firstUpdated() {
-		if (this.debug) {
-			this.form?.addEventListener('change', () => {
-				log.debug('change');
-			});
-			this.form?.addEventListener('input', () => {
-				log.debug('input');
-			});
-		}
-	}
 
 	protected override render(): unknown {
 		if (!this.form) {

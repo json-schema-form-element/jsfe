@@ -56,14 +56,17 @@
     "css:lint": "stylelint \"src/**/*.css\" --cache"
   },
   "dependencies": {
+    "@awesome.me/webawesome": "^3.5.0",
     "@jsfe/engine": "workspace:*",
     "@jsfe/generics": "workspace:*",
     "@lit-labs/signals": "^0.1.2",
-    "@awesome.me/webawesome": "^3.5.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "@lit/ts-transformers": "^2.0.2",
+    "jsx-forge": "link:../../../../@gracile/gracile/packages/labs/jsx-forge",
+    "ts-patch": "^3.3.0",
+    "typescript": "^6.0.2"
   },
   "publishConfig": {
     "access": "public"

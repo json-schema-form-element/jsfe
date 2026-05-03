@@ -3,7 +3,7 @@ import type { Widgets } from '@jsfe/engine';
 import { html } from '@lit-labs/signals';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-export const buttonGroup: Widgets['ButtonGroup'] = (options) => html`
+export const ButtonGroup: Widgets['ButtonGroup'] = (options) => html`
 	<wa-radio-group
 		size="medium"
 		label=${ifDefined(options.label)}
@@ -11,6 +11,7 @@ export const buttonGroup: Widgets['ButtonGroup'] = (options) => html`
 		value=${options.value === undefined ? '' : String(options.value)}
 		name=${options.html.id}
 		?required=${options.html.required ?? false}
+		orientation="horizontal"
 	>
 		${options.enum?.map(
 			(enumValue) =>

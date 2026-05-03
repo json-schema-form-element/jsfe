@@ -5,7 +5,8 @@ fieldset[part] {
 	padding: var(--wa-space-m) var(--wa-space-s);
 	margin: 0;
 	font-weight: var(--wa-font-weight-semibold);
-	border: 1px solid var(--wa-color-neutral-95);
+	border: 1px solid
+		light-dark(var(--wa-color-neutral-90), var(--wa-color-neutral-10));
 	border-radius: var(--wa-border-radius-l);
 
 	.widget-fieldset__description {

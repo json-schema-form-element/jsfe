@@ -9,7 +9,7 @@ export const Select: Widgets['Select'] = (options) => html`
 		?required=${options.html.required}
 		?disabled=${options.html.disabled}
 		label=${ifDefined(options.label)}
-		help--text=${ifDefined(options.helpText)}
+		help-text=${ifDefined(options.helpText)}
 		>${options.enum?.map(
 			(enumValue) =>
 				html` <wa-option .value=${String(enumValue)}>

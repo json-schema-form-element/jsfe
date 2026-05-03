@@ -4,6 +4,33 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@awesome.me/webawesome':
+      specifier: 3.6.0
+      version: 3.6.0
+    '@lit-labs/signals':
+      specifier: 0.2.0
+      version: 0.2.0
+    '@types/node':
+      specifier: ^22.14.1
+      version: 22.19.17
+    '@types/react':
+      specifier: ^19
+      version: 19.2.14
+    lit:
+      specifier: ^3.3.2
+      version: 3.3.2
+    react:
+      specifier: ^19
+      version: 19.2.5
+    typescript:
+      specifier: ^6.0.2
+      version: 6.0.3
+    vue:
+      specifier: ^3.5.13
+      version: 3.5.32
+
 overrides:
   array-includes: npm:@nolyfill/array-includes@^1
   array.prototype.findlastindex: npm:@nolyfill/array.prototype.findlastindex@^1
@@ -22,6 +49,11 @@ overrides:
   string.prototype.trimend: npm:@nolyfill/string.prototype.trimend@^1
   typedarray: npm:@nolyfill/typedarray@^1
 
+patchedDependencies:
+  '@lit-labs/signals':
+    hash: fdy4zaqbkqwluauc7rwd57iioa
+    path: patches/@lit-labs__signals.patch
+
 importers:
 
   .:
@@ -33,7 +65,7 @@ importers:
         specifier: ^9.6.1
         version: 9.6.1
       '@types/node':
-        specifier: ^22.14.1
+        specifier: 'catalog:'
         version: 22.19.17
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.30.1
@@ -120,7 +152,7 @@ importers:
         specifier: ^4.6.2
         version: 4.11.0(typedoc@0.28.19(typescript@6.0.3))
       typescript:
-        specifier: ^6.0.2
+        specifier: 'catalog:'
         version: 6.0.3
 
   e2e:
@@ -138,11 +170,11 @@ importers:
   example-app:
     dependencies:
       '@awesome.me/webawesome':
-        specifier: ^3.6.0
+        specifier: 'catalog:'
         version: 3.6.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)
       '@gracile/gracile':
         specifier: ^0.8.2
-        version: 0.8.2(@lit-labs/signals@0.1.3)(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
+        version: 0.8.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
       '@hono/node-server':
         specifier: ^1.14.1
         version: 1.19.14(hono@4.12.14)
@@ -174,10 +206,10 @@ importers:
         specifier: ^4.7.7
         version: 4.12.14
       lit:
-        specifier: ^3.3.2
+        specifier: 'catalog:'
         version: 3.3.2
       react:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.5
       react-dom:
         specifier: ^19.1.0
@@ -187,16 +219,16 @@ importers:
         version: 6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
     devDependencies:
       '@types/node':
-        specifier: ^22.14.1
+        specifier: 'catalog:'
         version: 22.19.17
       '@types/react':
-        specifier: ^19.1.2
+        specifier: 'catalog:'
         version: 19.2.14
       '@types/react-dom':
         specifier: ^19.1.2
         version: 19.2.3(@types/react@19.2.14)
       typescript:
-        specifier: ^6.0.2
+        specifier: 'catalog:'
         version: 6.0.3
       vite-plugin-static-copy:
         specifier: ^2.3.1
@@ -211,14 +243,14 @@ importers:
         specifier: ^7.0.15
         version: 7.0.15
       signal-polyfill:
-        specifier: ^0.2.2
+        specifier: 0.2.2
         version: 0.2.2
     devDependencies:
       sinon:
         specifier: 19.0.2
         version: 19.0.2
       typescript:
-        specifier: ^6.0.2
+        specifier: 'catalog:'
         version: 6.0.3
 
   packages/generics:
@@ -227,16 +259,16 @@ importers:
         specifier: workspace:*
         version: link:../engine
       '@lit-labs/signals':
-        specifier: ^0.1.2
-        version: 0.1.3
+        specifier: 'catalog:'
+        version: 0.2.0(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)
       lit:
-        specifier: ^3.3.2
+        specifier: 'catalog:'
         version: 3.3.2
       react:
-        specifier: ^19
+        specifier: 'catalog:'
         version: 19.2.5
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.32(typescript@6.0.3)
     devDependencies:
       '@babel/plugin-syntax-typescript':
@@ -261,7 +293,7 @@ importers:
         specifier: ^12.1.2
         version: 12.3.0(rollup@4.60.2)(tslib@2.8.1)(typescript@6.0.3)
       '@types/react':
-        specifier: ^19
+        specifier: 'catalog:'
         version: 19.2.14
       '@vue/babel-plugin-jsx':
         specifier: ^1.4.0
@@ -282,13 +314,13 @@ importers:
         specifier: ^1.86.3
         version: 1.99.0
       typescript:
-        specifier: ^6.0.2
+        specifier: 'catalog:'
         version: 6.0.3
 
   packages/webawesome:
     dependencies:
       '@awesome.me/webawesome':
-        specifier: ^3.6.0
+        specifier: 'catalog:'
         version: 3.6.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)
       '@jsfe/engine':
         specifier: workspace:*
@@ -296,9 +328,18 @@ importers:
       '@jsfe/generics':
         specifier: workspace:*
         version: link:../generics
+      '@lit-labs/signals':
+        specifier: 'catalog:'
+        version: 0.2.0(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)
       lit:
-        specifier: ^3.3.2
+        specifier: 'catalog:'
         version: 3.3.2
+      react:
+        specifier: 'catalog:'
+        version: 19.2.5
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.32(typescript@6.0.3)
     devDependencies:
       '@lit/ts-transformers':
         specifier: ^2.0.2
@@ -310,7 +351,7 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0
       typescript:
-        specifier: ^6.0.2
+        specifier: 'catalog:'
         version: 6.0.3
 
 packages:
@@ -1018,6 +1059,9 @@ packages:
 
   '@lit-labs/signals@0.1.3':
     resolution: {integrity: sha512-P0yWgH5blwVyEwBg+WFspLzeu1i0ypJP1QB0l1Omr9qZLIPsUu0p4Fy2jshOg7oQyha5n163K3GJGeUhQQ682Q==}
+
+  '@lit-labs/signals@0.2.0':
+    resolution: {integrity: sha512-68plyIbciumbwKaiilhLNyhz4Vg6/+nJwDufG2xxWA9r/fUw58jxLHCAlKs+q1CE5Lmh3cZ3ShyYKnOCebEpVA==}
 
   '@lit-labs/ssr-client@1.1.8':
     resolution: {integrity: sha512-PjGh81oKsoI64m3IDjTqqjhC7dr2uC/o0jrllUb5gRAyp/RlAHxapgJrjq9kWz97faCHLQ8jUlTi6tGm+8fgyA==}
@@ -5581,7 +5625,7 @@ snapshots:
       - tsx
       - yaml
 
-  '@gracile/client@0.4.2(@lit-labs/signals@0.1.3)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
+  '@gracile/client@0.4.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
     dependencies:
       '@gracile/engine': 0.8.2(@lit-labs/ssr-client@1.1.8)(@lit-labs/ssr@3.3.1)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
       '@gracile/internal-utils': 0.5.1(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))
@@ -5589,7 +5633,7 @@ snapshots:
       '@lit-labs/ssr-client': 1.1.8
       urlpattern-polyfill: 10.1.0
     optionalDependencies:
-      '@lit-labs/signals': 0.1.3
+      '@lit-labs/signals': 0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -5632,10 +5676,10 @@ snapshots:
       - tsx
       - yaml
 
-  '@gracile/gracile@0.8.2(@lit-labs/signals@0.1.3)(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
+  '@gracile/gracile@0.8.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
     dependencies:
       '@gracile-labs/better-errors': 0.1.3(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
-      '@gracile/client': 0.4.2(@lit-labs/signals@0.1.3)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
+      '@gracile/client': 0.4.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
       '@gracile/engine': 0.8.2(@lit-labs/ssr-client@1.1.8)(@lit-labs/ssr@3.3.1)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
       '@gracile/internal-utils': 0.5.1(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))
       '@gracile/server': 0.6.4(@lit-labs/ssr-client@1.1.8)(@lit-labs/ssr@3.3.1)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
@@ -5858,7 +5902,13 @@ snapshots:
       parse5: 7.3.0
       typescript: 5.9.3
 
-  '@lit-labs/signals@0.1.3':
+  '@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)':
+    dependencies:
+      lit: 3.3.2
+      signal-polyfill: 0.2.2
+    optional: true
+
+  '@lit-labs/signals@0.2.0(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)':
     dependencies:
       lit: 3.3.2
       signal-polyfill: 0.2.2

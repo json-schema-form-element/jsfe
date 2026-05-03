@@ -8,7 +8,9 @@ import * as widgets from './index.js';
 export const Arrayy: Widgets['Array'] = (options) => {
 	return html`
 		<fieldset
-			id=${options.id}
+			?disabled=${options.html.disabled}
+			id=${options.html.id}
+			name=${options.html.name}
 			class="theme-webawesome widget-array widget-fieldset level-${options.level}"
 			part="widget-array"
 		>
@@ -18,23 +20,23 @@ export const Arrayy: Widgets['Array'] = (options) => {
 				? html`<p class="widget-fieldset__description">${options.helpText}</p>`
 				: null}
 			<!--  -->
-			${options.items(
-				(index, widget, controls) => html`
+			${options.children.map(
+				(widget, index) => html`
 					<wa-card
 						class="widget-array__card"
-						@dragover=${controls.wrapper.dragover}
-						@dragenter=${controls.wrapper.dragenter}
-						@dragleave=${controls.wrapper.dragleave}
-						@drop=${controls.wrapper.drop}
+						@dragover=${widget.controls.wrapper.dragover}
+						@dragenter=${widget.controls.wrapper.dragenter}
+						@dragleave=${widget.controls.wrapper.dragleave}
+						@drop=${widget.controls.wrapper.drop}
 					>
 						<header slot="header" class="widget-array__header">
 							<div
 								class="widget-array__handle"
 								.draggable=${true}
-								@mousedown=${controls.handle.mousedown}
-								@dragstart=${controls.handle.dragstart}
+								@mousedown=${widget.controls.handle.mousedown}
+								@dragstart=${widget.controls.handle.dragstart}
 							>
-								<wa-tag size="small" pill>${index + 1}</wa-tag>
+								<wa-tag size="s" pill>${index + 1}</wa-tag>
 								<div class="widget-array__handle-grip">
 									<wa-icon name="grip-horizontal" label="Settings"></wa-icon>
 								</div>
@@ -42,7 +44,7 @@ export const Arrayy: Widgets['Array'] = (options) => {
 
 							<nav>
 								<wa-tooltip content="Delete">
-									<wa-button size="small" @click=${controls.delete.click}>
+									<wa-button size="s" @click=${widget.controls.delete.click}>
 										<wa-icon name="x-lg" label="Settings"></wa-icon>
 									</wa-button>
 								</wa-tooltip>
@@ -52,9 +54,9 @@ export const Arrayy: Widgets['Array'] = (options) => {
 								<wa-button-group>
 									<wa-tooltip content="Move item up">
 										<wa-button
-											size="small"
-											@click=${controls.up.click}
-											.disabled=${controls.up.disabled}
+											size="s"
+											@click=${widget.controls.up.click}
+											.disabled=${widget.controls.up.disabled}
 										>
 											<wa-icon name="arrow-up" label="Up"></wa-icon>
 										</wa-button>
@@ -62,9 +64,9 @@ export const Arrayy: Widgets['Array'] = (options) => {
 
 									<wa-tooltip content="Move item down">
 										<wa-button
-											size="small"
-											@click=${controls.down.click}
-											.disabled=${controls.down.disabled}
+											size="s"
+											@click=${widget.controls.down.click}
+											.disabled=${widget.controls.down.disabled}
 										>
 											<wa-icon name="arrow-down" label="Down"></wa-icon>
 										</wa-button>

@@ -56,16 +56,35 @@
     "css:lint": "stylelint \"src/**/*.css\" --cache"
   },
   "dependencies": {
-    "@awesome.me/webawesome": "^3.6.0",
+    "@awesome.me/webawesome": "catalog:",
     "@jsfe/engine": "workspace:*",
-    "@jsfe/generics": "workspace:*",
-    "lit": "^3.3.2"
+    "@jsfe/generics": "workspace:*"
+  },
+  "peerDependencies": {
+    "@lit-labs/signals": "catalog:",
+    "lit": "catalog:",
+    "react": "catalog:",
+    "vue": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "lit": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "@lit-labs/signals": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@lit/ts-transformers": "^2.0.2",
     "jsx-forge": "link:../../../../@gracile/gracile/packages/labs/jsx-forge",
     "ts-patch": "^3.3.0",
-    "typescript": "^6.0.2"
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"

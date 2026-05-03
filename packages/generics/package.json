@@ -69,20 +69,20 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@types/react": "^19",
+    "@types/react": "catalog:",
     "@vue/babel-plugin-jsx": "^1.4.0",
     "babel-preset-solid": "^1.9.6",
     "preact-jsx-runtime": "^1.2.0",
     "rollup": "^4.40.1",
     "rollup-plugin-node-externals": "^8.0.0",
     "sass": "^1.86.3",
-    "typescript": "^6.0.2"
+    "typescript": "catalog:"
   },
   "peerDependencies": {
-    "@lit-labs/signals": "^0.1.2",
-    "lit": "^3.3.2",
-    "react": "^19",
-    "vue": "^3.5.13"
+    "@lit-labs/signals": "catalog:",
+    "lit": "catalog:",
+    "react": "catalog:",
+    "vue": "catalog:"
   },
   "peerDependenciesMeta": {
     "lit": {
@@ -102,6 +102,6 @@
     "access": "public"
   },
   "overrides": {
-    "signal-polyfill": "^0.2.2"
+    "signal-polyfill": "0.2.2"
   }
 }

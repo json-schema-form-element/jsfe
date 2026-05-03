@@ -1,0 +1,26 @@
+diff --git a/development/lib/signal-watcher.d.ts b/development/lib/signal-watcher.d.ts
+index ef66e229f372a7aad49e60b0456f987df9a1034a..e9440e5ba52cf1dcd7bd9e602bd739baaf4123e6 100644
+--- a/development/lib/signal-watcher.d.ts
++++ b/development/lib/signal-watcher.d.ts
+@@ -22,7 +22,7 @@ interface EffectOptions {
+      */
+     manualDispose?: boolean;
+ }
+-interface SignalWatcherApi {
++export interface SignalWatcherApi {
+     updateEffect(fn: () => void, options?: EffectOptions): () => void;
+ }
+ type Constructor<T = {}> = new (...args: any[]) => T;
+diff --git a/lib/signal-watcher.d.ts b/lib/signal-watcher.d.ts
+index ef66e229f372a7aad49e60b0456f987df9a1034a..e9440e5ba52cf1dcd7bd9e602bd739baaf4123e6 100644
+--- a/lib/signal-watcher.d.ts
++++ b/lib/signal-watcher.d.ts
+@@ -22,7 +22,7 @@ interface EffectOptions {
+      */
+     manualDispose?: boolean;
+ }
+-interface SignalWatcherApi {
++export interface SignalWatcherApi {
+     updateEffect(fn: () => void, options?: EffectOptions): () => void;
+ }
+ type Constructor<T = {}> = new (...args: any[]) => T;

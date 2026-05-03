@@ -65,11 +65,11 @@
   "dependencies": {
     "@standard-schema/spec": "^1.0.0",
     "@types/json-schema": "^7.0.15",
-    "signal-polyfill": "^0.2.2"
+    "signal-polyfill": "0.2.2"
   },
   "devDependencies": {
     "sinon": "19.0.2",
-    "typescript": "^6.0.2"
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"

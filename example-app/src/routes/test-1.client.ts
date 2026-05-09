@@ -1,4 +1,4 @@
-import { JsonSchemaFormGeneric } from '@jsfe/generics/elements';
+import { JsonSchemaFormGeneric } from '@jsfe/generics/jsf-generic';
 import { unsafeCSS, css } from 'lit';
 import picoStyles from '@picocss/pico?inline';
 

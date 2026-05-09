@@ -10,13 +10,13 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "@jsfe/webawesome": "workspace:^",
+    "@awesome.me/webawesome": "catalog:",
     "@gracile/gracile": "^0.8.2",
     "@hono/node-server": "^1.14.1",
     "@jsfe/engine": "workspace:^",
     "@jsfe/generics": "workspace:^",
+    "@jsfe/webawesome": "workspace:^",
     "@picocss/pico": "^2.1.1",
-    "@awesome.me/webawesome": "catalog:",
     "@sinclair/typebox": "^0.34.33",
     "@vitejs/plugin-react": "^4.4.1",
     "@vtaits/react-signals": "^1.0.2",
@@ -29,10 +29,12 @@
   },
   "// use-signals": "^0.1.1",
   "devDependencies": {
+    "@gracile-labs/islands": "0.2.2-next.0",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "^19.1.2",
     "typescript": "catalog:",
     "vite-plugin-static-copy": "^2.3.1"
-  }
+  },
+  "custom-elements": "./custom-elements.json"
 }

@@ -7,6 +7,15 @@ export default defineConfig({
 		port: 3032,
 	},
 
+	// These virtual/client entrypoints can churn during linked-package upgrades.
+	// Excluding them avoids stale prebundle hashes that cause 504 "Outdated Optimize Dep".
+	optimizeDeps: {
+		exclude: [
+			'@gracile/gracile/hydration-elements',
+			'@gracile-labs/islands/client',
+		],
+	},
+
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	plugins: [
 		react(),
@@ -30,5 +39,6 @@ export default defineConfig({
 				},
 			},
 		}),
+		// gracileIslands({ debug: true }),
 	],
 });

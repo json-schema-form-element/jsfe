@@ -1,5 +1,5 @@
 import { JsonSchemaFormWebawesome } from '@jsfe/webawesome';
-import styles from '@jsfe/webawesome/css?inline';
+import styles from '@jsfe/webawesome/styles.css?inline';
 
 import '@awesome.me/webawesome/dist/components/input/input.js';
 import '@awesome.me/webawesome/dist/components/number-input/number-input.js';

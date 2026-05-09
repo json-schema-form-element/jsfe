@@ -2,6 +2,6 @@
   "extends": "@gracile/gracile/tsconfigs/strictest",
 
   "compilerOptions": {
-    "jsx": "react-jsx"
+    "jsx": "preserve"
   }
 }

@@ -1,0 +1,10 @@
+pnpm-lock.yaml
+CHANGELOG.md
+dist
+.gracile
+node_modules
+.external-repos
+src/core/locales/generated
+custom-elements.d.ts
+web-elements.d.ts
+web-elements.ext.d.ts

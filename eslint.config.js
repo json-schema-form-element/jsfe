@@ -101,6 +101,10 @@ export default [
 			'**/*.old*',
 			'**/*.config.ts',
 			'example-app',
+			'**/vite.*',
+
+			'**/web-elements.exts.d.ts',
+			'**/web-elements.d.ts',
 		],
 	},
 	// Package-specific configs

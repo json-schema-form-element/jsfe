@@ -5,28 +5,9 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "scss:build": {
-      "dependsOn": ["^scss:build"],
-      "outputs": ["dist/css/**"]
-    },
-    "scss:dev": {
-      "dependsOn": ["^scss:dev"],
-      "outputs": ["dist/css/**"]
-    },
-    "scss:lint": {
-      "inputs": ["src/**/*.scss"],
-      "outputs": []
-    },
-    "lint:es": {
-      "outputs": []
-    },
-    "lint:es:fix": {
-      "outputs": []
-    },
-    "format": {
-      "outputs": []
-    },
-    "format:check": {
+
+    "clean": {
+      "dependsOn": ["^clean"],
       "outputs": []
     },
     "dev": {

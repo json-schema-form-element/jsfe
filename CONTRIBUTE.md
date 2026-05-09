@@ -117,7 +117,6 @@ git commit -m "ci: add node 21 to test matrix"
 2. Go to the original repository on GitHub and create a Pull Request
 
 3. In your PR description:
-
    - Clearly describe the problem and solution
    - Include the relevant issue number if applicable
    - Include screenshots/GIFs for UI changes

@@ -383,8 +383,8 @@ void describe('Primitives', () => {
 			pathAsString: 'Enum1',
 			required: false,
 			schema: {
-				default: 1_000,
-				enum: [10, 100, 1_000, 10_000],
+				default: 1000,
+				enum: [10, 100, 1000, 10_000],
 				title: 'Number list',
 				type: 'number',
 			},
@@ -393,8 +393,8 @@ void describe('Primitives', () => {
 		}) as EnumWidgetOptions;
 
 		assert.strictEqual(result.widget, 'Select');
-		assert.strictEqual(result.value, 1_000, 'top-level value');
-		assert.strictEqual(result.html.value, 1_000, 'html.value');
+		assert.strictEqual(result.value, 1000, 'top-level value');
+		assert.strictEqual(result.html.value, 1000, 'html.value');
 	});
 
 	void test('Enum select - should apply schema default with empty object data', () => {
@@ -407,8 +407,8 @@ void describe('Primitives', () => {
 			pathAsString: 'Enum1',
 			required: false,
 			schema: {
-				default: 1_000,
-				enum: [10, 100, 1_000, 10_000],
+				default: 1000,
+				enum: [10, 100, 1000, 10_000],
 				title: 'Number list',
 				type: 'number',
 			},
@@ -416,8 +416,8 @@ void describe('Primitives', () => {
 			uiSchema: {},
 		}) as EnumWidgetOptions;
 
-		assert.strictEqual(result.value, 1_000, 'top-level value');
-		assert.strictEqual(result.html.value, 1_000, 'html.value');
+		assert.strictEqual(result.value, 1000, 'top-level value');
+		assert.strictEqual(result.html.value, 1000, 'html.value');
 	});
 
 	void test('Enum radio - should apply schema default', () => {
@@ -430,8 +430,8 @@ void describe('Primitives', () => {
 			pathAsString: 'Enum1',
 			required: false,
 			schema: {
-				default: 1_000,
-				enum: [10, 100, 1_000, 10_000],
+				default: 1000,
+				enum: [10, 100, 1000, 10_000],
 				title: 'Number radios',
 				type: 'number',
 			},
@@ -440,8 +440,8 @@ void describe('Primitives', () => {
 		}) as EnumWidgetOptions;
 
 		assert.strictEqual(result.widget, 'RadioGroup');
-		assert.strictEqual(result.value, 1_000);
-		assert.strictEqual(result.html.value, 1_000);
+		assert.strictEqual(result.value, 1000);
+		assert.strictEqual(result.html.value, 1000);
 	});
 
 	void test('Enum select - user data should override schema default', () => {
@@ -454,8 +454,8 @@ void describe('Primitives', () => {
 			pathAsString: 'Enum1',
 			required: false,
 			schema: {
-				default: 1_000,
-				enum: [10, 100, 1_000, 10_000],
+				default: 1000,
+				enum: [10, 100, 1000, 10_000],
 				title: 'Number list',
 				type: 'number',
 			},

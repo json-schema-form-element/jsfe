@@ -43,8 +43,7 @@
     "types": ["node"]
   },
   "include": [
-    "src/**/*.ts"
-    // "src/tests/*.test.ts",
+    "src/**/*.ts" // "src/tests/*.test.ts",
   ]
   // "exclude": ["src/styles.ts"]
 }

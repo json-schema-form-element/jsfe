@@ -16,7 +16,7 @@ import { getPrimitiveArray } from './utils/utilities.js';
 export function widgetArrayPrimitive({
 	data,
 	form,
-	level = 0,
+	level,
 	path,
 	required,
 	schema,

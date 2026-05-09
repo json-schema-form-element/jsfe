@@ -20,7 +20,7 @@ import {
 export function widgetObject({
 	data,
 	form,
-	level = 0,
+	level,
 	path,
 	schema,
 	schemaPath,

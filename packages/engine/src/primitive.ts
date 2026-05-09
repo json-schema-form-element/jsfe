@@ -118,7 +118,7 @@ function createBooleanWidget(
 		element: 'input',
 		html: {
 			...options.html,
-			...(checked !== undefined ? { checked } : {}),
+			...(checked === undefined ? {} : { checked }),
 			type: 'checkbox',
 		},
 	};
@@ -166,7 +166,9 @@ function createDateWidget(
 			value:
 				options.html.value === undefined
 					? undefined
-					: String(options.html.value as string),
+					: // FIXME
+						// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
+						String(options.html.value as string),
 		},
 		widget: 'Date',
 	};
@@ -180,12 +182,12 @@ function createEnumWidget(
 	uiSchema: WidgetTypeBaseParameters['uiSchema'],
 ): EnumWidgetOptions {
 	// TODO: Ugly casting all over.
-	const baseValue = options.html.value as string | number | undefined;
+	const baseValue = options.html.value as number | string | undefined;
 
 	const enumOptions: EnumWidgetOptions = {
 		...options,
-		enum: undefined,
 		element: 'select',
+		enum: undefined,
 		html: {
 			...options.html,
 			value: baseValue,
@@ -269,7 +271,9 @@ function createStringWidget(
 			value:
 				options.html.value === undefined
 					? undefined
-					: String(options.html.value as string),
+					: // FIXME
+						// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
+						String(options.html.value as string),
 		},
 	};
 

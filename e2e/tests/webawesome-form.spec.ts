@@ -158,11 +158,14 @@ test.describe('Webawesome form — Enumerations', () => {
 
 	test('number radio group', async ({ page }) => {
 		await page.goto(URL);
+		const group = page.locator(
+			'[name="Primitives__Enumerations__Radios__Number"]',
+		);
 		await expect(
-			page.getByRole('radio', { name: '10', exact: true }),
+			group.getByRole('radio', { name: '10', exact: true }),
 		).toBeVisible();
 		await expect(
-			page.getByRole('radio', { name: '1000', exact: true }),
+			group.getByRole('radio', { name: '1000', exact: true }),
 		).toBeVisible();
 	});
 });

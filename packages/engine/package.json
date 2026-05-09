@@ -42,25 +42,12 @@
     "!/dist/**/*.test.*"
   ],
   "scripts": {
-    "// build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
-    "// build:cdn": "pnpm clean ; pnpm esbuild './lib/**/*.ts' --outdir=./dist/esm-min --outbase=./lib --minify && cp dist/styles.js dist/esm-min",
-    "// css:build": "pnpm sass --no-source-map src/styles.scss:dist/styles.css",
-    "// css:dev": "pnpm sass --watch src/styles.scss:dist/styles.css & pnpm css:to-js:dev",
-    "// css:to-js": "node ../../scripts/css-to-js.js dist/styles.css",
-    "// css:to-js:dev": "nodemon dist/styles.css -x 'pnpm css:to-js'",
-    "// dev": "pnpm ts:dev & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
-    "// build 2": "pnpm clean ; pnpm ts:build || exit 0",
-    "// dev 2": "pnpm ts:dev",
     "clean": "rm -rf ./dist",
     "build": "pnpm tsc",
     "dev": "pnpm tsc --watch",
     "test": "pnpm tsc",
     "test:unit": "node --test --test-reporter=spec --experimental-test-coverage --enable-source-maps 'dist/**/*.test.js'",
-    "test:unit:dev": "node --test --enable-source-maps --watch 'dist/**/*.test.js'",
-    "lint:es": "eslint --cache \"src/**/*.{ts,tsx,js}\"",
-    "lint:es:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
-    "format": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\"",
-    "format:fix": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\""
+    "test:unit:dev": "node --test --enable-source-maps --watch 'dist/**/*.test.js'"
   },
   "dependencies": {
     "@standard-schema/spec": "^1.0.0",

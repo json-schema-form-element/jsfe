@@ -21,9 +21,9 @@ const log = new Logger();
 export function widgetArray({
 	data = [],
 	form,
-	level = 0,
+	level,
 	path,
-	required = false,
+	required,
 	schema,
 	schemaPath,
 	uiSchema,

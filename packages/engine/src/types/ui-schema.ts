@@ -25,6 +25,5 @@ interface UiSchemaProperties {
 		| 'Select'
 		| 'Switch'
 		| 'Textarea'
-		// eslint-disable-next-line sonarjs/no-useless-intersection
 		| (string & {});
 }

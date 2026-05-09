@@ -75,15 +75,14 @@ export function getLabelFromSchemaOrPath({
 	schema: ReadonlyJSONSchema7;
 	uiSchema: UiSchema;
 }): string {
-	return (
-		uiSchema['ui:title'] ??
-		schema.title ??
-		(Number.isNaN(Number(path.at(-1)))
-			? path.at(-1)
-				? String(path.at(-1))
-				: ''
-			: '')
-	);
+	const lastPathPart = path.at(-1);
+	let pathLabel = '';
+
+	if (lastPathPart) {
+		pathLabel = String(lastPathPart);
+	}
+
+	return uiSchema['ui:title'] ?? schema.title ?? pathLabel;
 }
 
 /**
@@ -228,7 +227,7 @@ function makePartsFromPath(
 	strict = true,
 ): string[] | undefined {
 	if (typeof path === 'string' && !isValidPath(path)) {
-		if (strict) throw new Error(`Invalid path format: "${String(path)}"`);
+		if (strict) throw new Error(`Invalid path format: ${JSON.stringify(path)}`);
 		return undefined;
 	}
 

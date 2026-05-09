@@ -33,14 +33,14 @@ export function isArrayOfPrimitives({
 }: JSONSchema7): boolean {
 	return Boolean(
 		type === 'array' &&
-			typeof items === 'object' &&
-			!Array.isArray(items) &&
-			items.enum &&
-			uniqueItems &&
-			(items.type === 'string' ||
-				items.type === 'number' ||
-				items.type === 'integer' ||
-				items.type === 'boolean'),
+		typeof items === 'object' &&
+		!Array.isArray(items) &&
+		items.enum &&
+		uniqueItems &&
+		(items.type === 'string' ||
+			items.type === 'number' ||
+			items.type === 'integer' ||
+			items.type === 'boolean'),
 	);
 }
 
@@ -64,11 +64,11 @@ export function isObject({ allOf, properties }: JSONSchema7): boolean {
 export function isPrimitive({ format, type }: JSONSchema7): boolean {
 	return Boolean(
 		type?.includes('boolean') ||
-			type?.includes('string') ||
-			type?.includes('integer') ||
-			format === 'date' ||
-			format === 'date-time' ||
-			type?.includes('number'),
+		type?.includes('string') ||
+		type?.includes('integer') ||
+		format === 'date' ||
+		format === 'date-time' ||
+		type?.includes('number'),
 	);
 }
 
@@ -146,10 +146,10 @@ function createFixedArrayWidget(
 function isArrayWithEnumItems({ items, type }: JSONSchema7): boolean {
 	return Boolean(
 		type === 'array' &&
-			typeof items === 'object' &&
-			!Array.isArray(items) &&
-			items.enum &&
-			(items.type === 'string' || items.type === 'number'),
+		typeof items === 'object' &&
+		!Array.isArray(items) &&
+		items.enum &&
+		(items.type === 'string' || items.type === 'number'),
 	);
 }
 

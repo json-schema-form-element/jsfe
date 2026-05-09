@@ -104,5 +104,5 @@
   "overrides": {
     "signal-polyfill": "0.2.2"
   },
-  "custom-elements": "./custom-elements.json"
+  "customElements": "./custom-elements.json"
 }

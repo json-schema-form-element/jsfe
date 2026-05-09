@@ -27,7 +27,7 @@ import { log } from './form.helpers.js';
  * @template Data - The data type for the whole form object
  */
 export abstract class JsonSchemaFormElement<
-	Schema extends ReadonlyJSONSchema7 | undefined = undefined,
+	Schema extends ReadonlyJSONSchema7 = ReadonlyJSONSchema7,
 	Ui extends UiSchema = UiSchema,
 	Data extends GenericData = GenericData,
 >

@@ -1,5 +1,7 @@
 # JSON Schema Form Engine
 
+Effortless forms, with standards. Base engine for all implementations.
+
 ```sh
 npm install @jsfe/engine
 ```

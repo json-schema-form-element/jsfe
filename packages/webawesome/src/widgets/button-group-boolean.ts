@@ -8,7 +8,7 @@ export const ButtonGroupBoolean: Widgets['ButtonGroupBoolean'] = (
 ) => html`
 	<wa-radio-group
 		orientation="horizontal"
-		size="medium"
+		size="m"
 		label=${ifDefined(options.label)}
 		help-text=${ifDefined(options.helpText)}
 		value=${options.html.checked === undefined

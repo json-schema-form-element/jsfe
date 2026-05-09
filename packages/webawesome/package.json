@@ -29,31 +29,23 @@
   "exports": {
     ".": "./dist/index.js",
     "./*": "./dist/*.js",
-    "./css": "./src/styles.css",
-    "./css/*": "./src/widgets/*.css"
+    "./*.css": "./dist/*.css",
+    "./web-elements": "./dist/_ambient/web-elements.d.ts"
   },
   "files": [
     "./dist",
-    "./src/**/*.css",
     "./vscode.html-custom-data.json",
     "./vscode.css-custom-data.json",
     "./custom-elements.json"
   ],
   "scripts": {
-    "// build": "pnpm clean ; pnpm ts:build ; pnpm css:build ; pnpm css:to-js",
-    "// dev": "pnpm ts:dev # & pnpm css:dev & (sleep 3 && pnpm css:to-js:dev)",
-    "// css:build": "pnpm sass --no-source-map src/styles.scss:dist/esm/styles.css",
-    "// css:dev": "pnpm sass --watch src/styles.scss:dist/esm/styles.css & pnpm css:to-js:dev",
-    "// css:to-js": "node ../../scripts/css-to-js.js dist/esm/styles.css",
-    "// css:to-js:dev": "nodemon dist/esm/styles.css -x 'pnpm css:to-js'",
     "clean": "rm -rf ./dist",
     "build": "tsc",
+    "postbuild": "node --run copy:css && node --run copy:dts",
+    "copy:css": "cd ./src && find . -name '*.css' ! -path './themes/webawesome/*' | cpio -pdm ../dist/",
+    "copy:dts": "cd src && find . -name '*.d.ts' | cpio -pdm ../dist/",
     "dev": "tsc --watch",
-    "lint:es": "eslint --cache \"src/**/*.{ts,tsx,js}\"",
-    "lint:es:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
-    "format": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\"",
-    "format:fix": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\"",
-    "css:lint": "stylelint \"src/**/*.css\" --cache"
+    "wea:generate": "wea-generate"
   },
   "dependencies": {
     "@awesome.me/webawesome": "catalog:",
@@ -82,11 +74,13 @@
   },
   "devDependencies": {
     "@lit/ts-transformers": "^2.0.2",
-    "jsx-forge": "link:../../../../@gracile/gracile/packages/labs/jsx-forge",
+    "jsx-forge": "^0.4.0-next.0",
     "ts-patch": "^3.3.0",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "web-elements-analyzer": "0.0.0"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "custom-elements": "./custom-elements.json"
 }

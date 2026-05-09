@@ -1,12 +1,13 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Fieldset } from './_fieldset.js';
 
 export const RadioGroupBoolean: Widgets['RadioGroupBoolean'] = (
 	options,
-): JSX.LitTemplate => {
-	const Radio = ({ value }: { value: boolean }): JSX.LitTemplate => (
+): HTMLTemplateResult => {
+	const Radio = ({ value }: { value: boolean }): HTMLTemplateResult => (
 		<>
 			<input
 				bool:checked={value === options.html.checked}

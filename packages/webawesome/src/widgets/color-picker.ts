@@ -8,7 +8,7 @@ export const ColorPicker: Widgets['ColorPicker'] = (options) => html`
 		<label for=${options.html.id}>${options.label}</label>
 		<wa-color-picker
 			label=${ifDefined(options.label)}
-			value=${options.html.value ? String(options.html.value) : ''}
+			value=${options.html.value ?? ''}
 			name=${options.html.name}
 			id=${options.html.id}
 			?disabled=${options.html.disabled}

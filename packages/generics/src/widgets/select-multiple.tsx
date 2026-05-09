@@ -1,12 +1,11 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
-
-// import { For } from '@gracile-labs/babel-plugin-jsx-to-literals/components/for';
+import type { HTMLTemplateResult } from 'lit';
 
 // import { Field } from './_field.js';
 
 export const SelectMultiple: Widgets['SelectMultiple'] = () /* options, */
-: JSX.LitTemplate => <></>;
+: HTMLTemplateResult => <></>;
 // <Field
 // 	constraints={
 // 		options.html.size === undefined ? null : (

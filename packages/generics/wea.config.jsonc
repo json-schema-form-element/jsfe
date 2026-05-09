@@ -1,0 +1,13 @@
+{
+	"$schema": "../../node_modules/web-elements-analyzer/schemas/config.schema.json",
+
+	"persist": {
+		"typings": true,
+		"externalsTypings": true,
+	},
+	"paths": {
+		"baseDirectory": "./src",
+		"typings": "./_ambient/web-elements.d.ts",
+		"externalsTypings": "./_ambient/web-elements.exts.d.ts",
+	},
+}

@@ -1,0 +1,447 @@
+{
+  "schemaVersion": "1.0.0",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "./dist/form.js",
+      "summary": "Web Awesome flavored JSON Schema Form custom element.",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "JsonSchemaFormWebawesome",
+          "customElement": true,
+          "tagName": "jsf-webawesome",
+          "description": "Web Awesome implementation of the JSON Schema Form element.",
+          "summary": "Concrete Web Awesome form custom element.",
+          "superclass": {
+            "package": "@jsfe/generics",
+            "module": "./dist/lit/jsf-element.js",
+            "name": "JsonSchemaFormElement"
+          },
+          "attributes": [
+            {
+              "name": "accept-charset",
+              "fieldName": "acceptCharset",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "action",
+              "fieldName": "action",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "autocomplete",
+              "fieldName": "autoComplete",
+              "type": {
+                "text": "'off' | 'on' | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "data",
+              "fieldName": "data",
+              "type": {
+                "text": "GenericData"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "enctype",
+              "fieldName": "encType",
+              "type": {
+                "text": "EncType | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "method",
+              "fieldName": "method",
+              "type": {
+                "text": "'dialog' | 'get' | 'post' | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "novalidate",
+              "fieldName": "noValidate",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "schema",
+              "fieldName": "schema",
+              "type": {
+                "text": "ReadonlyJSONSchema7 | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "target",
+              "fieldName": "target",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "ui",
+              "fieldName": "ui",
+              "type": {
+                "text": "UiSchema"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "widgets",
+              "fieldName": "widgets",
+              "type": {
+                "text": "typeof widgets"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "jsf-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "summary": "Emitted when the underlying form engine dispatches a change event.",
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "name": "jsf-input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "summary": "Emitted when the underlying form engine dispatches an input event.",
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "acceptCharset",
+              "privacy": "public",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "action",
+              "privacy": "public",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "autoComplete",
+              "privacy": "public",
+              "type": {
+                "text": "'off' | 'on' | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "privacy": "public",
+              "type": {
+                "text": "GenericData"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "debug",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "encType",
+              "privacy": "public",
+              "type": {
+                "text": "EncType | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "privacy": "public",
+              "type": {
+                "text": "JsonSchemaFormEngine<Schema, Ui, Data> | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "method",
+              "privacy": "public",
+              "type": {
+                "text": "'dialog' | 'get' | 'post' | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "privacy": "public",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "noValidate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "schema",
+              "privacy": "public",
+              "type": {
+                "text": "ReadonlyJSONSchema7 | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tagName",
+              "static": true,
+              "privacy": "public",
+              "readonly": true,
+              "type": {
+                "text": "'jsf-webawesome'"
+              },
+              "default": "'jsf-webawesome'"
+            },
+            {
+              "kind": "field",
+              "name": "ui",
+              "privacy": "public",
+              "type": {
+                "text": "UiSchema"
+              },
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "widgets",
+              "privacy": "public",
+              "type": {
+                "text": "typeof widgets"
+              },
+              "summary": "Widget implementation map backed by Web Awesome components."
+            },
+            {
+              "kind": "method",
+              "name": "define",
+              "static": true,
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "tagName",
+                  "type": {
+                    "text": "TagName"
+                  }
+                },
+                {
+                  "name": "ctor",
+                  "type": {
+                    "text": "typeof JsonSchemaFormElement"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "package": "@jsfe/generics",
+                "name": "JsonSchemaFormElement",
+                "module": "./dist/lit/jsf-element.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JsonSchemaFormWebawesome",
+          "declaration": {
+            "name": "JsonSchemaFormWebawesome"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./dist/form.define.js",
+      "summary": "Optional registration module for the Web Awesome custom element.",
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "jsf-webawesome",
+          "declaration": {
+            "module": "./dist/form.js",
+            "name": "JsonSchemaFormWebawesome"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./dist/index.js",
+      "summary": "Primary public entrypoint for @jsfe/webawesome.",
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JsonSchemaFormWebawesome",
+          "declaration": {
+            "module": "./dist/form.js",
+            "name": "JsonSchemaFormWebawesome"
+          }
+        }
+      ]
+    }
+  ]
+}

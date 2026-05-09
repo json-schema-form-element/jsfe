@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/lit",
+
+    "jsx": "react-native",
+    // "jsxImportSource": "jsx-forge",
+
+    "plugins": [
+      {
+        "transform": "jsx-forge/transform",
+        "target": "lit"
+      },
+      {
+        "transform": "@lit/ts-transformers",
+        "import": "idiomaticDecoratorsTransformer"
+      }
+    ]
+  }
+}

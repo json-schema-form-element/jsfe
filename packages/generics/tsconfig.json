@@ -19,6 +19,7 @@
     "noFallthroughCasesInSwitch": true,
 
     "outDir": "dist/lit",
+    "rootDir": "src",
     "declaration": true,
 
     "removeComments": false,
@@ -29,21 +30,19 @@
 
     "verbatimModuleSyntax": true,
 
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": false,
 
     "noEmitOnError": false,
 
     "allowJs": true,
 
     "jsx": "preserve",
-    "jsxImportSource": "@gracile-labs/babel-plugin-jsx-to-literals"
+
+    "jsxImportSource": "jsx-forge"
   },
   "include": [
     //
-    "src/index.ts",
-    "src/index.framework.ts"
-    // "src/framework/*/index.ts",
-    // "src/framework/vue/index.vue.ts"
+    "src"
   ],
   "exclude": []
 }

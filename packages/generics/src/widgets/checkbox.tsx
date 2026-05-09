@@ -1,7 +1,8 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
-export const Checkbox: Widgets['Checkbox'] = (options): JSX.LitTemplate => (
+export const Checkbox: Widgets['Checkbox'] = (options): HTMLTemplateResult => (
 	<>
 		{options.html.required ? (
 			<input name={options.html.name} type="hidden" value="false" />
@@ -34,7 +35,7 @@ export const Checkbox: Widgets['Checkbox'] = (options): JSX.LitTemplate => (
 			<span>
 				{options.html.required ? (
 					<strong>
-						<span aria-label="required">*</span>
+						<span aria-label="required"> *</span>
 					</strong>
 				) : null}
 			</span>

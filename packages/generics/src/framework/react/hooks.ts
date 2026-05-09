@@ -2,6 +2,7 @@ import type { JsonSchemaFormEngine } from '@jsfe/engine';
 
 import { useEffect, useReducer } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useForm(form: JsonSchemaFormEngine<any>): void {
 	const [, forceUpdate] = useReducer((x) => x + 1, 0);
 

@@ -2,9 +2,9 @@ import { html } from '@lit-labs/signals';
 import { classMap } from 'lit/directives/class-map.js';
 
 export const Errorr = (options: {
+	id?: string;
 	message?: string;
 	type?: string;
-	id?: string;
 }) => {
 	console.warn(options.message);
 	return html`

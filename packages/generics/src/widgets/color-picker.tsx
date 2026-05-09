@@ -1,11 +1,12 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Field } from './_field.js';
 
 export const ColorPicker: Widgets['ColorPicker'] = (
 	options,
-): JSX.LitTemplate => (
+): HTMLTemplateResult => (
 	<Field options={options}>
 		<input
 			bool:required={options.html.required}

@@ -1,11 +1,10 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
-
-import { For } from '@gracile-labs/babel-plugin-jsx-to-literals/components/for';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Field } from './_field.js';
 
-export const Select: Widgets['Select'] = (options): JSX.LitTemplate => (
+export const Select: Widgets['Select'] = (options): HTMLTemplateResult => (
 	<Field options={options}>
 		<select
 			aria-describedby={`${options.html.id}__description`}
@@ -13,24 +12,23 @@ export const Select: Widgets['Select'] = (options): JSX.LitTemplate => (
 			id={options.html.id}
 			name={options.html.name}
 		>
-			<For each={options.enum ?? []}>
-				{(enumValue: unknown) => (
+			{(options.enum ?? []).map((enumValue: unknown) => (
+				<for:each key={String(enumValue)}>
 					<option
-						for:key={String(enumValue)}
-						value={String(enumValue)}
 						// NOTE: a <select> CANNOT serialize `value`,
 						// but a prop binding (`_:value`) works.
 						// `selected` is the isomorphic way.
-						bool:selected={
+						selected={
 							// TODO: Encapsulate this upstream
 							options.html.value !== undefined &&
 							String(enumValue) === String(options.html.value)
 						}
+						value={String(enumValue)}
 					>
 						{enumValue}
 					</option>
-				)}
-			</For>
+				</for:each>
+			))}
 		</select>
 	</Field>
 );

@@ -15,13 +15,12 @@ import { isDev } from '@jsfe/engine/logger';
 import { SignalWatcher } from '@lit-labs/signals';
 import { LitElement, type PropertyDeclaration, type PropertyValues } from 'lit';
 
-import { FormGeneric } from './form-generic.jsx';
-import { log } from './form.js';
-import * as genericWidgets from './widgets/index.js';
+import { log } from './form.helpers.js';
 
 /**
  * Base class for JSON Schema Form elements.
  * Implements native `form` attributes.
+ * @tagName json-schema-form
  *
  * @template Schema - The JSON Schema type
  * @template Path - The data paths union for form fields
@@ -35,19 +34,20 @@ export abstract class JsonSchemaFormElement<
 	extends SignalWatcher(LitElement)
 	implements GenericFormProperties<Schema, Ui, Data>
 {
-	public static properties: Record<
+	public static override properties: Record<
 		'data' | 'form' | 'schema' | 'ui' | 'widgets' | keyof NativeFormAttributes,
 		PropertyDeclaration
 	> = {
 		acceptCharset: { attribute: 'accept-charset', type: String },
 		action: { type: String },
-		autoComplete: { type: String },
+		autoComplete: { attribute: 'autocomplete', type: String },
 		data: { attribute: true, type: Object },
-		encType: { type: String },
+		encType: { attribute: 'enctype', type: String },
 		form: { type: Object },
 		method: { type: String },
 		name: { type: String },
-		noValidate: { reflect: true, type: Boolean },
+		noValidate: { attribute: 'novalidate', reflect: true, type: Boolean },
+
 		schema: { attribute: true, type: Object },
 		target: { type: String },
 		ui: { attribute: true, type: Object },
@@ -83,23 +83,21 @@ export abstract class JsonSchemaFormElement<
 		customElements.define(tagName, ctor);
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		this.#listenFormEngine();
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#aborter.abort();
 	}
-
-	protected firstUpdated(_changedProperties: PropertyValues): void {}
 
 	/**
 	 * Initialize the form engine with user provided attributes.
 	 * This lifecycle hooks is fired with SSR, too, during the single render pass.
 	 */
-	protected willUpdate(changed: PropertyValues<this>): void {
+	protected override willUpdate(changed: PropertyValues<this>): void {
 		this.form ??= new JsonSchemaFormEngine(
 			this.schema,
 			this.ui,
@@ -141,30 +139,5 @@ export abstract class JsonSchemaFormElement<
 			},
 			options,
 		);
-	}
-}
-
-/**
- * Generic implementation of the JSON Schema Form element
- */
-export class JsonSchemaFormGeneric extends JsonSchemaFormElement {
-	public static readonly tagName = 'jsf-generic';
-
-	public widgets = genericWidgets;
-
-	protected override render(): unknown {
-		if (!this.form) {
-			const message = 'Missing form instance';
-			log.error(message);
-			return this.debug ? message : '';
-		}
-
-		return <FormGeneric debug={this.debug} form={this.form} />;
-	}
-}
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'jsf-generic': JsonSchemaFormGeneric;
 	}
 }

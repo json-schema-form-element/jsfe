@@ -6,10 +6,14 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 export const RadioGroup: Widgets['RadioGroup'] = (options) => html`
 	<wa-radio-group
 		class="theme-webawesome widget-radio-group"
-		size="medium"
+		size="m"
 		label=${ifDefined(options.label)}
 		helpText=${ifDefined(options.helpText)}
-		value=${options.value === undefined ? '' : String(options.value)}
+		value=${options.value === undefined
+			? ''
+			: // FIXME:
+				// eslint-disable-next-line @typescript-eslint/no-base-to-string
+				String(options.value)}
 		name=${options.html.id}
 		?required=${options.html.required}
 	>

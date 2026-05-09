@@ -1,20 +1,19 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
-
-import { For } from '@gracile-labs/babel-plugin-jsx-to-literals/components/for';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Fieldset } from './_fieldset.js';
 
 export const CheckboxGroup: Widgets['CheckboxGroup'] = (
 	options,
-): JSX.LitTemplate => {
+): HTMLTemplateResult => {
 	const Checkbox = ({
 		index,
 		value,
 	}: {
 		index: number;
 		value: unknown;
-	}): JSX.LitTemplate => (
+	}): HTMLTemplateResult => (
 		<>
 			<input
 				bool:checked={options.value?.some((v) => v === value) ?? false}
@@ -51,15 +50,11 @@ export const CheckboxGroup: Widgets['CheckboxGroup'] = (
 			)}
 
 			<div if:class={options.classes.children} part="CheckboxGroup-child">
-				<For each={options.enum ?? []}>
-					{(enumValue: unknown, index: number) => (
-						<Checkbox
-							for:key={String(enumValue)}
-							index={index}
-							value={enumValue}
-						/>
-					)}
-				</For>
+				{(options.enum ?? []).map((enumValue: unknown, index: number) => (
+					<for:each key={String(enumValue)}>
+						<Checkbox index={index} value={enumValue} />
+					</for:each>
+				))}
 			</div>
 		</Fieldset>
 	);

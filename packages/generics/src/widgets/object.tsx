@@ -1,15 +1,14 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
-import { For } from '@gracile-labs/babel-plugin-jsx-to-literals/components/for';
-
-import { WidgetTree } from '../form.jsx';
+import { WidgetTree } from '../form.helpers.js';
 import { Fieldset } from './_fieldset.js';
 
 // HACK: `Object` will crash Vite.
 export const Objectt: Widgets['Object'] = (
 	options /* , vue */,
-): JSX.LitTemplate => (
+): HTMLTemplateResult => (
 	<Fieldset options={options}>
 		{options.label ? (
 			<legend class={options.classes.label} part="Object-label">
@@ -26,14 +25,10 @@ export const Objectt: Widgets['Object'] = (
 			</p>
 		) : null}
 
-		<For each={options.fields}>
-			{(child) => (
-				<WidgetTree
-					for:key={child.pathAsString}
-					rootField={child}
-					widgets={options.form.widgets}
-				/>
-			)}
-		</For>
+		{options.fields.map((child) => (
+			<for:each key={child.pathAsString}>
+				<WidgetTree rootField={child} widgets={options.form.widgets} />
+			</for:each>
+		))}
 	</Fieldset>
 );

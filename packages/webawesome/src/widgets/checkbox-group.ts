@@ -5,7 +5,7 @@ import { html } from '@lit-labs/signals';
 
 export const CheckboxGroup: Widgets['CheckboxGroup'] = (options) =>
 	Fieldset({
-		children: html`
+		'$:children': html`
 			<legend>${options.label}</legend>
 			${options.helpText
 				? html`<div class="help-text">${options.helpText}</div>`

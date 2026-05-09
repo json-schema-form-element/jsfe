@@ -5,10 +5,14 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const ButtonGroup: Widgets['ButtonGroup'] = (options) => html`
 	<wa-radio-group
-		size="medium"
+		size="m"
 		label=${ifDefined(options.label)}
 		help-text=${ifDefined(options.helpText)}
-		value=${options.value === undefined ? '' : String(options.value)}
+		value=${options.value === undefined
+			? ''
+			: // FIXME:
+				// eslint-disable-next-line @typescript-eslint/no-base-to-string
+				String(options.value)}
 		name=${options.html.id}
 		?required=${options.html.required ?? false}
 		orientation="horizontal"
@@ -27,15 +31,3 @@ export const ButtonGroup: Widgets['ButtonGroup'] = (options) => html`
 		)}
 	</wa-radio-group>
 `;
-
-// @sl-change=${(event: Event) => {
-// 	let newValue: (typeof options)['enum'][number] = (
-// 		event.target as SlRadioGroup
-// 	).value;
-
-// 	if (options.type === 'number') {
-// 		newValue = Number(newValue);
-// 	}
-
-// 	options.valueChangedCallback?.(newValue);
-// }}

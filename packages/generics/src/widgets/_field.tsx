@@ -1,14 +1,15 @@
 import type { CommonWidgetOptions } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
 export const Field = ({
-	children,
+	'$:children': children,
 	constraints,
 	options,
 }: {
-	children: JSX.LitTemplate;
-	constraints?: JSX.LitTemplate;
+	'$:children': HTMLTemplateResult;
+	constraints?: HTMLTemplateResult;
 	options: CommonWidgetOptions;
-}): JSX.LitTemplate => (
+}): HTMLTemplateResult => (
 	<>
 		{options.labelHidden ? null : (
 			<label

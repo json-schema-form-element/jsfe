@@ -1,6 +1,6 @@
 import type { Widgets } from '@jsfe/engine';
 
-import { WidgetTree } from '@jsfe/generics/form';
+import { WidgetTree } from '@jsfe/generics/form.helpers';
 import { html } from '@lit-labs/signals';
 
 import * as widgets from './index.js';

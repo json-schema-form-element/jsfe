@@ -33,11 +33,11 @@
 		justify-content: center;
 		width: 1.6rem;
 		height: 1.6rem;
-		clip-path: circle(50% at 50% 50%);
 		font-family: var(--wa-font-serif);
 		font-weight: var(--wa-font-weight-bold);
 		color: var(--wa-color-neutral-95);
 		content: '';
+		clip-path: circle(50% at 50% 50%);
 	}
 
 	&.callout--tip::before {

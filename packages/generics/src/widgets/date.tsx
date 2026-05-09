@@ -1,9 +1,10 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Field } from './_field.js';
 
-export const Datee: Widgets['Date'] = (options): JSX.LitTemplate => (
+export const Datee: Widgets['Date'] = (options): HTMLTemplateResult => (
 	<Field options={options}>
 		<input
 			bool:required={options.html.required ?? false}

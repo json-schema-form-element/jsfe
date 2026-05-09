@@ -1,9 +1,10 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Field } from './_field.js';
 
-export const Text: Widgets['Text'] = (options): JSX.LitTemplate => (
+export const Text: Widgets['Text'] = (options): HTMLTemplateResult => (
 	<Field
 		constraints={
 			options.html.maxlength ? (
@@ -17,18 +18,18 @@ export const Text: Widgets['Text'] = (options): JSX.LitTemplate => (
 		<input
 			aria-describedby={`${options.html.id}__description`}
 			aria-label={options.labelHidden ? options.label : undefined}
-			bool:readonly={options.html.readonly}
-			bool:required={options.html.required}
+			class={options.classes.input}
 			id={options.html.id}
-			if:class={options.classes.input}
-			if:maxlength={options.html.maxlength}
-			if:minlength={options.html.minlength}
-			if:pattern={options.html.pattern}
-			if:placeholder={options.html.placeholder}
-			if:value={options.html.value}
+			maxlength={options.html.maxlength}
+			minlength={options.html.minlength}
 			name={options.html.name}
 			part="Text-input"
+			pattern={options.html.pattern}
+			placeholder={options.html.placeholder}
+			readonly={options.html.readonly ?? false}
+			required={options.html.required ?? false}
 			type={options.html.type}
+			value={options.html.value}
 		/>
 	</Field>
 );

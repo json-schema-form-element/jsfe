@@ -1,9 +1,10 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Field } from './_field.js';
 
-export const Numberr: Widgets['Number'] = (options): JSX.LitTemplate => (
+export const Numberr: Widgets['Number'] = (options): HTMLTemplateResult => (
 	<Field options={options}>
 		<input
 			if:class={options.classes.input}

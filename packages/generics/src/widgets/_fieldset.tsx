@@ -1,12 +1,13 @@
 import type { CommonWidgetOptions } from '@jsfe/engine';
+import type { HTMLTemplateResult, TemplateResult } from 'lit';
 
 export function Fieldset({
-	children,
+	'$:children': children,
 	options,
 }: Readonly<{
-	children: JSX.LitTemplate;
+	'$:children': TemplateResult | TemplateResult[];
 	options: CommonWidgetOptions;
-}>): JSX.LitTemplate {
+}>): HTMLTemplateResult {
 	return (
 		<fieldset
 			bool:disabled={options.html.disabled}

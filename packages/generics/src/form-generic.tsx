@@ -7,7 +7,7 @@ import {
 } from '@jsfe/engine';
 import { Logger } from '@jsfe/engine/logger';
 
-import { Debugger, getUniqueForm, WidgetTree } from './form.jsx';
+import { Debugger, getUniqueForm, WidgetTree } from './form.helpers.js';
 import * as genericWidgets from './widgets/index.js';
 
 export const log = new Logger();

@@ -1,10 +1,9 @@
 import type { Widgets } from '@jsfe/engine';
 
 export const Numberr: Widgets['Number'] = (options) => (
-	// @ts-expect-error ................
 	<wa-number-input
 		disabled={options.html.disabled}
-		helpText={options.helpText}
+		help-text={options.helpText}
 		id={options.html.name}
 		label={options.label}
 		max={options.html.max}
@@ -17,8 +16,7 @@ export const Numberr: Widgets['Number'] = (options) => (
 				? undefined
 				: options.html.step
 		}
-		type="number"
-		value={options.html.value}
+		value={options.html.value ? String(options.html.value) : undefined}
 	/>
 );
 // html` <!--  -->

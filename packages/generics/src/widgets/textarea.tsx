@@ -1,9 +1,10 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
 import { Field } from './_field.js';
 
-export const Textarea: Widgets['Textarea'] = (options): JSX.LitTemplate => (
+export const Textarea: Widgets['Textarea'] = (options): HTMLTemplateResult => (
 	<Field
 		constraints={
 			options.html.maxlength ? (
@@ -18,6 +19,8 @@ export const Textarea: Widgets['Textarea'] = (options): JSX.LitTemplate => (
 		options={options}
 	>
 		<textarea
+			// TODO: Test cross-framework
+			_:value={options.html.value ?? ''}
 			bool:required={options.html.required}
 			id={options.html.id}
 			if:class={options.classes.input}
@@ -26,8 +29,6 @@ export const Textarea: Widgets['Textarea'] = (options): JSX.LitTemplate => (
 			if:placeholder={options.html.placeholder}
 			name={options.html.name}
 			part="Textarea-input"
-			// TODO: Test cross-framework
-			prop:value={options.html.value ?? ''}
 		></textarea>
 	</Field>
 );

@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/react",
+
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    "plugins": [
+      {
+        "transform": "jsx-forge/transform",
+        "target": "react"
+      },
+      {
+        "transform": "@lit/ts-transformers",
+        "import": "idiomaticDecoratorsTransformer"
+      }
+    ]
+  }
+}

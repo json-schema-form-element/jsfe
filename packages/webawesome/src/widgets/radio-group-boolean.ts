@@ -9,7 +9,7 @@ export const RadioGroupBoolean: Widgets['RadioGroupBoolean'] = (
 	<!-- TODO: Disabled state -->
 	<wa-radio-group
 		class="theme-webawesome widget-radio-group-boolean"
-		size="medium"
+		size="m"
 		label=${ifDefined(options.label)}
 		help-text=${ifDefined(options.helpText)}
 		value=${options.html.checked === undefined

@@ -1,12 +1,11 @@
 'use html-signal';
 import type { Widgets } from '@jsfe/engine';
+import type { HTMLTemplateResult } from 'lit';
 
-import { For } from '@gracile-labs/babel-plugin-jsx-to-literals/components/for';
-
-import { WidgetTree } from '../form.js';
+import { WidgetTree } from '../form.helpers.js';
 import { Fieldset } from './_fieldset.js';
 
-export const Arrayy: Widgets['Array'] = (options): JSX.LitTemplate => (
+export const Arrayy: Widgets['Array'] = (options): HTMLTemplateResult => (
 	<Fieldset options={options}>
 		{options.label ? (
 			<legend if:class={options.classes.label} part="Array-label">
@@ -20,10 +19,9 @@ export const Arrayy: Widgets['Array'] = (options): JSX.LitTemplate => (
 			</p>
 		) : null}
 
-		<For each={options.children}>
-			{(child, index) => (
+		{options.children.map((child, index) => (
+			<for:each key={child.pathAsString}>
 				<div
-					for:key={child.pathAsString}
 					if:class={options.classes.child}
 					on:dragenter={child.controls.wrapper.dragenter}
 					on:dragleave={child.controls.wrapper.dragleave}
@@ -39,14 +37,12 @@ export const Arrayy: Widgets['Array'] = (options): JSX.LitTemplate => (
 						>
 							<div>{`${(index + 1).toString()} ⇅`}</div>
 						</div>
-
 						<nav
 							aria-label={`${options.itemLabel} #${index.toString()} controls`}
 						>
 							<button on:click={child.controls.delete.click} type="button">
 								delete
 							</button>
-
 							<div>
 								<button
 									aria-label="Move item up"
@@ -56,7 +52,6 @@ export const Arrayy: Widgets['Array'] = (options): JSX.LitTemplate => (
 								>
 									up
 								</button>
-
 								<button
 									aria-label="Move item down"
 									bool:disabled={child.controls.down.disabled}
@@ -68,7 +63,6 @@ export const Arrayy: Widgets['Array'] = (options): JSX.LitTemplate => (
 							</div>
 						</nav>
 					</header>
-
 					<WidgetTree
 						rootField={{
 							...child,
@@ -78,8 +72,8 @@ export const Arrayy: Widgets['Array'] = (options): JSX.LitTemplate => (
 						widgets={options.form.widgets}
 					/>
 				</div>
-			)}
-		</For>
+			</for:each>
+		))}
 
 		<footer role="group">
 			<nav aria-label="List controls">

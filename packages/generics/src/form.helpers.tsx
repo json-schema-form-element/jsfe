@@ -1,5 +1,7 @@
 'use html-signal';
 
+import type { HTMLTemplateResult } from 'lit';
+
 import {
 	type GenericData,
 	type GenericFormProperties,
@@ -26,7 +28,7 @@ export function Debugger({
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	form: JsonSchemaFormEngine<any, any, any>;
 	tagName?: string;
-}>): JSX.LitTemplate {
+}>): HTMLTemplateResult {
 	return (
 		<>
 			<div>
@@ -57,14 +59,15 @@ export function WidgetTree({
 }: {
 	rootField: CommonWidgetOptions;
 	widgets: Partial<Widgets>;
-}): JSX.LitTemplate {
+}): HTMLTemplateResult | string {
 	const widgetType = rootField.widget;
 
 	if (widgetType && widgetType in widgets) {
 		// @ts-expect-error Should be good.
 		const fieldContent = widgets[widgetType](rootField);
 
-		return fieldContent;
+		// FIXME
+		return fieldContent as HTMLTemplateResult;
 	}
 
 	return `Missing widget of type ${widgetType?.toString() ?? 'unknown'}`;

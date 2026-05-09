@@ -26,37 +26,34 @@
   },
   "type": "module",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./dist/lit/index.js",
-    "./*": "./dist/lit/*.js",
+  "// exports": {
     "./react/*": "./dist/react/*.js",
     "./vue/*": "./dist/vue/*.js",
-    "./preact/*": "./dist/preact/*.js",
-    "./scss": "./src/styles.scss",
-    "./scss/*": "./src/widgets/*.scss",
-    "./css": "./dist/styles.css"
+    "./preact/*": "./dist/preact/*.js"
+  },
+  "exports": {
+    ".": "./dist/lit/index.js",
+    "./*": "./dist/lit/*.js"
   },
   "files": [
     "./dist",
-    "./src/**/*.css",
-    "./vscode.html-custom-data.json",
-    "./vscode.css-custom-data.json",
     "./custom-elements.json"
   ],
   "scripts": {
-    "// build": "tsc",
-    "// dev": "tsc --watch",
+    "build": "pnpm build:lit # && pnpm build:react",
+    "build:lit": "tsc -p tsconfig.lit.json",
+    "build:react": "tsc -p tsconfig.react.json",
+    "dev": "tsc --watch",
     "clean": "rm -rf ./dist",
     "css:build": "pnpm sass --no-source-map src/styles.scss:dist/styles.css",
     "css:dev": "pnpm sass --watch src/styles.scss:dist/styles.css & pnpm css:to-js:dev",
     "css:to-js": "node ../../scripts/css-to-js.js dist/styles.css",
     "css:to-js:dev": "nodemon dist/styles.css -x 'pnpm css:to-js'",
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "lint:es": "eslint --cache \"src/**/*.{ts,tsx,js}\"",
-    "lint:es:fix": "eslint --fix --cache \"src/**/*.{ts,tsx,js}\"",
+    "// build": "rollup -c",
+    "// dev": "rollup -c -w",
     "format": "prettier --cache --check \"src/**/*.{ts,tsx,js,json,md,yml}\"",
-    "format:fix": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\""
+    "format:fix": "prettier --cache --write \"src/**/*.{ts,tsx,js,json,md,yml}\"",
+    "wea:generate": "node --max-old-space-size=8192 scripts/wea-generate.mjs"
   },
   "dependencies": {
     "@jsfe/engine": "workspace:*"
@@ -64,7 +61,6 @@
   "devDependencies": {
     "@babel/plugin-syntax-typescript": "^7.27.1",
     "@babel/preset-react": "^7.27.1",
-    "@gracile-labs/babel-plugin-jsx-to-literals": "link:../../../../@gracile/gracile/packages/labs/babel-plugin-jsx-to-literals",
     "@lit-labs/compiler": "^1.1.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^16.0.1",
@@ -72,11 +68,14 @@
     "@types/react": "catalog:",
     "@vue/babel-plugin-jsx": "^1.4.0",
     "babel-preset-solid": "^1.9.6",
+    "jsx-forge": "^0.4.0-next.0",
     "preact-jsx-runtime": "^1.2.0",
     "rollup": "^4.40.1",
     "rollup-plugin-node-externals": "^8.0.0",
     "sass": "^1.86.3",
-    "typescript": "catalog:"
+    "ts-patch": "^3.3.0",
+    "typescript": "catalog:",
+    "web-elements-analyzer": "0.0.0"
   },
   "peerDependencies": {
     "@lit-labs/signals": "catalog:",
@@ -103,5 +102,6 @@
   },
   "overrides": {
     "signal-polyfill": "0.2.2"
-  }
+  },
+  "custom-elements": "./custom-elements.json"
 }

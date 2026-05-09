@@ -154,3 +154,13 @@ jobs:
           NPM_CONFIG_PROVENANCE: 'true'
         run: |
           pnpm exec lerna publish --message 'chore: publish [next] pre-release' --conventional-prerelease --pre-dist-tag=next --preid=next --yes
+
+      - name: Merge back main into next
+        if: github.ref == 'refs/heads/main'
+        continue-on-error: true
+        env:
+          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        run: |
+          git checkout next
+          git merge main --no-ff -m 'chore: auto-merge main into next [skip ci]'
+          git push

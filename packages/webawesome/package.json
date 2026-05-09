@@ -39,6 +39,7 @@
     "./custom-elements.json"
   ],
   "scripts": {
+    "postinstall": "ts-patch install -s",
     "clean": "rm -rf ./dist",
     "build": "tsc",
     "postbuild": "node --run copy:css && node --run copy:dts",

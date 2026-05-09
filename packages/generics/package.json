@@ -40,6 +40,7 @@
     "./custom-elements.json"
   ],
   "scripts": {
+    "postinstall": "ts-patch install -s",
     "build": "pnpm build:lit # && pnpm build:react",
     "build:lit": "tsc -p tsconfig.lit.json",
     "build:react": "tsc -p tsconfig.react.json",

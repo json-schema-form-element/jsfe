@@ -49,6 +49,8 @@ overrides:
   string.prototype.trimend: npm:@nolyfill/string.prototype.trimend@^1
   typedarray: npm:@nolyfill/typedarray@^1
 
+pnpmfileChecksum: zxuvltgtohkj5rwvafnswoiix4
+
 patchedDependencies:
   '@lit-labs/signals':
     hash: fdy4zaqbkqwluauc7rwd57iioa
@@ -174,7 +176,7 @@ importers:
         version: 3.6.0(@floating-ui/utils@0.2.11)(@types/react@19.2.14)
       '@gracile/gracile':
         specifier: ^0.8.2
-        version: 0.8.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
+        version: 0.8.2(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
       '@hono/node-server':
         specifier: ^1.14.1
         version: 1.19.14(hono@4.12.14)
@@ -218,6 +220,9 @@ importers:
         specifier: ^6.3.2
         version: 6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
     devDependencies:
+      '@gracile-labs/islands':
+        specifier: 0.2.2-next.0
+        version: 0.2.2-next.0(@types/node@22.19.17)(preact@10.29.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(vue@3.5.32(typescript@6.0.3))
       '@types/node':
         specifier: 'catalog:'
         version: 22.19.17
@@ -277,9 +282,6 @@ importers:
       '@babel/preset-react':
         specifier: ^7.27.1
         version: 7.28.5(@babel/core@7.29.0)
-      '@gracile-labs/babel-plugin-jsx-to-literals':
-        specifier: link:../../../../@gracile/gracile/packages/labs/babel-plugin-jsx-to-literals
-        version: link:../../../../@gracile/gracile/packages/labs/babel-plugin-jsx-to-literals
       '@lit-labs/compiler':
         specifier: ^1.1.1
         version: 1.1.2
@@ -301,6 +303,9 @@ importers:
       babel-preset-solid:
         specifier: ^1.9.6
         version: 1.9.12(@babel/core@7.29.0)
+      jsx-forge:
+        specifier: ^0.4.0-next.0
+        version: 0.4.0-next.0(@lit-labs/compiler@1.1.2)(ts-patch@3.3.0)(typescript@6.0.3)
       preact-jsx-runtime:
         specifier: ^1.2.0
         version: 1.2.0(preact@10.29.1)
@@ -313,9 +318,15 @@ importers:
       sass:
         specifier: ^1.86.3
         version: 1.99.0
+      ts-patch:
+        specifier: ^3.3.0
+        version: 3.3.0
       typescript:
         specifier: 'catalog:'
         version: 6.0.3
+      web-elements-analyzer:
+        specifier: 0.0.0
+        version: 0.0.0
 
   packages/webawesome:
     dependencies:
@@ -345,14 +356,17 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2(typescript@6.0.3)
       jsx-forge:
-        specifier: link:../../../../@gracile/gracile/packages/labs/jsx-forge
-        version: link:../../../../@gracile/gracile/packages/labs/jsx-forge
+        specifier: ^0.4.0-next.0
+        version: 0.4.0-next.0(@lit-labs/compiler@1.1.2)(ts-patch@3.3.0)(typescript@6.0.3)
       ts-patch:
         specifier: ^3.3.0
         version: 3.3.0
       typescript:
         specifier: 'catalog:'
         version: 6.0.3
+      web-elements-analyzer:
+        specifier: 0.0.0
+        version: 0.0.0
 
 packages:
 
@@ -933,6 +947,33 @@ packages:
   '@gracile-labs/better-errors@0.1.3':
     resolution: {integrity: sha512-GY27HJFo3EGhcAH+CypN1zwF7cE54BS5bK01O8mpQF/2q3pkPDeLXF2htDhBytsiT82ltXhQTKzFv3e4IQwQBQ==}
 
+  '@gracile-labs/islands@0.2.2-next.0':
+    resolution: {integrity: sha512-uoaYIQ+0YldUkDj20vj8r6vIF1aKkmNy/ajq+/zXuZNxN7VUEkD+8hxVV0xsbYrajdzO7BPJQVUheiNrxI4ORA==}
+    peerDependencies:
+      preact: ^10.26.6
+      preact-render-to-string: ^6.5.13
+      react: ^19.1.0
+      react-dom: ^19.1.0
+      solid-js: ^1.9.6
+      svelte: ^5.28.2
+      vite: ^7.0.0 || ^8.0.0
+      vue: ^3.5.13
+    peerDependenciesMeta:
+      preact:
+        optional: true
+      preact-render-to-string:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      solid-js:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+
   '@gracile/client@0.4.2':
     resolution: {integrity: sha512-x9JQrUUYzlQhaCaGNfRO6H046uf5ZEi41+Ornv2RKaR5g6O97HphGIyIwGLiMAowRDMIB0Ipf76Ttn6+oi4vJA==}
     peerDependencies:
@@ -955,6 +996,14 @@ packages:
     resolution: {integrity: sha512-JJ0f/YxK5hVzwBOIgvYnH3QD6H6A42p6DDWneGf72SDXmKH4fcypFZWhjTzfjqWZC7gvZC3yX6+4Rx9nAyfNEA==}
     peerDependencies:
       vite: ^6.2.5
+
+  '@gracile/internal-utils@0.7.2':
+    resolution: {integrity: sha512-qeU/2SwgxY4aRLWU2+5/ZZzK4gW2ssmQTNi8GEDpWVMtoNBXip9F6zv0P6sh4Z4drPxtw7K7EUNEhgRqPTHaCQ==}
+    peerDependencies:
+      vite: ^7.0.0 || ^8.0.0
+    peerDependenciesMeta:
+      vite:
+        optional: true
 
   '@gracile/server@0.6.4':
     resolution: {integrity: sha512-11EOsvo5c3BieQ94huwPOhbnGZJu0wbStZVzYHkombx3OJ8h06SPkm4hlR3GnKlHPZUYp0VsWoAqKMOjIvyzMQ==}
@@ -1057,9 +1106,6 @@ packages:
     resolution: {integrity: sha512-wVC7UB6cuyiQYJ+LznrJl12+4kSXe36um0Nx5gZIWJ8Vose7fZCcfP4+eSN/gGMSkZ/IXBVp/hDqfqp0r8v+Qg==}
     engines: {node: '>=14.17'}
 
-  '@lit-labs/signals@0.1.3':
-    resolution: {integrity: sha512-P0yWgH5blwVyEwBg+WFspLzeu1i0ypJP1QB0l1Omr9qZLIPsUu0p4Fy2jshOg7oQyha5n163K3GJGeUhQQ682Q==}
-
   '@lit-labs/signals@0.2.0':
     resolution: {integrity: sha512-68plyIbciumbwKaiilhLNyhz4Vg6/+nJwDufG2xxWA9r/fUw58jxLHCAlKs+q1CE5Lmh3cZ3ShyYKnOCebEpVA==}
 
@@ -1072,6 +1118,15 @@ packages:
   '@lit-labs/ssr@3.3.1':
     resolution: {integrity: sha512-JlF1PempxvzrGEpRFrF+Ki0MHzR3HA51SK8Zv0cFpW9p0bPW4k0FeCwrElCu371UEpXF7RcaE2wgYaE1az0XKg==}
     engines: {node: '>=13.9.0'}
+
+  '@lit-labs/ssr@4.0.0':
+    resolution: {integrity: sha512-pODr+t7cZVIrCRLuSLuWAACDnztEk5IrRFwFsbxyAyWcP2XP8aKuUZdVM/biXqxvIyHyCKtNZ92Gdcr+pjA5BQ==}
+    engines: {node: '>=13.9.0'}
+    peerDependencies:
+      '@types/node': '>=20.0.0 <25.0.0'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
 
   '@lit/react@1.0.8':
     resolution: {integrity: sha512-p2+YcF+JE67SRX3mMlJ1TKCSTsgyOVdAwd/nxp3NuV1+Cb6MWALbN6nT7Ld4tpmYofcE5kcaSY1YBB9erY+6fw==}
@@ -2670,8 +2725,8 @@ packages:
   end-of-stream@1.4.5:
     resolution: {integrity: sha512-ooEGc6HP26xXq/N+GCGOT0JKCLDGrq2bQUZrQ7gyrJiZANJ/8YDTxTpQBXGMn+WbIQXNVpyWymm7KYVICQnyOg==}
 
-  enhanced-resolve@5.20.1:
-    resolution: {integrity: sha512-Qohcme7V1inbAfvjItgw0EaxVX5q2rdVEZHRBrEQdRZTssLDGsL8Lwrznl8oQ/6kuTJONLaDcGjkNP247XEhcA==}
+  enhanced-resolve@5.21.2:
+    resolution: {integrity: sha512-xe9vQb5kReirPUxgQrXA3ihgbCqssmTiM7cOZ+Gzu+VeGWgpV98lLZvp0dl4yriyAePcewxGUs9UpKD8PET9KQ==}
     engines: {node: '>=10.13.0'}
 
   enquirer@2.3.6:
@@ -3520,6 +3575,16 @@ packages:
   jsx-ast-utils-x@0.1.0:
     resolution: {integrity: sha512-eQQBjBnsVtGacsG9uJNB8qOr3yA8rga4wAaGG1qRcBzSIvfhERLrWxMAM1hp5fcS6Abo8M4+bUBTekYR0qTPQw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  jsx-forge@0.4.0-next.0:
+    resolution: {integrity: sha512-aT5ZA/Y1q0bX2u1EurMC6iH1ZFSaZLE5MzfmMV0E1m9IA2BE9EgnsiZi65gT51b+QBjP11ynEMj2FawLo36Shw==}
+    peerDependencies:
+      '@lit-labs/compiler': ^1.1.2
+      ts-patch: ^3.3.0
+      typescript: '>=5'
+    peerDependenciesMeta:
+      '@lit-labs/compiler':
+        optional: true
 
   just-diff-apply@5.5.0:
     resolution: {integrity: sha512-OYTthRfSh55WOItVqwpefPtNt2VdKsq5AnAK6apdtR6yCH8pr0CmSr710J0Mf+WdQy7K/OzMy7K2MgAfdQURDw==}
@@ -4746,8 +4811,8 @@ packages:
     resolution: {integrity: sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==}
     engines: {node: '>=10.0.0'}
 
-  tapable@2.3.2:
-    resolution: {integrity: sha512-1MOpMXuhGzGL5TTCZFItxCc0AARf1EZFQkGqMm7ERKj8+Hgr5oLvJOVFcC+lRmR8hCe2S3jC4T5D7Vg/d7/fhA==}
+  tapable@2.3.3:
+    resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
 
   tar-stream@2.2.0:
@@ -5020,6 +5085,9 @@ packages:
 
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
+
+  web-elements-analyzer@0.0.0:
+    resolution: {integrity: sha512-87YNSjw4cmxxA4NPOR3li28FvcH69PRWkBOpyOd2B2b0tVmM+9XHZX6v6+jXdMdLWAFagty4Nms8KuVNZBLXbw==}
 
   web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
@@ -5625,15 +5693,28 @@ snapshots:
       - tsx
       - yaml
 
-  '@gracile/client@0.4.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
+  '@gracile-labs/islands@0.2.2-next.0(@types/node@22.19.17)(preact@10.29.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(vue@3.5.32(typescript@6.0.3))':
+    dependencies:
+      '@gracile/internal-utils': 0.7.2(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))
+      '@lit-labs/ssr': 4.0.0(@types/node@22.19.17)
+      '@lit-labs/ssr-client': 1.1.8
+      lit: 3.3.2
+      vite: 6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
+    optionalDependencies:
+      preact: 10.29.1
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+      vue: 3.5.32(typescript@6.0.3)
+    transitivePeerDependencies:
+      - '@types/node'
+
+  '@gracile/client@0.4.2(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
     dependencies:
       '@gracile/engine': 0.8.2(@lit-labs/ssr-client@1.1.8)(@lit-labs/ssr@3.3.1)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
       '@gracile/internal-utils': 0.5.1(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))
       '@lit-labs/ssr': 3.3.1
       '@lit-labs/ssr-client': 1.1.8
       urlpattern-polyfill: 10.1.0
-    optionalDependencies:
-      '@lit-labs/signals': 0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -5676,10 +5757,10 @@ snapshots:
       - tsx
       - yaml
 
-  '@gracile/gracile@0.8.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
+  '@gracile/gracile@0.8.2(@lit-labs/ssr-client@1.1.8)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)':
     dependencies:
       '@gracile-labs/better-errors': 0.1.3(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
-      '@gracile/client': 0.4.2(@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa))(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
+      '@gracile/client': 0.4.2(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
       '@gracile/engine': 0.8.2(@lit-labs/ssr-client@1.1.8)(@lit-labs/ssr@3.3.1)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
       '@gracile/internal-utils': 0.5.1(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))
       '@gracile/server': 0.6.4(@lit-labs/ssr-client@1.1.8)(@lit-labs/ssr@3.3.1)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
@@ -5705,6 +5786,10 @@ snapshots:
 
   '@gracile/internal-utils@0.5.1(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))':
     dependencies:
+      vite: 6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
+
+  '@gracile/internal-utils@0.7.2(vite@6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3))':
+    optionalDependencies:
       vite: 6.4.2(@types/node@22.19.17)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)
 
   '@gracile/server@0.6.4(@lit-labs/ssr-client@1.1.8)(@lit-labs/ssr@3.3.1)(@types/node@22.19.17)(lit@3.3.2)(picomatch@4.0.4)(sass@1.99.0)(tsx@4.21.0)(yaml@2.8.3)':
@@ -5902,12 +5987,6 @@ snapshots:
       parse5: 7.3.0
       typescript: 5.9.3
 
-  '@lit-labs/signals@0.1.3(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)':
-    dependencies:
-      lit: 3.3.2
-      signal-polyfill: 0.2.2
-    optional: true
-
   '@lit-labs/signals@0.2.0(patch_hash=fdy4zaqbkqwluauc7rwd57iioa)':
     dependencies:
       lit: 3.3.2
@@ -5928,12 +6007,27 @@ snapshots:
       '@lit/reactive-element': 2.1.2
       '@parse5/tools': 0.3.0
       '@types/node': 16.18.126
-      enhanced-resolve: 5.20.1
+      enhanced-resolve: 5.21.2
       lit: 3.3.2
       lit-element: 4.2.2
       lit-html: 3.3.2
       node-fetch: 3.3.2
       parse5: 7.3.0
+
+  '@lit-labs/ssr@4.0.0(@types/node@22.19.17)':
+    dependencies:
+      '@lit-labs/ssr-client': 1.1.8
+      '@lit-labs/ssr-dom-shim': 1.5.1
+      '@lit/reactive-element': 2.1.2
+      '@parse5/tools': 0.3.0
+      enhanced-resolve: 5.21.2
+      lit: 3.3.2
+      lit-element: 4.2.2
+      lit-html: 3.3.2
+      node-fetch: 3.3.2
+      parse5: 7.3.0
+    optionalDependencies:
+      '@types/node': 22.19.17
 
   '@lit/react@1.0.8(@types/react@19.2.14)':
     dependencies:
@@ -7527,10 +7621,10 @@ snapshots:
     dependencies:
       once: 1.4.0
 
-  enhanced-resolve@5.20.1:
+  enhanced-resolve@5.21.2:
     dependencies:
       graceful-fs: 4.2.11
-      tapable: 2.3.2
+      tapable: 2.3.3
 
   enquirer@2.3.6:
     dependencies:
@@ -8431,6 +8525,14 @@ snapshots:
   jsonparse@1.3.1: {}
 
   jsx-ast-utils-x@0.1.0: {}
+
+  jsx-forge@0.4.0-next.0(@lit-labs/compiler@1.1.2)(ts-patch@3.3.0)(typescript@6.0.3):
+    dependencies:
+      csstype: 3.2.3
+      ts-patch: 3.3.0
+      typescript: 6.0.3
+    optionalDependencies:
+      '@lit-labs/compiler': 1.1.2
 
   just-diff-apply@5.5.0: {}
 
@@ -9867,7 +9969,7 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
 
-  tapable@2.3.2: {}
+  tapable@2.3.3: {}
 
   tar-stream@2.2.0:
     dependencies:
@@ -10122,6 +10224,8 @@ snapshots:
   wcwidth@1.0.1:
     dependencies:
       defaults: 1.0.4
+
+  web-elements-analyzer@0.0.0: {}
 
   web-streams-polyfill@3.3.3: {}
 

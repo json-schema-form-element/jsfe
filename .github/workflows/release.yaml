@@ -120,7 +120,6 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
         run: |
           pnpm exec lerna publish --message 'chore: publish [main] release [skip ci]' --create-release=github --conventional-graduate --force-git-tag --yes
@@ -129,7 +128,6 @@ jobs:
         if: ${{ always() && github.ref == 'refs/heads/main' && steps.graduateRelease.outcome == 'failure' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
         run: |
           echo "Graduate publish failed - attempting recovery"
@@ -153,7 +151,6 @@ jobs:
         if: github.ref == 'refs/heads/next'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
         run: |
           pnpm exec lerna publish --message 'chore: publish [next] pre-release' --conventional-prerelease --pre-dist-tag=next --preid=next --yes

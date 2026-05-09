@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.0-next.0 (2026-05-09)
+
+### Features
+
+* "shoelace" becomes "webawesome" (only the scaffold for now) ([3b3bff9](https://github.com/json-schema-form-element/jsfe/commit/3b3bff9d1db47c33075ae9c680d5c89c69794c92))
+* add semi-broken webawesome (shoelace) ui set ([2b69a12](https://github.com/json-schema-form-element/jsfe/commit/2b69a12b724f4305721329fc0f10d453f2d2beb5))
+* migrate shoelace to webawesome ([cb0a29a](https://github.com/json-schema-form-element/jsfe/commit/cb0a29ad7b07cfe314f276c6b938e6166bf71aa3))
+* update webawesome theme to functional component api, fix exports & unit tests ([420262b](https://github.com/json-schema-form-element/jsfe/commit/420262bd8ab0c456fa79ce4ed7e1db894e85a12d))
+
+### Bug Fixes
+
+* deps dupped resolution mess (hf) + catalog + broken api ([a4fedb2](https://github.com/json-schema-form-element/jsfe/commit/a4fedb2e01c657ae2a47cc75b2461e41d7f794d5))
+* freeze before revert ([6b51e1d](https://github.com/json-schema-form-element/jsfe/commit/6b51e1d0e32c67de3443c89eb5c90f3a5eb20ce4))
+* misc ([5677fac](https://github.com/json-schema-form-element/jsfe/commit/5677fac53ac2c582bc7b15477e95ac832013b582))
+
 # [0.4.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/shoelace@0.3.1...@jsfe/shoelace@0.4.0) (2024-06-06)
 
 ### Bug Fixes

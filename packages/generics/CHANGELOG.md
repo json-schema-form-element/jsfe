@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.0-next.0 (2026-05-09)
+
+### Features
+
+* "system" becomes "generics", with a bare form element, components, helpers ([8796670](https://github.com/json-schema-form-element/jsfe/commit/879667061f537fc8859a57117f8bd39e9f9f2eba))
+* generic widgets port to the 2024 tsx to literal impl., react hook, add some docs ([b6d0ab6](https://github.com/json-schema-form-element/jsfe/commit/b6d0ab69c5bd92c41c0b4693324a469910135569))
+* update webawesome theme to functional component api, fix exports & unit tests ([420262b](https://github.com/json-schema-form-element/jsfe/commit/420262bd8ab0c456fa79ce4ed7e1db894e85a12d))
+
+### Bug Fixes
+
+* default values for enums, serializable select value ([0c3cfde](https://github.com/json-schema-form-element/jsfe/commit/0c3cfde12ae00e99ae0b533cdfe377b88bec2657))
+* deps dupped resolution mess (hf) + catalog + broken api ([a4fedb2](https://github.com/json-schema-form-element/jsfe/commit/a4fedb2e01c657ae2a47cc75b2461e41d7f794d5))
+* freeze before revert ([6b51e1d](https://github.com/json-schema-form-element/jsfe/commit/6b51e1d0e32c67de3443c89eb5c90f3a5eb20ce4))
+* misc ([5677fac](https://github.com/json-schema-form-element/jsfe/commit/5677fac53ac2c582bc7b15477e95ac832013b582))
+* object label, filter a11y for vendor ([dc0a576](https://github.com/json-schema-form-element/jsfe/commit/dc0a576c62d5585f6bd5fae86d596584d7de19e6))
+
 # [0.3.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/system@0.2.2...@jsfe/system@0.3.0) (2024-06-06)
 
 ### Bug Fixes

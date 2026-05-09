@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.0-next.0 (2026-05-09)
+
+### Features
+
+* "form" becomes "engine", with pure form controller, no browser required ([174af59](https://github.com/json-schema-form-element/jsfe/commit/174af598fd78f99c132b2301ebf70846c27a531a))
+* update webawesome theme to functional component api, fix exports & unit tests ([420262b](https://github.com/json-schema-form-element/jsfe/commit/420262bd8ab0c456fa79ce4ed7e1db894e85a12d))
+
+### Bug Fixes
+
+* default values for enums, serializable select value ([0c3cfde](https://github.com/json-schema-form-element/jsfe/commit/0c3cfde12ae00e99ae0b533cdfe377b88bec2657))
+* deps dupped resolution mess (hf) + catalog + broken api ([a4fedb2](https://github.com/json-schema-form-element/jsfe/commit/a4fedb2e01c657ae2a47cc75b2461e41d7f794d5))
+* **engine:** preserve enum values and path-derived labels ([3bed085](https://github.com/json-schema-form-element/jsfe/commit/3bed08521f8362a245e4e6ad5e6d8fea7f6c4b3e))
+* misc ([5677fac](https://github.com/json-schema-form-element/jsfe/commit/5677fac53ac2c582bc7b15477e95ac832013b582))
+* object label, filter a11y for vendor ([dc0a576](https://github.com/json-schema-form-element/jsfe/commit/dc0a576c62d5585f6bd5fae86d596584d7de19e6))
+* typings and api issues, some refactoring ([5515a10](https://github.com/json-schema-form-element/jsfe/commit/5515a10746a53121e6ebef84b72d8060759d1356))
+
 # [0.4.0](https://github.com/json-schema-form-element/jsfe/compare/@jsfe/form@0.3.1...@jsfe/form@0.4.0) (2024-06-06)
 
 ### Bug Fixes

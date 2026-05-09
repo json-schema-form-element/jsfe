@@ -55,7 +55,6 @@
     "signal-polyfill": "0.2.2"
   },
   "devDependencies": {
-    "sinon": "19.0.2",
     "typescript": "catalog:"
   },
   "publishConfig": {

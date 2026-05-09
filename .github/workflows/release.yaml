@@ -1,10 +1,6 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
 # See: https://github.com/JulianCataldo/gh-actions
 
-# For matrix setup:
-# https://github.com/withastro/astro/blob/main/.github/workflows/ci.yml
-# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow
-
 name: CI / Release
 
 on:
@@ -23,227 +19,141 @@ on:
       - beta
       - 'feat/*'
       - 'fix/*'
-      # - to-integrate
-      # - to-integrate-next
 
 permissions:
-  contents: read # for checkout
+  contents: read
+
+concurrency:
+  group: ci-release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: 24
 
 jobs:
   release:
     name: CI / Release
-
-    permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
-
-    timeout-minutes: 30
-
     runs-on: ubuntu-latest
-    # TODO:
-    # runs-on: ${{ matrix.os }}
-    # timeout-minutes: 25
-    # # needs: build
-    # strategy:
-    #   matrix:
-    #     OS: [ubuntu-latest]
-    #     NODE_VERSION: [18, 20]
-    #     include:
-    #       - os: macos-14
-    #         NODE_VERSION: 18
-    #       - os: windows-latest
-    #         NODE_VERSION: 18
-    #   fail-fast: false
-    # env:
-    #   NODE_VERSION: ${{ matrix.NODE_VERSION }}
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
 
     steps:
-      # MARK: Setup GH Action
-
-      - name: 'Harden Runner'
-        uses: 'step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b' # v2.15.0
+      - name: Harden runner
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
         with:
-          egress-policy: 'audit'
+          egress-policy: audit
 
       - name: Git checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        # run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
         with:
           fetch-depth: 0
-
-      # - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      #   persist-credentials: false
-      # env:
-      #   GIT_COMMITTER_NAME: "GitHub Actions Shell"
-      #   GIT_AUTHOR_NAME: "GitHub Actions Shell"
-      #   EMAIL: "github-actions[bot]@users.noreply.github.com"
-
-      # MARK: Setup Node env.
 
       - name: Setup PNPM
         uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
 
-      - name: Use Node.js 24
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
-          registry-url: 'https://registry.npmjs.org'
-          node-version: 24
+          registry-url: https://registry.npmjs.org
+          node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
 
       - name: Install packages
-        shell: bash
         run: pnpm install --frozen-lockfile
 
-      # TODO: More tests
-      # - name: Syncpack Lint
-      #   shell: bash
-      #   run: node --run syncpack:lint
-
-      # NOTE: Audit is for prod only because a lot of root packages (like lerna etc.)
-      # are used old packages with intricate dependency trees, and they are
-      # never shipped to the user. But that's not 100% optimal, as devDeps could
-      # provoke some sec issues, too? A middleground is better than nothing and
-      # regularly blocked releases for obscure root mono-repo tooling deps.
-      - name: 'Verify the integrity of provenance attestations and registry
-          signatures for installed [prod] dependencies'
+      - name: Verify installed prod dependency attestations
         run: node --run audit
-
-      # MARK: Lint/Checks pre-build
-
-      # TODO: Setup Husky etc.
-      # - name: Lint last commit — Commitlint
-      #   shell: bash
-      #   run: node --run lint:commit
-
-      # - name: Lint CSS — Stylelint
-      #   shell: bash
-      #   run: node --run lint:css
-
-      - name: Check all formatting — Prettier
-        shell: bash
-        run: node --run format
-
-      # MARK: Build packages
 
       - name: Setup Turbo cache
         uses: dtinth/setup-github-actions-caching-for-turbo@cc723b4600e40a6b8815b65701d8614b91e2669e # v1.3.0
 
-      - name: Build all packages
-        shell: bash
-        run: node --run build
+      - name: Clean build outputs
+        run: node --run clean
 
-      # MARK: Lint/Checks post-build
+      - name: Build packages
+        run: node --run build
 
       - name: Cache ESLint results
         uses: actions/cache@v4
         with:
           path: .eslintcache
-          key: eslint-${{ hashFiles('pnpm-lock.yaml', 'eslint.config.js') }}
+          key: eslint-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'eslint.config.js') }}
 
-      - name: Lint JS/TS — ESLint
-        shell: bash
+      - name: Lint JS and TS
         run: node --run lint:es
 
-      # MARK:Tests
+      - name: Lint CSS
+        run: node --run lint:style
 
-      - name: Tests — Units
-        shell: bash
+      - name: Check formatting
+        run: node --run format
+
+      - name: Tests - units
         run: node --run test:unit
 
-      # - name: Tests — Integration
-      #   shell: bash
-      #   run: node --run test:integration
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
 
-      # TODO: Build and launch example-app
-      # - name: Tests — E2E
-      #   shell: bash
-      #   run: node --run test:e2e
+      - name: Install Playwright browsers
+        working-directory: e2e
+        run: pnpm exec playwright install --with-deps chromium
 
-      # MARK: Publish packages
-
-      # NOTE: Auth is configured by setup-node's registry-url above.
-      # The NPM_TOKEN secret MUST be a Granular Access Token (or classic Automation
-      # token) to bypass 2FA/OTP requirements in CI.
+      - name: Tests - E2E
+        run: node --run test:e2e
 
       - name: Git user configuration
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next'
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      # MARK: [MAIN]
-      # --force-git-tag: a prior interrupted CI run may have left orphan tags
-      # (e.g. @jsfe/engine@0.5.0) that collide with graduation.
-      - name: 'Lerna publish [main]'
-        # if: github.ref == 'refs/heads/to-integrate'
+      - name: Publish [main]
         if: github.ref == 'refs/heads/main'
-        # https://github.com/lerna/lerna/issues/2532
         id: graduateRelease
         continue-on-error: true
         env:
-          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
         run: |
-          pnpm lerna publish --message 'chore: publish [main] release [skip ci]' --create-release=github --conventional-graduate --force-git-tag --yes
+          pnpm exec lerna publish --message 'chore: publish [main] release [skip ci]' --create-release=github --conventional-graduate --force-git-tag --yes
 
-      # Fallback for https://github.com/lerna/lerna/issues/2532 (newly introduced
-      # packages that fail --conventional-graduate). Fail explicitly if neither
-      # the graduate nor the fallback actually published anything.
-      - name: 'Lerna publish [main] — fallback (non-graduate)'
-        if: ${{ always() && github.ref == 'refs/heads/main' &&
-          steps.graduateRelease.outcome == 'failure' }}
+      - name: Publish [main] fallback
+        if: ${{ always() && github.ref == 'refs/heads/main' && steps.graduateRelease.outcome == 'failure' }}
         env:
-          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
         run: |
-          echo "Graduate publish failed — attempting recovery"
+          echo "Graduate publish failed - attempting recovery"
           git stash || true
 
-          # Recovery 1: from-package (handles Sigstore/Rekor TLOG_CREATE_ENTRY_ERROR 409)
-          # Queries npm directly and publishes any package versions not yet in the registry,
-          # regardless of git tags — safe to run even if some packages are already published.
           echo "==> from-package: recovering partial publish"
-          FROM_PKG_OUT=$(pnpm lerna publish from-package --yes 2>&1)
+          FROM_PKG_OUT=$(pnpm exec lerna publish from-package --yes 2>&1)
           FROM_PKG_EXIT=$?
           echo "$FROM_PKG_OUT"
 
-          # Recovery 2: non-graduate lerna publish (handles lerna#2532: newly introduced
-          # packages that have no pre-release version to graduate from).
           echo "==> non-graduate: publishing new or changed packages"
-          OUTPUT=$(pnpm lerna publish --message 'chore: publish [main] release [skip ci]' --create-release=github --yes 2>&1) || true
+          OUTPUT=$(pnpm exec lerna publish --message 'chore: publish [main] release [skip ci]' --create-release=github --yes 2>&1) || true
           echo "$OUTPUT"
 
-          # Fail explicitly only when BOTH approaches published nothing useful.
           if [ "$FROM_PKG_EXIT" -ne 0 ] && echo "$OUTPUT" | grep -q 'No changed packages to publish'; then
             echo "::error::Neither from-package nor conventional fallback published anything"
             exit 1
           fi
 
-      # # TRY: https://www.jessesquires.com/blog/2021/10/17/github-actions-workflows-for-automatic-rebasing-and-merging/
-      # - name: Merge (rebase) back main into next
-      #   env:
-      #     GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-      #   run: |
-      #     git checkout next
-      #     git rebase main
-      #     git push
-
-      # MARK: [NEXT]
-      - name: 'Lerna publish [next]'
+      - name: Publish [next]
         if: github.ref == 'refs/heads/next'
-        # if: github.ref == 'refs/heads/to-integrate-next'
         env:
-          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
-
-        # --canary next
-        # https://github.com/lerna/lerna/issues/1433
-        # pnpm lerna publish --conventional-prerelease --dist-tag=next --preid=next --no-changelog --yes
-        # pnpm lerna publish --conventional-prerelease --pre-dist-tag=next --preid=next --yes
-        # pnpm lerna publish --force-publish='*' --canary --pre-dist-tag=next --preid=next --yes
         run: |
-          pnpm lerna publish --message 'chore: publish [next] pre-release' --conventional-prerelease --pre-dist-tag=next --preid=next --yes
+          pnpm exec lerna publish --message 'chore: publish [next] pre-release' --conventional-prerelease --pre-dist-tag=next --preid=next --yes

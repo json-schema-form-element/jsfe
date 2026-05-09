@@ -68,7 +68,7 @@
     "@types/react": "catalog:",
     "@vue/babel-plugin-jsx": "^1.4.0",
     "babel-preset-solid": "^1.9.6",
-    "jsx-forge": "^0.4.0-next.0",
+    "jsx-forge": "0.4.0-next.1",
     "preact-jsx-runtime": "^1.2.0",
     "rollup": "^4.40.1",
     "rollup-plugin-node-externals": "^8.0.0",

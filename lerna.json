@@ -1,10 +1,15 @@
 {
-  "$schema": "./node_modules/lerna/schemas/lerna-schema.json",
+  "$schema": "./node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
   "version": "independent",
   "npmClient": "pnpm",
+  "conventionalCommits": true,
+  "changelogPreset": "conventional-changelog-conventionalcommits",
+  "exact": true,
   "command": {
     "publish": {
-      "message": "chore: publish release"
+      "cleanupTempFiles": true,
+      "message": "chore: publish release",
+      "stripPackageKeys": ["devDependencies", "scripts"]
     }
   },
   "ignoreChanges": [
@@ -21,7 +26,6 @@
     "starter-projects/**"
   ],
   "packages": [
-    //
     "./packages/engine",
     "./packages/generics",
     "./packages/webawesome"

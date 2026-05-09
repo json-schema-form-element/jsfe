@@ -1,0 +1,37 @@
+{
+	"workspaces": {
+		".": {
+			"entry": [
+				"custom-elements-manifest.config.js",
+				"local-ci.sh",
+				"scripts/**/*.{js,cjs,mjs}",
+			],
+			"project": ["*.{js,cjs,mjs}", "scripts/**/*.{js,cjs,mjs}"],
+			"ignoreDependencies": ["web-elements-analyzer"],
+		},
+		"example-app": {
+			"entry": [
+				"src/document.ts",
+				"src/document.client.ts",
+				"src/routes/**/*.ts",
+				"src/routes/**/*.tsx",
+			],
+			"project": ["**/*.{ts,tsx,js}", "!public/**"],
+		},
+		"e2e": {
+			"entry": ["tests/**/*.ts"],
+			"project": ["**/*.{ts,js}", "!test-results/**"],
+		},
+		"packages/engine": {
+			"project": ["src/**/*.ts"],
+		},
+		"packages/generics": {
+			"entry": ["wea.config.jsonc"],
+			"project": ["src/**/*.{ts,tsx,js}", "*.ts"],
+		},
+		"packages/webawesome": {
+			"entry": ["vite.common.ts", "vite.config.lib.ts"],
+			"project": ["src/**/*.{ts,tsx,js}", "*.ts"],
+		},
+	},
+}
